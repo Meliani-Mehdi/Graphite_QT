@@ -46,13 +46,10 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <property name="spacing">
-     <number>0</number>
-    </property>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
       <item>
-       <widget class="QFrame" name="frame">
+       <widget class="QFrame" name="frame1">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -79,7 +76,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QFrame" name="frame_2">
+         <widget class="QFrame" name="frame2">
           <property name="minimumSize">
            <size>
             <width>250</width>
@@ -106,67 +103,250 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QTabWidget" name="tabWidget">
+           <widget class="QTabWidget" name="graphTab">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(0, 0, 0);</string>
             </property>
-            <widget class="QWidget" name="tab_3">
-             <attribute name="title">
-              <string>Tab 1</string>
-             </attribute>
-            </widget>
-            <widget class="QWidget" name="tab_4">
-             <attribute name="title">
-              <string>Tab 2</string>
-             </attribute>
-            </widget>
-           </widget>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="scrollArea">
-            <property name="minimumSize">
-             <size>
-              <width>160</width>
-              <height>0</height>
-             </size>
+            <property name="currentIndex">
+             <number>-1</number>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>160</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(145, 65, 172);</string>
-            </property>
-            <property name="widgetResizable">
+            <property name="tabsClosable">
              <bool>true</bool>
             </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>150</width>
-               <height>468</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>150</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>150</width>
-               <height>16777215</height>
-              </size>
-             </property>
-            </widget>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="graphTypes">
+          <property name="minimumSize">
+           <size>
+            <width>130</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>130</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="typeButtons">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>-194</y>
+             <width>114</width>
+             <height>664</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">
+background-color: rgb(23, 23, 23);</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>2</number>
+            </property>
+            <property name="topMargin">
+             <number>2</number>
+            </property>
+            <property name="rightMargin">
+             <number>2</number>
+            </property>
+            <property name="bottomMargin">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="plot">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/plot.png</normaloff>assets/plot.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>120</width>
+                <height>120</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="histogram">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/Bar-Chart.png</normaloff>assets/Bar-Chart.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignTop">
+             <widget class="QPushButton" name="piechart">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/Pie-Chart.png</normaloff>assets/Pie-Chart.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignTop">
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignTop">
+             <widget class="QPushButton" name="pushButton_6">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignTop">
+             <widget class="QPushButton" name="pushButton_5">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+           <zorder>plot</zorder>
+           <zorder>histogram</zorder>
+           <zorder>piechart</zorder>
+           <zorder>pushButton_6</zorder>
+           <zorder>pushButton_5</zorder>
+           <zorder>pushButton_4</zorder>
+          </widget>
+         </widget>
         </item>
        </layout>
       </item>
@@ -187,60 +367,78 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew"/>
-    <addaction name="actionOpen"/>
-    <addaction name="actionSave"/>
-    <addaction name="actionSave_as"/>
+    <addaction name="new_file"/>
+    <addaction name="open_file"/>
+    <addaction name="save"/>
+    <addaction name="save_as"/>
     <addaction name="separator"/>
-    <addaction name="actionOpen_recent"/>
+    <addaction name="open_recent"/>
     <addaction name="separator"/>
-    <addaction name="actionExit"/>
+    <addaction name="exit_app"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
      <string>Edit</string>
     </property>
     <addaction name="actionpref"/>
-    <addaction name="actionSettings"/>
+    <addaction name="settings"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAbout"/>
+    <addaction name="about"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuHelp"/>
   </widget>
-  <action name="actionNew">
+  <action name="new_file">
    <property name="text">
     <string>New</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
-  <action name="actionOpen">
+  <action name="open_file">
    <property name="text">
     <string>Open</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
-  <action name="actionSave">
+  <action name="save">
    <property name="text">
     <string>Save</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
-  <action name="actionSave_as">
+  <action name="save_as">
    <property name="text">
     <string>Save as ...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
   </action>
-  <action name="actionOpen_recent">
+  <action name="open_recent">
    <property name="text">
     <string>Open recent</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
   </action>
-  <action name="actionExit">
+  <action name="exit_app">
    <property name="text">
     <string>Exit</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
    </property>
   </action>
   <action name="actionpref">
@@ -248,12 +446,12 @@
     <string>pref</string>
    </property>
   </action>
-  <action name="actionSettings">
+  <action name="settings">
    <property name="text">
     <string>Settings</string>
    </property>
   </action>
-  <action name="actionAbout">
+  <action name="about">
    <property name="text">
     <string>About</string>
    </property>
