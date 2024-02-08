@@ -17,9 +17,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QMainWindow, QMenu, QMenuBar, QPushButton,
-    QScrollArea, QSizePolicy, QSpacerItem, QTabWidget,
-    QVBoxLayout, QWidget)
+    QHeaderView, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
+    QTabWidget, QTreeView, QVBoxLayout, QWidget)
 
 class Ui_Graphite(object):
     def setupUi(self, Graphite):
@@ -70,27 +70,39 @@ class Ui_Graphite(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.frame2 = QFrame(self.mainLayout)
+        self.frame2 = QVBoxLayout()
+        self.frame2.setSpacing(0)
         self.frame2.setObjectName(u"frame2")
-        self.frame2.setMinimumSize(QSize(250, 0))
-        self.frame2.setMaximumSize(QSize(250, 16777215))
-        self.frame2.setStyleSheet(u"background-color: rgb(51, 209, 122);")
-        self.frame2.setFrameShape(QFrame.StyledPanel)
-        self.frame2.setFrameShadow(QFrame.Raised)
+        self.frame = QFrame(self.mainLayout)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(250, 50))
+        self.frame.setMaximumSize(QSize(250, 50))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
 
-        self.horizontalLayout.addWidget(self.frame2)
+        self.frame2.addWidget(self.frame)
 
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.treeView = QTreeView(self.mainLayout)
+        self.treeView.setObjectName(u"treeView")
+        self.treeView.setMinimumSize(QSize(250, 0))
+        self.treeView.setMaximumSize(QSize(250, 16777215))
+
+        self.frame2.addWidget(self.treeView)
+
+
+        self.horizontalLayout.addLayout(self.frame2)
+
+        self.Tab_graph = QHBoxLayout()
+        self.Tab_graph.setObjectName(u"Tab_graph")
         self.graphTab = QTabWidget(self.mainLayout)
         self.graphTab.setObjectName(u"graphTab")
         self.graphTab.setStyleSheet(u"background-color: rgb(0, 0, 0);")
         self.graphTab.setTabsClosable(True)
 
-        self.horizontalLayout_2.addWidget(self.graphTab)
+        self.Tab_graph.addWidget(self.graphTab)
 
 
-        self.horizontalLayout.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout.addLayout(self.Tab_graph)
 
         self.graphTypes = QScrollArea(self.mainLayout)
         self.graphTypes.setObjectName(u"graphTypes")
@@ -99,7 +111,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, -194, 114, 664))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 664))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
