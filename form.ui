@@ -31,7 +31,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 120, 0);</string>
+    <string notr="true">background-color: rgb(45, 45, 45);</string>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
@@ -63,7 +63,7 @@
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(94, 92, 100);</string>
+         <string notr="true">background-color: rgb(30, 30, 30);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -81,9 +81,9 @@
            <number>0</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
             <property name="spacing">
-             <number>16</number>
+             <number>6</number>
             </property>
             <property name="leftMargin">
              <number>3</number>
@@ -98,7 +98,57 @@
              <number>3</number>
             </property>
             <item>
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string notr="true">font: 700 10pt &quot;ProFontWindows Nerd Font Propo&quot;;
+rgb:(255, 255, 255);
+</string>
+              </property>
+              <property name="text">
+               <string>    Project Tree</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
               <property name="minimumSize">
                <size>
                 <width>32</width>
@@ -174,9 +224,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-194</y>
              <width>114</width>
-             <height>664</height>
+             <height>1324</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -287,7 +337,111 @@ background-color: rgb(23, 23, 23);</string>
              </widget>
             </item>
             <item alignment="Qt::AlignTop">
-             <widget class="QPushButton" name="pushButton_4">
+             <widget class="QPushButton" name="fill_between">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/fill_between.png</normaloff>assets/fill_between.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_12">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_11">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_10">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_9">
               <property name="minimumSize">
                <size>
                 <width>110</width>
@@ -313,6 +467,56 @@ background-color: rgb(23, 23, 23);</string>
             </item>
             <item alignment="Qt::AlignTop">
              <widget class="QPushButton" name="pushButton_6">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_8">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_7">
               <property name="minimumSize">
                <size>
                 <width>110</width>
@@ -380,7 +584,13 @@ background-color: rgb(23, 23, 23);</string>
            <zorder>piechart</zorder>
            <zorder>pushButton_6</zorder>
            <zorder>pushButton_5</zorder>
-           <zorder>pushButton_4</zorder>
+           <zorder>fill_between</zorder>
+           <zorder>pushButton_7</zorder>
+           <zorder>pushButton_8</zorder>
+           <zorder>pushButton_9</zorder>
+           <zorder>pushButton_10</zorder>
+           <zorder>pushButton_11</zorder>
+           <zorder>pushButton_12</zorder>
           </widget>
          </widget>
         </item>
