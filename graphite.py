@@ -1,9 +1,9 @@
 import sys
 import os
+import pandas as pd
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
 from ui_form import Ui_Graphite
 from graphs import Tab
-import pandas as pd
 
 class Graphite(QMainWindow):
     def __init__(self, parent=None):
@@ -16,13 +16,19 @@ class Graphite(QMainWindow):
         self.tabs = []
 
     def exit_app(self):
-        sys.exit(app.exec())
+        QApplication.quit()
 
     def close_tab(self, index):
         reply = QMessageBox.question(self, 'Close Tab', 'Are you sure you want to close this tab?',
-                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
+            widget = self.ui.graphTab.widget(index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs.pop(tab_index)
             self.ui.graphTab.removeTab(index)
+            tab.closePlot()
+
+
 
     def open_file_dialog(self):
         options = QFileDialog.Options()

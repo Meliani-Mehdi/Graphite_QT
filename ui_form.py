@@ -126,6 +126,7 @@ class Ui_Graphite(object):
         self.graphTab.setObjectName(u"graphTab")
         self.graphTab.setStyleSheet(u"background-color: rgb(0, 0, 0);")
         self.graphTab.setTabsClosable(True)
+        self.graphTab.setMovable(True)
 
         self.Tab_graph.addWidget(self.graphTab)
 
@@ -139,7 +140,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, -194, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, -314, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -190,13 +191,16 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.fill_between, 0, Qt.AlignTop)
 
-        self.pushButton_12 = QPushButton(self.typeButtons)
-        self.pushButton_12.setObjectName(u"pushButton_12")
-        self.pushButton_12.setMinimumSize(QSize(110, 110))
-        self.pushButton_12.setMaximumSize(QSize(110, 110))
-        self.pushButton_12.setIconSize(QSize(100, 100))
+        self.stackplot = QPushButton(self.typeButtons)
+        self.stackplot.setObjectName(u"stackplot")
+        self.stackplot.setMinimumSize(QSize(110, 110))
+        self.stackplot.setMaximumSize(QSize(110, 110))
+        icon5 = QIcon()
+        icon5.addFile(u"assets/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stackplot.setIcon(icon5)
+        self.stackplot.setIconSize(QSize(100, 100))
 
-        self.verticalLayout_3.addWidget(self.pushButton_12)
+        self.verticalLayout_3.addWidget(self.stackplot)
 
         self.pushButton_11 = QPushButton(self.typeButtons)
         self.pushButton_11.setObjectName(u"pushButton_11")
@@ -270,7 +274,7 @@ class Ui_Graphite(object):
         self.pushButton_9.raise_()
         self.pushButton_10.raise_()
         self.pushButton_11.raise_()
-        self.pushButton_12.raise_()
+        self.stackplot.raise_()
 
         self.horizontalLayout.addWidget(self.graphTypes)
 
@@ -349,7 +353,7 @@ class Ui_Graphite(object):
         self.histogram.setText("")
         self.piechart.setText("")
         self.fill_between.setText("")
-        self.pushButton_12.setText("")
+        self.stackplot.setText("")
         self.pushButton_11.setText("")
         self.pushButton_10.setText("")
         self.pushButton_9.setText("")

@@ -199,6 +199,9 @@ rgb:(255, 255, 255);
             <property name="tabsClosable">
              <bool>true</bool>
             </property>
+            <property name="movable">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
          </layout>
@@ -224,7 +227,7 @@ rgb:(255, 255, 255);
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-194</y>
+             <y>-314</y>
              <width>114</width>
              <height>1324</height>
             </rect>
@@ -366,7 +369,7 @@ background-color: rgb(23, 23, 23);</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_12">
+             <widget class="QPushButton" name="stackplot">
               <property name="minimumSize">
                <size>
                 <width>110</width>
@@ -381,6 +384,10 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/stackplot.png</normaloff>assets/stackplot.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -590,7 +597,7 @@ background-color: rgb(23, 23, 23);</string>
            <zorder>pushButton_9</zorder>
            <zorder>pushButton_10</zorder>
            <zorder>pushButton_11</zorder>
-           <zorder>pushButton_12</zorder>
+           <zorder>stackplot</zorder>
           </widget>
          </widget>
         </item>

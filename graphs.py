@@ -55,5 +55,10 @@ class Tab(QWidget):
     def to_bar_chart(self):
         pass
 
+    def closePlot(self):
+        self.axes.clear()
+        plt.close(self.figure)
+        self.canvas.draw()
+
     def add_to_tab_widget(self):
         self.tab_widget.addTab(self, self.name)
