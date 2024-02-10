@@ -25,7 +25,8 @@ class Graphite(QMainWindow):
 
     def close_current_tab(self):
         current_index = self.ui.graphTab.currentIndex()
-        self.close_tab(current_index)
+        if current_index != -1:
+            self.close_tab(current_index)
 
     def close_tab(self, index):
         reply = QMessageBox.question(self, 'Close Tab', 'Are you sure you want to close this tab?',

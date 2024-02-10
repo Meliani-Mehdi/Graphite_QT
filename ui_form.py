@@ -342,7 +342,7 @@ class Ui_Graphite(object):
 #endif // QT_CONFIG(shortcut)
         self.open_recent.setText(QCoreApplication.translate("Graphite", u"Open recent", None))
 #if QT_CONFIG(shortcut)
-        self.open_recent.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+Alt+O", None))
+        self.open_recent.setShortcut("")
 #endif // QT_CONFIG(shortcut)
         self.exit_app.setText(QCoreApplication.translate("Graphite", u"Exit", None))
         self.actionpref.setText(QCoreApplication.translate("Graphite", u"pref", None))

@@ -684,7 +684,7 @@ background-color: rgb(23, 23, 23);</string>
     <string>Open recent</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Alt+O</string>
+    <string/>
    </property>
   </action>
   <action name="exit_app">
