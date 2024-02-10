@@ -227,7 +227,7 @@ rgb:(255, 255, 255);
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-314</y>
+             <y>0</y>
              <width>114</width>
              <height>1324</height>
             </rect>
@@ -622,6 +622,7 @@ background-color: rgb(23, 23, 23);</string>
     </property>
     <addaction name="new_file"/>
     <addaction name="open_file"/>
+    <addaction name="open_folder"/>
     <addaction name="save"/>
     <addaction name="save_as"/>
     <addaction name="separator"/>
@@ -656,7 +657,7 @@ background-color: rgb(23, 23, 23);</string>
   </action>
   <action name="open_file">
    <property name="text">
-    <string>Open</string>
+    <string>Open file</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -683,7 +684,7 @@ background-color: rgb(23, 23, 23);</string>
     <string>Open recent</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+O</string>
+    <string>Ctrl+Alt+O</string>
    </property>
   </action>
   <action name="exit_app">
@@ -707,6 +708,14 @@ background-color: rgb(23, 23, 23);</string>
   <action name="about">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="open_folder">
+   <property name="text">
+    <string>Open folder</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
    </property>
   </action>
  </widget>
