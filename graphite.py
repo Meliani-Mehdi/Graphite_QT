@@ -18,10 +18,39 @@ class Graphite(QMainWindow):
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
         self.ui.exit_app.triggered.connect(self.exit_app)
+
+
+        #types
+        self.ui.plot.clicked.connect(self.toPlot)
+        self.ui.piechart.clicked.connect(self.toPiechart)
+        self.ui.histogram.clicked.connect(self.toBar)
+
         self.tabs = []
 
     def exit_app(self):
         QApplication.quit()
+    
+    #change types
+    def toPlot(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_plot()
+
+    def toPiechart(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_pie_chart()
+
+    def toBar(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_bar_chart()
 
     def close_current_tab(self):
         current_index = self.ui.graphTab.currentIndex()

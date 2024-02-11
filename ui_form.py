@@ -92,6 +92,7 @@ class Ui_Graphite(object):
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMinimumSize(QSize(32, 32))
         self.pushButton.setMaximumSize(QSize(32, 32))
+        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_2.addWidget(self.pushButton)
 
@@ -99,6 +100,7 @@ class Ui_Graphite(object):
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setMinimumSize(QSize(32, 32))
         self.pushButton_3.setMaximumSize(QSize(32, 32))
+        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_2.addWidget(self.pushButton_3)
 
@@ -106,6 +108,7 @@ class Ui_Graphite(object):
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setMinimumSize(QSize(32, 32))
         self.pushButton_2.setMaximumSize(QSize(32, 32))
+        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_2.addWidget(self.pushButton_2)
 
@@ -139,10 +142,12 @@ class Ui_Graphite(object):
         self.graphTypes.setObjectName(u"graphTypes")
         self.graphTypes.setMinimumSize(QSize(130, 0))
         self.graphTypes.setMaximumSize(QSize(130, 16777215))
+        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, -84, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -153,6 +158,7 @@ class Ui_Graphite(object):
         self.plot.setObjectName(u"plot")
         self.plot.setMinimumSize(QSize(110, 110))
         self.plot.setMaximumSize(QSize(110, 110))
+        self.plot.setCursor(QCursor(Qt.PointingHandCursor))
         icon1 = QIcon()
         icon1.addFile(u"assets/plot.png", QSize(), QIcon.Normal, QIcon.Off)
         self.plot.setIcon(icon1)
@@ -164,6 +170,7 @@ class Ui_Graphite(object):
         self.histogram.setObjectName(u"histogram")
         self.histogram.setMinimumSize(QSize(110, 110))
         self.histogram.setMaximumSize(QSize(110, 110))
+        self.histogram.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
         icon2.addFile(u"assets/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
         self.histogram.setIcon(icon2)
@@ -175,6 +182,7 @@ class Ui_Graphite(object):
         self.piechart.setObjectName(u"piechart")
         self.piechart.setMinimumSize(QSize(110, 110))
         self.piechart.setMaximumSize(QSize(110, 110))
+        self.piechart.setCursor(QCursor(Qt.PointingHandCursor))
         icon3 = QIcon()
         icon3.addFile(u"assets/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
         self.piechart.setIcon(icon3)
@@ -186,6 +194,7 @@ class Ui_Graphite(object):
         self.fill_between.setObjectName(u"fill_between")
         self.fill_between.setMinimumSize(QSize(110, 110))
         self.fill_between.setMaximumSize(QSize(110, 110))
+        self.fill_between.setCursor(QCursor(Qt.PointingHandCursor))
         icon4 = QIcon()
         icon4.addFile(u"assets/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
         self.fill_between.setIcon(icon4)
@@ -197,6 +206,7 @@ class Ui_Graphite(object):
         self.stackplot.setObjectName(u"stackplot")
         self.stackplot.setMinimumSize(QSize(110, 110))
         self.stackplot.setMaximumSize(QSize(110, 110))
+        self.stackplot.setCursor(QCursor(Qt.PointingHandCursor))
         icon5 = QIcon()
         icon5.addFile(u"assets/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
         self.stackplot.setIcon(icon5)
@@ -208,6 +218,7 @@ class Ui_Graphite(object):
         self.pushButton_11.setObjectName(u"pushButton_11")
         self.pushButton_11.setMinimumSize(QSize(110, 110))
         self.pushButton_11.setMaximumSize(QSize(110, 110))
+        self.pushButton_11.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_11.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_11)
@@ -216,6 +227,7 @@ class Ui_Graphite(object):
         self.pushButton_10.setObjectName(u"pushButton_10")
         self.pushButton_10.setMinimumSize(QSize(110, 110))
         self.pushButton_10.setMaximumSize(QSize(110, 110))
+        self.pushButton_10.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_10.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_10)
@@ -224,6 +236,7 @@ class Ui_Graphite(object):
         self.pushButton_9.setObjectName(u"pushButton_9")
         self.pushButton_9.setMinimumSize(QSize(110, 110))
         self.pushButton_9.setMaximumSize(QSize(110, 110))
+        self.pushButton_9.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_9.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_9)
@@ -232,14 +245,16 @@ class Ui_Graphite(object):
         self.pushButton_6.setObjectName(u"pushButton_6")
         self.pushButton_6.setMinimumSize(QSize(110, 110))
         self.pushButton_6.setMaximumSize(QSize(110, 110))
+        self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_6.setIconSize(QSize(100, 100))
 
-        self.verticalLayout_3.addWidget(self.pushButton_6, 0, Qt.AlignTop)
+        self.verticalLayout_3.addWidget(self.pushButton_6)
 
         self.pushButton_8 = QPushButton(self.typeButtons)
         self.pushButton_8.setObjectName(u"pushButton_8")
         self.pushButton_8.setMinimumSize(QSize(110, 110))
         self.pushButton_8.setMaximumSize(QSize(110, 110))
+        self.pushButton_8.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_8.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_8)
@@ -248,6 +263,7 @@ class Ui_Graphite(object):
         self.pushButton_7.setObjectName(u"pushButton_7")
         self.pushButton_7.setMinimumSize(QSize(110, 110))
         self.pushButton_7.setMaximumSize(QSize(110, 110))
+        self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_7.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_7)
@@ -256,9 +272,10 @@ class Ui_Graphite(object):
         self.pushButton_5.setObjectName(u"pushButton_5")
         self.pushButton_5.setMinimumSize(QSize(110, 110))
         self.pushButton_5.setMaximumSize(QSize(110, 110))
+        self.pushButton_5.setCursor(QCursor(Qt.PointingHandCursor))
         self.pushButton_5.setIconSize(QSize(100, 100))
 
-        self.verticalLayout_3.addWidget(self.pushButton_5, 0, Qt.AlignTop)
+        self.verticalLayout_3.addWidget(self.pushButton_5)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -280,6 +297,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout.addWidget(self.graphTypes)
 
+        self.horizontalLayout.setStretch(1, 1)
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
