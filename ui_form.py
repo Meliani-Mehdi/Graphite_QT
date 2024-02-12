@@ -80,12 +80,15 @@ class Ui_Graphite(object):
         self.mode_frames.setGeometry(QRect(470, 10, 321, 101))
         self.Math_page = QWidget()
         self.Math_page.setObjectName(u"Math_page")
+        self.Math_page.setStyleSheet(u"background-color:rgb(0, 0, 127)")
         self.mode_frames.addWidget(self.Math_page)
         self.Eccomerce_page = QWidget()
         self.Eccomerce_page.setObjectName(u"Eccomerce_page")
+        self.Eccomerce_page.setStyleSheet(u"background-color:rgb(85, 255, 0)")
         self.mode_frames.addWidget(self.Eccomerce_page)
         self.Biology_page = QWidget()
         self.Biology_page.setObjectName(u"Biology_page")
+        self.Biology_page.setStyleSheet(u"background-color:rgb(255, 255, 0)")
         self.mode_frames.addWidget(self.Biology_page)
         self.textEdit = QTextEdit(self.frame1)
         self.textEdit.setObjectName(u"textEdit")
@@ -360,7 +363,7 @@ class Ui_Graphite(object):
 
         self.retranslateUi(Graphite)
 
-        self.mode_frames.setCurrentIndex(2)
+        self.mode_frames.setCurrentIndex(0)
         self.graphTab.setCurrentIndex(-1)
 
 

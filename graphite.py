@@ -18,6 +18,7 @@ class Graphite(QMainWindow):
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
         self.ui.exit_app.triggered.connect(self.exit_app)
+        self.ui.Mode_menu.currentIndexChanged.connect(self.on_combo_box_changed)
 
 
         #types
@@ -29,7 +30,10 @@ class Graphite(QMainWindow):
 
     def exit_app(self):
         QApplication.quit()
-    
+
+    def on_combo_box_changed(self, index):
+        self.ui.mode_frames.setCurrentIndex(index)
+
     #change types
     def toPlot(self):
         current_index = self.ui.graphTab.currentIndex()
