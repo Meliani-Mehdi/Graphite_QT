@@ -16,11 +16,11 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QHeaderView, QLabel, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QTabWidget, QTreeView, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
+    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QStackedWidget, QTabWidget,
+    QTextEdit, QTreeView, QVBoxLayout, QWidget)
 
 class Ui_Graphite(object):
     def setupUi(self, Graphite):
@@ -68,6 +68,32 @@ class Ui_Graphite(object):
         self.frame1.setStyleSheet(u"background-color: rgb(30, 30, 30);")
         self.frame1.setFrameShape(QFrame.StyledPanel)
         self.frame1.setFrameShadow(QFrame.Raised)
+        self.Mode_menu = QComboBox(self.frame1)
+        self.Mode_menu.addItem("")
+        self.Mode_menu.addItem("")
+        self.Mode_menu.addItem("")
+        self.Mode_menu.setObjectName(u"Mode_menu")
+        self.Mode_menu.setGeometry(QRect(350, 120, 111, 31))
+        self.Mode_menu.setStyleSheet(u"")
+        self.mode_frames = QStackedWidget(self.frame1)
+        self.mode_frames.setObjectName(u"mode_frames")
+        self.mode_frames.setGeometry(QRect(470, 10, 321, 101))
+        self.Math_page = QWidget()
+        self.Math_page.setObjectName(u"Math_page")
+        self.mode_frames.addWidget(self.Math_page)
+        self.Eccomerce_page = QWidget()
+        self.Eccomerce_page.setObjectName(u"Eccomerce_page")
+        self.mode_frames.addWidget(self.Eccomerce_page)
+        self.Biology_page = QWidget()
+        self.Biology_page.setObjectName(u"Biology_page")
+        self.mode_frames.addWidget(self.Biology_page)
+        self.textEdit = QTextEdit(self.frame1)
+        self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.setGeometry(QRect(560, 120, 211, 31))
+        self.label_2 = QLabel(self.frame1)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(490, 120, 49, 31))
+        self.label_2.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.frame1)
 
@@ -147,7 +173,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, -84, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -307,7 +333,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuEdit = QMenu(self.menubar)
@@ -334,6 +360,7 @@ class Ui_Graphite(object):
 
         self.retranslateUi(Graphite)
 
+        self.mode_frames.setCurrentIndex(2)
         self.graphTab.setCurrentIndex(-1)
 
 
@@ -370,6 +397,19 @@ class Ui_Graphite(object):
 #if QT_CONFIG(shortcut)
         self.open_folder.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+Shift+O", None))
 #endif // QT_CONFIG(shortcut)
+        self.Mode_menu.setItemText(0, QCoreApplication.translate("Graphite", u"Math", None))
+        self.Mode_menu.setItemText(1, QCoreApplication.translate("Graphite", u"Biology", None))
+        self.Mode_menu.setItemText(2, QCoreApplication.translate("Graphite", u"Eccomerce", None))
+
+        self.textEdit.setHtml(QCoreApplication.translate("Graphite", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate("Graphite", u"<html><head/><body><p><span style=\" font-size:14pt;\">f(x)=</span></p></body></html>", None))
         self.label.setText(QCoreApplication.translate("Graphite", u"    Project Tree", None))
         self.pushButton.setText("")
         self.pushButton_3.setText("")
