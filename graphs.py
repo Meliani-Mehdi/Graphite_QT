@@ -81,7 +81,7 @@ class Tab(QWidget):
         self.axes.clear()
         # Example pie chart using first row of data
         self.axes.pie(self.dataframe.iloc[0, 1:], labels=self.dataframe.columns[1:], autopct='%1.1f%%')
-        self.customPlot(self.name, '', '', self.hex_colors)
+        self.customPlot(self.name, '', '', self.hex_colors, False)
 
     def to_bar_chart(self):
         self.axes.clear()
