@@ -18,7 +18,6 @@ class Graphite(QMainWindow):
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
         self.ui.exit_app.triggered.connect(self.exit_app)
-        self.ui.Mode_menu.currentIndexChanged.connect(self.on_combo_box_changed)
 
 
         #types

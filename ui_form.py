@@ -16,11 +16,11 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
-    QMenu, QMenuBar, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStackedWidget, QTabWidget,
-    QTextEdit, QTreeView, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QHeaderView, QLabel, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTabWidget, QTreeView,
+    QVBoxLayout, QWidget)
 
 class Ui_Graphite(object):
     def setupUi(self, Graphite):
@@ -52,6 +52,10 @@ class Ui_Graphite(object):
         self.about.setObjectName(u"about")
         self.open_folder = QAction(Graphite)
         self.open_folder.setObjectName(u"open_folder")
+        self.actionMath = QAction(Graphite)
+        self.actionMath.setObjectName(u"actionMath")
+        self.actionBiology = QAction(Graphite)
+        self.actionBiology.setObjectName(u"actionBiology")
         self.mainLayout = QWidget(Graphite)
         self.mainLayout.setObjectName(u"mainLayout")
         self.mainLayout.setMinimumSize(QSize(1200, 642))
@@ -68,16 +72,19 @@ class Ui_Graphite(object):
         self.frame1.setStyleSheet(u"background-color: rgb(30, 30, 30);")
         self.frame1.setFrameShape(QFrame.StyledPanel)
         self.frame1.setFrameShadow(QFrame.Raised)
-        self.Mode_menu = QComboBox(self.frame1)
-        self.Mode_menu.addItem("")
-        self.Mode_menu.addItem("")
-        self.Mode_menu.addItem("")
-        self.Mode_menu.setObjectName(u"Mode_menu")
-        self.Mode_menu.setGeometry(QRect(350, 120, 111, 31))
-        self.Mode_menu.setStyleSheet(u"")
+        self.horizontalLayout_3 = QHBoxLayout(self.frame1)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.frame = QFrame(self.frame1)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(250, 0))
+        self.frame.setMaximumSize(QSize(250, 16777215))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_3.addWidget(self.frame)
+
         self.mode_frames = QStackedWidget(self.frame1)
         self.mode_frames.setObjectName(u"mode_frames")
-        self.mode_frames.setGeometry(QRect(470, 10, 321, 101))
         self.Math_page = QWidget()
         self.Math_page.setObjectName(u"Math_page")
         self.Math_page.setStyleSheet(u"background-color:rgb(0, 0, 127)")
@@ -90,13 +97,9 @@ class Ui_Graphite(object):
         self.Biology_page.setObjectName(u"Biology_page")
         self.Biology_page.setStyleSheet(u"background-color:rgb(255, 255, 0)")
         self.mode_frames.addWidget(self.Biology_page)
-        self.textEdit = QTextEdit(self.frame1)
-        self.textEdit.setObjectName(u"textEdit")
-        self.textEdit.setGeometry(QRect(560, 120, 211, 31))
-        self.label_2 = QLabel(self.frame1)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(490, 120, 49, 31))
-        self.label_2.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.mode_frames)
+
 
         self.verticalLayout.addWidget(self.frame1)
 
@@ -336,17 +339,20 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuEdit = QMenu(self.menubar)
         self.menuEdit.setObjectName(u"menuEdit")
         self.menuHelp = QMenu(self.menubar)
         self.menuHelp.setObjectName(u"menuHelp")
+        self.menuMode = QMenu(self.menubar)
+        self.menuMode.setObjectName(u"menuMode")
         Graphite.setMenuBar(self.menubar)
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
+        self.menubar.addAction(self.menuMode.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
         self.menuFile.addAction(self.new_file)
         self.menuFile.addAction(self.open_file)
@@ -360,6 +366,8 @@ class Ui_Graphite(object):
         self.menuEdit.addAction(self.actionpref)
         self.menuEdit.addAction(self.settings)
         self.menuHelp.addAction(self.about)
+        self.menuMode.addAction(self.actionMath)
+        self.menuMode.addAction(self.actionBiology)
 
         self.retranslateUi(Graphite)
 
@@ -400,19 +408,8 @@ class Ui_Graphite(object):
 #if QT_CONFIG(shortcut)
         self.open_folder.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+Shift+O", None))
 #endif // QT_CONFIG(shortcut)
-        self.Mode_menu.setItemText(0, QCoreApplication.translate("Graphite", u"Math", None))
-        self.Mode_menu.setItemText(1, QCoreApplication.translate("Graphite", u"Biology", None))
-        self.Mode_menu.setItemText(2, QCoreApplication.translate("Graphite", u"Eccomerce", None))
-
-        self.textEdit.setHtml(QCoreApplication.translate("Graphite", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("Graphite", u"<html><head/><body><p><span style=\" font-size:14pt;\">f(x)=</span></p></body></html>", None))
+        self.actionMath.setText(QCoreApplication.translate("Graphite", u"Math", None))
+        self.actionBiology.setText(QCoreApplication.translate("Graphite", u"Biology", None))
         self.label.setText(QCoreApplication.translate("Graphite", u"    Project Tree", None))
         self.pushButton.setText("")
         self.pushButton_3.setText("")
@@ -432,5 +429,6 @@ class Ui_Graphite(object):
         self.menuFile.setTitle(QCoreApplication.translate("Graphite", u"File", None))
         self.menuEdit.setTitle(QCoreApplication.translate("Graphite", u"Edit", None))
         self.menuHelp.setTitle(QCoreApplication.translate("Graphite", u"Help", None))
+        self.menuMode.setTitle(QCoreApplication.translate("Graphite", u"Mode", None))
     # retranslateUi
 
