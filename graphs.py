@@ -1,98 +1,91 @@
-import matplotlib
-import matplotlib.pyplot as plt
+import pyqtgraph as pg
 from PySide6.QtWidgets import QWidget, QVBoxLayout
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+from PySide6.QtCore import Qt
 
 class Tab(QWidget):
     def __init__(self, tab_widget, dataframe, name):
         super().__init__()
 
-        plt.style.use('dark_background')
-
         self.hex_colors = [
-                    "#7FFF00",  
-                    "#FF5733",
-                    "#33FFB8",
-                    "#3366FF",
-                    "#ADFF2F",  
-                    "#2E8B57",  
-                    "#FF33DD",
-                    "#33FF57",
-                    "#FF3366",
-                    "#33B8FF",
-                    "#FF5733",
-                    "#32CD32",  
-                    "#33FFB8",
-                    "#3366FF",
-                    "#FFD700",  
-                    "#00FF00",  
-                    "#3CB371",  
-                    "#20B2AA",  
-                    "#7FFFD4",
-                    "#228B22"  
-                            ]
+            '#8ca252',
+            '#1f77b4',
+            '#ff7f0e',
+            '#2ca02c',
+            '#d62728',
+            '#9467bd',
+            '#8c564b',
+            '#e377c2',
+            '#7f7f7f',
+            '#bcbd22',
+            '#17becf',
+            '#393b79',
+            '#5254a3',
+            '#6b6ecf',
+            '#9c9ede',
+            '#637939',
+            '#b5cf6b',
+            '#cedb9c',
+            '#e7cb94',
+            '#e7ba52',
+            '#bd9e39',
+            '#8c6d31',
+            '#bd3939',
+            '#ad494a',
+            '#d6616b',
+            '#e7969c',
+            '#7b4173',
+            '#a55194',
+            '#ce6dbd',
+        ]
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
 
-        self.figure, self.axes = plt.subplots()
-        self.canvas = FigureCanvas(self.figure)
-
+        self.plot_widget = pg.PlotWidget()
         self.layout = QVBoxLayout()
-        self.layout.addWidget(self.canvas)
+        self.layout.addWidget(self.plot_widget)
         self.setLayout(self.layout)
         self.to_plot()
 
         self.add_to_tab_widget()
 
     def customPlot(self, title, xlabel, ylabel, colors=None, legend=True):
-        self.axes.set_title(title)
-        self.axes.set_xlabel(xlabel)
-        self.axes.set_ylabel(ylabel)
+        self.plot_widget.setTitle(title)
+        self.plot_widget.setLabel('bottom', xlabel)
+        self.plot_widget.setLabel('left', ylabel)
         if legend:
-            self.axes.legend()
+            self.plot_widget.addLegend()
 
-        plot_objects = self.axes.get_children()
+        plots = self.plot_widget.listDataItems()
 
-        for i, plot_object in enumerate(plot_objects):
-            if isinstance(plot_object, matplotlib.lines.Line2D):  # Line plot
-                plot_object.set_color(colors[i] if colors else 'blue')
-            elif isinstance(plot_object, matplotlib.patches.Polygon):  # Histogram
-                plot_object.set_facecolor(colors[i] if colors else 'blue')
-            elif isinstance(plot_object, matplotlib.patches.Wedge):  # Pie chart
-                plot_object.set_facecolor(colors[i] if colors else 'blue')
-            elif isinstance(plot_object, matplotlib.collections.PolyCollection):  # Fill between
-                plot_object.set_facecolor(colors[i] if colors else 'blue')
-            elif isinstance(plot_object, matplotlib.container.BarContainer):  # Stack plot
-                for stack, color in zip(plot_object, colors):
-                    for bar in stack:
-                        bar.set_color(color)
-
-        self.canvas.draw()
+        for i, plot in enumerate(plots):
+            plot.setPen(pg.mkPen(color=colors[i] if colors else (0, 255, 0)))
 
     def to_plot(self):
-        self.axes.clear()
+        self.plot_widget.clear()
         for _, col in enumerate(self.dataframe.columns[1:]):
-            self.axes.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col)
+            self.plot_widget.plot(self.dataframe.iloc[:, 0], self.dataframe[col], name=col)
 
         self.customPlot(self.name, 'X Axis', 'Y Axis', self.hex_colors)
 
     def to_pie_chart(self):
-        self.axes.clear()
-        # Example pie chart using first row of data
-        self.axes.pie(self.dataframe.iloc[0, 1:], labels=self.dataframe.columns[1:], autopct='%1.1f%%')
-        self.customPlot(self.name, '', '', self.hex_colors, False)
+        self.plot_widget.clear()
+        # Assume self.dataframe has the data for the pie chart
+        pie_data = self.dataframe.iloc[:, 0].values  # Example data
+        self.plot_widget.plot(pie_data, pen=None, symbolBrush=self.hex_colors[:len(pie_data)], symbolPen=None, symbol='o')
+        self.customPlot("Pie Chart", 'X Axis', 'Y Axis', self.hex_colors[:len(pie_data)], legend=False)
 
     def to_bar_chart(self):
-        self.axes.clear()
-        # Example bar chart using first row of data
-        self.axes.bar(self.dataframe.columns[1:], self.dataframe.iloc[0, 1:])
-        self.customPlot(self.name, 'X Axis', 'Y Axis', self.hex_colors)
+        self.plot_widget.clear()
+        # Assume self.dataframe has the data for the bar chart
+        bar_data = self.dataframe.iloc[:, 1].values  # Example data
+        x = range(len(bar_data))
+        self.plot_widget.plot(x, bar_data, pen=None, symbolBrush=self.hex_colors[:len(bar_data)], symbolPen=None, symbol='s')
+        self.customPlot("Bar Chart", 'X Axis', 'Y Axis', self.hex_colors[:len(bar_data)], legend=False)
 
     def closePlot(self):
-        self.axes.clear()
-        plt.close(self.figure)
-        self.canvas.draw()
+        self.plot_widget.clear()
+        self.plot_widget.close()
 
     def add_to_tab_widget(self):
         self.tab_widget.addTab(self, self.name)
