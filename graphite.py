@@ -35,7 +35,7 @@ class Graphite(QMainWindow):
     def exit_app(self):
         QApplication.quit()
 
-    def get_min_max_values(self,df):
+    def get_min_max_values(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             widget = self.ui.graphTab.widget(current_index)
