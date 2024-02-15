@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 import os
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir
@@ -19,6 +20,10 @@ class Graphite(QMainWindow):
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
         self.ui.exit_app.triggered.connect(self.exit_app)
 
+        self.ui.MathMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(0))
+        self.ui.BchimieMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(2))
+
+        self.ui.min_max.clicked.connect(self.get_min_max_values)
 
         #types
         self.ui.plot.clicked.connect(self.toPlot)
@@ -30,9 +35,17 @@ class Graphite(QMainWindow):
     def exit_app(self):
         QApplication.quit()
 
-    def on_combo_box_changed(self, index):
-        self.ui.mode_frames.setCurrentIndex(index)
-
+    def get_min_max_values(self,df):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            df = self.tabs[tab_index].dataframe
+            x_column = df.columns[0]
+            y_column = df.columns[1]
+            min_val = np.min(df[y_column])
+            max_val = np.max(df[y_column])
+            QMessageBox.information(self, "Min/Max Values", f"Minimum Value: {min_val}\nMaximum Value: {max_val}")
     #change types
     def toPlot(self):
         current_index = self.ui.graphTab.currentIndex()

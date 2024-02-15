@@ -97,7 +97,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
@@ -113,6 +113,22 @@
             <property name="styleSheet">
              <string notr="true">background-color:rgb(255, 255, 0)</string>
             </property>
+            <widget class="QPushButton" name="min_max">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 0, 0)</string>
+             </property>
+             <property name="text">
+              <string>find min max</string>
+             </property>
+            </widget>
            </widget>
           </widget>
          </item>
@@ -711,7 +727,7 @@ background-color: rgb(23, 23, 23);</string>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>31</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -745,8 +761,14 @@ background-color: rgb(23, 23, 23);</string>
     <property name="title">
      <string>Mode</string>
     </property>
-    <addaction name="actionMath"/>
-    <addaction name="actionBiology"/>
+    <widget class="QMenu" name="menuBiology">
+     <property name="title">
+      <string>Biology</string>
+     </property>
+     <addaction name="BchimieMode"/>
+    </widget>
+    <addaction name="MathMode"/>
+    <addaction name="menuBiology"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -824,14 +846,14 @@ background-color: rgb(23, 23, 23);</string>
     <string>Ctrl+Shift+O</string>
    </property>
   </action>
-  <action name="actionMath">
+  <action name="MathMode">
    <property name="text">
     <string>Math</string>
    </property>
   </action>
-  <action name="actionBiology">
+  <action name="BchimieMode">
    <property name="text">
-    <string>Biology</string>
+    <string>Chimie</string>
    </property>
   </action>
  </widget>
