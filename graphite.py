@@ -122,10 +122,37 @@ class Graphite(QMainWindow):
         if event.mimeData().hasUrls():
             event.accept()
             files = [url.toLocalFile() for url in event.mimeData().urls()]
-            print("Dropped files:", files)
-            # Handle dropped files here
+            if len(files) == 1:  # Check if exactly one file is dropped
+                existing_tab_index = self.get_tab_index_by_file(files[0])
+                if existing_tab_index != -1:  # Check if the file is already opened in a tab
+                    QMessageBox.warning(self, 'Warning', 'File is already opened in a tab.')
+                else:
+                    # Check if the dropped file is being dropped on top of another file
+                    dropped_index = self.ui.treeView.indexAt(event.pos())
+                    if dropped_index.isValid() and self.ui.treeView.model().fileInfo(dropped_index).isFile():
+                        dropped_file = self.ui.treeView.model().filePath(dropped_index)
+                        ext1 = os.path.splitext(dropped_file)[1]
+                        ext2 = os.path.splitext(files[0])[1]
+                        if (ext1 == '.csv' or ext1 == '.xlsx') and (ext2 == '.csv' or ext2 == '.xlsx'):
+                            df1 = pd.read_csv(dropped_file) if ext1 == '.csv' else pd.read_excel(dropped_file)
+                            df2 = pd.read_csv(files[0]) if ext2 == '.csv' else pd.read_excel(files[0])
+                            df = pd.concat([df1, df2], ignore_index=True)
+                            name = os.path.basename(dropped_file) + '_' + os.path.basename(files[0])
+                            self.tabs.append(Tab(self.ui.graphTab, df, name))
+                        else:
+                            QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV or Excel file.')
+                    else:
+                        QMessageBox.warning(self, 'Warning', 'Please drop the file onto another file in the tree view.')
+            else:
+                QMessageBox.warning(self, 'Warning', 'Please drop exactly one file.')
         else:
             event.ignore()
+
+    def get_tab_index_by_file(self, file_path):
+        for i, tab in enumerate(self.tabs):
+            if tab.file_path == file_path:
+                return i
+        return -1
 
     def treeFileIndex(self, index):
         self.open_file(self.ui.treeView.model().filePath(index)) 

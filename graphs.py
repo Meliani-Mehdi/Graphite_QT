@@ -64,16 +64,33 @@ class Tab(QWidget):
     def to_plot(self):
         self.plot_widget.clear()
         for _, col in enumerate(self.dataframe.columns[1:]):
-            self.plot_widget.plot(self.dataframe.iloc[:, 0], self.dataframe[col], name=col)
+            try:
+                self.plot_widget.plot(self.dataframe.iloc[:, 0], self.dataframe[col], name=col)
+            except Exception as e:
+                print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
-        self.customPlot(self.name, 'X Axis', 'Y Axis', self.hex_colors)
+        self.customPlot(self.name, 'X Axis', 'Y Axis', self.hex_colors, True)
 
     def to_pie_chart(self):
         self.plot_widget.clear()
-        # Assume self.dataframe has the data for the pie chart
-        pie_data = self.dataframe.iloc[:, 0].values  # Example data
-        self.plot_widget.plot(pie_data, pen=None, symbolBrush=self.hex_colors[:len(pie_data)], symbolPen=None, symbol='o')
-        self.customPlot("Pie Chart", 'X Axis', 'Y Axis', self.hex_colors[:len(pie_data)], legend=False)
+        
+        # Check if the dataframe is not empty and has at least two rows
+        if not self.dataframe.empty and len(self.dataframe) >= 2:
+            # Use the first row as labels and the second row as values
+            labels = self.dataframe.iloc[0, :].tolist()
+            values = self.dataframe.iloc[1, :].tolist()
+            
+            # Create PiePlotItem
+            pie = pg.PiePlotItem(labels=labels, values=values, brush=pg.intColor(0))
+            
+            # Create PlotWidget
+            self.customPlot("Pie Chart", 'X Axis', 'Y Axis', self.hex_colors, legend=False)
+            
+            # Add PiePlotItem to PlotWidget
+            self.plot_widget.addItem(pie)
+        else:
+            # Handle case where dataframe is empty or doesn't have enough rows
+            print("Dataframe is empty or does not have enough rows. Cannot plot pie chart.")
 
     def to_bar_chart(self):
         self.plot_widget.clear()
