@@ -6,6 +6,7 @@ from PySide6.QtCore import QDir
 import pandas as pd
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView
 from ui_form import Ui_Graphite
+from ui_customize_dialog import Ui_Dialog
 from graphs import Tab
 
 class Graphite(QMainWindow):

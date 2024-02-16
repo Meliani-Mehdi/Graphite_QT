@@ -1,6 +1,7 @@
 {
     "files": [
         "graphite.py",
-        "form.ui"
+        "form.ui",
+        "customize_dialog.ui"
     ]
 }

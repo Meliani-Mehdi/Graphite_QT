@@ -56,10 +56,10 @@ class Tab(QWidget):
         if legend:
             self.plot_widget.addLegend()
 
-        plots = self.plot_widget.listDataItems()
-
-        for i, plot in enumerate(plots):
-            plot.setPen(pg.mkPen(color=colors[i] if colors else (0, 255, 0)))
+        if colors is not None:
+            plots = self.plot_widget.listDataItems()
+            for i, plot in enumerate(plots):
+                plot.setPen(pg.mkPen(color=colors[i] if colors else (0, 255, 0)))
 
     def to_plot(self):
         self.plot_widget.clear()
@@ -69,36 +69,14 @@ class Tab(QWidget):
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
-        self.customPlot(self.name, 'X Axis', 'Y Axis', self.hex_colors, True)
+        self.customPlot(self.name, 'X Axis', 'Y Axis', self.hex_colors)
 
     def to_pie_chart(self):
         self.plot_widget.clear()
         
-        # Check if the dataframe is not empty and has at least two rows
-        if not self.dataframe.empty and len(self.dataframe) >= 2:
-            # Use the first row as labels and the second row as values
-            labels = self.dataframe.iloc[0, :].tolist()
-            values = self.dataframe.iloc[1, :].tolist()
-            
-            # Create PiePlotItem
-            pie = pg.PiePlotItem(labels=labels, values=values, brush=pg.intColor(0))
-            
-            # Create PlotWidget
-            self.customPlot("Pie Chart", 'X Axis', 'Y Axis', self.hex_colors, legend=False)
-            
-            # Add PiePlotItem to PlotWidget
-            self.plot_widget.addItem(pie)
-        else:
-            # Handle case where dataframe is empty or doesn't have enough rows
-            print("Dataframe is empty or does not have enough rows. Cannot plot pie chart.")
 
     def to_bar_chart(self):
         self.plot_widget.clear()
-        # Assume self.dataframe has the data for the bar chart
-        bar_data = self.dataframe.iloc[:, 1].values  # Example data
-        x = range(len(bar_data))
-        self.plot_widget.plot(x, bar_data, pen=None, symbolBrush=self.hex_colors[:len(bar_data)], symbolPen=None, symbol='s')
-        self.customPlot("Bar Chart", 'X Axis', 'Y Axis', self.hex_colors[:len(bar_data)], legend=False)
 
     def closePlot(self):
         self.plot_widget.clear()
