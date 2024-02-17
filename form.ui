@@ -330,7 +330,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
@@ -360,6 +360,19 @@
              </property>
              <property name="text">
               <string>find min max</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="Polynome">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>73</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>polynome</string>
              </property>
             </widget>
            </widget>
@@ -979,7 +992,7 @@ background-color: rgb(23, 23, 23);</string>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>31</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1022,10 +1035,18 @@ background-color: rgb(23, 23, 23);</string>
     <addaction name="MathMode"/>
     <addaction name="menuBiology"/>
    </widget>
+   <widget class="QMenu" name="menunew">
+    <property name="title">
+     <string>new</string>
+    </property>
+    <addaction name="actionWorksheet"/>
+    <addaction name="actionExel"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuMode"/>
    <addaction name="menuHelp"/>
+   <addaction name="menunew"/>
   </widget>
   <action name="new_file">
    <property name="text">
@@ -1106,6 +1127,21 @@ background-color: rgb(23, 23, 23);</string>
   <action name="BchimieMode">
    <property name="text">
     <string>Chimie</string>
+   </property>
+  </action>
+  <action name="actionWorksheet">
+   <property name="text">
+    <string>Worksheet</string>
+   </property>
+  </action>
+  <action name="actionExel">
+   <property name="text">
+    <string>Exel</string>
+   </property>
+  </action>
+  <action name="actiongraph">
+   <property name="text">
+    <string>graph</string>
    </property>
   </action>
  </widget>
