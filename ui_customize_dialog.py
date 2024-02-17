@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,15 +17,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QPlainTextEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QWidget)
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(600, 525)
-        Dialog.setMinimumSize(QSize(600, 525))
-        Dialog.setMaximumSize(QSize(600, 525))
+        Dialog.resize(420, 450)
+        Dialog.setMinimumSize(QSize(420, 450))
+        Dialog.setMaximumSize(QSize(598, 450))
         icon = QIcon()
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Dialog.setWindowIcon(icon)
@@ -46,20 +46,15 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.xLab, 1, 0, 1, 1)
 
-        self.lagend = QCheckBox(Dialog)
-        self.lagend.setObjectName(u"lagend")
-
-        self.gridLayout.addWidget(self.lagend, 3, 2, 1, 1)
-
         self.frame = QFrame(Dialog)
         self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(580, 100))
-        self.frame.setMaximumSize(QSize(580, 100))
+        self.frame.setMinimumSize(QSize(400, 100))
+        self.frame.setMaximumSize(QSize(400, 100))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayoutWidget = QWidget(self.frame)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(340, 40, 241, 61))
+        self.horizontalLayoutWidget.setGeometry(QRect(150, 40, 241, 61))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -81,17 +76,6 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.title_lab, 0, 0, 1, 1)
 
-        self.hs = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.hs, 3, 3, 1, 1)
-
-        self.yLabel = QPlainTextEdit(Dialog)
-        self.yLabel.setObjectName(u"yLabel")
-        self.yLabel.setMinimumSize(QSize(0, 50))
-        self.yLabel.setMaximumSize(QSize(16777215, 50))
-
-        self.gridLayout.addWidget(self.yLabel, 2, 1, 1, 3)
-
         self.xLabel = QPlainTextEdit(Dialog)
         self.xLabel.setObjectName(u"xLabel")
         self.xLabel.setMinimumSize(QSize(0, 50))
@@ -106,6 +90,18 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.graph_title, 0, 1, 1, 3)
 
+        self.yLabel = QPlainTextEdit(Dialog)
+        self.yLabel.setObjectName(u"yLabel")
+        self.yLabel.setMinimumSize(QSize(0, 50))
+        self.yLabel.setMaximumSize(QSize(16777215, 50))
+
+        self.gridLayout.addWidget(self.yLabel, 2, 1, 1, 3)
+
+        self.lagend = QCheckBox(Dialog)
+        self.lagend.setObjectName(u"lagend")
+
+        self.gridLayout.addWidget(self.lagend, 3, 1, 1, 1)
+
 
         self.retranslateUi(Dialog)
 
@@ -117,9 +113,9 @@ class Ui_Dialog(object):
         self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
         self.lagend_lab.setText(QCoreApplication.translate("Dialog", u"Lagend :", None))
         self.xLab.setText(QCoreApplication.translate("Dialog", u"X Label :", None))
-        self.lagend.setText("")
         self.pushButton_2.setText(QCoreApplication.translate("Dialog", u"apply", None))
         self.pushButton.setText(QCoreApplication.translate("Dialog", u"cancel", None))
         self.title_lab.setText(QCoreApplication.translate("Dialog", u"Title :", None))
+        self.lagend.setText("")
     # retranslateUi
 

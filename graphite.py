@@ -4,10 +4,16 @@ import os
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir
 import pandas as pd
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog
 from graphs import Tab
+
+class CustomizeDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
 
 class Graphite(QMainWindow):
     def __init__(self, parent=None):
@@ -32,6 +38,12 @@ class Graphite(QMainWindow):
         self.ui.histogram.clicked.connect(self.toBar)
 
         self.tabs = []
+        self.ui.custom_button.clicked.connect(self.show_customize_dialog)
+
+        self.customize_dialog = CustomizeDialog(self)
+
+    def show_customize_dialog(self):
+        self.customize_dialog.show()
 
     def exit_app(self):
         QApplication.quit()
@@ -47,6 +59,7 @@ class Graphite(QMainWindow):
             min_val = np.min(df[y_column])
             max_val = np.max(df[y_column])
             QMessageBox.information(self, "Min/Max Values", f"Minimum Value: {min_val}\nMaximum Value: {max_val}")
+
     #change types
     def toPlot(self):
         current_index = self.ui.graphTab.currentIndex()
