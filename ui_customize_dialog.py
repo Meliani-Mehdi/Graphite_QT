@@ -58,15 +58,15 @@ class Ui_Dialog(object):
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_2 = QPushButton(self.horizontalLayoutWidget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.apply_btn = QPushButton(self.horizontalLayoutWidget)
+        self.apply_btn.setObjectName(u"apply_btn")
 
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.horizontalLayout.addWidget(self.apply_btn)
 
-        self.pushButton = QPushButton(self.horizontalLayoutWidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.cancel_btn = QPushButton(self.horizontalLayoutWidget)
+        self.cancel_btn.setObjectName(u"cancel_btn")
 
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.horizontalLayout.addWidget(self.cancel_btn)
 
 
         self.gridLayout.addWidget(self.frame, 4, 0, 1, 4)
@@ -113,8 +113,8 @@ class Ui_Dialog(object):
         self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
         self.lagend_lab.setText(QCoreApplication.translate("Dialog", u"Lagend :", None))
         self.xLab.setText(QCoreApplication.translate("Dialog", u"X Label :", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Dialog", u"apply", None))
-        self.pushButton.setText(QCoreApplication.translate("Dialog", u"cancel", None))
+        self.apply_btn.setText(QCoreApplication.translate("Dialog", u"apply", None))
+        self.cancel_btn.setText(QCoreApplication.translate("Dialog", u"cancel", None))
         self.title_lab.setText(QCoreApplication.translate("Dialog", u"Title :", None))
         self.lagend.setText("")
     # retranslateUi

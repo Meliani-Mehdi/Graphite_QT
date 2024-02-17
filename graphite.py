@@ -41,9 +41,24 @@ class Graphite(QMainWindow):
         self.ui.custom_button.clicked.connect(self.show_customize_dialog)
 
         self.customize_dialog = CustomizeDialog(self)
+        self.customize_dialog.ui.apply_btn.clicked.connect(self.apply)
 
     def show_customize_dialog(self):
-        self.customize_dialog.show()
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            self.customize_dialog.show()
+
+    def apply(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            title = self.customize_dialog.ui.graph_title.toPlainText() 
+            xlabel = self.customize_dialog.ui.xLabel.toPlainText() 
+            ylabel = self.customize_dialog.ui.yLabel.toPlainText() 
+            legend = self.customize_dialog.ui.lagend.isChecked()
+            self.tabs[tab_index].customPlot(title=title, xlabel=xlabel, ylabel=ylabel, colors=None, legend=legend)
+        pass
 
     def exit_app(self):
         QApplication.quit()

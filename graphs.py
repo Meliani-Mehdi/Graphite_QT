@@ -49,7 +49,7 @@ class Tab(QWidget):
 
         self.add_to_tab_widget()
 
-    def customPlot(self, title, xlabel, ylabel, colors=None, legend=True):
+    def customPlot(self, title="Untitled", xlabel="xlabel", ylabel="ylabel", colors=None, legend=True):
         self.plot_widget.setTitle(title)
         self.plot_widget.setLabel('bottom', xlabel)
         self.plot_widget.setLabel('left', ylabel)
