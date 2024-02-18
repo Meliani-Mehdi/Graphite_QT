@@ -62,6 +62,8 @@ class Ui_Graphite(object):
         self.actionExel.setObjectName(u"actionExel")
         self.actiongraph = QAction(Graphite)
         self.actiongraph.setObjectName(u"actiongraph")
+        self.actionwoeksheet = QAction(Graphite)
+        self.actionwoeksheet.setObjectName(u"actionwoeksheet")
         self.mainLayout = QWidget(Graphite)
         self.mainLayout.setObjectName(u"mainLayout")
         self.mainLayout.setMinimumSize(QSize(1200, 642))
@@ -467,18 +469,16 @@ class Ui_Graphite(object):
         self.menuMode.setObjectName(u"menuMode")
         self.menuBiology = QMenu(self.menuMode)
         self.menuBiology.setObjectName(u"menuBiology")
-        self.menunew = QMenu(self.menubar)
-        self.menunew.setObjectName(u"menunew")
         Graphite.setMenuBar(self.menubar)
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuMode.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
-        self.menubar.addAction(self.menunew.menuAction())
         self.menuFile.addAction(self.new_file)
         self.menuFile.addAction(self.open_file)
         self.menuFile.addAction(self.open_folder)
+        self.menuFile.addAction(self.actionwoeksheet)
         self.menuFile.addAction(self.save)
         self.menuFile.addAction(self.save_as)
         self.menuFile.addSeparator()
@@ -491,8 +491,6 @@ class Ui_Graphite(object):
         self.menuMode.addAction(self.MathMode)
         self.menuMode.addAction(self.menuBiology.menuAction())
         self.menuBiology.addAction(self.BchimieMode)
-        self.menunew.addAction(self.actionWorksheet)
-        self.menunew.addAction(self.actionExel)
 
         self.retranslateUi(Graphite)
 
@@ -538,6 +536,7 @@ class Ui_Graphite(object):
         self.actionWorksheet.setText(QCoreApplication.translate("Graphite", u"Worksheet", None))
         self.actionExel.setText(QCoreApplication.translate("Graphite", u"Exel", None))
         self.actiongraph.setText(QCoreApplication.translate("Graphite", u"graph", None))
+        self.actionwoeksheet.setText(QCoreApplication.translate("Graphite", u"woeksheet", None))
         self.custom_button_2.setText("")
         self.custom_button_3.setText("")
         self.custom_button_6.setText("")
@@ -571,6 +570,5 @@ class Ui_Graphite(object):
         self.menuHelp.setTitle(QCoreApplication.translate("Graphite", u"Help", None))
         self.menuMode.setTitle(QCoreApplication.translate("Graphite", u"Mode", None))
         self.menuBiology.setTitle(QCoreApplication.translate("Graphite", u"Biology", None))
-        self.menunew.setTitle(QCoreApplication.translate("Graphite", u"new", None))
     # retranslateUi
 

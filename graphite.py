@@ -1,3 +1,4 @@
+#
 import sys
 import numpy as np
 import os
@@ -31,6 +32,7 @@ class Graphite(QMainWindow):
         self.ui.BchimieMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(2))
 
         self.ui.min_max.clicked.connect(self.get_min_max_values)
+        self.ui.Polynome.clicked.connect(self.perform_polynomial_fitting)
 
         #types
         self.ui.plot.clicked.connect(self.toPlot)
@@ -42,6 +44,34 @@ class Graphite(QMainWindow):
 
         self.customize_dialog = CustomizeDialog(self)
         self.customize_dialog.ui.apply_btn.clicked.connect(self.apply)
+
+
+
+
+
+
+    def perform_polynomial_fitting(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+
+            x_data = tab.dataframe.iloc[:, 0].values
+            y_data = tab.dataframe.iloc[:, 1].values
+
+                  # Fit a polynomial curve to the data
+            degree = 2  # Choose the degree of the polynomial (e.g., 2 for quadratic)
+            coeffs = np.polyfit(x_data, y_data, degree)
+
+                  # Generate y values for the polynomial curve
+            x_values = np.linspace(min(x_data), max(x_data), 100)  # Adjust the number of points as needed
+            y_values = np.polyval(coeffs, x_values)
+
+                  # Plot the original data and the polynomial curve
+            tab.plot_polynomial_curve(x_data, y_data, x_values, y_values)
+
+
 
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()

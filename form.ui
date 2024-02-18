@@ -1002,6 +1002,7 @@ background-color: rgb(23, 23, 23);</string>
     <addaction name="new_file"/>
     <addaction name="open_file"/>
     <addaction name="open_folder"/>
+    <addaction name="actionwoeksheet"/>
     <addaction name="save"/>
     <addaction name="save_as"/>
     <addaction name="separator"/>
@@ -1035,18 +1036,10 @@ background-color: rgb(23, 23, 23);</string>
     <addaction name="MathMode"/>
     <addaction name="menuBiology"/>
    </widget>
-   <widget class="QMenu" name="menunew">
-    <property name="title">
-     <string>new</string>
-    </property>
-    <addaction name="actionWorksheet"/>
-    <addaction name="actionExel"/>
-   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuMode"/>
    <addaction name="menuHelp"/>
-   <addaction name="menunew"/>
   </widget>
   <action name="new_file">
    <property name="text">
@@ -1142,6 +1135,11 @@ background-color: rgb(23, 23, 23);</string>
   <action name="actiongraph">
    <property name="text">
     <string>graph</string>
+   </property>
+  </action>
+  <action name="actionwoeksheet">
+   <property name="text">
+    <string>woeksheet</string>
    </property>
   </action>
  </widget>

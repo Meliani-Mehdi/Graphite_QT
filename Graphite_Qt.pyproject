@@ -2,6 +2,7 @@
     "files": [
         "graphite.py",
         "form.ui",
-        "customize_dialog.ui"
+        "customize_dialog.ui",
+        "worksheet_dialog.ui"
     ]
 }

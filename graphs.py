@@ -49,6 +49,12 @@ class Tab(QWidget):
 
         self.add_to_tab_widget()
 
+
+    def plot_polynomial_curve(self, x_data, y_data, x_values, y_values):
+        self.plot_widget.clear()
+        self.plot_widget.plot(x_data, y_data, pen='b', symbol='o', symbolPen='b', symbolBrush='b', name='Data')
+        self.plot_widget.plot(x_values, y_values, pen='r', name='Polynomial Curve')
+
     def customPlot(self, title="Untitled", xlabel="xlabel", ylabel="ylabel", colors=None, legend=True):
         self.plot_widget.setTitle(title)
         self.plot_widget.setLabel('bottom', xlabel)
