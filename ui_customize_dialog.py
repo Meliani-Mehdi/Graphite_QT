@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.2
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,59 +17,48 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QPlainTextEdit,
-    QPushButton, QSizePolicy, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(420, 450)
-        Dialog.setMinimumSize(QSize(420, 450))
-        Dialog.setMaximumSize(QSize(598, 450))
+        Dialog.resize(350, 400)
+        Dialog.setMinimumSize(QSize(350, 400))
+        Dialog.setMaximumSize(QSize(350, 400))
         icon = QIcon()
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Dialog.setWindowIcon(icon)
         self.gridLayout = QGridLayout(Dialog)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.yLab = QLabel(Dialog)
-        self.yLab.setObjectName(u"yLab")
-
-        self.gridLayout.addWidget(self.yLab, 2, 0, 1, 1)
-
         self.lagend_lab = QLabel(Dialog)
         self.lagend_lab.setObjectName(u"lagend_lab")
 
         self.gridLayout.addWidget(self.lagend_lab, 3, 0, 1, 1)
 
-        self.xLab = QLabel(Dialog)
-        self.xLab.setObjectName(u"xLab")
+        self.yLab = QLabel(Dialog)
+        self.yLab.setObjectName(u"yLab")
 
-        self.gridLayout.addWidget(self.xLab, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.yLab, 2, 0, 1, 1)
 
-        self.frame = QFrame(Dialog)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(400, 100))
-        self.frame.setMaximumSize(QSize(400, 100))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayoutWidget = QWidget(self.frame)
-        self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(150, 40, 241, 61))
-        self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.apply_btn = QPushButton(self.horizontalLayoutWidget)
-        self.apply_btn.setObjectName(u"apply_btn")
+        self.yLabel = QPlainTextEdit(Dialog)
+        self.yLabel.setObjectName(u"yLabel")
+        self.yLabel.setMinimumSize(QSize(0, 30))
+        self.yLabel.setMaximumSize(QSize(16777215, 30))
 
-        self.horizontalLayout.addWidget(self.apply_btn)
+        self.gridLayout.addWidget(self.yLabel, 2, 1, 1, 3)
 
-        self.cancel_btn = QPushButton(self.horizontalLayoutWidget)
-        self.cancel_btn.setObjectName(u"cancel_btn")
+        self.lagend = QCheckBox(Dialog)
+        self.lagend.setObjectName(u"lagend")
 
-        self.horizontalLayout.addWidget(self.cancel_btn)
+        self.gridLayout.addWidget(self.lagend, 3, 1, 1, 1)
 
+        self.graph_title = QPlainTextEdit(Dialog)
+        self.graph_title.setObjectName(u"graph_title")
+        self.graph_title.setMinimumSize(QSize(0, 30))
+        self.graph_title.setMaximumSize(QSize(16777215, 30))
 
-        self.gridLayout.addWidget(self.frame, 4, 0, 1, 4)
+        self.gridLayout.addWidget(self.graph_title, 0, 1, 1, 3)
 
         self.title_lab = QLabel(Dialog)
         self.title_lab.setObjectName(u"title_lab")
@@ -78,29 +67,44 @@ class Ui_Dialog(object):
 
         self.xLabel = QPlainTextEdit(Dialog)
         self.xLabel.setObjectName(u"xLabel")
-        self.xLabel.setMinimumSize(QSize(0, 50))
-        self.xLabel.setMaximumSize(QSize(16777215, 50))
+        self.xLabel.setMinimumSize(QSize(0, 30))
+        self.xLabel.setMaximumSize(QSize(16777215, 30))
 
         self.gridLayout.addWidget(self.xLabel, 1, 1, 1, 3)
 
-        self.graph_title = QPlainTextEdit(Dialog)
-        self.graph_title.setObjectName(u"graph_title")
-        self.graph_title.setMinimumSize(QSize(0, 50))
-        self.graph_title.setMaximumSize(QSize(16777215, 50))
+        self.xLab = QLabel(Dialog)
+        self.xLab.setObjectName(u"xLab")
 
-        self.gridLayout.addWidget(self.graph_title, 0, 1, 1, 3)
+        self.gridLayout.addWidget(self.xLab, 1, 0, 1, 1)
 
-        self.yLabel = QPlainTextEdit(Dialog)
-        self.yLabel.setObjectName(u"yLabel")
-        self.yLabel.setMinimumSize(QSize(0, 50))
-        self.yLabel.setMaximumSize(QSize(16777215, 50))
+        self.frame = QFrame(Dialog)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(200, 50))
+        self.frame.setMaximumSize(QSize(280, 50))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self.frame)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout.addWidget(self.yLabel, 2, 1, 1, 3)
+        self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.lagend = QCheckBox(Dialog)
-        self.lagend.setObjectName(u"lagend")
+        self.cancel_btn = QPushButton(self.frame)
+        self.cancel_btn.setObjectName(u"cancel_btn")
 
-        self.gridLayout.addWidget(self.lagend, 3, 1, 1, 1)
+        self.horizontalLayout.addWidget(self.cancel_btn)
+
+        self.apply_btn = QPushButton(self.frame)
+        self.apply_btn.setObjectName(u"apply_btn")
+
+        self.horizontalLayout.addWidget(self.apply_btn)
+
+
+        self.gridLayout.addWidget(self.frame, 5, 3, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_2, 5, 0, 1, 1)
 
 
         self.retranslateUi(Dialog)
@@ -110,12 +114,12 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Graph settings", None))
-        self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
         self.lagend_lab.setText(QCoreApplication.translate("Dialog", u"Lagend :", None))
-        self.xLab.setText(QCoreApplication.translate("Dialog", u"X Label :", None))
-        self.apply_btn.setText(QCoreApplication.translate("Dialog", u"apply", None))
-        self.cancel_btn.setText(QCoreApplication.translate("Dialog", u"cancel", None))
-        self.title_lab.setText(QCoreApplication.translate("Dialog", u"Title :", None))
+        self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
         self.lagend.setText("")
+        self.title_lab.setText(QCoreApplication.translate("Dialog", u"Title :", None))
+        self.xLab.setText(QCoreApplication.translate("Dialog", u"X Label :", None))
+        self.cancel_btn.setText(QCoreApplication.translate("Dialog", u"cancel", None))
+        self.apply_btn.setText(QCoreApplication.translate("Dialog", u"apply", None))
     # retranslateUi
 

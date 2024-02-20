@@ -40,6 +40,8 @@ class Tab(QWidget):
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
+        self.xlabel = 'xlabel'
+        self.ylabel = 'ylabel'
 
         self.plot_widget = pg.PlotWidget()
         self.layout = QVBoxLayout()

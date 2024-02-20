@@ -43,7 +43,7 @@ class Graphite(QMainWindow):
         self.ui.custom_button.clicked.connect(self.show_customize_dialog)
 
         self.customize_dialog = CustomizeDialog(self)
-        self.customize_dialog.ui.apply_btn.clicked.connect(self.apply)
+        self.customize_dialog.ui.apply_btn.clicked.connect(self.apply_custom)
 
 
 
@@ -77,8 +77,14 @@ class Graphite(QMainWindow):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             self.customize_dialog.show()
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            self.customize_dialog.ui.graph_title.setPlainText(tab.name)
+            self.customize_dialog.ui.xLabel.setPlainText(tab.xlabel)
+            self.customize_dialog.ui.yLabel.setPlainText(tab.ylabel)
 
-    def apply(self):
+    def apply_custom(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             widget = self.ui.graphTab.widget(current_index)
@@ -87,8 +93,12 @@ class Graphite(QMainWindow):
             xlabel = self.customize_dialog.ui.xLabel.toPlainText() 
             ylabel = self.customize_dialog.ui.yLabel.toPlainText() 
             legend = self.customize_dialog.ui.lagend.isChecked()
-            self.tabs[tab_index].customPlot(title=title, xlabel=xlabel, ylabel=ylabel, colors=None, legend=legend)
-        pass
+            tab =self.tabs[tab_index]
+            tab.customPlot(title=title, xlabel=xlabel, ylabel=ylabel, colors=None, legend=legend)
+            tab.name=title
+            tab.xlabel=xlabel
+            tab.ylabel=ylabel
+            tab.legend=legend
 
     def exit_app(self):
         QApplication.quit()
