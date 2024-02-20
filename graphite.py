@@ -167,19 +167,15 @@ class Graphite(QMainWindow):
             self.ui.treeView.setRootIndex(model.index(folder_path))
             self.ui.treeView.setSortingEnabled(True)
             
-            # Hide the type, size, and date columns
             for column in range(1, model.columnCount()):
                 self.ui.treeView.setColumnHidden(column, True)
             
-            # Enable drag-and-drop
             self.ui.treeView.setDragEnabled(True)
             self.ui.treeView.setAcceptDrops(True)
             self.ui.treeView.setDropIndicatorShown(True)
             
-            # Set drag-and-drop mode
             self.ui.treeView.setDragDropMode(QAbstractItemView.InternalMove)
             
-            # Connect signal handlers for drag-and-drop events
             self.ui.treeView.dragEnterEvent = self.dragEnterEvent
             self.ui.treeView.dragMoveEvent = self.dragMoveEvent
             self.ui.treeView.dropEvent = self.dropEvent
@@ -215,7 +211,8 @@ class Graphite(QMainWindow):
                         df1 = pd.read_csv(dropped_file) if ext1 == '.csv' else pd.read_excel(dropped_file)
                         df2 = pd.read_csv(files[0]) if ext2 == '.csv' else pd.read_excel(files[0])
                         df = pd.concat([df1, df2], ignore_index=True)
-                        name = os.path.basename(dropped_file) + '_' + os.path.basename(files[0])
+                        name = os.path.splitext(os.path.basename(dropped_file))[0] + '_' + os.path.splitext(os.path.basename(files[0]))[0]
+                        os.path.getctime
                         self.tabs.append(Tab(self.ui.graphTab, df, name))
                     else:
                         QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV or Excel file.')
