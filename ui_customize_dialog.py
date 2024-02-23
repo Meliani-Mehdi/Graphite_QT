@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QDialog, QFrame,
-    QGridLayout, QHBoxLayout, QLabel, QPlainTextEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QCheckBox, QDialog,
+    QFrame, QGridLayout, QHBoxLayout, QLabel,
+    QPlainTextEdit, QPushButton, QSizePolicy, QSpacerItem,
+    QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -43,8 +44,12 @@ class Ui_Dialog(object):
 
         self.yLabel = QPlainTextEdit(Dialog)
         self.yLabel.setObjectName(u"yLabel")
-        self.yLabel.setMinimumSize(QSize(0, 30))
-        self.yLabel.setMaximumSize(QSize(16777215, 30))
+        self.yLabel.setMinimumSize(QSize(0, 33))
+        self.yLabel.setMaximumSize(QSize(16777215, 33))
+        self.yLabel.setAcceptDrops(True)
+        self.yLabel.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.yLabel.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.yLabel.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
 
         self.gridLayout.addWidget(self.yLabel, 2, 1, 1, 3)
 
@@ -55,8 +60,12 @@ class Ui_Dialog(object):
 
         self.graph_title = QPlainTextEdit(Dialog)
         self.graph_title.setObjectName(u"graph_title")
-        self.graph_title.setMinimumSize(QSize(0, 30))
-        self.graph_title.setMaximumSize(QSize(16777215, 30))
+        self.graph_title.setMinimumSize(QSize(0, 33))
+        self.graph_title.setMaximumSize(QSize(16777215, 33))
+        self.graph_title.setAcceptDrops(True)
+        self.graph_title.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.graph_title.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.graph_title.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
 
         self.gridLayout.addWidget(self.graph_title, 0, 1, 1, 3)
 
@@ -67,8 +76,12 @@ class Ui_Dialog(object):
 
         self.xLabel = QPlainTextEdit(Dialog)
         self.xLabel.setObjectName(u"xLabel")
-        self.xLabel.setMinimumSize(QSize(0, 30))
-        self.xLabel.setMaximumSize(QSize(16777215, 30))
+        self.xLabel.setMinimumSize(QSize(0, 33))
+        self.xLabel.setMaximumSize(QSize(16777215, 33))
+        self.xLabel.setAcceptDrops(True)
+        self.xLabel.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.xLabel.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.xLabel.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
 
         self.gridLayout.addWidget(self.xLabel, 1, 1, 1, 3)
 
@@ -85,7 +98,7 @@ class Ui_Dialog(object):
         self.frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout = QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -102,7 +115,7 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.frame, 5, 3, 1, 1)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_2, 5, 0, 1, 1)
 

@@ -1,4 +1,3 @@
-#
 import sys
 import numpy as np
 import os
@@ -40,14 +39,10 @@ class Graphite(QMainWindow):
         self.ui.histogram.clicked.connect(self.toBar)
 
         self.tabs = []
-        self.ui.custom_button.clicked.connect(self.show_customize_dialog)
 
         self.customize_dialog = CustomizeDialog(self)
         self.customize_dialog.ui.apply_btn.clicked.connect(self.apply_custom)
-
-
-
-
+        self.ui.custom_button.clicked.connect(self.show_customize_dialog)
 
 
     def perform_polynomial_fitting(self):
@@ -60,15 +55,12 @@ class Graphite(QMainWindow):
             x_data = tab.dataframe.iloc[:, 0].values
             y_data = tab.dataframe.iloc[:, 1].values
 
-                  # Fit a polynomial curve to the data
-            degree = 2  # Choose the degree of the polynomial (e.g., 2 for quadratic)
+            degree = 2  
             coeffs = np.polyfit(x_data, y_data, degree)
 
-                  # Generate y values for the polynomial curve
-            x_values = np.linspace(min(x_data), max(x_data), 100)  # Adjust the number of points as needed
+            x_values = np.linspace(min(x_data), max(x_data), 100)
             y_values = np.polyval(coeffs, x_values)
 
-                  # Plot the original data and the polynomial curve
             tab.plot_polynomial_curve(x_data, y_data, x_values, y_values)
 
 
@@ -89,16 +81,16 @@ class Graphite(QMainWindow):
         if current_index != -1:
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
+            tab =self.tabs[tab_index]
             title = self.customize_dialog.ui.graph_title.toPlainText() 
             xlabel = self.customize_dialog.ui.xLabel.toPlainText() 
             ylabel = self.customize_dialog.ui.yLabel.toPlainText() 
             legend = self.customize_dialog.ui.lagend.isChecked()
-            tab =self.tabs[tab_index]
-            tab.customPlot(title=title, xlabel=xlabel, ylabel=ylabel, colors=None, legend=legend)
             tab.name=title
             tab.xlabel=xlabel
             tab.ylabel=ylabel
             tab.legend=legend
+            tab.custom_plot()
 
     def exit_app(self):
         QApplication.quit()
