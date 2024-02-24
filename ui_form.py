@@ -211,6 +211,9 @@ class Ui_Graphite(object):
         self.Polynome = QPushButton(self.Biology_page)
         self.Polynome.setObjectName(u"Polynome")
         self.Polynome.setGeometry(QRect(10, 73, 81, 41))
+        self.linear = QPushButton(self.Biology_page)
+        self.linear.setObjectName(u"linear")
+        self.linear.setGeometry(QRect(150, 10, 91, 41))
         self.mode_frames.addWidget(self.Biology_page)
 
         self.horizontalLayout_3.addWidget(self.mode_frames)
@@ -554,6 +557,7 @@ class Ui_Graphite(object):
         self.custom_button_9.setText("")
         self.min_max.setText(QCoreApplication.translate("Graphite", u"find min max", None))
         self.Polynome.setText(QCoreApplication.translate("Graphite", u"polynome", None))
+        self.linear.setText(QCoreApplication.translate("Graphite", u"PushButton", None))
         self.folder_icon.setText("")
         self.project_lab.setText(QCoreApplication.translate("Graphite", u" Project Tree", None))
         self.pushButton.setText("")

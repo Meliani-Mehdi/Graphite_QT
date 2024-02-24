@@ -39,6 +39,14 @@ class Tab(QWidget):
 
         self.custom_plot()
 
+    def plot_linear_fit(self, x_data, y_data, x_fit, y_fit):
+        self.ax.clear()
+        self.ax.plot(x_data, y_data, 'bx', label='Data')
+        self.ax.plot(x_fit, y_fit, 'r', label='linear Curve')
+
+
+        self.custom_plot()
+
     def custom_plot(self):
         self.ax.set_title(self.name)
         self.ax.set_xlabel(self.xlabel)

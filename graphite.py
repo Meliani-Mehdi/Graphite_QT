@@ -59,6 +59,7 @@ class Graphite(QMainWindow):
 
         self.ui.min_max.clicked.connect(self.get_min_max_values)
         self.ui.Polynome.clicked.connect(self.perform_polynomial_fitting)
+        self.ui.linear.clicked.connect(self.perform_linear_fit)
 
         #types
         self.ui.plot.clicked.connect(self.toPlot)
@@ -95,7 +96,30 @@ class Graphite(QMainWindow):
             tab.plot_polynomial_curve(x_data, y_data, x_values, y_values)
 
 
-                ##customize dialog
+    def perform_linear_fit(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+
+            x_data = tab.dataframe.iloc[:, 0].values  # Replace [...] with actual x-axis data
+            y_data = tab.dataframe.iloc[:, 1].values  # Replace [...] with actual y-axis data
+
+                    # Perform linear fitting
+            coeffs = np.polyfit(x_data, y_data, 1)
+
+                    # Create a linear function from the coefficients
+            poly_linear = np.poly1d(coeffs)
+
+                    # Generate the x values for the fitted line
+            x_fit = np.linspace(min(x_data), max(x_data), 100)
+
+                    # Generate the y values using the fitted line function
+            y_fit = poly_linear(x_fit)
+
+                    # Plot the original data and the fitted line using Matplotlib
+            tab.plot_linear_fit(x_data, y_data, x_fit, y_fit)
 
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
