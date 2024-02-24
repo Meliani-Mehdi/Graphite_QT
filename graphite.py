@@ -121,6 +121,9 @@ class Graphite(QMainWindow):
                     # Plot the original data and the fitted line using Matplotlib
             tab.plot_linear_fit(x_data, y_data, x_fit, y_fit)
 
+
+                ## customize ##
+
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
@@ -151,7 +154,7 @@ class Graphite(QMainWindow):
             self.customize_dialog.reject()
 
 
-                ##export dialog
+                ## export ##
 
     def show_export_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
