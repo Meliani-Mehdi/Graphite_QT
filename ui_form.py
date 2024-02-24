@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -31,8 +31,6 @@ class Ui_Graphite(object):
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Graphite.setWindowIcon(icon)
         Graphite.setIconSize(QSize(50, 50))
-        self.new_file = QAction(Graphite)
-        self.new_file.setObjectName(u"new_file")
         self.open_file = QAction(Graphite)
         self.open_file.setObjectName(u"open_file")
         self.save = QAction(Graphite)
@@ -64,6 +62,12 @@ class Ui_Graphite(object):
         self.actiongraph.setObjectName(u"actiongraph")
         self.actionwoeksheet = QAction(Graphite)
         self.actionwoeksheet.setObjectName(u"actionwoeksheet")
+        self.expo_as = QAction(Graphite)
+        self.expo_as.setObjectName(u"expo_as")
+        self.expo = QAction(Graphite)
+        self.expo.setObjectName(u"expo")
+        self.actionWork_sheet = QAction(Graphite)
+        self.actionWork_sheet.setObjectName(u"actionWork_sheet")
         self.mainLayout = QWidget(Graphite)
         self.mainLayout.setObjectName(u"mainLayout")
         self.mainLayout.setMinimumSize(QSize(1200, 642))
@@ -428,7 +432,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -458,9 +462,11 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
+        self.menuNew = QMenu(self.menuFile)
+        self.menuNew.setObjectName(u"menuNew")
         self.menuEdit = QMenu(self.menubar)
         self.menuEdit.setObjectName(u"menuEdit")
         self.menuHelp = QMenu(self.menubar)
@@ -475,16 +481,17 @@ class Ui_Graphite(object):
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuMode.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
-        self.menuFile.addAction(self.new_file)
+        self.menuFile.addAction(self.menuNew.menuAction())
         self.menuFile.addAction(self.open_file)
         self.menuFile.addAction(self.open_folder)
-        self.menuFile.addAction(self.actionwoeksheet)
         self.menuFile.addAction(self.save)
         self.menuFile.addAction(self.save_as)
+        self.menuFile.addAction(self.expo)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.open_recent)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.exit_app)
+        self.menuNew.addAction(self.actionWork_sheet)
         self.menuEdit.addAction(self.actionpref)
         self.menuEdit.addAction(self.settings)
         self.menuHelp.addAction(self.about)
@@ -494,7 +501,7 @@ class Ui_Graphite(object):
 
         self.retranslateUi(Graphite)
 
-        self.mode_frames.setCurrentIndex(2)
+        self.mode_frames.setCurrentIndex(0)
         self.graphTab.setCurrentIndex(-1)
 
 
@@ -503,10 +510,6 @@ class Ui_Graphite(object):
 
     def retranslateUi(self, Graphite):
         Graphite.setWindowTitle(QCoreApplication.translate("Graphite", u"Graphite", None))
-        self.new_file.setText(QCoreApplication.translate("Graphite", u"New", None))
-#if QT_CONFIG(shortcut)
-        self.new_file.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+N", None))
-#endif // QT_CONFIG(shortcut)
         self.open_file.setText(QCoreApplication.translate("Graphite", u"Open file", None))
 #if QT_CONFIG(shortcut)
         self.open_file.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+O", None))
@@ -537,6 +540,9 @@ class Ui_Graphite(object):
         self.actionExel.setText(QCoreApplication.translate("Graphite", u"Exel", None))
         self.actiongraph.setText(QCoreApplication.translate("Graphite", u"graph", None))
         self.actionwoeksheet.setText(QCoreApplication.translate("Graphite", u"woeksheet", None))
+        self.expo_as.setText(QCoreApplication.translate("Graphite", u"Export as ...", None))
+        self.expo.setText(QCoreApplication.translate("Graphite", u"Export", None))
+        self.actionWork_sheet.setText(QCoreApplication.translate("Graphite", u"Work sheet", None))
         self.custom_button_2.setText("")
         self.custom_button_3.setText("")
         self.custom_button_6.setText("")
@@ -566,6 +572,7 @@ class Ui_Graphite(object):
         self.pushButton_7.setText("")
         self.pushButton_5.setText("")
         self.menuFile.setTitle(QCoreApplication.translate("Graphite", u"File", None))
+        self.menuNew.setTitle(QCoreApplication.translate("Graphite", u"New", None))
         self.menuEdit.setTitle(QCoreApplication.translate("Graphite", u"Edit", None))
         self.menuHelp.setTitle(QCoreApplication.translate("Graphite", u"Help", None))
         self.menuMode.setTitle(QCoreApplication.translate("Graphite", u"Mode", None))

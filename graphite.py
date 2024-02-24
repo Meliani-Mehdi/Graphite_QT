@@ -6,14 +6,41 @@ from PySide6.QtCore import QDir
 import pandas as pd
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog
 from ui_form import Ui_Graphite
-from ui_customize_dialog import Ui_Dialog
+from ui_customize_dialog import Ui_Dialog as custom
+from ui_export import Ui_Dialog as export
 from graphs import Tab
 
 class CustomizeDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.ui = Ui_Dialog()
+        self.ui = custom()
         self.ui.setupUi(self)
+        self.ui.cancel_btn.clicked.connect(self.cancel)
+
+    def cancel(self):
+        reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.reject()
+
+class ExportDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = export()
+        self.ui.setupUi(self)
+        self.ui.file.clicked.connect(self.setFile)
+        self.ui.cancel.clicked.connect(self.cancel)
+
+    def setFile(self):
+        options = QFileDialog.Options()
+        folder_path = QFileDialog.getExistingDirectory(self, "Open Folder", options=options)
+        self.ui.location.setText(folder_path)
+
+    def cancel(self):
+        reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.reject()
 
 class Graphite(QMainWindow):
     def __init__(self, parent=None):
@@ -44,6 +71,10 @@ class Graphite(QMainWindow):
         self.customize_dialog.ui.apply_btn.clicked.connect(self.apply_custom)
         self.ui.custom_button.clicked.connect(self.show_customize_dialog)
 
+        self.export_dialog = ExportDialog(self)
+        self.export_dialog.ui.expo.clicked.connect(self.export)
+        self.ui.expo.triggered.connect(self.show_export_dialog)
+
 
     def perform_polynomial_fitting(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -64,6 +95,7 @@ class Graphite(QMainWindow):
             tab.plot_polynomial_curve(x_data, y_data, x_values, y_values)
 
 
+                ##customize dialog
 
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -75,6 +107,7 @@ class Graphite(QMainWindow):
             self.customize_dialog.ui.graph_title.setPlainText(tab.name)
             self.customize_dialog.ui.xLabel.setPlainText(tab.xlabel)
             self.customize_dialog.ui.yLabel.setPlainText(tab.ylabel)
+            self.customize_dialog.ui.lagend.setChecked(tab.legend)
 
     def apply_custom(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -91,6 +124,35 @@ class Graphite(QMainWindow):
             tab.ylabel=ylabel
             tab.legend=legend
             tab.custom_plot()
+            self.customize_dialog.reject()
+
+
+                ##export dialog
+
+    def show_export_dialog(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            self.export_dialog.show()
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            self.export_dialog.ui.filename.setText(tab.name)
+
+    def export(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab =self.tabs[tab_index]
+            location = self.export_dialog.ui.location.text()
+            filename = self.export_dialog.ui.filename.text()
+            file_path = os.path.join(location, filename)
+            format = self.export_dialog.ui.format.currentText()
+            dpi = self.export_dialog.ui.dpi.text()
+            transparent = self.export_dialog.ui.transparent.isChecked()
+            padding = self.export_dialog.ui.padding.text()
+            tab.export(file_path, format, dpi, transparent, padding)
+            self.export_dialog.reject()
 
     def exit_app(self):
         QApplication.quit()

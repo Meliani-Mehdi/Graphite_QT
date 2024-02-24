@@ -330,7 +330,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>2</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
@@ -992,19 +992,25 @@ background-color: rgb(23, 23, 23);</string>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="new_file"/>
+    <widget class="QMenu" name="menuNew">
+     <property name="title">
+      <string>New</string>
+     </property>
+     <addaction name="actionWork_sheet"/>
+    </widget>
+    <addaction name="menuNew"/>
     <addaction name="open_file"/>
     <addaction name="open_folder"/>
-    <addaction name="actionwoeksheet"/>
     <addaction name="save"/>
     <addaction name="save_as"/>
+    <addaction name="expo"/>
     <addaction name="separator"/>
     <addaction name="open_recent"/>
     <addaction name="separator"/>
@@ -1041,14 +1047,6 @@ background-color: rgb(23, 23, 23);</string>
    <addaction name="menuMode"/>
    <addaction name="menuHelp"/>
   </widget>
-  <action name="new_file">
-   <property name="text">
-    <string>New</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
   <action name="open_file">
    <property name="text">
     <string>Open file</string>
@@ -1140,6 +1138,21 @@ background-color: rgb(23, 23, 23);</string>
   <action name="actionwoeksheet">
    <property name="text">
     <string>woeksheet</string>
+   </property>
+  </action>
+  <action name="expo_as">
+   <property name="text">
+    <string>Export as ...</string>
+   </property>
+  </action>
+  <action name="expo">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionWork_sheet">
+   <property name="text">
+    <string>Work sheet</string>
    </property>
   </action>
  </widget>
