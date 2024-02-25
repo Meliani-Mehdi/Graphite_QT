@@ -92,13 +92,26 @@ class Tab(QWidget):
         self.custom_plot()
 
         
-    def saveFile(self, filepath):
-        pass
+    def saveFile(self, filepath, file_format):
+        try:
+            if file_format == 'csv':
+                self.dataframe.to_csv(filepath, index=False)
+            elif file_format == 'excel':
+                self.dataframe.to_excel(filepath, index=False)
+            elif file_format == 'json':
+                self.dataframe.to_json(filepath, orient='records')
+            elif file_format == 'h5':
+                self.dataframe.to_hdf(filepath, key='data', mode='w')
+            else:
+                raise ValueError("Unsupported file format. Please select 'csv', 'excel', 'json', or 'h5'.")
+            return True
+        except Exception as e:
+            print(f"Error saving file: {e}")
+            return False
     
     def export(self, filename, format='png', dpi=100, transparent=False, pad_inches=0.1):
-        plt.savefig(filename,
-
-                    format=format,
+        filepath = filename+'.'+format
+        plt.savefig(filepath,
                     dpi=int(dpi),
                     transparent=transparent,
                     pad_inches=pad_inches)

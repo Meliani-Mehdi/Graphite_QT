@@ -50,8 +50,11 @@ class Graphite(QMainWindow):
         self.ui.graphTab.tabCloseRequested.connect(self.close_tab)
         shortcut = QShortcut(QKeySequence("Alt+d"), self.ui.graphTab)
         shortcut.activated.connect(self.close_current_tab)
+
+        #menu functions
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
+        self.ui.save_as.triggered.connect(self.saveAs)
         self.ui.exit_app.triggered.connect(self.exit_app)
 
         self.ui.MathMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(0))
@@ -173,7 +176,7 @@ class Graphite(QMainWindow):
             tab =self.tabs[tab_index]
             location = self.export_dialog.ui.location.text()
             filename = self.export_dialog.ui.filename.text()
-            file_path = os.path.join(location, filename)
+            file_path = os.path.join(location, filename).replace("\\", "/")
             format = self.export_dialog.ui.format.currentText()
             dpi = self.export_dialog.ui.dpi.text()
             transparent = self.export_dialog.ui.transparent.isChecked()
@@ -241,7 +244,7 @@ class Graphite(QMainWindow):
             model = QFileSystemModel()
             model.setRootPath(folder_path)
             model.setFilter(QDir.AllDirs | QDir.Files | QDir.NoDotAndDotDot)
-            model.setNameFilters(["*.xlsx", "*.csv"])
+            model.setNameFilters(["*.xlsx", "*.csv", "*.json", "*h5"])
             model.setNameFilterDisables(False)
             
             self.ui.treeView.setModel(model)
@@ -282,21 +285,21 @@ class Graphite(QMainWindow):
             event.accept()
             files = [url.toLocalFile() for url in event.mimeData().urls()]
             if len(files) == 1:
-
                 dropped_index = self.ui.treeView.indexAt(event.pos())
                 if dropped_index.isValid() and self.ui.treeView.model().fileInfo(dropped_index).isFile():
                     dropped_file = self.ui.treeView.model().filePath(dropped_index)
                     ext1 = os.path.splitext(dropped_file)[1]
                     ext2 = os.path.splitext(files[0])[1]
-                    if (ext1 == '.csv' or ext1 == '.xlsx') and (ext2 == '.csv' or ext2 == '.xlsx'):
-                        df1 = pd.read_csv(dropped_file) if ext1 == '.csv' else pd.read_excel(dropped_file)
-                        df2 = pd.read_csv(files[0]) if ext2 == '.csv' else pd.read_excel(files[0])
+                    supported_formats = ['.csv', '.xlsx', '.json', '.h5']
+                    if ext1 in supported_formats and ext2 in supported_formats:
+                        df1 = pd.read_csv(dropped_file) if ext1 == '.csv' else pd.read_excel(dropped_file) if ext1 == '.xlsx' else pd.read_json(dropped_file) if ext1 == '.json' else pd.read_hdf(dropped_file)
+                        df2 = pd.read_csv(files[0]) if ext2 == '.csv' else pd.read_excel(files[0]) if ext2 == '.xlsx' else pd.read_json(files[0]) if ext2 == '.json' else pd.read_hdf(files[0])
                         df = pd.concat([df1, df2], ignore_index=True)
                         name = os.path.splitext(os.path.basename(dropped_file))[0] + '_' + os.path.splitext(os.path.basename(files[0]))[0]
                         os.path.getctime
                         self.tabs.append(Tab(self.ui.graphTab, df, name))
                     else:
-                        QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV or Excel file.')
+                        QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, JSON, or HDF5 file.')
                 else:
                     QMessageBox.warning(self, 'Warning', 'Please drop the file onto another file in the tree view.')
             else:
@@ -310,23 +313,45 @@ class Graphite(QMainWindow):
 
     def open_file_dialog(self):
         options = QFileDialog.Options()
-        file_name, _ = QFileDialog.getOpenFileName(self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv)", options=options)
-        self.open_file(file_name)
+        file_name, _ = QFileDialog.getOpenFileName(
+            self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;HDF5 Files (*.h5)", options=options)
+        if file_name:
+            self.open_file(file_name)
 
     def open_file(self, file_path):
         if file_path:
+            df = pd.DataFrame()
             name, ext = os.path.splitext(file_path)
-            if ext == '.csv' or ext == '.xlsx':
-                df = None
-                if ext == '.csv':
-                    df = pd.read_csv(file_path)
-                elif ext == '.xlsx':
-                    df = pd.read_excel(file_path)
-                if df is not None:
+            supported_formats = ['.csv', '.xlsx', '.json', '.h5']
+            if ext in supported_formats:
+                try:
+                    if ext == '.csv':
+                        df = pd.read_csv(file_path)
+                    elif ext == '.xlsx':
+                        df = pd.read_excel(file_path)
+                    elif ext == '.json':
+                        df = pd.read_json(file_path)
+                    elif ext == '.h5':
+                        df = pd.read_hdf(file_path)
                     name = os.path.basename(name)
                     self.tabs.append(Tab(self.ui.graphTab, df, name))
+                except Exception as e:
+                    QMessageBox.warning(self, 'Error', f'Error loading file: {e}')
             else:
-                QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV or Excel file.')
+                QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, JSON, or HDF5 file.')
+
+    def saveAs(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            options = QFileDialog.Options()
+            file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;HDF5 Files (*.h5)", options=options)
+            if file_path:
+                file_format = file_path.split('.')[-1]
+                return tab.saveFile(file_path, file_format)
+        return False
 
 
 if __name__ == "__main__":
