@@ -91,10 +91,13 @@ class Tab(QWidget):
 
         self.custom_plot()
 
-
+        
+    def saveFile(self, filepath):
+        pass
     
     def export(self, filename, format='png', dpi=100, transparent=False, pad_inches=0.1):
         plt.savefig(filename,
+
                     format=format,
                     dpi=int(dpi),
                     transparent=transparent,
@@ -103,6 +106,6 @@ class Tab(QWidget):
     def close_plot(self):
         plt.close(self.figure)
 
-    def add_to_tab_widget(self):
         self.tab_widget.addTab(self, self.name)
         self.tab_widget.setCurrentWidget(self)
+import matplotlib.pyplot as plt
