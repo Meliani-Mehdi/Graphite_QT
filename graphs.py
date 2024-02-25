@@ -93,17 +93,16 @@ class Tab(QWidget):
 
         
     def saveFile(self, filepath, file_format):
+        print(filepath,file_format)
         try:
             if file_format == 'csv':
                 self.dataframe.to_csv(filepath, index=False)
-            elif file_format == 'excel':
+            elif file_format == 'xlsx':
                 self.dataframe.to_excel(filepath, index=False)
             elif file_format == 'json':
                 self.dataframe.to_json(filepath, orient='records')
-            elif file_format == 'h5':
-                self.dataframe.to_hdf(filepath, key='data', mode='w')
             else:
-                raise ValueError("Unsupported file format. Please select 'csv', 'excel', 'json', or 'h5'.")
+                raise ValueError("Unsupported file format. Please select 'csv', 'excel' or 'json'.")
             return True
         except Exception as e:
             print(f"Error saving file: {e}")

@@ -244,7 +244,7 @@ class Graphite(QMainWindow):
             model = QFileSystemModel()
             model.setRootPath(folder_path)
             model.setFilter(QDir.AllDirs | QDir.Files | QDir.NoDotAndDotDot)
-            model.setNameFilters(["*.xlsx", "*.csv", "*.json", "*h5"])
+            model.setNameFilters(["*.xlsx", "*.csv", "*.json"])
             model.setNameFilterDisables(False)
             
             self.ui.treeView.setModel(model)
@@ -290,16 +290,16 @@ class Graphite(QMainWindow):
                     dropped_file = self.ui.treeView.model().filePath(dropped_index)
                     ext1 = os.path.splitext(dropped_file)[1]
                     ext2 = os.path.splitext(files[0])[1]
-                    supported_formats = ['.csv', '.xlsx', '.json', '.h5']
+                    supported_formats = ['.csv', '.xlsx', '.json']
                     if ext1 in supported_formats and ext2 in supported_formats:
-                        df1 = pd.read_csv(dropped_file) if ext1 == '.csv' else pd.read_excel(dropped_file) if ext1 == '.xlsx' else pd.read_json(dropped_file) if ext1 == '.json' else pd.read_hdf(dropped_file)
-                        df2 = pd.read_csv(files[0]) if ext2 == '.csv' else pd.read_excel(files[0]) if ext2 == '.xlsx' else pd.read_json(files[0]) if ext2 == '.json' else pd.read_hdf(files[0])
+                        df1 = pd.read_csv(dropped_file) if ext1 == '.csv' else pd.read_excel(dropped_file) if ext1 == '.xlsx' else pd.read_json(dropped_file) 
+                        df2 = pd.read_csv(files[0]) if ext2 == '.csv' else pd.read_excel(files[0]) if ext2 == '.xlsx' else pd.read_json(files[0])
                         df = pd.concat([df1, df2], ignore_index=True)
                         name = os.path.splitext(os.path.basename(dropped_file))[0] + '_' + os.path.splitext(os.path.basename(files[0]))[0]
                         os.path.getctime
                         self.tabs.append(Tab(self.ui.graphTab, df, name))
                     else:
-                        QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, JSON, or HDF5 file.')
+                        QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, or JSON file.')
                 else:
                     QMessageBox.warning(self, 'Warning', 'Please drop the file onto another file in the tree view.')
             else:
@@ -314,7 +314,7 @@ class Graphite(QMainWindow):
     def open_file_dialog(self):
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getOpenFileName(
-            self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;HDF5 Files (*.h5)", options=options)
+            self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
         if file_name:
             self.open_file(file_name)
 
@@ -322,7 +322,7 @@ class Graphite(QMainWindow):
         if file_path:
             df = pd.DataFrame()
             name, ext = os.path.splitext(file_path)
-            supported_formats = ['.csv', '.xlsx', '.json', '.h5']
+            supported_formats = ['.csv', '.xlsx', '.json']
             if ext in supported_formats:
                 try:
                     if ext == '.csv':
@@ -331,14 +331,12 @@ class Graphite(QMainWindow):
                         df = pd.read_excel(file_path)
                     elif ext == '.json':
                         df = pd.read_json(file_path)
-                    elif ext == '.h5':
-                        df = pd.read_hdf(file_path)
                     name = os.path.basename(name)
                     self.tabs.append(Tab(self.ui.graphTab, df, name))
                 except Exception as e:
                     QMessageBox.warning(self, 'Error', f'Error loading file: {e}')
             else:
-                QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, JSON, or HDF5 file.')
+                QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, JSON.')
 
     def saveAs(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -347,9 +345,10 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             options = QFileDialog.Options()
-            file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;HDF5 Files (*.h5)", options=options)
+            file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
             if file_path:
-                file_format = file_path.split('.')[-1]
+                file_format = os.path.splitext(file_path)[-1][1:]
+                print(file_path,file_format)
                 return tab.saveFile(file_path, file_format)
         return False
 
