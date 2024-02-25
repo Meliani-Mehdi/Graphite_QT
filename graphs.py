@@ -106,6 +106,6 @@ class Tab(QWidget):
     def close_plot(self):
         plt.close(self.figure)
 
+    def add_to_tab_widget(self):
         self.tab_widget.addTab(self, self.name)
         self.tab_widget.setCurrentWidget(self)
-import matplotlib.pyplot as plt
