@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from matplotlib.typing import MarkerType
 import numpy as np
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from PySide6.QtWidgets import QWidget, QHBoxLayout
@@ -115,7 +114,7 @@ class Tab(QWidget):
                     transparent=transparent,
                     pad_inches=pad_inches)
 
-    def close_plot(self):
+    def closePlot(self):
         plt.close(self.figure)
 
     def add_to_tab_widget(self):

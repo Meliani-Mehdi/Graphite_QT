@@ -167,6 +167,8 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             self.export_dialog.ui.filename.setText(tab.name)
+        else :
+            QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
     def export(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -183,6 +185,9 @@ class Graphite(QMainWindow):
             padding = self.export_dialog.ui.padding.text()
             tab.export(file_path, format, dpi, transparent, padding)
             self.export_dialog.reject()
+        else :
+            QMessageBox.warning(self, 'Warning', 'No plot selected.')
+
 
     def exit_app(self):
         QApplication.quit()
@@ -319,7 +324,7 @@ class Graphite(QMainWindow):
             self.open_file(file_name)
 
     def open_file(self, file_path):
-        if file_path:
+        if file_path and not os.path.isdir(file_path):
             df = pd.DataFrame()
             name, ext = os.path.splitext(file_path)
             supported_formats = ['.csv', '.xlsx', '.json']
