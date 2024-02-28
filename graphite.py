@@ -68,6 +68,8 @@ class Graphite(QMainWindow):
         self.ui.plot.clicked.connect(self.toPlot)
         self.ui.piechart.clicked.connect(self.toPiechart)
         self.ui.histogram.clicked.connect(self.toBar)
+        self.ui.fill_between.clicked.connect(self.toFill)
+        self.ui.stackplot.clicked.connect(self.toStack)
 
         self.tabs = []
 
@@ -226,6 +228,21 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].to_bar_chart()
 
+    def toFill(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_fill_between()
+
+    def toStack(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_stack_plot()
+
+    #closing logic
     def close_current_tab(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
@@ -241,6 +258,9 @@ class Graphite(QMainWindow):
             self.ui.graphTab.removeTab(index)
             tab.closePlot()
 
+
+
+    #file logic
     def open_folder_dialog(self):
         options = QFileDialog.Options()
         folder_path = QFileDialog.getExistingDirectory(self, "Open Folder", options=options)

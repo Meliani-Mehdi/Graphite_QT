@@ -90,6 +90,35 @@ class Tab(QWidget):
 
         self.custom_plot()
 
+    def to_fill_between(self):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+        x = np.array(self.dataframe.iloc[:, 0])
+        for col in self.dataframe.columns[1:]:
+            y = np.array(self.dataframe[col])
+            try:
+                self.ax.fill_between(x, y, alpha=0.5, linewidth=0)
+            except Exception as e:
+                print(f"Skipping column '{col}' because it could not be plotted: {e}")
+
+        self.custom_plot()
+
+    def to_stack_plot(self):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+        x = self.dataframe.iloc[:, 0]
+        y = self.dataframe.iloc[:, 1:].values.T
+        labels = self.dataframe.columns[1:]
+        colors = self.colors[:len(labels)]
+
+        try:
+            self.ax.stackplot(x, y, labels=labels, colors=colors, baseline='zero')
+        except Exception as e:
+            print(f"Error plotting stack plot: {e}")
+
+        self.custom_plot()
+
+
         
     def saveFile(self, filepath, file_format):
         print(filepath,file_format)
