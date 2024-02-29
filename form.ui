@@ -330,7 +330,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>1</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
@@ -380,6 +380,19 @@
               <rect>
                <x>150</x>
                <y>10</y>
+               <width>91</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>linear</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="geometry">
+              <rect>
+               <x>150</x>
+               <y>73</y>
                <width>91</width>
                <height>41</height>
               </rect>
@@ -582,7 +595,7 @@ rgb:(255, 255, 255);
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-99</y>
+             <y>0</y>
              <width>114</width>
              <height>1324</height>
             </rect>
@@ -1005,7 +1018,7 @@ background-color: rgb(23, 23, 23);</string>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>31</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1051,9 +1064,11 @@ background-color: rgb(23, 23, 23);</string>
       <string>plotting analyse</string>
      </property>
      <addaction name="BchimieMode"/>
+     <addaction name="actionfilters"/>
     </widget>
     <addaction name="MathMode"/>
     <addaction name="menuBiology"/>
+    <addaction name="actiondata_manipulation"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -1130,7 +1145,7 @@ background-color: rgb(23, 23, 23);</string>
   </action>
   <action name="BchimieMode">
    <property name="text">
-    <string>fitting</string>
+    <string>fittings</string>
    </property>
   </action>
   <action name="actionWorksheet">
@@ -1166,6 +1181,16 @@ background-color: rgb(23, 23, 23);</string>
   <action name="actionWork_sheet">
    <property name="text">
     <string>Work sheet</string>
+   </property>
+  </action>
+  <action name="actionfilters">
+   <property name="text">
+    <string>filters</string>
+   </property>
+  </action>
+  <action name="actiondata_manipulation">
+   <property name="text">
+    <string>data manipulation</string>
    </property>
   </action>
  </widget>

@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.2
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -68,6 +68,8 @@ class Ui_Graphite(object):
         self.expo.setObjectName(u"expo")
         self.actionWork_sheet = QAction(Graphite)
         self.actionWork_sheet.setObjectName(u"actionWork_sheet")
+        self.actionfilters = QAction(Graphite)
+        self.actionfilters.setObjectName(u"actionfilters")
         self.mainLayout = QWidget(Graphite)
         self.mainLayout.setObjectName(u"mainLayout")
         self.mainLayout.setMinimumSize(QSize(1200, 642))
@@ -435,7 +437,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -465,7 +467,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -501,10 +503,11 @@ class Ui_Graphite(object):
         self.menuMode.addAction(self.MathMode)
         self.menuMode.addAction(self.menuBiology.menuAction())
         self.menuBiology.addAction(self.BchimieMode)
+        self.menuBiology.addAction(self.actionfilters)
 
         self.retranslateUi(Graphite)
 
-        self.mode_frames.setCurrentIndex(0)
+        self.mode_frames.setCurrentIndex(2)
         self.graphTab.setCurrentIndex(-1)
 
 
@@ -537,8 +540,8 @@ class Ui_Graphite(object):
 #if QT_CONFIG(shortcut)
         self.open_folder.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+Shift+O", None))
 #endif // QT_CONFIG(shortcut)
-        self.MathMode.setText(QCoreApplication.translate("Graphite", u"Math", None))
-        self.BchimieMode.setText(QCoreApplication.translate("Graphite", u"Chimie", None))
+        self.MathMode.setText(QCoreApplication.translate("Graphite", u"statistical analyse", None))
+        self.BchimieMode.setText(QCoreApplication.translate("Graphite", u"fittings", None))
         self.actionWorksheet.setText(QCoreApplication.translate("Graphite", u"Worksheet", None))
         self.actionExel.setText(QCoreApplication.translate("Graphite", u"Exel", None))
         self.actiongraph.setText(QCoreApplication.translate("Graphite", u"graph", None))
@@ -546,6 +549,7 @@ class Ui_Graphite(object):
         self.expo_as.setText(QCoreApplication.translate("Graphite", u"Export as ...", None))
         self.expo.setText(QCoreApplication.translate("Graphite", u"Export", None))
         self.actionWork_sheet.setText(QCoreApplication.translate("Graphite", u"Work sheet", None))
+        self.actionfilters.setText(QCoreApplication.translate("Graphite", u"filters", None))
         self.custom_button_2.setText("")
         self.custom_button_3.setText("")
         self.custom_button_6.setText("")
@@ -579,7 +583,7 @@ class Ui_Graphite(object):
         self.menuNew.setTitle(QCoreApplication.translate("Graphite", u"New", None))
         self.menuEdit.setTitle(QCoreApplication.translate("Graphite", u"Edit", None))
         self.menuHelp.setTitle(QCoreApplication.translate("Graphite", u"Help", None))
-        self.menuMode.setTitle(QCoreApplication.translate("Graphite", u"Mode", None))
-        self.menuBiology.setTitle(QCoreApplication.translate("Graphite", u"Biology", None))
+        self.menuMode.setTitle(QCoreApplication.translate("Graphite", u"analyse", None))
+        self.menuBiology.setTitle(QCoreApplication.translate("Graphite", u"plotting analyse", None))
     # retranslateUi
 
