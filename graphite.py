@@ -59,6 +59,7 @@ class Graphite(QMainWindow):
 
         self.ui.MathMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(0))
         self.ui.BchimieMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(2))
+        self.ui.actionfilters.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(3))
 
         self.ui.min_max.clicked.connect(self.get_min_max_values)
         self.ui.Polynome.clicked.connect(self.perform_polynomial_fitting)

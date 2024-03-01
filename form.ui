@@ -330,7 +330,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>2</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
@@ -388,7 +388,7 @@
               <string>linear</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QToolButton" name="toolButton_4">
              <property name="geometry">
               <rect>
                <x>150</x>
@@ -398,8 +398,362 @@
               </rect>
              </property>
              <property name="text">
-              <string>PushButton</string>
+              <string>quadriple</string>
              </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="geometry">
+              <rect>
+               <x>300</x>
+               <y>10</y>
+               <width>91</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>cubic</string>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox">
+             <property name="geometry">
+              <rect>
+               <x>300</x>
+               <y>70</y>
+               <width>91</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>expononcial</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>double expononcial</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>triple expononcial</string>
+              </property>
+             </item>
+            </widget>
+            <widget class="QPushButton" name="pushButton_12">
+             <property name="geometry">
+              <rect>
+               <x>440</x>
+               <y>10</y>
+               <width>91</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>power fit</string>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_2">
+             <property name="geometry">
+              <rect>
+               <x>440</x>
+               <y>70</y>
+               <width>91</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>logarithm</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>logistic</string>
+              </property>
+             </item>
+            </widget>
+            <widget class="QComboBox" name="comboBox_3">
+             <property name="geometry">
+              <rect>
+               <x>580</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>Gaussian</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>lorenzian</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>voigt</string>
+              </property>
+             </item>
+            </widget>
+            <widget class="QComboBox" name="comboBox_4">
+             <property name="geometry">
+              <rect>
+               <x>580</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>weibull</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>segmoidal</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>meichaelis-menten</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>hill</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>gompertz</string>
+              </property>
+             </item>
+            </widget>
+            <widget class="QComboBox" name="comboBox_5">
+             <property name="geometry">
+              <rect>
+               <x>720</x>
+               <y>10</y>
+               <width>71</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>fourier</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>sine</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>cosine</string>
+              </property>
+             </item>
+            </widget>
+            <widget class="QComboBox" name="comboBox_6">
+             <property name="geometry">
+              <rect>
+               <x>720</x>
+               <y>70</y>
+               <width>69</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>spline</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>lowess</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Savitzky-Golay </string>
+              </property>
+             </item>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="filter">
+            <property name="styleSheet">
+             <string notr="true">background-color:rgb(255, 170, 255)</string>
+            </property>
+            <widget class="QPushButton" name="pushButton_13">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Moving Average</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_14">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Savitzky-Golay</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_15">
+             <property name="geometry">
+              <rect>
+               <x>150</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Butterworth</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_16">
+             <property name="geometry">
+              <rect>
+               <x>150</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Chebyshev</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_17">
+             <property name="geometry">
+              <rect>
+               <x>290</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Gaussian</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_18">
+             <property name="geometry">
+              <rect>
+               <x>290</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Boxcar</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_19">
+             <property name="geometry">
+              <rect>
+               <x>430</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Median</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_20">
+             <property name="geometry">
+              <rect>
+               <x>430</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Lowess</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_21">
+             <property name="geometry">
+              <rect>
+               <x>580</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Exponential </string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_22">
+             <property name="geometry">
+              <rect>
+               <x>580</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Kalman</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="pushButton_23">
+             <property name="geometry">
+              <rect>
+               <x>720</x>
+               <y>10</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>Notch</string>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox_7">
+             <property name="geometry">
+              <rect>
+               <x>720</x>
+               <y>70</y>
+               <width>81</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>Bandpass</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Highpass</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Lowpass</string>
+              </property>
+             </item>
             </widget>
            </widget>
           </widget>
@@ -1184,6 +1538,9 @@ background-color: rgb(23, 23, 23);</string>
    </property>
   </action>
   <action name="actionfilters">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>filters</string>
    </property>
