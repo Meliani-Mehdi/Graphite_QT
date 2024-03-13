@@ -77,3 +77,4 @@ CMakeLists.txt.user*
 /venv/
 /.idea/
 /.ropeproject/
+*.pyproject.user
