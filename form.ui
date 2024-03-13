@@ -330,7 +330,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>3</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
@@ -388,7 +388,7 @@
               <string>linear</string>
              </property>
             </widget>
-            <widget class="QToolButton" name="toolButton_4">
+            <widget class="QToolButton" name="quadraple">
              <property name="geometry">
               <rect>
                <x>150</x>
@@ -401,7 +401,7 @@
               <string>quadriple</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="cubic">
              <property name="geometry">
               <rect>
                <x>300</x>
@@ -414,7 +414,7 @@
               <string>cubic</string>
              </property>
             </widget>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="expo_2">
              <property name="geometry">
               <rect>
                <x>300</x>
@@ -439,7 +439,7 @@
               </property>
              </item>
             </widget>
-            <widget class="QPushButton" name="pushButton_12">
+            <widget class="QPushButton" name="power">
              <property name="geometry">
               <rect>
                <x>440</x>
@@ -452,7 +452,7 @@
               <string>power fit</string>
              </property>
             </widget>
-            <widget class="QComboBox" name="comboBox_2">
+            <widget class="QComboBox" name="log">
              <property name="geometry">
               <rect>
                <x>440</x>
@@ -472,7 +472,7 @@
               </property>
              </item>
             </widget>
-            <widget class="QComboBox" name="comboBox_3">
+            <widget class="QComboBox" name="gauss">
              <property name="geometry">
               <rect>
                <x>580</x>
@@ -497,7 +497,7 @@
               </property>
              </item>
             </widget>
-            <widget class="QComboBox" name="comboBox_4">
+            <widget class="QComboBox" name="weibull">
              <property name="geometry">
               <rect>
                <x>580</x>
@@ -532,7 +532,7 @@
               </property>
              </item>
             </widget>
-            <widget class="QComboBox" name="comboBox_5">
+            <widget class="QComboBox" name="fourier">
              <property name="geometry">
               <rect>
                <x>720</x>
@@ -557,7 +557,7 @@
               </property>
              </item>
             </widget>
-            <widget class="QComboBox" name="comboBox_6">
+            <widget class="QComboBox" name="spline">
              <property name="geometry">
               <rect>
                <x>720</x>

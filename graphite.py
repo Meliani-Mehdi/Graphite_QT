@@ -4,7 +4,7 @@ import os
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir
 import pandas as pd
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
@@ -62,8 +62,11 @@ class Graphite(QMainWindow):
         self.ui.actionfilters.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(3))
 
         self.ui.min_max.clicked.connect(self.get_min_max_values)
-        self.ui.Polynome.clicked.connect(self.perform_polynomial_fitting)
+        self.ui.Polynome.clicked.connect(self.perform_polynomial_fit)
         self.ui.linear.clicked.connect(self.perform_linear_fit)
+        self.ui.quadraple.clicked.connect(self.perform_quadratic_fit)
+        self.ui.cubic.clicked.connect(self.perform_cubic_fit)
+        self.ui.expo_2.currentIndexChanged.connect(self.handle_fit_type_changed)
 
         #types
         self.ui.plot.clicked.connect(self.toPlot)
@@ -82,8 +85,55 @@ class Graphite(QMainWindow):
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
 
+    def perform_polynomial_fit(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            degree, ok = QInputDialog.getInt(self, 'Degree of Polynomial', 'Enter the degree of the polynomial:')
+            if ok:
+               widget = self.ui.graphTab.widget(current_index)
+               tab_index = self.tabs.index(widget)
+               tab = self.tabs[tab_index]
 
-    def perform_polynomial_fitting(self):
+               x_data = tab.dataframe.iloc[:, 0].values
+               y_data = tab.dataframe.iloc[:, 1].values
+
+               tab.plot_polynomial_curve(x_data, y_data, degree)
+
+    def perform_quadratic_fit(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+
+            x_data = tab.dataframe.iloc[:, 0].values
+            y_data = tab.dataframe.iloc[:, 1].values
+            tab.plot_quadratic_fit(x_data, y_data)
+
+    def handle_fit_type_changed(self, index):
+        selected_fit = self.ui.expo_2.itemText(index)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            x_data= tab.dataframe.iloc[:, 0].values
+            y_data= tab.dataframe.iloc[:, 1].values
+            if selected_fit == "Exponential":
+                tab.plot_exponential_fit(x_data, y_data)
+            elif selected_fit == "Double Exponential":
+                tab.plot_double_exponential_fit(x_data, y_data)
+            elif selected_fit == "Triple Exponential":
+                tab.plot_triple_exponential_fit(x_data, y_data)
+            else:
+                print("Unsupported fit type selected")
+
+
+
+
+
+    def perform_cubic_fit(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             widget = self.ui.graphTab.widget(current_index)
@@ -93,13 +143,14 @@ class Graphite(QMainWindow):
             x_data = tab.dataframe.iloc[:, 0].values
             y_data = tab.dataframe.iloc[:, 1].values
 
-            degree = 2  
-            coeffs = np.polyfit(x_data, y_data, degree)
+            coeffs = np.polyfit(x_data, y_data, 3)
 
             x_values = np.linspace(min(x_data), max(x_data), 100)
+
             y_values = np.polyval(coeffs, x_values)
 
-            tab.plot_polynomial_curve(x_data, y_data, x_values, y_values)
+            tab.plot_cubic_curve(x_data, y_data, x_values, y_values)
+
 
 
     def perform_linear_fit(self):

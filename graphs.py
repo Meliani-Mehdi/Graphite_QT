@@ -3,6 +3,7 @@ import numpy as np
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from PySide6.QtWidgets import QWidget, QHBoxLayout
 from PySide6.QtCore import Qt
+from scipy.optimize import curve_fit
 
 class Tab(QWidget):
     def __init__(self, tab_widget, dataframe, name):
@@ -30,13 +31,89 @@ class Tab(QWidget):
 
         self.add_to_tab_widget()
 
-    def plot_polynomial_curve(self, x_data, y_data, x_values, y_values):
+    def plot_polynomial_curve(self, x_data, y_data, degree):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+        coeffs = np.polyfit(x_data, y_data, degree)
+        x_fit = np.linspace(min(x_data), max(x_data), 100)
+        y_fit = np.polyval(coeffs, x_fit)
+        self.ax.plot(x_data, y_data, 'bx', label='Data')
+        self.ax.plot(x_fit, y_fit, 'r', label=f'Polynomial Fit (Degree {degree})')
+        self.custom_plot()
+
+
+    def plot_cubic_curve(self, x_data, y_data, x_values, y_values):
         self.figure.clear()
         self.ax = self.figure.add_subplot()
         self.ax.plot(x_data, y_data, 'bx', label='Data')
-        self.ax.plot(x_values, y_values, 'r', label='Polynomial Curve')
+        self.ax.plot(x_values, y_values, 'r', label='Cubic Curve')
 
         self.custom_plot()
+
+
+
+
+
+    def plot_exponential_fit(self, x_data, y_data):
+        def exponential_func(x, a, b):
+            return a * np.exp(b * x)
+
+        try:
+            popt, pcov = curve_fit(exponential_func, x_data, y_data)
+            a, b = popt
+
+            x_fit = np.linspace(min(x_data), max(x_data), 100)
+            y_fit = exponential_func(x_fit, *popt)
+
+            self.figure.clear()
+            self.ax = self.figure.add_subplot()
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_fit, y_fit, 'r', label='Exponential Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting exponential fit: {e}")
+
+    def plot_double_exponential_fit(self, x_data, y_data):
+        def double_exponential_func(x, a1, b1, a2, b2):
+            return a1 * np.exp(b1 * x) + a2 * np.exp(b2 * x)
+
+        try:
+            popt, pcov = curve_fit(double_exponential_func, x_data, y_data)
+            a1, b1, a2, b2 = popt
+
+            x_fit = np.linspace(min(x_data), max(x_data), 100)
+            y_fit = double_exponential_func(x_fit, *popt)
+
+            self.figure.clear()
+            self.ax = self.figure.add_subplot()
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_fit, y_fit, 'r', label='Double Exponential Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting double exponential fit: {e}")
+
+    def plot_triple_exponential_fit(self, x_data, y_data):
+        def triple_exponential_func(x, a1, b1, a2, b2, a3, b3):
+            return a1 * np.exp(b1 * x) + a2 * np.exp(b2 * x) + a3 * np.exp(b3 * x)
+
+        try:
+            popt, pcov = curve_fit(triple_exponential_func, x_data, y_data)
+            a1, b1, a2, b2, a3, b3 = popt
+
+            x_fit = np.linspace(min(x_data), max(x_data), 100)
+            y_fit = triple_exponential_func(x_fit, *popt)
+
+            self.figure.clear()
+            self.ax = self.figure.add_subplot()
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_fit, y_fit, 'r', label='Triple Exponential Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting triple exponential fit: {e}")
+
 
     def plot_linear_fit(self, x_data, y_data, x_fit, y_fit):
         self.ax.clear()
@@ -119,6 +196,20 @@ class Tab(QWidget):
         self.custom_plot()
 
 
+    def plot_quadratic_fit(self, x_data, y_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+
+        coeffs = np.polyfit(x_data, y_data, 2)
+
+        x_fit = np.linspace(min(x_data), max(x_data), 100)
+
+        y_fit = coeffs[0] * x_fit ** 2 + coeffs[1] * x_fit + coeffs[2]
+
+        self.ax.plot(x_data, y_data, 'bx', label='Data')
+        self.ax.plot(x_fit, y_fit, 'r', label='Quadratic Fit')
+
+        self.custom_plot()
         
     def saveFile(self, filepath, file_format):
         print(filepath,file_format)
