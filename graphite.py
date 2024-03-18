@@ -66,7 +66,11 @@ class Graphite(QMainWindow):
         self.ui.linear.clicked.connect(self.perform_linear_fit)
         self.ui.quadraple.clicked.connect(self.perform_quadratic_fit)
         self.ui.cubic.clicked.connect(self.perform_cubic_fit)
-        self.ui.expo_2.currentIndexChanged.connect(self.handle_fit_type_changed)
+        self.ui.expo_2.currentIndexChanged.connect(self.handle_fit_type_changed_expo)
+        self.ui.power.clicked.connect(self.perform_power_fit)
+        self.ui.log.currentIndexChanged.connect(self.handle_fit_type_changed_log)
+        self.ui.gauss.currentIndexChanged.connect(self.handle_fit_type_changed_log_gauss)
+
 
         #types
         self.ui.plot.clicked.connect(self.toPlot)
@@ -110,7 +114,7 @@ class Graphite(QMainWindow):
             y_data = tab.dataframe.iloc[:, 1].values
             tab.plot_quadratic_fit(x_data, y_data)
 
-    def handle_fit_type_changed(self, index):
+    def handle_fit_type_changed_expo(self, index):
         selected_fit = self.ui.expo_2.itemText(index)
 
         current_index = self.ui.graphTab.currentIndex()
@@ -130,7 +134,53 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
 
+    def handle_fit_type_changed_log(self, index):
+        selected_fit = self.ui.log.itemText(index)
 
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            x_data= tab.dataframe.iloc[:, 0].values
+            y_data= tab.dataframe.iloc[:, 1].values
+            if selected_fit == "logarithm":
+                tab.plot_logarithmic_fit(x_data, y_data)
+            elif selected_fit == "logistic":
+                tab.plot_logistic_fit(x_data, y_data)
+            else:
+                print("Unsupported fit type selected")
+
+    def handle_fit_type_changed_gauss(self, index):
+        selected_fit = self.ui.guass.itemText(index)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            x_data= tab.dataframe.iloc[:, 0].values
+            y_data= tab.dataframe.iloc[:, 1].values
+            if selected_fit == "Exponential":
+                tab.plot_exponential_fit(x_data, y_data)
+            elif selected_fit == "Double Exponential":
+                tab.plot_double_exponential_fit(x_data, y_data)
+            elif selected_fit == "Triple Exponential":
+                tab.plot_triple_exponential_fit(x_data, y_data)
+            else:
+                print("Unsupported fit type selected")
+
+    def perform_power_fit(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+
+            x_data = tab.dataframe.iloc[:, 0].values  # Replace [...] with actual x-axis data
+            y_data = tab.dataframe.iloc[:, 1].values  # Replace [...] with actual y-axis data
+
+            tab.plot_power_fit(x_data, y_data)
 
 
     def perform_cubic_fit(self):

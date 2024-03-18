@@ -4,6 +4,7 @@ from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from PySide6.QtWidgets import QWidget, QHBoxLayout
 from PySide6.QtCore import Qt
 from scipy.optimize import curve_fit
+from scipy.special import voigt_profile
 
 class Tab(QWidget):
     def __init__(self, tab_widget, dataframe, name):
@@ -50,9 +51,83 @@ class Tab(QWidget):
 
         self.custom_plot()
 
+    def plot_gaussian_fit(self, x_data, y_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+
+               # Perform Gaussian fitting
+        try:
+            def gaussian_func(x, a, x0, sigma):
+                return a * np.exp(-(x - x0)**2 / (2 * sigma**2))
+
+            popt, pcov = curve_fit(gaussian_func, x_data, y_data)
+            a, x0, sigma = popt
+            y_fit = gaussian_func(x_data, a, x0, sigma)
+
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_data, y_fit, 'r', label='Gaussian Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting Gaussian fit: {e}")
+
+    def plot_lorentzian_fit(self, x_data, y_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+
+               # Perform Lorentzian fitting
+        try:
+            def lorentzian_func(x, a, x0, gamma):
+                return a * gamma**2 / ((x - x0)**2 + gamma**2)
+
+            popt, pcov = curve_fit(lorentzian_func, x_data, y_data)
+            a, x0, gamma = popt
+            y_fit = lorentzian_func(x_data, a, x0, gamma)
+
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_data, y_fit, 'r', label='Lorentzian Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting Lorentzian fit: {e}")
+
+    def plot_voigt_fit(self, x_data, y_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+
+               # Perform Voigt fitting
+        try:
+            def voigt_func(x, a, x0, sigma, gamma):
+                return voigt_profile(x - x0, sigma, gamma) * a / (sigma * np.sqrt(2 * np.pi))
+
+            popt, pcov = curve_fit(voigt_func, x_data, y_data)
+            a, x0, sigma, gamma = popt
+            y_fit = voigt_func(x_data, a, x0, sigma, gamma)
+
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_data, y_fit, 'r', label='Voigt Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting Voigt fit: {e}")
 
 
 
+    def plot_power_fit(self, x_data, y_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+
+        coeffs = np.polyfit(np.log(x_data), np.log(y_data), 1)
+        a = np.exp(coeffs[1])
+        b = coeffs[0]
+
+        x_fit = np.linspace(min(x_data), max(x_data), 100)
+        y_fit = a * np.power(x_fit, b)
+
+        self.ax.plot(x_data, y_data, 'bx', label='Data')
+        self.ax.plot(x_fit, y_fit, 'r', label='Power Fit')
+
+        self.custom_plot()
 
     def plot_exponential_fit(self, x_data, y_data):
         def exponential_func(x, a, b):
@@ -113,6 +188,44 @@ class Tab(QWidget):
 
         except Exception as e:
             print(f"Error plotting triple exponential fit: {e}")
+
+
+    def plot_logarithmic_fit(self, x_data, y_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+
+                # Perform logarithmic fitting
+        try:
+            coeffs = np.polyfit(np.log(x_data), y_data, 1)
+            a, b = coeffs
+            y_fit = a * np.log(x_data) + b
+
+            self.ax.plot(x_data, y_data, 'bx', label='Data')
+            self.ax.plot(x_data, y_fit, 'r', label='Logarithmic Fit')
+            self.custom_plot()
+
+        except Exception as e:
+            print(f"Error plotting logarithmic fit: {e}")
+
+    #def plot_logistic_fit(self, x_data, y_data):
+      #  self.figure.clear()
+      #  self.ax = self.figure.add_subplot()
+
+                # Perform logistic fitting
+       # try:
+        #    def logistic_func(x, L, k, x0):
+         #       return L / (1 + np.exp(-k * (x - x0)))
+
+          #  popt, pcov = curve_fit(logistic_func, x_data, y_data)
+           # L, k, x0 = popt
+            #y_fit = logistic_func(x_data, L, k, x0)
+
+           # self.ax.plot(x_data, y_data, 'bx', label='Data')
+            #self.ax.plot(x_data, y_fit, 'r', label='Logistic Fit')
+            #self.custom_plot()
+
+        #except Exception as e:
+         #   print(f"Error plotting logistic fit: {e}")
 
 
     def plot_linear_fit(self, x_data, y_data, x_fit, y_fit):
