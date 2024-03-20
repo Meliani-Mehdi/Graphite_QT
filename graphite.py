@@ -69,7 +69,10 @@ class Graphite(QMainWindow):
         self.ui.expo_2.currentIndexChanged.connect(self.handle_fit_type_changed_expo)
         self.ui.power.clicked.connect(self.perform_power_fit)
         self.ui.log.currentIndexChanged.connect(self.handle_fit_type_changed_log)
-        self.ui.gauss.currentIndexChanged.connect(self.handle_fit_type_changed_log_gauss)
+        self.ui.gauss.currentIndexChanged.connect(self.handle_fit_type_changed_gauss)
+        self.ui.weibull.currentIndexChanged.connect(self.handle_fit_type_changed_w)
+        self.ui.fourier.currentIndexChanged.connect(self.handle_fit_type_changed_f)
+        self.ui.spline.currentIndexChanged.connect(self.handle_fit_type_changed_s)
 
 
         #types
@@ -124,15 +127,77 @@ class Graphite(QMainWindow):
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "Exponential":
+            if selected_fit == "expononcial":
                 tab.plot_exponential_fit(x_data, y_data)
-            elif selected_fit == "Double Exponential":
+            elif selected_fit == "double expononcial":
                 tab.plot_double_exponential_fit(x_data, y_data)
-            elif selected_fit == "Triple Exponential":
+            elif selected_fit == "triple expononcial":
                 tab.plot_triple_exponential_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 
+
+    def handle_fit_type_changed_w(self, index):
+        selected_fit = self.ui.weibull.itemText(index)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            x_data= tab.dataframe.iloc[:, 0].values
+            y_data= tab.dataframe.iloc[:, 1].values
+            if selected_fit == "weibull":
+                tab.plot_weibull_fit(x_data, y_data)
+            elif selected_fit == "segmoidal":
+                tab.plot_sigmoidal_fit(x_data, y_data)
+            elif selected_fit == "meichaelis-menten":
+                tab.plot_michaelis_menten_fit(x_data, y_data)
+            elif selected_fit == "hill":
+                tab.plot_hill_fit(x_data, y_data)
+            elif selected_fit == "gompertz":
+                tab.plot_gompertz_fit(x_data, y_data)
+            else:
+                print("Unsupported fit type selected")
+
+
+    def handle_fit_type_changed_f(self, index):
+        selected_fit = self.ui.fourier.itemText(index)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            x_data= tab.dataframe.iloc[:, 0].values
+            y_data= tab.dataframe.iloc[:, 1].values
+            if selected_fit == "fourier":
+                tab.plot_fourier_fit(x_data, y_data)
+            elif selected_fit == "sine":
+                tab.plot_sine_fit(x_data, y_data)
+            elif selected_fit == "cosine":
+                tab.plot_cosine_fit(x_data, y_data)
+            else:
+                print("Unsupported fit type selected")
+
+    def handle_fit_type_changed_s(self, index):
+        selected_fit = self.ui.spline.itemText(index)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            x_data= tab.dataframe.iloc[:, 0].values
+            y_data= tab.dataframe.iloc[:, 1].values
+            if selected_fit == "spline":
+                tab.plot_spline_fit(x_data, y_data)
+            elif selected_fit == "lowess":
+                tab.plot_lowess_fit(x_data, y_data)
+            elif selected_fit == "Savitzky-Golay ":
+                tab.plot_savitzky_golay_fit(x_data, y_data)
+            else:
+                print("Unsupported fit type selected")
 
     def handle_fit_type_changed_log(self, index):
         selected_fit = self.ui.log.itemText(index)
@@ -152,7 +217,7 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_gauss(self, index):
-        selected_fit = self.ui.guass.itemText(index)
+        selected_fit = self.ui.gauss.itemText(index)
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
@@ -161,12 +226,12 @@ class Graphite(QMainWindow):
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "Exponential":
-                tab.plot_exponential_fit(x_data, y_data)
-            elif selected_fit == "Double Exponential":
-                tab.plot_double_exponential_fit(x_data, y_data)
-            elif selected_fit == "Triple Exponential":
-                tab.plot_triple_exponential_fit(x_data, y_data)
+            if selected_fit == "Gaussian":
+                tab.plot_gaussian_fit(x_data, y_data)
+            elif selected_fit == "lorenzian":
+                tab.plot_lorentzian_fit(x_data, y_data)
+            elif selected_fit == "voigt":
+                tab.plot_voigt_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 

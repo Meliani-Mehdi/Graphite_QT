@@ -330,7 +330,7 @@
          <item>
           <widget class="QStackedWidget" name="mode_frames">
            <property name="currentIndex">
-            <number>2</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="Math_page">
             <property name="styleSheet">
