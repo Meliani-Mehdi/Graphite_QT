@@ -74,6 +74,11 @@ class Graphite(QMainWindow):
         self.ui.fourier.currentIndexChanged.connect(self.handle_fit_type_changed_f)
         self.ui.spline.currentIndexChanged.connect(self.handle_fit_type_changed_s)
 
+        self.ui.median.clicked.connect(self.apply_median_filter)
+        self.ui.lowess.clicked.connect(self.apply_lowess_filter)
+        self.ui.exponon.clicked.connect(self.apply_exponential_filter)
+
+
 
         #types
         self.ui.plot.clicked.connect(self.toPlot)
@@ -91,6 +96,46 @@ class Graphite(QMainWindow):
         self.export_dialog = ExportDialog(self)
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
+
+
+    def apply_median_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            kernel_size, ok = QInputDialog.getInt(self, "Median Filter", "Enter kernel size:", value=3)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = tab.median_filter(tab.dataframe.iloc[:, 1:], kernel_size)
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+
+
+    def apply_lowess_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            frac, ok = QInputDialog.getDouble(self, "LOWESS Filter", "Enter fraction of data points (0-1):", value=0.1, minValue=0.01, maxValue=0.99, decimals=2)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                x_data = tab.dataframe.iloc[:, 0].values
+                y_data = tab.dataframe.iloc[:, 1:].values.flatten()
+                filtered_data = tab.lowess_filter(x_data, y_data, frac)
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+
+
+    def apply_exponential_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            alpha, ok = QInputDialog.getDouble(self, "Exponential Filter", "Enter alpha value (0-1):", value=0.1, minValue=0.01, maxValue=0.99, decimals=2)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = np.apply_along_axis(tab.exponential_filter, 0, tab.dataframe.iloc[:, 1:], alpha=alpha)
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+
+
 
     def perform_polynomial_fit(self):
         current_index = self.ui.graphTab.currentIndex()

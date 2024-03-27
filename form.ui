@@ -587,7 +587,7 @@
             <property name="styleSheet">
              <string notr="true">background-color:rgb(255, 170, 255)</string>
             </property>
-            <widget class="QPushButton" name="pushButton_13">
+            <widget class="QPushButton" name="move">
              <property name="geometry">
               <rect>
                <x>20</x>
@@ -600,7 +600,7 @@
               <string>Moving Average</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_14">
+            <widget class="QPushButton" name="savi">
              <property name="geometry">
               <rect>
                <x>20</x>
@@ -613,7 +613,7 @@
               <string>Savitzky-Golay</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_15">
+            <widget class="QPushButton" name="butter">
              <property name="geometry">
               <rect>
                <x>150</x>
@@ -665,7 +665,7 @@
               <string>Boxcar</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_19">
+            <widget class="QPushButton" name="median">
              <property name="geometry">
               <rect>
                <x>430</x>
@@ -678,7 +678,7 @@
               <string>Median</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_20">
+            <widget class="QPushButton" name="lowess">
              <property name="geometry">
               <rect>
                <x>430</x>
@@ -691,7 +691,7 @@
               <string>Lowess</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_21">
+            <widget class="QPushButton" name="exponon">
              <property name="geometry">
               <rect>
                <x>580</x>
