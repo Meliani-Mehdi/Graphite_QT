@@ -245,33 +245,33 @@ class Tab(QWidget):
         except Exception as e:
             print(f"Error plotting double exponential fit: {e}")
 
-    def moving_average_filter(self, data, window_size=3):
+    def moving_average_filter(self, data, window_size):
         return np.convolve(data, np.ones(window_size)/window_size, mode='valid')
 
-    def savitzky_golay_filter(self, data, window_length=5, polyorder=2):
+    def savitzky_golay_filter(self, data, window_length, polyorder):
         return savgol_filter(data, window_length, polyorder)
 
-    def butterworth_filter(self, data, cutoff, fs, btype='low', order=5):
+    def butterworth_filter(self, data, cutoff, fs, btype, order):
         b, a = butter(order, cutoff / (fs / 2), btype=btype)
         return filtfilt(b, a, data)
 
-    def median_filter(self, data, kernel_size=3):
+    def median_filter(self, data, kernel_size):
         return medfilt(data, kernel_size)
 
-    def exponential_filter(self, data, alpha=0.1):
+    def exponential_filter(self, data, alpha):
         result = np.zeros_like(data)
         result[0] = data[0]
         for i in range(1, len(data)):
             result[i] = alpha * data[i] + (1 - alpha) * result[i-1]
         return result
 
-    def gaussian_filter(self, data, sigma=1):
+    def gaussian_filter(self, data, sigma):
         return gaussian(len(data), sigma)
 
-    def boxcar_filter(self, data, width=3):
+    def boxcar_filter(self, data, width):
         return boxcar(width)
 
-    def lowess_filter(self, x_data, y_data, frac=0.1):
+    def lowess_filter(self, x_data, y_data, frac):
         return lowess(y_data, x_data, frac=frac)[:, 1]
 
     def plot_triple_exponential_fit(self, x_data, y_data):
@@ -296,6 +296,16 @@ class Tab(QWidget):
         except Exception as e:
             print(f"Error plotting triple exponential fit: {e}")
 
+
+    def plot_filtered_data(self, filtered_data):
+        self.figure.clear()
+        self.ax = self.figure.add_subplot()
+        for i, col in enumerate(filtered_data.columns):
+            try:
+                self.ax.plot(self.dataframe.iloc[:, 0], filtered_data[col], label=f'{col} (Filtered)', marker='o')
+            except Exception as e:
+                print(f"Skipping column '{col}' because it could not be plotted: {e}")
+        self.custom_plot()
 
     def plot_spline_fit(self, x_data, y_data, smoothing_factor=0.1):
         self.figure.clear()
