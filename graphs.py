@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
+import os
 import numpy as np
+import pandas as pd
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from PySide6.QtWidgets import QWidget, QHBoxLayout
 from PySide6.QtCore import Qt
@@ -13,7 +15,7 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 
 
 class Tab(QWidget):
-    def __init__(self, tab_widget, dataframe, name):
+    def __init__(self, tab_widget, dataframe, name, file):
         super().__init__()
         plt.style.use('dark_background')
         self.colors = [
@@ -25,6 +27,9 @@ class Tab(QWidget):
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
+        self.file = file
+        if self.file is not None:
+            self.last_time = os.path.getmtime(self.file)
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
         self.legend = True
@@ -617,6 +622,29 @@ class Tab(QWidget):
                     dpi=int(dpi),
                     transparent=transparent,
                     pad_inches=pad_inches)
+    
+    def realtime(self):
+        if self.file is not None:
+            new_time = os.path.getmtime(self.file)
+            if(self.last_time != new_time):
+                self.last_time = new_time
+                self.update_df()
+
+    def update_df(self):
+        df = pd.DataFrame()
+        _, ext = os.path.splitext(self.file)
+        supported_formats = ['.csv', '.xlsx', '.json']
+        if ext in supported_formats:
+            try:
+                if ext == '.csv':
+                    df = pd.read_csv(self.file)
+                elif ext == '.xlsx':
+                    df = pd.read_excel(self.file)
+                elif ext == '.json':
+                    df = pd.read_json(self.file)
+            except Exception as e:
+                pass
+            self.dataframe = df
 
     def closePlot(self):
         plt.close(self.figure)

@@ -534,7 +534,7 @@ class Graphite(QMainWindow):
                         df = pd.concat([df1, df2], ignore_index=True)
                         name = os.path.splitext(os.path.basename(dropped_file))[0] + '_' + os.path.splitext(os.path.basename(files[0]))[0]
                         os.path.getctime
-                        self.tabs.append(Tab(self.ui.graphTab, df, name))
+                        self.tabs.append(Tab(self.ui.graphTab, df, name, None))
                     else:
                         QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, or JSON file.')
                 else:
@@ -569,7 +569,7 @@ class Graphite(QMainWindow):
                     elif ext == '.json':
                         df = pd.read_json(file_path)
                     name = os.path.basename(name)
-                    self.tabs.append(Tab(self.ui.graphTab, df, name))
+                    self.tabs.append(Tab(self.ui.graphTab, df, name, file_path))
                 except Exception as e:
                     QMessageBox.warning(self, 'Error', f'Error loading file: {e}')
             else:
