@@ -35,7 +35,7 @@ class Tab(QWidget):
         self.time_check = False
         self.timer = QTimer(self)
         self.interval = 300
-        self.timer.timeout.connect(self.update_df)
+        self.timer.timeout.connect(self.realtime)
         self.last_plot = self.to_plot
 
         self.figure, self.ax = plt.subplots()
