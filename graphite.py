@@ -363,10 +363,12 @@ class Graphite(QMainWindow):
             xlabel = self.customize_dialog.ui.xLabel.toPlainText() 
             ylabel = self.customize_dialog.ui.yLabel.toPlainText() 
             legend = self.customize_dialog.ui.lagend.isChecked()
+            real_time = self.customize_dialog.ui.real.isChecked()
             tab.name=title
             tab.xlabel=xlabel
             tab.ylabel=ylabel
             tab.legend=legend
+            tab.time_check=real_time 
             tab.custom_plot()
             self.customize_dialog.reject()
 

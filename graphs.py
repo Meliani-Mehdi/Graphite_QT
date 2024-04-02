@@ -4,12 +4,11 @@ import numpy as np
 import pandas as pd
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from PySide6.QtWidgets import QWidget, QHBoxLayout
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QTimer
 from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
 from statsmodels.nonparametric.smoothers_lowess import lowess
-from scipy.signal import savgol_filter
 from scipy.signal import savgol_filter, butter, filtfilt, medfilt, gaussian, boxcar
 from statsmodels.nonparametric.smoothers_lowess import lowess
 
@@ -33,6 +32,11 @@ class Tab(QWidget):
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
         self.legend = True
+        self.time_check = False
+        self.timer = QTimer(self)
+        self.interval = 300
+        self.timer.timeout.connect(self.update_df)
+        self.last_plot = self.to_plot
 
         self.figure, self.ax = plt.subplots()
         self.plot_widget = FigureCanvasQTAgg(self.figure)
@@ -517,11 +521,16 @@ class Tab(QWidget):
         self.ax.set_xlabel(self.xlabel)
         self.ax.set_ylabel(self.ylabel)
         self.ax.legend().set_visible(self.legend)
+        if self.time_check:
+            self.timer.start(self.interval)
+        else:
+            self.timer.stop()
         self.plot_widget.draw()
 
 
     def to_plot(self):
         self.figure.clear()
+        self.last_plot = self.to_plot
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
@@ -533,6 +542,7 @@ class Tab(QWidget):
 
     def to_pie_chart(self):
         self.figure.clear()
+        self.last_plot = self.to_pie_chart
         self.ax = self.figure.add_subplot()
         data = self.dataframe.iloc[:, 1:].sum()
         self.ax.pie(data, labels=data.index, colors=self.colors, autopct='%1.1f%%')
@@ -541,6 +551,7 @@ class Tab(QWidget):
 
     def to_bar_chart(self):
         self.figure.clear()
+        self.last_plot = self.to_bar_chart
         self.ax = self.figure.add_subplot()
 
         num_cols = len(self.dataframe.columns)
@@ -558,6 +569,7 @@ class Tab(QWidget):
 
     def to_fill_between(self):
         self.figure.clear()
+        self.last_plot = self.to_fill_between
         self.ax = self.figure.add_subplot()
         x = np.array(self.dataframe.iloc[:, 0])
         for col in self.dataframe.columns[1:]:
@@ -571,6 +583,7 @@ class Tab(QWidget):
 
     def to_stack_plot(self):
         self.figure.clear()
+        self.last_plot = self.to_stack_plot
         self.ax = self.figure.add_subplot()
         x = self.dataframe.iloc[:, 0]
         y = self.dataframe.iloc[:, 1:].values.T
@@ -645,6 +658,8 @@ class Tab(QWidget):
             except Exception as e:
                 pass
             self.dataframe = df
+        self.custom_plot()
+        self.last_plot()
 
     def closePlot(self):
         plt.close(self.figure)
