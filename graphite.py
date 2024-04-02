@@ -17,6 +17,7 @@ class CustomizeDialog(QDialog):
         self.ui.setupUi(self)
         self.ui.cancel_btn.clicked.connect(self.cancel)
 
+
     def cancel(self):
         reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
@@ -56,6 +57,20 @@ class Graphite(QMainWindow):
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
         self.ui.save_as.triggered.connect(self.saveAs)
         self.ui.exit_app.triggered.connect(self.exit_app)
+
+        #tree functions
+        self.ui.treeView.setDragEnabled(True)
+        self.ui.treeView.setAcceptDrops(True)
+        self.ui.treeView.setDropIndicatorShown(True)
+        
+        self.ui.treeView.setDragDropMode(QAbstractItemView.InternalMove)
+        
+        self.ui.treeView.dragEnterEvent = self.dragEnterEvent
+        self.ui.treeView.dragMoveEvent = self.dragMoveEvent
+        self.ui.treeView.dropEvent = self.dropEvent
+        
+        self.ui.treeView.doubleClicked.connect(self.treeFileIndex)
+
 
         self.ui.MathMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(0))
         self.ui.BchimieMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(2))
@@ -480,6 +495,9 @@ class Graphite(QMainWindow):
         folder_path = QFileDialog.getExistingDirectory(self, "Open Folder", options=options)
 
         if folder_path:
+            # Clear the existing model
+            self.ui.treeView.setModel(None)
+            
             model = QFileSystemModel()
             model.setRootPath(folder_path)
             model.setFilter(QDir.AllDirs | QDir.Files | QDir.NoDotAndDotDot)
@@ -493,17 +511,6 @@ class Graphite(QMainWindow):
             for column in range(1, model.columnCount()):
                 self.ui.treeView.setColumnHidden(column, True)
             
-            self.ui.treeView.setDragEnabled(True)
-            self.ui.treeView.setAcceptDrops(True)
-            self.ui.treeView.setDropIndicatorShown(True)
-            
-            self.ui.treeView.setDragDropMode(QAbstractItemView.InternalMove)
-            
-            self.ui.treeView.dragEnterEvent = self.dragEnterEvent
-            self.ui.treeView.dragMoveEvent = self.dragMoveEvent
-            self.ui.treeView.dropEvent = self.dropEvent
-            
-            self.ui.treeView.doubleClicked.connect(self.treeFileIndex)
         else:
             QMessageBox.warning(self, 'Warning', 'No folder selected.')
 
