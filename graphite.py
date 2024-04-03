@@ -92,6 +92,16 @@ class Graphite(QMainWindow):
         self.ui.median.clicked.connect(self.apply_median_filter)
         self.ui.lowess.clicked.connect(self.apply_lowess_filter)
         self.ui.exponon.clicked.connect(self.apply_exponential_filter)
+        self.ui.move.clicked.connect(self.apply_moving_average_filter)
+        self.ui.savi.clicked.connect(self.apply_savitzky_golay_filter)
+        self.ui.butter.clicked.connect(self.apply_butterworth_filter)
+        self.ui.sheb.clicked.connect(self.apply_chebyshev_filter)
+        self.ui.gaus.clicked.connect(self.apply_gaussian_filter)
+        self.ui.boxcar.clicked.connect(self.apply_boxcar_filter)
+        self.ui.kalman.clicked.connect(self.apply_kalman_filter)
+        # self.ui.notch.clicked.connect(self.apply_notch_filter)
+        self.ui.passe.currentIndexChanged.connect(self.handle_fit_type_changed_pass)
+
 
 
 
@@ -111,6 +121,24 @@ class Graphite(QMainWindow):
         self.export_dialog = ExportDialog(self)
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
+
+
+    def apply_chebyshev_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            Wn, ok1 = QInputDialog.getDouble(self, "Chebyshev Filter", "Enter the critical frequency (0-1):", value=0.5, decimals=2)
+            rp, ok2 = QInputDialog.getDouble(self, "Chebyshev Filter", "Enter the passband ripple (dB):", value=1.0)
+            rs, ok3 = QInputDialog.getDouble(self, "Chebyshev Filter", "Enter the stopband attenuation (dB):", value=20.0)
+
+            if ok1 and ok2 and ok3:
+                Wn /= 2.0
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = tab.apply_chebyshev_filter(tab.dataframe, Wn, rp, rs)
+                filtered_data_trimmed = filtered_data[:, :-1]
+                filtered_dataframe = pd.DataFrame(filtered_data_trimmed, columns=tab.dataframe.columns[1:], index=tab.dataframe.index)
+                tab.plot_filtered_data(filtered_dataframe)
 
 
     def apply_median_filter(self):
@@ -150,6 +178,95 @@ class Graphite(QMainWindow):
                 filtered_data = np.apply_along_axis(tab.exponential_filter, 0, tab.dataframe.iloc[:, 1:], alpha=alpha)
                 tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
 
+    def apply_butterworth_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            cutoff, ok = QInputDialog.getDouble(self, "Butterworth Filter", "Enter cutoff frequency:", value=0.1, decimals=2)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = tab.butterworth_filter(tab.dataframe.iloc[:, 1].values, cutoff, fs=1, btype='lowpass', order=4)
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+
+    def apply_moving_average_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            window_size, ok = QInputDialog.getInt(self, "Moving Average Filter", "Enter window size:", value=3, minValue=1)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = np.convolve(tab.dataframe.iloc[:, 1].values, np.ones(window_size)/window_size, mode='valid')
+                filtered_data = np.concatenate(([np.nan] * (window_size - 1), filtered_data))
+                filtered_data = np.concatenate((filtered_data, [np.nan] * (len(tab.dataframe) - len(filtered_data))))
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=[tab.dataframe.columns[1]], index=tab.dataframe.index))
+
+    def apply_gaussian_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            sigma, ok = QInputDialog.getDouble(self, "Gaussian Filter", "Enter the standard deviation:", value=1.0)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                data = tab.dataframe.iloc[:, 1:].values.flatten()
+                filtered_data = tab.apply_gaussian_filter(data, sigma)
+                filtered_data = filtered_data.reshape(-1, tab.dataframe.shape[1] - 1)
+                filtered_dataframe = pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index)
+                tab.plot_filtered_data(filtered_dataframe)
+
+    def apply_boxcar_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            window_size, ok = QInputDialog.getInt(self, "Boxcar Filter", "Enter the window size:", value=3, minValue=1)
+            if ok:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = tab.apply_boxcar_filter(tab.dataframe, window_size)
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+    def apply_kalman_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            process_noise, ok1 = QInputDialog.getDouble(self, "Kalman Filter", "Enter process noise:", value=0.01, decimals=3)
+            measurement_noise, ok2 = QInputDialog.getDouble(self, "Kalman Filter", "Enter measurement noise:", value=0.01, decimals=3)
+            if ok1 and ok2:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = tab.apply_kalman_filter(tab.dataframe, process_noise, measurement_noise)
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+
+    # def apply_notch_filter(self):
+    #    current_index = self.ui.graphTab.currentIndex()
+     #   if current_index != -1:
+      #      Q, ok1 = QInputDialog.getDouble(self, "Notch Filter", "Enter the Q factor:", value=10.0, decimals=1)
+       #     freq, ok2 = QInputDialog.getDouble(self, "Notch Filter", "Enter the frequency to be filtered:", value=0.0)
+        #    if ok1 and ok2:
+         #       widget = self.ui.graphTab.widget(current_index)
+          #      tab_index = self.tabs.index(widget)
+           #     tab = self.tabs[tab_index]
+            #    filtered_data = tab.apply_notch_filter(tab.dataframe, Q, freq)
+             #   tab.plot_filtered_data(filtered_data)
+
+    def apply_savitzky_golay_filter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            window_length, ok1 = QInputDialog.getInt(self, "Savitzky-Golay Filter", "Enter window length:", value=5, minValue=3)
+            polyorder, ok2 = QInputDialog.getInt(self, "Savitzky-Golay Filter", "Enter polynomial order:", value=2, minValue=0)
+            if ok1 and ok2:
+                widget = self.ui.graphTab.widget(current_index)
+                tab_index = self.tabs.index(widget)
+                tab = self.tabs[tab_index]
+                filtered_data = tab.savitzky_golay_filter(tab.dataframe.iloc[:, 1].values, window_length, polyorder)
+                padding_length = len(tab.dataframe) - len(filtered_data)
+                if padding_length > 0:
+                    filtered_data = np.concatenate((filtered_data, [np.nan] * padding_length))
+                elif padding_length < 0:
+                    filtered_data = filtered_data[:padding_length]
+
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=[tab.dataframe.columns[1]], index=tab.dataframe.index))
 
 
     def perform_polynomial_fit(self):
@@ -196,6 +313,44 @@ class Graphite(QMainWindow):
             else:
                 print("Unsupported fit type selected")
 
+    def handle_fit_type_changed_pass(self, index):
+        selected_fit = self.ui.passe.itemText(index)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            if selected_fit == "lowpass":
+                cutoff, ok1 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the cutoff frequency:", value=0.5)
+                fs, ok2 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the sampling frequency:", value=100.0)
+                order, ok3 = QInputDialog.getInt(self, "Lowpass Filter", "Enter the filter order:", value=3)
+                if ok1 and ok2 and ok3:
+                    widget = self.ui.graphTab.widget(current_index)
+                    tab_index = self.tabs.index(widget)
+                    tab = self.tabs[tab_index]
+                    filtered_data = tab.apply_lowpass_filter(tab.dataframe, cutoff, fs, order)
+                    tab.plot_filtered_data(filtered_data)
+            elif selected_fit == "bandpass":
+                lowcut, ok1 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the lowcut frequency:", value=0.1)
+                highcut, ok2 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the highcut frequency:", value=0.9)
+                fs, ok3 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the sampling frequency:", value=100.0)
+                order, ok4 = QInputDialog.getInt(self, "Bandpass Filter", "Enter the filter order:", value=3)
+                if ok1 and ok2 and ok3 and ok4:
+                    widget = self.ui.graphTab.widget(current_index)
+                    tab_index = self.tabs.index(widget)
+                    tab = self.tabs[tab_index]
+                    filtered_data = tab.apply_bandpass_filter(tab.dataframe, lowcut, highcut, fs, order)
+                    tab.plot_filtered_data(filtered_data)
+            elif selected_fit == "hipass":
+                cutoff, ok1 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the cutoff frequency:", value=0.1)
+                fs, ok2 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the sampling frequency:", value=100.0)
+                order, ok3 = QInputDialog.getInt(self, "Highpass Filter", "Enter the filter order:", value=3)
+                if ok1 and ok2 and ok3:
+                    widget = self.ui.graphTab.widget(current_index)
+                    tab_index = self.tabs.index(widget)
+                    tab = self.tabs[tab_index]
+                    filtered_data = tab.apply_highpass_filter(tab.dataframe, cutoff, fs, order)
+                    tab.plot_filtered_data(filtered_data)
+            else:
+                print("Unsupported fit type selected")
 
     def handle_fit_type_changed_w(self, index):
         selected_fit = self.ui.weibull.itemText(index)

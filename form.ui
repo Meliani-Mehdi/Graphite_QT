@@ -626,7 +626,7 @@
               <string>Butterworth</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_16">
+            <widget class="QPushButton" name="sheb">
              <property name="geometry">
               <rect>
                <x>150</x>
@@ -639,7 +639,7 @@
               <string>Chebyshev</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_17">
+            <widget class="QPushButton" name="gaus">
              <property name="geometry">
               <rect>
                <x>290</x>
@@ -652,7 +652,7 @@
               <string>Gaussian</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_18">
+            <widget class="QPushButton" name="boxcar">
              <property name="geometry">
               <rect>
                <x>290</x>
@@ -704,7 +704,7 @@
               <string>Exponential </string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_22">
+            <widget class="QPushButton" name="kalman">
              <property name="geometry">
               <rect>
                <x>580</x>
@@ -717,7 +717,7 @@
               <string>Kalman</string>
              </property>
             </widget>
-            <widget class="QPushButton" name="pushButton_23">
+            <widget class="QPushButton" name="notch">
              <property name="geometry">
               <rect>
                <x>720</x>
@@ -730,7 +730,7 @@
               <string>Notch</string>
              </property>
             </widget>
-            <widget class="QComboBox" name="comboBox_7">
+            <widget class="QComboBox" name="passe">
              <property name="geometry">
               <rect>
                <x>720</x>

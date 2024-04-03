@@ -9,8 +9,10 @@ from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
 from statsmodels.nonparametric.smoothers_lowess import lowess
-from scipy.signal import savgol_filter, butter, filtfilt, medfilt, gaussian, boxcar
+from scipy.signal import savgol_filter, butter, filtfilt, medfilt, gaussian, boxcar,cheby1,butter, sosfreqz, sosfiltfilt
 from statsmodels.nonparametric.smoothers_lowess import lowess
+from filterpy.kalman import KalmanFilter
+from scipy.ndimage import gaussian_filter1d
 
 
 class Tab(QWidget):
@@ -260,9 +262,13 @@ class Tab(QWidget):
     def savitzky_golay_filter(self, data, window_length, polyorder):
         return savgol_filter(data, window_length, polyorder)
 
-    def butterworth_filter(self, data, cutoff, fs, btype, order):
-        b, a = butter(order, cutoff / (fs / 2), btype=btype)
-        return filtfilt(b, a, data)
+    def butterworth_filter(self, data, cutoff, fs=1, btype='lowpass', order=4):
+        b, a = butter(order, cutoff, btype=btype, fs=fs)
+
+        # Apply the filter to the data
+        filtered_data = filtfilt(b, a, data)
+
+        return filtered_data
 
     def median_filter(self, data, kernel_size):
         return medfilt(data, kernel_size)
@@ -274,11 +280,50 @@ class Tab(QWidget):
             result[i] = alpha * data[i] + (1 - alpha) * result[i-1]
         return result
 
-    def gaussian_filter(self, data, sigma):
-        return gaussian(len(data), sigma)
+    def apply_gaussian_filter(self, dataframe, sigma):
+           filtered_data = gaussian_filter1d(dataframe, sigma, axis=0)
+           return filtered_data
 
-    def boxcar_filter(self, data, width):
-        return boxcar(width)
+
+    def apply_chebyshev_filter(self, dataframe, Wn, rp, rs):
+        b, a = cheby1(4, rp, Wn, 'lowpass', fs=1)
+        filtered_data = np.apply_along_axis(lambda x: np.convolve(x, b/a, mode='same'), axis=0, arr=dataframe)
+        return filtered_data
+
+    def apply_boxcar_filter(self, dataframe, window_size):
+        filtered_data = np.apply_along_axis(lambda x: np.convolve(x, np.ones(window_size)/window_size, mode='same'), axis=0, arr=dataframe)
+        return filtered_data
+
+    def apply_kalman_filter(self, dataframe, process_noise, measurement_noise):
+        kf = KalmanFilter()
+        filtered_data = kf.filter(dataframe, process_noise, measurement_noise)
+        return filtered_data
+
+   # def create_notch_filter(fs, f0, Q):
+    #    nyquist = 0.5 * fs
+     #   w0 = f0 / nyquist
+       # b, a = butter(2, (w0 - 1/(2*Q), w0 + 1/(2*Q)), btype='bandstop')
+      #  return b, a
+
+   # def apply_notch_filter(self, dataframe, Q, freq):
+    #    b, a = notch(freq, Q)
+     #   filtered_data = np.apply_along_axis(lambda x: np.convolve(x, b/a, mode='same'), axis=0, arr=dataframe)
+      #  return filtered_data
+
+    def apply_bandpass_filter(self, dataframe, lowcut, highcut, fs, order):
+        b, a = butter(order, [lowcut, highcut], btype='band', fs=fs)
+        filtered_data = filtfilt(b, a, dataframe, axis=0)
+        return filtered_data
+
+    def apply_lowpass_filter(self, dataframe, cutoff, fs, order):
+        b, a = butter(order, cutoff, btype='low', fs=fs)
+        filtered_data = filtfilt(b, a, dataframe, axis=0)
+        return filtered_data
+
+    def apply_highpass_filter(self, dataframe, cutoff, fs, order):
+        b, a = butter(order, cutoff, btype='high', fs=fs)
+        filtered_data = filtfilt(b, a, dataframe, axis=0)
+        return filtered_data
 
     def lowess_filter(self, x_data, y_data, frac):
         return lowess(y_data, x_data, frac=frac)[:, 1]
