@@ -9,7 +9,7 @@ from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
 from statsmodels.nonparametric.smoothers_lowess import lowess
-from scipy.signal import savgol_filter, butter, filtfilt, medfilt,cheby1,butter, sosfreqz, sosfiltfilt
+from scipy.signal import savgol_filter, butter, filtfilt, medfilt,cheby1,butter
 from statsmodels.nonparametric.smoothers_lowess import lowess
 from filterpy.kalman import KalmanFilter
 from scipy.ndimage import gaussian_filter1d
@@ -39,15 +39,71 @@ class Tab(QWidget):
         self.interval = 300
         self.timer.timeout.connect(self.realtime)
         self.last_plot = self.to_plot
+        self.button_pressed = False
 
         self.figure, self.ax = plt.subplots()
         self.plot_widget = FigureCanvasQTAgg(self.figure)
         layout = QHBoxLayout()
         layout.addWidget(self.plot_widget)
+
+        self.figure.canvas.mpl_connect('button_press_event', self.on_press)
+        self.figure.canvas.mpl_connect('button_release_event', self.on_release)
+        self.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
+        self.figure.canvas.mpl_connect('scroll_event', self.on_scroll)
+
         self.setLayout(layout)
         self.to_plot()
 
         self.add_to_tab_widget()
+
+
+
+    #interactive plots
+
+    def on_press(self, event):
+        if event.button == 1:
+            self.button_pressed = True
+            self.press_x = event.xdata
+            self.press_y = event.ydata
+
+    def on_release(self, event):
+        if event.button == 1:
+            self.button_pressed = False
+
+    def on_motion(self, event):
+        if self.button_pressed:
+            if event.xdata is not None and event.ydata is not None:
+                dx = event.xdata - self.press_x
+                dy = event.ydata - self.press_y
+                self.ax.set_xlim(self.ax.get_xlim() - dx)
+                self.ax.set_ylim(self.ax.get_ylim() - dy)
+                self.figure.canvas.draw()
+
+    def on_scroll(self, event):
+        if event.button == 'up':
+            scale_factor = 0.9
+        elif event.button == 'down':
+            scale_factor = 1.1
+        else:
+            scale_factor = 1.0
+
+        xdata, ydata = event.xdata, event.ydata
+        xlim = self.ax.get_xlim()
+        ylim = self.ax.get_ylim()
+
+        new_xlim = (xlim[0] - xdata) * scale_factor + xdata, (xlim[1] - xdata) * scale_factor + xdata
+        new_ylim = (ylim[0] - ydata) * scale_factor + ydata, (ylim[1] - ydata) * scale_factor + ydata
+
+        self.ax.set_xlim(new_xlim)
+        self.ax.set_ylim(new_ylim)
+        self.figure.canvas.draw_idle()
+
+
+
+
+
+
+
 
     def plot_polynomial_curve(self, x_data, y_data, degree):
         self.figure.clear()
