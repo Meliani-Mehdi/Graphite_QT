@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.6.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -208,11 +208,11 @@ class Ui_Graphite(object):
         self.mode_frames.addWidget(self.Eccomerce_page)
         self.Biology_page = QWidget()
         self.Biology_page.setObjectName(u"Biology_page")
-        self.Biology_page.setStyleSheet(u"background-color:rgb(255, 255, 0)")
+        self.Biology_page.setStyleSheet(u"")
         self.min_max = QPushButton(self.Biology_page)
         self.min_max.setObjectName(u"min_max")
         self.min_max.setGeometry(QRect(10, 10, 81, 41))
-        self.min_max.setStyleSheet(u"background-color: rgb(255, 0, 0)")
+        self.min_max.setStyleSheet(u"")
         self.Polynome = QPushButton(self.Biology_page)
         self.Polynome.setObjectName(u"Polynome")
         self.Polynome.setGeometry(QRect(10, 73, 81, 41))
@@ -268,7 +268,7 @@ class Ui_Graphite(object):
         self.mode_frames.addWidget(self.Biology_page)
         self.filter = QWidget()
         self.filter.setObjectName(u"filter")
-        self.filter.setStyleSheet(u"background-color:rgb(255, 170, 255)")
+        self.filter.setStyleSheet(u"")
         self.move = QPushButton(self.filter)
         self.move.setObjectName(u"move")
         self.move.setGeometry(QRect(20, 10, 81, 41))
@@ -286,7 +286,14 @@ class Ui_Graphite(object):
         self.gaus.setGeometry(QRect(290, 10, 81, 41))
         self.boxcar = QPushButton(self.filter)
         self.boxcar.setObjectName(u"boxcar")
-        self.boxcar.setGeometry(QRect(290, 70, 81, 41))
+        self.boxcar.setGeometry(QRect(290, 70, 64, 64))
+        self.boxcar.setMinimumSize(QSize(64, 64))
+        self.boxcar.setMaximumSize(QSize(64, 64))
+        self.boxcar.setStyleSheet(u"")
+        icon2 = QIcon()
+        icon2.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.boxcar.setIcon(icon2)
+        self.boxcar.setIconSize(QSize(64, 64))
         self.median = QPushButton(self.filter)
         self.median.setObjectName(u"median")
         self.median.setGeometry(QRect(430, 10, 81, 41))
@@ -399,7 +406,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, -346, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -411,9 +418,9 @@ class Ui_Graphite(object):
         self.plot.setMinimumSize(QSize(110, 110))
         self.plot.setMaximumSize(QSize(110, 110))
         self.plot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon2 = QIcon()
-        icon2.addFile(u"assets/plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.plot.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.plot.setIcon(icon3)
         self.plot.setIconSize(QSize(120, 120))
 
         self.verticalLayout_3.addWidget(self.plot)
@@ -423,9 +430,9 @@ class Ui_Graphite(object):
         self.histogram.setMinimumSize(QSize(110, 110))
         self.histogram.setMaximumSize(QSize(110, 110))
         self.histogram.setCursor(QCursor(Qt.PointingHandCursor))
-        icon3 = QIcon()
-        icon3.addFile(u"assets/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.histogram.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.histogram.setIcon(icon4)
         self.histogram.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.histogram)
@@ -435,9 +442,9 @@ class Ui_Graphite(object):
         self.piechart.setMinimumSize(QSize(110, 110))
         self.piechart.setMaximumSize(QSize(110, 110))
         self.piechart.setCursor(QCursor(Qt.PointingHandCursor))
-        icon4 = QIcon()
-        icon4.addFile(u"assets/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.piechart.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.piechart.setIcon(icon5)
         self.piechart.setIconSize(QSize(110, 110))
 
         self.verticalLayout_3.addWidget(self.piechart, 0, Qt.AlignTop)
@@ -447,9 +454,9 @@ class Ui_Graphite(object):
         self.fill_between.setMinimumSize(QSize(110, 110))
         self.fill_between.setMaximumSize(QSize(110, 110))
         self.fill_between.setCursor(QCursor(Qt.PointingHandCursor))
-        icon5 = QIcon()
-        icon5.addFile(u"assets/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.fill_between.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.fill_between.setIcon(icon6)
         self.fill_between.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.fill_between, 0, Qt.AlignTop)
@@ -459,9 +466,9 @@ class Ui_Graphite(object):
         self.stackplot.setMinimumSize(QSize(110, 110))
         self.stackplot.setMaximumSize(QSize(110, 110))
         self.stackplot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon6 = QIcon()
-        icon6.addFile(u"assets/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.stackplot.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stackplot.setIcon(icon7)
         self.stackplot.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.stackplot)
@@ -529,7 +536,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -559,7 +566,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -689,7 +696,10 @@ class Ui_Graphite(object):
         self.butter.setText(QCoreApplication.translate("Graphite", u"Butterworth", None))
         self.sheb.setText(QCoreApplication.translate("Graphite", u"Chebyshev", None))
         self.gaus.setText(QCoreApplication.translate("Graphite", u"Gaussian", None))
-        self.boxcar.setText(QCoreApplication.translate("Graphite", u"Boxcar", None))
+#if QT_CONFIG(tooltip)
+        self.boxcar.setToolTip(QCoreApplication.translate("Graphite", u"boxcar function", None))
+#endif // QT_CONFIG(tooltip)
+        self.boxcar.setText("")
         self.median.setText(QCoreApplication.translate("Graphite", u"Median", None))
         self.lowess.setText(QCoreApplication.translate("Graphite", u"Lowess", None))
         self.exponon.setText(QCoreApplication.translate("Graphite", u"Exponential ", None))

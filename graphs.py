@@ -9,7 +9,7 @@ from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
 from statsmodels.nonparametric.smoothers_lowess import lowess
-from scipy.signal import savgol_filter, butter, filtfilt, medfilt, gaussian, boxcar,cheby1,butter, sosfreqz, sosfiltfilt
+from scipy.signal import savgol_filter, butter, filtfilt, medfilt,cheby1,butter, sosfreqz, sosfiltfilt
 from statsmodels.nonparametric.smoothers_lowess import lowess
 from filterpy.kalman import KalmanFilter
 from scipy.ndimage import gaussian_filter1d

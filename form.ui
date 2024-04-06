@@ -344,7 +344,7 @@
            </widget>
            <widget class="QWidget" name="Biology_page">
             <property name="styleSheet">
-             <string notr="true">background-color:rgb(255, 255, 0)</string>
+             <string notr="true"/>
             </property>
             <widget class="QPushButton" name="min_max">
              <property name="geometry">
@@ -356,7 +356,7 @@
               </rect>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(255, 0, 0)</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>find min max</string>
@@ -585,7 +585,8 @@
            </widget>
            <widget class="QWidget" name="filter">
             <property name="styleSheet">
-             <string notr="true">background-color:rgb(255, 170, 255)</string>
+             <string notr="true">
+</string>
             </property>
             <widget class="QPushButton" name="move">
              <property name="geometry">
@@ -657,12 +658,40 @@
               <rect>
                <x>290</x>
                <y>70</y>
-               <width>81</width>
-               <height>41</height>
+               <width>64</width>
+               <height>64</height>
               </rect>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>boxcar function</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="text">
-              <string>Boxcar</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
              </property>
             </widget>
             <widget class="QPushButton" name="median">
@@ -949,7 +978,7 @@ rgb:(255, 255, 255);
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-346</y>
              <width>114</width>
              <height>1324</height>
             </rect>
@@ -996,7 +1025,7 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>assets/plot.png</normaloff>assets/plot.png</iconset>
+                <normaloff>assets/buttons/types/plot.png</normaloff>assets/buttons/types/plot.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1028,7 +1057,7 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>assets/Bar-Chart.png</normaloff>assets/Bar-Chart.png</iconset>
+                <normaloff>assets/buttons/types/Bar-Chart.png</normaloff>assets/buttons/types/Bar-Chart.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1060,7 +1089,7 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>assets/Pie-Chart.png</normaloff>assets/Pie-Chart.png</iconset>
+                <normaloff>assets/buttons/types/Pie-Chart.png</normaloff>assets/buttons/types/Pie-Chart.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1092,7 +1121,7 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>assets/fill_between.png</normaloff>assets/fill_between.png</iconset>
+                <normaloff>assets/buttons/types/fill_between.png</normaloff>assets/buttons/types/fill_between.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1124,7 +1153,7 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>assets/stackplot.png</normaloff>assets/stackplot.png</iconset>
+                <normaloff>assets/buttons/types/stackplot.png</normaloff>assets/buttons/types/stackplot.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1372,7 +1401,7 @@ background-color: rgb(23, 23, 23);</string>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
