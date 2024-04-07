@@ -40,7 +40,7 @@ class Tab(QWidget):
         self.interval = 300
         self.timer.timeout.connect(self.realtime)
         self.last_plot = self.to_plot
-        self.typeNum = 0
+        self.typeNum = None
 
         self.def_vals = None
         self.button_pressed = False
@@ -646,6 +646,7 @@ class Tab(QWidget):
 
     def to_plot(self):
         self.figure.clear()
+
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
@@ -653,10 +654,12 @@ class Tab(QWidget):
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
-        self.last_plot = self.to_plot
-        xlim = self.ax.get_xlim()
-        ylim = self.ax.get_ylim()
-        self.def_vals = [xlim, ylim]
+        if self.typeNum != 0:
+            self.typeNum = 0
+            self.last_plot = self.to_plot
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
 
 
         
@@ -669,16 +672,18 @@ class Tab(QWidget):
         self.ax = self.figure.add_subplot()
         data = self.dataframe.iloc[:, 1:].sum()
         self.ax.pie(data, labels=data.index, colors=self.colors, autopct='%1.1f%%')
-        self.last_plot = self.to_pie_chart
-        xlim = self.ax.get_xlim()
-        ylim = self.ax.get_ylim()
-        self.def_vals = [xlim, ylim]
+
+        if self.typeNum != 1:
+            self.typeNum = 1
+            self.last_plot = self.to_pie_chart
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
 
         self.custom_plot()
 
     def to_bar_chart(self):
         self.figure.clear()
-        self.last_plot = self.to_bar_chart
         self.ax = self.figure.add_subplot()
 
         num_cols = len(self.dataframe.columns)
@@ -692,11 +697,18 @@ class Tab(QWidget):
             except (ValueError, TypeError) as e:
                 print(f"Error plotting column '{col}': {e}")
 
+
+        if self.typeNum != 2:
+            self.typeNum = 2
+            self.last_plot = self.to_bar_chart
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
+
         self.custom_plot()
 
     def to_fill_between(self):
         self.figure.clear()
-        self.last_plot = self.to_fill_between
         self.ax = self.figure.add_subplot()
         x = np.array(self.dataframe.iloc[:, 0])
         for col in self.dataframe.columns[1:]:
@@ -706,11 +718,17 @@ class Tab(QWidget):
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
+        if self.typeNum != 3:
+            self.typeNum = 3
+            self.last_plot = self.to_fill_between
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
+
         self.custom_plot()
 
     def to_stack_plot(self):
         self.figure.clear()
-        self.last_plot = self.to_stack_plot
         self.ax = self.figure.add_subplot()
         x = self.dataframe.iloc[:, 0]
         y = self.dataframe.iloc[:, 1:].values.T
@@ -721,6 +739,14 @@ class Tab(QWidget):
             self.ax.stackplot(x, y, labels=labels, colors=colors, baseline='zero')
         except Exception as e:
             print(f"Error plotting stack plot: {e}")
+
+        if self.typeNum != 4:
+            self.typeNum = 4
+            self.last_plot = self.to_stack_plot
+            self.last_plot = self.to_fill_between
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
 
         self.custom_plot()
 
