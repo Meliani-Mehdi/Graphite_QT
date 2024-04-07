@@ -585,8 +585,7 @@
            </widget>
            <widget class="QWidget" name="filter">
             <property name="styleSheet">
-             <string notr="true">
-</string>
+             <string notr="true"/>
             </property>
             <widget class="QPushButton" name="move">
              <property name="geometry">
@@ -890,7 +889,7 @@ rgb:(255, 255, 255);
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="focus">
               <property name="minimumSize">
                <size>
                 <width>32</width>
@@ -908,6 +907,10 @@ rgb:(255, 255, 255);
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/focus.png</normaloff>assets/focus.png</iconset>
               </property>
              </widget>
             </item>

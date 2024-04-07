@@ -116,6 +116,10 @@ class Graphite(QMainWindow):
         self.ui.fill_between.clicked.connect(self.toFill)
         self.ui.stackplot.clicked.connect(self.toStack)
 
+        #buttons
+
+        self.ui.focus.clicked.connect(self.focus)
+
         self.tabs = []
 
         self.customize_dialog = CustomizeDialog(self)
@@ -125,6 +129,7 @@ class Graphite(QMainWindow):
         self.export_dialog = ExportDialog(self)
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
+
 
 
     def apply_chebyshev_filter(self):
@@ -742,6 +747,15 @@ class Graphite(QMainWindow):
                     QMessageBox.warning(self, 'Error', f'Error loading file: {e}')
             else:
                 QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, JSON.')
+
+    def focus(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            tab.focus()
+
 
     def saveAs(self):
         current_index = self.ui.graphTab.currentIndex()

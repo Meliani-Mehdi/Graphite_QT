@@ -34,11 +34,15 @@ class Tab(QWidget):
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
         self.legend = True
+
         self.time_check = False
         self.timer = QTimer(self)
         self.interval = 300
         self.timer.timeout.connect(self.realtime)
         self.last_plot = self.to_plot
+        self.typeNum = 0
+
+        self.def_vals = None
         self.button_pressed = False
 
         self.figure, self.ax = plt.subplots()
@@ -98,9 +102,15 @@ class Tab(QWidget):
         self.ax.set_ylim(new_ylim)
         self.figure.canvas.draw_idle()
 
+    def focus(self):
+        if self.def_vals is not None:
+            self.ax.set_xlim(self.def_vals[0])
+            self.ax.set_ylim(self.def_vals[1])
+            self.plot_widget.draw()
 
 
 
+    #filtters
 
 
 
@@ -617,6 +627,9 @@ class Tab(QWidget):
 
         self.custom_plot()
 
+
+    #refresh
+
     def custom_plot(self):
         self.ax.set_title(self.name)
         self.ax.set_xlabel(self.xlabel)
@@ -629,15 +642,24 @@ class Tab(QWidget):
         self.plot_widget.draw()
 
 
+    #plot types
+
     def to_plot(self):
         self.figure.clear()
-        self.last_plot = self.to_plot
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
                 self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker='o')
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
+
+        self.last_plot = self.to_plot
+        xlim = self.ax.get_xlim()
+        ylim = self.ax.get_ylim()
+        self.def_vals = [xlim, ylim]
+
+
+        
 
         self.custom_plot()
 
@@ -647,7 +669,11 @@ class Tab(QWidget):
         self.ax = self.figure.add_subplot()
         data = self.dataframe.iloc[:, 1:].sum()
         self.ax.pie(data, labels=data.index, colors=self.colors, autopct='%1.1f%%')
-        self.ax.set_title(self.name)
+        self.last_plot = self.to_pie_chart
+        xlim = self.ax.get_xlim()
+        ylim = self.ax.get_ylim()
+        self.def_vals = [xlim, ylim]
+
         self.custom_plot()
 
     def to_bar_chart(self):
