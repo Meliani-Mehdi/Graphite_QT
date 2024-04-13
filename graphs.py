@@ -811,7 +811,6 @@ class Tab(QWidget):
             except Exception as e:
                 pass
             self.dataframe = df
-        self.custom_plot()
         self.last_plot()
 
     def closePlot(self):
