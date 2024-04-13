@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'export.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.2
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -24,7 +24,10 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(480, 550)
+        Dialog.resize(300, 400)
+        Dialog.setStyleSheet(u"QFrame { \n"
+"	border: none;\n"
+"}")
         self.gridLayout = QGridLayout(Dialog)
         self.gridLayout.setObjectName(u"gridLayout")
         self.label_2 = QLabel(Dialog)
@@ -34,7 +37,7 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.label_2, 1, 2, 1, 1)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer_4, 6, 0, 1, 3)
 
@@ -43,7 +46,7 @@ class Ui_Dialog(object):
         self.horizontalFrame.setMinimumSize(QSize(0, 100))
         self.horizontalLayout = QHBoxLayout(self.horizontalFrame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -57,7 +60,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.expo)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
@@ -80,7 +83,7 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.format, 2, 2, 1, 1)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer_2, 0, 0, 1, 3)
 
@@ -89,7 +92,7 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.label_3, 4, 0, 1, 1)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer, 11, 0, 1, 3)
 
@@ -113,7 +116,7 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer_3, 3, 0, 1, 3)
 

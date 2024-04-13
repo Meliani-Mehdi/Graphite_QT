@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.3
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -41,11 +41,14 @@ class Ui_Dialog(object):
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(200, 50))
         self.frame.setMaximumSize(QSize(280, 50))
+        self.frame.setStyleSheet(u"QFrame { \n"
+"	border: none;\n"
+"}")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout = QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -83,7 +86,7 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.graph_title, 0, 1, 1, 3)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_2, 6, 0, 1, 1)
 

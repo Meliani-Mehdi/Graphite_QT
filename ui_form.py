@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.3
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -103,6 +103,9 @@ class Ui_Graphite(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setStyleSheet(u"QFrame { \n"
+"	border: none;\n"
+"}")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
 
@@ -117,7 +120,9 @@ class Ui_Graphite(object):
 
         self.frame_3 = QFrame(self.frame)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setStyleSheet(u"")
+        self.frame_3.setStyleSheet(u"QFrame { \n"
+"	border: none;\n"
+"}")
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame_3)
@@ -127,6 +132,13 @@ class Ui_Graphite(object):
         self.custom_button_2.setObjectName(u"custom_button_2")
         self.custom_button_2.setMinimumSize(QSize(32, 32))
         self.custom_button_2.setMaximumSize(QSize(32, 32))
+        self.custom_button_2.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_2, 2, 0, 1, 1)
 
@@ -134,6 +146,17 @@ class Ui_Graphite(object):
         self.custom_button_3.setObjectName(u"custom_button_3")
         self.custom_button_3.setMinimumSize(QSize(32, 32))
         self.custom_button_3.setMaximumSize(QSize(32, 32))
+        self.custom_button_3.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
+        icon1 = QIcon()
+        icon1.addFile(u"assets/formula.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.custom_button_3.setIcon(icon1)
+        self.custom_button_3.setIconSize(QSize(32, 32))
 
         self.gridLayout_2.addWidget(self.custom_button_3, 2, 1, 1, 1)
 
@@ -141,6 +164,13 @@ class Ui_Graphite(object):
         self.custom_button_6.setObjectName(u"custom_button_6")
         self.custom_button_6.setMinimumSize(QSize(32, 32))
         self.custom_button_6.setMaximumSize(QSize(32, 32))
+        self.custom_button_6.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_6, 1, 2, 1, 1)
 
@@ -148,6 +178,13 @@ class Ui_Graphite(object):
         self.custom_button_10.setObjectName(u"custom_button_10")
         self.custom_button_10.setMinimumSize(QSize(32, 32))
         self.custom_button_10.setMaximumSize(QSize(32, 32))
+        self.custom_button_10.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_10, 1, 0, 1, 1)
 
@@ -155,6 +192,13 @@ class Ui_Graphite(object):
         self.custom_button_4.setObjectName(u"custom_button_4")
         self.custom_button_4.setMinimumSize(QSize(32, 32))
         self.custom_button_4.setMaximumSize(QSize(32, 32))
+        self.custom_button_4.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_4, 1, 1, 1, 1)
 
@@ -162,9 +206,16 @@ class Ui_Graphite(object):
         self.custom_button.setObjectName(u"custom_button")
         self.custom_button.setMinimumSize(QSize(32, 32))
         self.custom_button.setMaximumSize(QSize(32, 32))
-        icon1 = QIcon()
-        icon1.addFile(u"assets/formula.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.custom_button.setIcon(icon1)
+        self.custom_button.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
+        icon2 = QIcon()
+        icon2.addFile(u"assets/pen.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.custom_button.setIcon(icon2)
         self.custom_button.setIconSize(QSize(32, 32))
 
         self.gridLayout_2.addWidget(self.custom_button, 2, 2, 1, 1)
@@ -173,6 +224,13 @@ class Ui_Graphite(object):
         self.custom_button_7.setObjectName(u"custom_button_7")
         self.custom_button_7.setMinimumSize(QSize(32, 32))
         self.custom_button_7.setMaximumSize(QSize(32, 32))
+        self.custom_button_7.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_7, 0, 2, 1, 1)
 
@@ -180,6 +238,13 @@ class Ui_Graphite(object):
         self.custom_button_8.setObjectName(u"custom_button_8")
         self.custom_button_8.setMinimumSize(QSize(32, 32))
         self.custom_button_8.setMaximumSize(QSize(32, 32))
+        self.custom_button_8.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_8, 0, 1, 1, 1)
 
@@ -187,6 +252,13 @@ class Ui_Graphite(object):
         self.custom_button_9.setObjectName(u"custom_button_9")
         self.custom_button_9.setMinimumSize(QSize(32, 32))
         self.custom_button_9.setMaximumSize(QSize(32, 32))
+        self.custom_button_9.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"")
 
         self.gridLayout_2.addWidget(self.custom_button_9, 0, 0, 1, 1)
 
@@ -290,9 +362,9 @@ class Ui_Graphite(object):
         self.boxcar.setMinimumSize(QSize(64, 64))
         self.boxcar.setMaximumSize(QSize(64, 64))
         self.boxcar.setStyleSheet(u"")
-        icon2 = QIcon()
-        icon2.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.boxcar.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.boxcar.setIcon(icon3)
         self.boxcar.setIconSize(QSize(64, 64))
         self.median = QPushButton(self.filter)
         self.median.setObjectName(u"median")
@@ -368,9 +440,9 @@ class Ui_Graphite(object):
         self.focus.setMinimumSize(QSize(32, 32))
         self.focus.setMaximumSize(QSize(32, 32))
         self.focus.setCursor(QCursor(Qt.PointingHandCursor))
-        icon3 = QIcon()
-        icon3.addFile(u"assets/focus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.focus.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u"assets/focus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.focus.setIcon(icon4)
 
         self.horizontalLayout_2.addWidget(self.focus)
 
@@ -421,9 +493,9 @@ class Ui_Graphite(object):
         self.plot.setMinimumSize(QSize(110, 110))
         self.plot.setMaximumSize(QSize(110, 110))
         self.plot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon4 = QIcon()
-        icon4.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.plot.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.plot.setIcon(icon5)
         self.plot.setIconSize(QSize(120, 120))
 
         self.verticalLayout_3.addWidget(self.plot)
@@ -433,9 +505,9 @@ class Ui_Graphite(object):
         self.histogram.setMinimumSize(QSize(110, 110))
         self.histogram.setMaximumSize(QSize(110, 110))
         self.histogram.setCursor(QCursor(Qt.PointingHandCursor))
-        icon5 = QIcon()
-        icon5.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.histogram.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.histogram.setIcon(icon6)
         self.histogram.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.histogram)
@@ -445,9 +517,9 @@ class Ui_Graphite(object):
         self.piechart.setMinimumSize(QSize(110, 110))
         self.piechart.setMaximumSize(QSize(110, 110))
         self.piechart.setCursor(QCursor(Qt.PointingHandCursor))
-        icon6 = QIcon()
-        icon6.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.piechart.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.piechart.setIcon(icon7)
         self.piechart.setIconSize(QSize(110, 110))
 
         self.verticalLayout_3.addWidget(self.piechart, 0, Qt.AlignTop)
@@ -457,9 +529,9 @@ class Ui_Graphite(object):
         self.fill_between.setMinimumSize(QSize(110, 110))
         self.fill_between.setMaximumSize(QSize(110, 110))
         self.fill_between.setCursor(QCursor(Qt.PointingHandCursor))
-        icon7 = QIcon()
-        icon7.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.fill_between.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.fill_between.setIcon(icon8)
         self.fill_between.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.fill_between, 0, Qt.AlignTop)
@@ -469,9 +541,9 @@ class Ui_Graphite(object):
         self.stackplot.setMinimumSize(QSize(110, 110))
         self.stackplot.setMaximumSize(QSize(110, 110))
         self.stackplot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon8 = QIcon()
-        icon8.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.stackplot.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stackplot.setIcon(icon9)
         self.stackplot.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.stackplot)
@@ -539,7 +611,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -569,7 +641,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
