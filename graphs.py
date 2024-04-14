@@ -34,6 +34,7 @@ class Tab(QWidget):
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
         self.legend = True
+        self.marker = '1'
 
         self.time_check = False
         self.timer = QTimer(self)
@@ -650,7 +651,7 @@ class Tab(QWidget):
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
-                self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker='o')
+                self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker=self.marker)
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 

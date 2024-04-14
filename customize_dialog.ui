@@ -30,10 +30,43 @@
     <normaloff>assets/Graphite.png</normaloff>assets/Graphite.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
-    <widget class="QLabel" name="yLab">
+   <item row="3" column="1">
+    <widget class="QCheckBox" name="lagend">
      <property name="text">
-      <string>Y Label :</string>
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="lagend_lab">
+     <property name="text">
+      <string>Lagend :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="title_lab">
+     <property name="text">
+      <string>Title :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="real_lab">
+     <property name="minimumSize">
+      <size>
+       <width>80</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>80</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>real time :</string>
      </property>
     </widget>
    </item>
@@ -57,16 +90,16 @@
 }</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -93,52 +126,10 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="title_lab">
-     <property name="text">
-      <string>Title :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="lagend_lab">
-     <property name="text">
-      <string>Lagend :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="3">
-    <widget class="QPlainTextEdit" name="graph_title">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustIgnored</enum>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="0">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -148,35 +139,125 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="1" colspan="3">
-    <widget class="QPlainTextEdit" name="xLabel">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+   <item row="2" column="0">
+    <widget class="QLabel" name="yLab">
+     <property name="text">
+      <string>Y Label :</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="3">
+   <item row="1" column="0">
+    <widget class="QLabel" name="xLab">
+     <property name="text">
+      <string>X Label :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QCheckBox" name="real">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="6">
+    <widget class="QComboBox" name="comboBox">
+     <item>
+      <property name="text">
+       <string>None</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>point</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>pixel</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>circle</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>triangle down</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>triangle up</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>triangle left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>triangle right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>tri down</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>tri up</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>tri left</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>tri right</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>square</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>pentagon</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>plus</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>plus (filled)</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLabel" name="label">
+     <property name="maximumSize">
+      <size>
+       <width>50</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>marker: </string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="6">
     <widget class="QPlainTextEdit" name="yLabel">
      <property name="minimumSize">
       <size>
@@ -194,53 +275,69 @@
       <bool>true</bool>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
      </property>
      <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="xLab">
-     <property name="text">
-      <string>X Label :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QCheckBox" name="lagend">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="real_lab">
+   <item row="1" column="1" colspan="6">
+    <widget class="QPlainTextEdit" name="xLabel">
      <property name="minimumSize">
       <size>
-       <width>80</width>
-       <height>0</height>
+       <width>0</width>
+       <height>33</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>80</width>
-       <height>16777215</height>
+       <width>16777215</width>
+       <height>33</height>
       </size>
      </property>
-     <property name="text">
-      <string>real time :</string>
+     <property name="acceptDrops">
+      <bool>true</bool>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QCheckBox" name="real">
-     <property name="text">
-      <string/>
+   <item row="0" column="1" colspan="6">
+    <widget class="QPlainTextEdit" name="graph_title">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="acceptDrops">
+      <bool>true</bool>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
      </property>
     </widget>
    </item>
