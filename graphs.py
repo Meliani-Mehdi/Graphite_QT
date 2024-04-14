@@ -330,12 +330,13 @@ class Tab(QWidget):
         return savgol_filter(data, window_length, polyorder)
 
     def butterworth_filter(self, data, cutoff, fs=1, btype='lowpass', order=4):
-        b, a = butter(order, cutoff, btype=btype, fs=fs)
+            b, a = butter(order, cutoff, btype=btype, fs=fs)
+            padlen = 3 * max(len(a), len(b))
+            if len(data) <= padlen:
+                raise ValueError("Input data length must be greater than padlen")
+            filtered_data = filtfilt(b, a, data)
+            return filtered_data
 
-        # Apply the filter to the data
-        filtered_data = filtfilt(b, a, data)
-
-        return filtered_data
 
     def median_filter(self, data, kernel_size):
         return medfilt(data, kernel_size)
@@ -358,13 +359,19 @@ class Tab(QWidget):
         return filtered_data
 
     def apply_boxcar_filter(self, dataframe, window_size):
-        filtered_data = np.apply_along_axis(lambda x: np.convolve(x, np.ones(window_size)/window_size, mode='same'), axis=0, arr=dataframe)
+        kernel = np.ones(window_size) / window_size
+        filtered_data = np.apply_along_axis(lambda x: np.convolve(x, kernel, mode='same'), axis=0, arr=dataframe)
         return filtered_data
 
     def apply_kalman_filter(self, dataframe, process_noise, measurement_noise):
-        kf = KalmanFilter()
-        filtered_data = kf.filter(dataframe, process_noise, measurement_noise)
+        dim_x = dataframe.shape[1] - 1
+        dim_z = 1
+        kf = KalmanFilter(dim_x=dim_x, dim_z=dim_z)
+        kf.predict()
+        z = np.mean(dataframe.iloc[:, 1].values)
+        filtered_data = kf.update(z, process_noise, measurement_noise)
         return filtered_data
+
 
    # def create_notch_filter(fs, f0, Q):
     #    nyquist = 0.5 * fs
@@ -393,7 +400,8 @@ class Tab(QWidget):
         return filtered_data
 
     def lowess_filter(self, x_data, y_data, frac):
-        return lowess(y_data, x_data, frac=frac)[:, 1]
+        smoothed = lowess(y_data, x_data, frac=frac)
+        return smoothed[:, 1]
 
     def plot_triple_exponential_fit(self, x_data, y_data):
         self.figure.clear()
