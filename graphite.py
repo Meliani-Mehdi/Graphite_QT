@@ -165,15 +165,15 @@ class Graphite(QMainWindow):
     def apply_lowess_filter(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-            frac, ok = QInputDialog.getDouble(self, "LOWESS Filter", "Enter fraction of data points (0-1):", value=0.1, minValue=0.01, maxValue=0.99, decimals=2)
+            frac, ok = QInputDialog.getDouble(self, "LOWESS Filter", "Enter smoothing fraction (0-1):", value=0.5, decimals=2)
             if ok:
                 widget = self.ui.graphTab.widget(current_index)
                 tab_index = self.tabs.index(widget)
                 tab = self.tabs[tab_index]
-                x_data = tab.dataframe.iloc[:, 0].values
-                y_data = tab.dataframe.iloc[:, 1:].values.flatten()
+                x_data = tab.dataframe.index.values
+                y_data = tab.dataframe.iloc[:, 1].values
                 filtered_data = tab.lowess_filter(x_data, y_data, frac)
-                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=[tab.dataframe.columns[1]], index=tab.dataframe.index))
 
 
     def apply_exponential_filter(self):
@@ -195,8 +195,13 @@ class Graphite(QMainWindow):
                 widget = self.ui.graphTab.widget(current_index)
                 tab_index = self.tabs.index(widget)
                 tab = self.tabs[tab_index]
-                filtered_data = tab.butterworth_filter(tab.dataframe.iloc[:, 1].values, cutoff, fs=1, btype='lowpass', order=4)
-                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+                data = tab.dataframe.iloc[:, 1].values
+                try:
+                    filtered_data = tab.butterworth_filter(data, cutoff, fs=1, btype='lowpass', order=4)
+                    filtered_dataframe = pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index)
+                    tab.plot_filtered_data(filtered_dataframe)
+                except ValueError as e:
+                    print(e)
 
     def apply_moving_average_filter(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -228,13 +233,18 @@ class Graphite(QMainWindow):
     def apply_boxcar_filter(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-            window_size, ok = QInputDialog.getInt(self, "Boxcar Filter", "Enter the window size:", value=3, minValue=1)
+            window_size, ok = QInputDialog.getInt(self, "Boxcar Filter", "Enter window size:", value=3)
             if ok:
+                if window_size < 1:
+                    window_size = 1
                 widget = self.ui.graphTab.widget(current_index)
                 tab_index = self.tabs.index(widget)
                 tab = self.tabs[tab_index]
-                filtered_data = tab.apply_boxcar_filter(tab.dataframe, window_size)
-                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
+                data = tab.dataframe.iloc[:, 1:].values
+                filtered_data = tab.apply_boxcar_filter(data, window_size)
+                filtered_dataframe = pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index)
+                tab.plot_filtered_data(filtered_dataframe)
+
     def apply_kalman_filter(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
@@ -327,7 +337,7 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-            if selected_fit == "lowpass":
+            if selected_fit == "Lowpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the cutoff frequency:", value=0.5)
                 fs, ok2 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the sampling frequency:", value=100.0)
                 order, ok3 = QInputDialog.getInt(self, "Lowpass Filter", "Enter the filter order:", value=3)
@@ -337,7 +347,7 @@ class Graphite(QMainWindow):
                     tab = self.tabs[tab_index]
                     filtered_data = tab.apply_lowpass_filter(tab.dataframe, cutoff, fs, order)
                     tab.plot_filtered_data(filtered_data)
-            elif selected_fit == "bandpass":
+            elif selected_fit == "Bandpass":
                 lowcut, ok1 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the lowcut frequency:", value=0.1)
                 highcut, ok2 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the highcut frequency:", value=0.9)
                 fs, ok3 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the sampling frequency:", value=100.0)
@@ -348,7 +358,7 @@ class Graphite(QMainWindow):
                     tab = self.tabs[tab_index]
                     filtered_data = tab.apply_bandpass_filter(tab.dataframe, lowcut, highcut, fs, order)
                     tab.plot_filtered_data(filtered_data)
-            elif selected_fit == "hipass":
+            elif selected_fit == "Hipass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the cutoff frequency:", value=0.1)
                 fs, ok2 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the sampling frequency:", value=100.0)
                 order, ok3 = QInputDialog.getInt(self, "Highpass Filter", "Enter the filter order:", value=3)
