@@ -139,9 +139,12 @@ class Graphite(QMainWindow):
 
 
     def fx(self):
-        tab = Tab()
+        current_index = self.ui.graphTab.currentIndex()
         function_str,ok = QInputDialog.getText(self, 'Enter Custom Function', 'Enter your custom function:')
         if ok:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
             tab.plot_entered_function(function_str)
         else:
             QMessageBox.warning(self, 'Warning', 'Please enter a function to plot.')
