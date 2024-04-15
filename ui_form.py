@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -41,7 +41,7 @@ class Ui_Graphite(object):
         self.open_recent.setObjectName(u"open_recent")
         self.exit_app = QAction(Graphite)
         self.exit_app.setObjectName(u"exit_app")
-        self.exit_app.setMenuRole(QAction.MenuRole.QuitRole)
+        self.exit_app.setMenuRole(QAction.NoRole)
         self.actionpref = QAction(Graphite)
         self.actionpref.setObjectName(u"actionpref")
         self.settings = QAction(Graphite)
@@ -73,6 +73,8 @@ class Ui_Graphite(object):
         self.actionfilters.setCheckable(False)
         self.actiondata_manipulation = QAction(Graphite)
         self.actiondata_manipulation.setObjectName(u"actiondata_manipulation")
+        self.actionfx = QAction(Graphite)
+        self.actionfx.setObjectName(u"actionfx")
         self.mainLayout = QWidget(Graphite)
         self.mainLayout.setObjectName(u"mainLayout")
         self.mainLayout.setMinimumSize(QSize(1200, 642))
@@ -87,8 +89,7 @@ class Ui_Graphite(object):
         self.frame1.setMinimumSize(QSize(0, 160))
         self.frame1.setMaximumSize(QSize(16777215, 160))
         self.frame1.setStyleSheet(u"background-color: rgb(30, 30, 30);")
-        self.frame1.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame1.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame1.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_3 = QHBoxLayout(self.frame1)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -97,8 +98,7 @@ class Ui_Graphite(object):
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(250, 0))
         self.frame.setMaximumSize(QSize(250, 16777215))
-        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_4 = QHBoxLayout(self.frame)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.frame_2 = QFrame(self.frame)
@@ -106,15 +106,14 @@ class Ui_Graphite(object):
         self.frame_2.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
 "}")
-        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_2.setFrameShape(QFrame.NoFrame)
 
         self.horizontalLayout_4.addWidget(self.frame_2)
 
         self.line = QFrame(self.frame)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.VLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.line.setFrameShape(QFrame.VLine)
+        self.line.setFrameShadow(QFrame.Sunken)
 
         self.horizontalLayout_4.addWidget(self.line)
 
@@ -123,8 +122,7 @@ class Ui_Graphite(object):
         self.frame_3.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
 "}")
-        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.frame_3.setFrameShape(QFrame.NoFrame)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.custom_button_2 = QPushButton(self.frame_3)
@@ -166,18 +164,18 @@ class Ui_Graphite(object):
 
         self.verticalLayout_2.addWidget(self.custom_button)
 
-        self.custom_button_3 = QPushButton(self.frame_3)
-        self.custom_button_3.setObjectName(u"custom_button_3")
-        self.custom_button_3.setMinimumSize(QSize(0, 0))
-        self.custom_button_3.setMaximumSize(QSize(16777215, 16777215))
+        self.worksheet = QPushButton(self.frame_3)
+        self.worksheet.setObjectName(u"worksheet")
+        self.worksheet.setMinimumSize(QSize(0, 0))
+        self.worksheet.setMaximumSize(QSize(16777215, 16777215))
         font1 = QFont()
         font1.setFamilies([u"ProFontWindows Nerd Font Propo"])
         font1.setPointSize(12)
         font1.setBold(True)
         font1.setStyleStrategy(QFont.PreferDefault)
-        self.custom_button_3.setFont(font1)
-        self.custom_button_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.custom_button_3.setStyleSheet(u"QPushButton {\n"
+        self.worksheet.setFont(font1)
+        self.worksheet.setCursor(QCursor(Qt.PointingHandCursor))
+        self.worksheet.setStyleSheet(u"QPushButton {\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:pressed {\n"
@@ -186,10 +184,10 @@ class Ui_Graphite(object):
 "")
         icon2 = QIcon()
         icon2.addFile(u"assets/formula.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.custom_button_3.setIcon(icon2)
-        self.custom_button_3.setIconSize(QSize(32, 32))
+        self.worksheet.setIcon(icon2)
+        self.worksheet.setIconSize(QSize(32, 32))
 
-        self.verticalLayout_2.addWidget(self.custom_button_3)
+        self.verticalLayout_2.addWidget(self.worksheet)
 
 
         self.horizontalLayout_4.addWidget(self.frame_3)
@@ -405,12 +403,12 @@ class Ui_Graphite(object):
         self.graphTypes.setObjectName(u"graphTypes")
         self.graphTypes.setMinimumSize(QSize(130, 0))
         self.graphTypes.setMaximumSize(QSize(130, 16777215))
-        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 1364))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -451,7 +449,7 @@ class Ui_Graphite(object):
         self.piechart.setIcon(icon7)
         self.piechart.setIconSize(QSize(110, 110))
 
-        self.verticalLayout_3.addWidget(self.piechart, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout_3.addWidget(self.piechart)
 
         self.fill_between = QPushButton(self.typeButtons)
         self.fill_between.setObjectName(u"fill_between")
@@ -463,7 +461,7 @@ class Ui_Graphite(object):
         self.fill_between.setIcon(icon8)
         self.fill_between.setIconSize(QSize(100, 100))
 
-        self.verticalLayout_3.addWidget(self.fill_between, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout_3.addWidget(self.fill_between)
 
         self.stackplot = QPushButton(self.typeButtons)
         self.stackplot.setObjectName(u"stackplot")
@@ -540,7 +538,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -570,7 +568,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -600,6 +598,7 @@ class Ui_Graphite(object):
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.exit_app)
         self.menuNew.addAction(self.actionWork_sheet)
+        self.menuNew.addAction(self.actionfx)
         self.menuEdit.addAction(self.actionpref)
         self.menuEdit.addAction(self.settings)
         self.menuHelp.addAction(self.about)
@@ -655,9 +654,10 @@ class Ui_Graphite(object):
         self.actionWork_sheet.setText(QCoreApplication.translate("Graphite", u"Work sheet", None))
         self.actionfilters.setText(QCoreApplication.translate("Graphite", u"filters", None))
         self.actiondata_manipulation.setText(QCoreApplication.translate("Graphite", u"data manipulation", None))
+        self.actionfx.setText(QCoreApplication.translate("Graphite", u"fx", None))
         self.custom_button_2.setText(QCoreApplication.translate("Graphite", u"Customize", None))
         self.custom_button.setText(QCoreApplication.translate("Graphite", u"Customize", None))
-        self.custom_button_3.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
+        self.worksheet.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
         self.min_max.setText(QCoreApplication.translate("Graphite", u"find min max", None))
         self.Polynome.setText(QCoreApplication.translate("Graphite", u"polynome", None))
         self.linear.setText(QCoreApplication.translate("Graphite", u"linear", None))

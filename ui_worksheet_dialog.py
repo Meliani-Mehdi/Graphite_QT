@@ -15,39 +15,47 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QHeaderView,
-    QSizePolicy, QTableWidget, QTableWidgetItem, QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QLabel, QPushButton,
+    QSizePolicy, QVBoxLayout, QWidget)
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        if not Dialog.objectName():
-            Dialog.setObjectName(u"Dialog")
-        Dialog.resize(400, 504)
-        self.frame = QFrame(Dialog)
-        self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(20, 10, 361, 471))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.worksheet = QTableWidget(self.frame)
-        if (self.worksheet.columnCount() < 2):
-            self.worksheet.setColumnCount(2)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.worksheet.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.worksheet.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        self.worksheet.setObjectName(u"worksheet")
-        self.worksheet.setGeometry(QRect(0, 0, 361, 471))
+class Ui_Dialog2(object):
+    def setupUi(self, Dialog2):
+        if not Dialog2.objectName():
+            Dialog2.setObjectName(u"Dialog2")
+        Dialog2.resize(400, 480)
+        self.label = QLabel(Dialog2)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(30, 10, 141, 21))
+        self.label.setStyleSheet(u"")
+        self.label.setAlignment(Qt.AlignCenter)
+        self.label_2 = QLabel(Dialog2)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(170, 10, 141, 21))
+        self.label_2.setLineWidth(1)
+        self.label_2.setAlignment(Qt.AlignCenter)
+        self.addwork = QPushButton(Dialog2)
+        self.addwork.setObjectName(u"addwork")
+        self.addwork.setGeometry(QRect(40, 420, 101, 41))
+        self.plotwork = QPushButton(Dialog2)
+        self.plotwork.setObjectName(u"plotwork")
+        self.plotwork.setGeometry(QRect(190, 420, 101, 41))
+        self.verticalLayoutWidget = QWidget(Dialog2)
+        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
+        self.verticalLayoutWidget.setGeometry(QRect(30, 60, 311, 311))
+        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
 
-        self.retranslateUi(Dialog)
+        self.retranslateUi(Dialog2)
 
-        QMetaObject.connectSlotsByName(Dialog)
+        QMetaObject.connectSlotsByName(Dialog2)
     # setupUi
 
-    def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        ___qtablewidgetitem = self.worksheet.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog", u"a(x)", None));
-        ___qtablewidgetitem1 = self.worksheet.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Dialog", u"b(y)", None));
+    def retranslateUi(self, Dialog2):
+        Dialog2.setWindowTitle(QCoreApplication.translate("Dialog2", u"Dialog", None))
+        self.label.setText(QCoreApplication.translate("Dialog2", u"X", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog2", u"Y", None))
+        self.addwork.setText(QCoreApplication.translate("Dialog2", u"add", None))
+        self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
     # retranslateUi
 
