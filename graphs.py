@@ -115,18 +115,14 @@ class Tab(QWidget):
 
 
     def plot_entered_function(self, function_str):
-           self.figure.clear()
-           self.ax = self.figure.add_subplot()
-
            try:
-               x_values = np.linspace(-10, 10, 400)
-               y_values = eval(function_str)
-               self.ax.plot(x_values, y_values, label=function_str)
-               self.ax.legend()
-               self.custom_plot()
+               x_values = np.linspace(-10, 10, 100)  # Define the range of x values
+               y_values = eval(function_str, {'np': np, 'x': x_values})  # Evaluate the entered function
+               self.ax.clear()  # Clear the previous plot
+               self.ax.plot(x_values, y_values, color='red', label='Entered Function')  # Plot the entered function
+               self.custom_plot()  # Update the plot
            except Exception as e:
-               print(f"Error plotting entered function: {e}")
-
+              print( 'Error', f"Error plotting entered function: {e}")
     def plot_polynomial_curve(self, x_data, y_data, degree):
         self.figure.clear()
         self.ax = self.figure.add_subplot()
