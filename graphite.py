@@ -2,13 +2,15 @@ import sys
 import numpy as np
 import os
 from PySide6.QtGui import QKeySequence, QShortcut
-from PySide6.QtCore import QDir
+from PySide6.QtCore import QDir,Qt
 import pandas as pd
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
 from graphs import Tab
+
+
 
 class CustomizeDialog(QDialog):
     def __init__(self, parent=None):
@@ -68,12 +70,14 @@ class Graphite(QMainWindow):
         self.ui.treeView.setDropIndicatorShown(True)
         
         self.ui.treeView.setDragDropMode(QAbstractItemView.InternalMove)
-        
+        self.ui.actionfx.triggered.connect(self.fx)
+
         self.ui.treeView.dragEnterEvent = self.dragEnterEvent
         self.ui.treeView.dragMoveEvent = self.dragMoveEvent
         self.ui.treeView.dropEvent = self.dropEvent
         
         self.ui.treeView.doubleClicked.connect(self.treeFileIndex)
+
 
 
         self.ui.MathMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(0))
@@ -129,6 +133,22 @@ class Graphite(QMainWindow):
         self.export_dialog = ExportDialog(self)
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
+
+
+
+
+
+    def fx(self):
+        current_index = self.ui.graphTab.currentIndex()
+        function_str,ok = QInputDialog.getText(self, 'Enter Custom Function', 'Enter your custom function:')
+        if ok:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            tab.plot_entered_function(function_str)
+        else:
+            QMessageBox.warning(self, 'Warning', 'Please enter a function to plot.')
+
 
 
 
@@ -526,6 +546,13 @@ class Graphite(QMainWindow):
 
                     # Plot the original data and the fitted line using Matplotlib
             tab.plot_linear_fit(x_data, y_data, x_fit, y_fit)
+
+
+
+
+
+
+
 
 
                 ## customize ##
