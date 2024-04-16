@@ -16,6 +16,9 @@
   <property name="styleSheet">
    <string notr="true">QFrame { 
 	border: none;
+}
+QLabel {
+    color: black;
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" rowstretch="2,0,0,0,0,0,0,0,0,0,0,3,0,0">

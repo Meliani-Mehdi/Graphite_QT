@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,10 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QCheckBox, QComboBox,
-    QDialog, QHBoxLayout, QLabel, QPlainTextEdit,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDialog,
+    QHBoxLayout, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -30,6 +29,9 @@ class Ui_Dialog(object):
         icon = QIcon()
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Dialog.setWindowIcon(icon)
+        Dialog.setStyleSheet(u"QLabel {\n"
+"    color: black;\n"
+"}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
@@ -39,14 +41,8 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.title_lab)
 
-        self.graph_title = QPlainTextEdit(Dialog)
+        self.graph_title = QLineEdit(Dialog)
         self.graph_title.setObjectName(u"graph_title")
-        self.graph_title.setMinimumSize(QSize(0, 33))
-        self.graph_title.setMaximumSize(QSize(16777215, 33))
-        self.graph_title.setAcceptDrops(True)
-        self.graph_title.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.graph_title.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.graph_title.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
 
         self.horizontalLayout_2.addWidget(self.graph_title)
 
@@ -62,14 +58,8 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_3.addWidget(self.xLab)
 
-        self.xLabel = QPlainTextEdit(Dialog)
+        self.xLabel = QLineEdit(Dialog)
         self.xLabel.setObjectName(u"xLabel")
-        self.xLabel.setMinimumSize(QSize(0, 33))
-        self.xLabel.setMaximumSize(QSize(16777215, 33))
-        self.xLabel.setAcceptDrops(True)
-        self.xLabel.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.xLabel.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.xLabel.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
 
         self.horizontalLayout_3.addWidget(self.xLabel)
 
@@ -85,14 +75,8 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_4.addWidget(self.yLab)
 
-        self.yLabel = QPlainTextEdit(Dialog)
+        self.yLabel = QLineEdit(Dialog)
         self.yLabel.setObjectName(u"yLabel")
-        self.yLabel.setMinimumSize(QSize(0, 33))
-        self.yLabel.setMaximumSize(QSize(16777215, 33))
-        self.yLabel.setAcceptDrops(True)
-        self.yLabel.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.yLabel.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.yLabel.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
 
         self.horizontalLayout_4.addWidget(self.yLabel)
 
@@ -241,13 +225,13 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        self.verticalSpacer = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer)
 

@@ -27,6 +27,9 @@ class Ui_Dialog(object):
         Dialog.resize(300, 400)
         Dialog.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
+"}\n"
+"QLabel {\n"
+"    color: black;\n"
 "}")
         self.gridLayout = QGridLayout(Dialog)
         self.gridLayout.setObjectName(u"gridLayout")

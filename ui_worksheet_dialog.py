@@ -23,6 +23,9 @@ class Ui_Dialog2(object):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
         Dialog2.resize(400, 480)
+        Dialog2.setStyleSheet(u"QLabel {\n"
+"    color: black;\n"
+"}")
         self.addwork = QPushButton(Dialog2)
         self.addwork.setObjectName(u"addwork")
         self.addwork.setGeometry(QRect(20, 420, 101, 41))

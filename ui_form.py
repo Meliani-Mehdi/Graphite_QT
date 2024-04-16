@@ -30,6 +30,9 @@ class Ui_Graphite(object):
         icon = QIcon()
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Graphite.setWindowIcon(icon)
+        Graphite.setStyleSheet(u"QLabel {\n"
+"    color: black;\n"
+"}")
         Graphite.setIconSize(QSize(50, 50))
         self.open_file = QAction(Graphite)
         self.open_file.setObjectName(u"open_file")
@@ -140,7 +143,9 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: rgba(0, 0, 0, 0.5);\n"
 "}\n"
-"")
+"QPushButton {\n"
+"    color: white;\n"
+"}")
 
         self.verticalLayout_2.addWidget(self.custom_button_2)
 
@@ -156,7 +161,9 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: rgba(0, 0, 0, 0.5);\n"
 "}\n"
-"")
+"QPushButton {\n"
+"    color: white;\n"
+"}")
         icon1 = QIcon()
         icon1.addFile(u"assets/pen.png", QSize(), QIcon.Normal, QIcon.Off)
         self.custom_button.setIcon(icon1)
@@ -181,6 +188,10 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: rgba(0, 0, 0, 0.5);\n"
 "}\n"
+"QPushButton {\n"
+"    color: white;\n"
+"}\n"
+"\n"
 "")
         icon2 = QIcon()
         icon2.addFile(u"assets/formula.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -326,11 +337,16 @@ class Ui_Graphite(object):
         self.frame2 = QVBoxLayout()
         self.frame2.setSpacing(0)
         self.frame2.setObjectName(u"frame2")
-        self.horizontalLayout_2 = QHBoxLayout()
+        self.tree_header = QWidget(self.mainLayout)
+        self.tree_header.setObjectName(u"tree_header")
+        self.tree_header.setStyleSheet(u"QLabel {\n"
+"    color: white;\n"
+"}")
+        self.horizontalLayout_2 = QHBoxLayout(self.tree_header)
         self.horizontalLayout_2.setSpacing(6)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(3, 3, 3, 3)
-        self.folder_icon = QLabel(self.mainLayout)
+        self.folder_icon = QLabel(self.tree_header)
         self.folder_icon.setObjectName(u"folder_icon")
         self.folder_icon.setMaximumSize(QSize(30, 30))
         self.folder_icon.setPixmap(QPixmap(u"assets/folders.png"))
@@ -338,15 +354,14 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_2.addWidget(self.folder_icon)
 
-        self.project_lab = QLabel(self.mainLayout)
+        self.project_lab = QLabel(self.tree_header)
         self.project_lab.setObjectName(u"project_lab")
         self.project_lab.setStyleSheet(u"font: 700 10pt \"ProFontWindows Nerd Font Propo\";\n"
-"rgb:(255, 255, 255);\n"
 "")
 
         self.horizontalLayout_2.addWidget(self.project_lab)
 
-        self.pushButton = QPushButton(self.mainLayout)
+        self.pushButton = QPushButton(self.tree_header)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMinimumSize(QSize(32, 32))
         self.pushButton.setMaximumSize(QSize(32, 32))
@@ -354,7 +369,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_2.addWidget(self.pushButton)
 
-        self.pushButton_3 = QPushButton(self.mainLayout)
+        self.pushButton_3 = QPushButton(self.tree_header)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setMinimumSize(QSize(32, 32))
         self.pushButton_3.setMaximumSize(QSize(32, 32))
@@ -362,7 +377,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_2.addWidget(self.pushButton_3)
 
-        self.focus = QPushButton(self.mainLayout)
+        self.focus = QPushButton(self.tree_header)
         self.focus.setObjectName(u"focus")
         self.focus.setMinimumSize(QSize(32, 32))
         self.focus.setMaximumSize(QSize(32, 32))
@@ -374,7 +389,7 @@ class Ui_Graphite(object):
         self.horizontalLayout_2.addWidget(self.focus)
 
 
-        self.frame2.addLayout(self.horizontalLayout_2)
+        self.frame2.addWidget(self.tree_header)
 
         self.treeView = QTreeView(self.mainLayout)
         self.treeView.setObjectName(u"treeView")
@@ -404,11 +419,11 @@ class Ui_Graphite(object):
         self.graphTypes.setMinimumSize(QSize(130, 0))
         self.graphTypes.setMaximumSize(QSize(130, 16777215))
         self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1364))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -538,7 +553,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -568,7 +583,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)

@@ -4,6 +4,7 @@
         "form.ui",
         "customize_dialog.ui",
         "worksheet_dialog.ui",
-        "export.ui"
+        "export.ui",
+        "math_function.ui"
     ]
 }

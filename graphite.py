@@ -8,8 +8,9 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialo
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
-from graphs import Tab
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
+from ui_math_function import Ui_Dialog as function
+from graphs import Tab
 
 
 
@@ -38,6 +39,19 @@ class CustomizeDialog(QDialog):
         self.ui.setupUi(self)
         self.ui.cancel_btn.clicked.connect(self.cancel)
 
+    def cancel(self):
+        reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.reject()
+
+
+class FunctionDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = function()
+        self.ui.setupUi(self)
+        self.ui.cancel.clicked.connect(self.cancel)
 
     def cancel(self):
         reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
@@ -89,7 +103,6 @@ class Graphite(QMainWindow):
         self.ui.treeView.setDropIndicatorShown(True)
         
         self.ui.treeView.setDragDropMode(QAbstractItemView.InternalMove)
-        self.ui.actionfx.triggered.connect(self.fx)
 
         self.ui.treeView.dragEnterEvent = self.dragEnterEvent
         self.ui.treeView.dragMoveEvent = self.dragMoveEvent
@@ -157,6 +170,9 @@ class Graphite(QMainWindow):
         self.worksheet_btn.ui.plotwork.clicked.connect(self.plotwork)
         self.ui.worksheet.clicked.connect(self.show_worksheet)
 
+        self.function_dialog = FunctionDialog(self)
+        self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
+        self.ui.actionfx.triggered.connect(self.show_function_dialog)
 
 
 
@@ -177,20 +193,6 @@ class Graphite(QMainWindow):
                new_tab = Tab(self.ui.graphTab,tab.dataframe,name="Worksheet", file=None)
                new_tab.typeNum = 0  # Set plot type if needed
                new_tab.custom_plot()  # Plot the worksheet data
-    def fx(self):
-        current_index = self.ui.graphTab.currentIndex()
-        function_str, ok = QInputDialog.getText(self, 'Enter Custom Function', 'Enter your custom function:')
-        if ok:
-
-                widget = self.ui.graphTab.widget(current_index)
-                tab_index = self.tabs.index(widget)
-                tab = self.tabs[tab_index]
-
-                tab.plot_entered_function( function_str)
-        else:
-            QMessageBox.warning(self, 'Warning', 'Please enter a function to plot.')
-
-
 
     def apply_chebyshev_filter(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -592,10 +594,7 @@ class Graphite(QMainWindow):
 
 
 
-
-
-
-                ## customize ##
+                ## worksheet ##
 
     def show_worksheet(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -613,6 +612,10 @@ class Graphite(QMainWindow):
                     item = QTableWidgetItem(str(data[i][j]))
                     self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
             self.worksheet_btn.show()
+
+
+                ## customize ##
+
 
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -676,6 +679,25 @@ class Graphite(QMainWindow):
             self.export_dialog.reject()
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
+
+
+                ## function ##
+
+    def show_function_dialog(self):
+        self.function_dialog.show()
+
+
+    def fx(self):
+        start = self.function_dialog.ui.starter.value()
+        end = self.function_dialog.ui.end.value()
+        if start > end:
+            temp = start
+            start = end
+            end = temp
+        pass
+
+        
+
 
 
     def exit_app(self):
