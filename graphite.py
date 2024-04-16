@@ -169,11 +169,14 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             data = tab.dataframe.values
-            for i in range(min(len(data), self.worksheet_btn.ui.tableWidget.rowCount())):
-                for j in range(min(len(data[0]), self.worksheet_btn.ui.tableWidget.columnCount())):
+            num_rows, num_cols = data.shape
+            self.worksheet_btn.ui.tableWidget.setRowCount(num_rows)
+            self.worksheet_btn.ui.tableWidget.setColumnCount(num_cols)
+
+            for i in range(num_rows):
+                for j in range(num_cols):
                     item = QTableWidgetItem(str(data[i][j]))
                     self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
-
 
 
     def fx(self):
