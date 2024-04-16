@@ -29,317 +29,528 @@
    <iconset>
     <normaloff>assets/Graphite.png</normaloff>assets/Graphite.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="1">
-    <widget class="QCheckBox" name="lagend">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1,1,1,1">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,9">
+     <item>
+      <widget class="QLabel" name="title_lab">
+       <property name="text">
+        <string>Title :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="graph_title">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>33</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>33</height>
+        </size>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="lagend_lab">
-     <property name="text">
-      <string>Lagend :</string>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,9">
+     <item>
+      <widget class="QLabel" name="xLab">
+       <property name="text">
+        <string>X Label :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="xLabel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>33</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>33</height>
+        </size>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="title_lab">
-     <property name="text">
-      <string>Title :</string>
-     </property>
-    </widget>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="2,9">
+     <item>
+      <widget class="QLabel" name="yLab">
+       <property name="text">
+        <string>Y Label :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="yLabel">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>33</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>33</height>
+        </size>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="real_lab">
-     <property name="minimumSize">
-      <size>
-       <width>80</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>80</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>real time :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="3">
-    <widget class="QFrame" name="frame">
-     <property name="minimumSize">
-      <size>
-       <width>200</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>280</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QFrame { 
-	border: none;
-}</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Shape::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Shadow::Raised</enum>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cancel_btn">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="lagend_lab">
+       <property name="text">
+        <string>Lagend :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="lagend">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="marker_lab">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>marker: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="marker">
+       <item>
         <property name="text">
-         <string>cancel</string>
+         <string>None</string>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="apply_btn">
+       </item>
+       <item>
         <property name="text">
-         <string>apply</string>
+         <string>point</string>
         </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m00.png</normaloff>assets/markers/m00.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pixel</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m01.png</normaloff>assets/markers/m01.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>circle</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m02.png</normaloff>assets/markers/m02.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>triangle up</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m04.png</normaloff>assets/markers/m04.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>triangle down</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m03.png</normaloff>assets/markers/m03.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>triangle right</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m06.png</normaloff>assets/markers/m06.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>triangle left</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m05.png</normaloff>assets/markers/m05.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tri up</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m08.png</normaloff>assets/markers/m08.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tri down</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m07.png</normaloff>assets/markers/m07.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tri right</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m10.png</normaloff>assets/markers/m10.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tri left</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m09.png</normaloff>assets/markers/m09.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>octagon</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m11.png</normaloff>assets/markers/m11.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>square</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m12.png</normaloff>assets/markers/m12.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pentagon</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m13.png</normaloff>assets/markers/m13.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>plus</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m17.png</normaloff>assets/markers/m17.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>plus (filled)</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m23.png</normaloff>assets/markers/m23.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>X</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m18.png</normaloff>assets/markers/m18.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>X (filled)</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m24.png</normaloff>assets/markers/m24.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>star</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m14.png</normaloff>assets/markers/m14.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>hexagon</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m15.png</normaloff>assets/markers/m15.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>diamond</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m19.png</normaloff>assets/markers/m19.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>thin diamond</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m20.png</normaloff>assets/markers/m20.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>vertical line</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m21.png</normaloff>assets/markers/m21.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>horizantol line</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m22.png</normaloff>assets/markers/m22.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tick up</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m27.png</normaloff>assets/markers/m27.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tick down</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m28.png</normaloff>assets/markers/m28.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tick right</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m26.png</normaloff>assets/markers/m26.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>tick left</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m25.png</normaloff>assets/markers/m25.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>caret up</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m31.png</normaloff>assets/markers/m31.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>caret down</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m32.png</normaloff>assets/markers/m32.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>caret right</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m30.png</normaloff>assets/markers/m30.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>caret left</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>assets/markers/m29.png</normaloff>assets/markers/m29.png</iconset>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="6" column="0">
-    <spacer name="horizontalSpacer_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QLabel" name="real_lab">
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>real time :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="real">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Policy::Fixed</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>40</width>
-       <height>20</height>
+       <width>20</width>
+       <height>40</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="yLab">
-     <property name="text">
-      <string>Y Label :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="xLab">
-     <property name="text">
-      <string>X Label :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QCheckBox" name="real">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="6">
-    <widget class="QComboBox" name="comboBox">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <property name="text">
-       <string>None</string>
-      </property>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
-      <property name="text">
-       <string>point</string>
-      </property>
+      <widget class="QPushButton" name="cancel_btn">
+       <property name="text">
+        <string>cancel</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <property name="text">
-       <string>pixel</string>
-      </property>
+      <widget class="QPushButton" name="apply_btn">
+       <property name="text">
+        <string>apply</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>circle</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>triangle down</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>triangle up</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>triangle left</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>triangle right</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>tri down</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>tri up</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>tri left</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>tri right</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>square</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>pentagon</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>plus</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>plus (filled)</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="3" column="4">
-    <widget class="QLabel" name="label">
-     <property name="maximumSize">
-      <size>
-       <width>50</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>marker: </string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="6">
-    <widget class="QPlainTextEdit" name="yLabel">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="6">
-    <widget class="QPlainTextEdit" name="xLabel">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="6">
-    <widget class="QPlainTextEdit" name="graph_title">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>33</height>
-      </size>
-     </property>
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
-     </property>
-    </widget>
+    </layout>
    </item>
   </layout>
  </widget>
