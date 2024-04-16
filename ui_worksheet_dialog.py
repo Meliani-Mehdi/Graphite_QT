@@ -15,36 +15,50 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QLabel, QPushButton,
-    QSizePolicy, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QHeaderView, QPushButton,
+    QSizePolicy, QTableWidget, QTableWidgetItem, QWidget)
 
 class Ui_Dialog2(object):
     def setupUi(self, Dialog2):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
         Dialog2.resize(400, 480)
-        self.label = QLabel(Dialog2)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 10, 141, 21))
-        self.label.setStyleSheet(u"")
-        self.label.setAlignment(Qt.AlignCenter)
-        self.label_2 = QLabel(Dialog2)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(170, 10, 141, 21))
-        self.label_2.setLineWidth(1)
-        self.label_2.setAlignment(Qt.AlignCenter)
         self.addwork = QPushButton(Dialog2)
         self.addwork.setObjectName(u"addwork")
-        self.addwork.setGeometry(QRect(40, 420, 101, 41))
+        self.addwork.setGeometry(QRect(20, 420, 101, 41))
         self.plotwork = QPushButton(Dialog2)
         self.plotwork.setObjectName(u"plotwork")
-        self.plotwork.setGeometry(QRect(190, 420, 101, 41))
-        self.verticalLayoutWidget = QWidget(Dialog2)
-        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(30, 60, 311, 311))
-        self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.plotwork.setGeometry(QRect(250, 420, 101, 41))
+        self.tableWidget = QTableWidget(Dialog2)
+        if (self.tableWidget.columnCount() < 2):
+            self.tableWidget.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        if (self.tableWidget.rowCount() < 3):
+            self.tableWidget.setRowCount(3)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setItem(0, 0, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget.setItem(0, 1, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidget.setItem(1, 0, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidget.setItem(1, 1, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tableWidget.setItem(2, 0, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tableWidget.setItem(2, 1, __qtablewidgetitem7)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(20, 10, 331, 401))
+        self.tableWidget.setMaximumSize(QSize(331, 16777215))
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(159)
+        self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
+        self.tableWidget.horizontalHeader().setStretchLastSection(False)
+        self.addwork_2 = QPushButton(Dialog2)
+        self.addwork_2.setObjectName(u"addwork_2")
+        self.addwork_2.setGeometry(QRect(130, 420, 101, 41))
 
         self.retranslateUi(Dialog2)
 
@@ -53,9 +67,29 @@ class Ui_Dialog2(object):
 
     def retranslateUi(self, Dialog2):
         Dialog2.setWindowTitle(QCoreApplication.translate("Dialog2", u"Dialog", None))
-        self.label.setText(QCoreApplication.translate("Dialog2", u"X", None))
-        self.label_2.setText(QCoreApplication.translate("Dialog2", u"Y", None))
-        self.addwork.setText(QCoreApplication.translate("Dialog2", u"add", None))
+        self.addwork.setText(QCoreApplication.translate("Dialog2", u"add row", None))
         self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog2", u"X", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Dialog2", u"Y (graph 1)", None));
+
+        __sortingEnabled = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+        ___qtablewidgetitem2 = self.tableWidget.item(0, 0)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Dialog2", u"h", None));
+        ___qtablewidgetitem3 = self.tableWidget.item(0, 1)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Dialog2", u"n", None));
+        ___qtablewidgetitem4 = self.tableWidget.item(1, 0)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Dialog2", u"n", None));
+        ___qtablewidgetitem5 = self.tableWidget.item(1, 1)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Dialog2", u"n", None));
+        ___qtablewidgetitem6 = self.tableWidget.item(2, 0)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("Dialog2", u"n", None));
+        ___qtablewidgetitem7 = self.tableWidget.item(2, 1)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("Dialog2", u"n", None));
+        self.tableWidget.setSortingEnabled(__sortingEnabled)
+
+        self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
     # retranslateUi
 

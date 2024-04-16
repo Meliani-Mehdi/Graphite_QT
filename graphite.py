@@ -4,11 +4,30 @@ import os
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt
 import pandas as pd
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
 from graphs import Tab
+from ui_worksheet_dialog import Ui_Dialog2 as worksheet
+
+
+
+class Worksheet(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = worksheet()
+        self.ui.setupUi(self)
+        self.ui.addwork.clicked.connect(self.add_row)
+        self.ui.addwork_2.clicked.connect(self.add_column)
+
+    def add_row(self):
+        row_count = self.ui.tableWidget.rowCount()
+        self.ui.tableWidget.setRowCount(row_count + 1)
+
+    def add_column(self):
+        column_count = self.ui.tableWidget.columnCount()
+        self.ui.tableWidget.setColumnCount(column_count + 1)
 
 
 
@@ -134,7 +153,26 @@ class Graphite(QMainWindow):
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
 
+        self.worksheet_btn = Worksheet(self)
+        self.worksheet_btn.ui.plotwork.clicked.connect(self.plotwork)
+        self.ui.worksheet.clicked.connect(self.show_worksheet)
 
+
+
+
+
+
+    def plotwork(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            data = tab.dataframe.values
+            for i in range(min(len(data), self.worksheet_btn.ui.tableWidget.rowCount())):
+                for j in range(min(len(data[0]), self.worksheet_btn.ui.tableWidget.columnCount())):
+                    item = QTableWidgetItem(str(data[i][j]))
+                    self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
 
 
 
@@ -557,6 +595,14 @@ class Graphite(QMainWindow):
 
 
                 ## customize ##
+
+    def show_worksheet(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            self.worksheet_btn.show()
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
 
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()

@@ -55,7 +55,7 @@
     </size>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>135</number>
+    <number>159</number>
    </attribute>
    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
     <bool>false</bool>
@@ -63,21 +63,9 @@
    <attribute name="horizontalHeaderStretchLastSection">
     <bool>false</bool>
    </attribute>
-   <row>
-    <property name="text">
-     <string>New Row</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>New Row</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>New Row</string>
-    </property>
-   </row>
+   <row/>
+   <row/>
+   <row/>
    <column>
     <property name="text">
      <string>X</string>
@@ -85,9 +73,39 @@
    </column>
    <column>
     <property name="text">
-     <string>Y</string>
+     <string>Y (graph 1)</string>
     </property>
    </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>h</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>n</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>n</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>n</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>n</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>n</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="addwork_2">
    <property name="geometry">
