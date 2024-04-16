@@ -13,61 +13,23 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>X</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>10</y>
-     <width>141</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="lineWidth">
-    <number>1</number>
-   </property>
-   <property name="text">
-    <string>Y</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="addwork">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>20</x>
      <y>420</y>
      <width>101</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>add</string>
+    <string>add row</string>
    </property>
   </widget>
   <widget class="QPushButton" name="plotwork">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>250</x>
      <y>420</y>
      <width>101</width>
      <height>41</height>
@@ -77,16 +39,68 @@
     <string>plot</string>
    </property>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>60</y>
-     <width>311</width>
-     <height>311</height>
+     <x>20</x>
+     <y>10</y>
+     <width>331</width>
+     <height>401</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2"/>
+   <property name="maximumSize">
+    <size>
+     <width>331</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>135</number>
+   </attribute>
+   <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>false</bool>
+   </attribute>
+   <row>
+    <property name="text">
+     <string>New Row</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>New Row</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>New Row</string>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Y</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="addwork_2">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>420</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>add column</string>
+   </property>
   </widget>
  </widget>
  <resources/>
