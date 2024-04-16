@@ -855,6 +855,9 @@ rgb:(255, 255, 255);
                <iconset>
                 <normaloff>assets/focus.png</normaloff>assets/focus.png</iconset>
               </property>
+              <property name="shortcut">
+               <string>Shift+F</string>
+              </property>
              </widget>
             </item>
            </layout>
