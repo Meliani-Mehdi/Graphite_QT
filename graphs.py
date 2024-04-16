@@ -813,21 +813,38 @@ class Tab(QWidget):
                 self.last_time = new_time
                 self.update_df()
 
-    def update_df(self):
-        df = pd.DataFrame()
-        _, ext = os.path.splitext(self.file)
-        supported_formats = ['.csv', '.xlsx', '.json']
-        if ext in supported_formats:
-            try:
-                if ext == '.csv':
-                    df = pd.read_csv(self.file)
-                elif ext == '.xlsx':
-                    df = pd.read_excel(self.file)
-                elif ext == '.json':
-                    df = pd.read_json(self.file)
-            except Exception as e:
-                pass
-            self.dataframe = df
+    def update_df(self,table_widget=None):
+
+        if table_widget is not None:
+                num_rows = table_widget.rowCount()
+                num_cols = table_widget.columnCount()
+                data = []
+                for row in range(num_rows):
+                    row_data = []
+                    for col in range(num_cols):
+                        item = table_widget.item(row, col)
+                        if item is not None:
+                            row_data.append(item.text())
+                        else:
+                            row_data.append(None)
+                    data.append(row_data)
+
+                self.dataframe = pd.DataFrame(data[1:], columns=data[0])
+        else:
+            _, ext = os.path.splitext(self.file)
+            supported_formats = ['.csv', '.xlsx', '.json']
+            if ext in supported_formats:
+                try:
+                    if ext == '.csv':
+                        self.dataframe = pd.read_csv(self.file)
+                    elif ext == '.xlsx':
+                        self.dataframe = pd.read_excel(self.file)
+                    elif ext == '.json':
+                        self.dataframe = pd.read_json(self.file)
+                except Exception as e:
+                    pass
+
+            # Call the plot function to update the plot
         self.last_plot()
 
     def closePlot(self):
