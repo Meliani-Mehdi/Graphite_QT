@@ -1,9 +1,10 @@
 import sys
-import numpy as np
 import os
+import numpy as np
+import pandas as pd
+import math
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt
-import pandas as pd
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
@@ -706,13 +707,41 @@ class Graphite(QMainWindow):
     def fx(self):
         start = self.function_dialog.ui.starter.value()
         end = self.function_dialog.ui.end.value()
+        step = self.function_dialog.ui.step.value()
+        func = self.function_dialog.ui.function.text()
+
         if start > end:
             temp = start
             start = end
             end = temp
-        pass
 
-        
+        self.calculate_function(func, start, end, step)
+
+
+    def calculate_function(self, function, start, end, step=1.0):
+        try:
+            x_values = np.round(np.arange(start, end + step, step))
+            function_values = []  
+
+            for x in x_values:
+                try:
+                    modified_function = function.replace('X', f'({x})').replace('x', f'({x})')
+
+                    for old, new in [('e', 'math.exp'), ('ln', 'math.log'), 
+                                     ('cos', 'math.cos'), ('sin', 'math.sin'), 
+                                     ('tan', 'math.tan'), ('^', '**')]:
+                        modified_function = modified_function.replace(old, new)
+
+                    function_values.append(eval(modified_function, {'math': math, '__builtins__': {}}))  
+                except Exception:
+                    function_values.append(None)
+
+            results_df = pd.DataFrame({'X': x_values, 'Y': function_values})
+
+            self.tabs.append(Tab(self.ui.graphTab, results_df, function, None))
+        except Exception as e:
+            print(f"Error: {e}")
+            
 
 
 
