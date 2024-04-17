@@ -206,20 +206,6 @@ class Graphite(QMainWindow):
             #    new_tab = Tab(self.ui.graphTab,tab.dataframe,name="Worksheet", file=None)
             #    new_tab.typeNum = 0  # Set plot type if needed
             #    new_tab.custom_plot()  # Plot the worksheet data
-    def fx(self):
-        current_index = self.ui.graphTab.currentIndex()
-        function_str, ok = QInputDialog.getText(self, 'Enter Custom Function', 'Enter your custom function:')
-        if ok:
-
-                widget = self.ui.graphTab.widget(current_index)
-                tab_index = self.tabs.index(widget)
-                tab = self.tabs[tab_index]
-
-                tab.plot_entered_function( function_str)
-        else:
-            QMessageBox.warning(self, 'Warning', 'Please enter a function to plot.')
-
-
 
     def apply_chebyshev_filter(self):
         current_index = self.ui.graphTab.currentIndex()
