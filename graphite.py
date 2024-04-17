@@ -165,18 +165,27 @@ class Graphite(QMainWindow):
     def plotwork(self):
         table_widget = self.worksheet_btn.ui.tableWidget
 
-           # Update the DataFrame associated with the selected tab
-        current_index = self.ui.graphTab.currentIndex()
-        if current_index != -1:
-               widget = self.ui.graphTab.widget(current_index)
-               tab_index = self.tabs.index(widget)
-               tab = self.tabs[tab_index]
-               tab.update_df(table_widget)
+        num_rows = table_widget.rowCount()
+        num_cols = table_widget.columnCount()
+        data = []
+        for row in range(num_rows):
+            row_data = []
+            for col in range(num_cols):
+                item = table_widget.item(row, col)
+                if item is not None:
+                    row_data.append(float(item.text()))
+                else:
+                    row_data.append(np.nan)  # Handle empty cells
+            data.append(row_data)
 
-               # Create a new tab for plotting the worksheet data
-               new_tab = Tab(self.ui.graphTab,tab.dataframe,name="Worksheet", file=None)
-               new_tab.typeNum = 0  # Set plot type if needed
-               new_tab.custom_plot()  # Plot the worksheet data
+
+        df = pd.DataFrame(data)
+        new_tab = Tab(self.ui.graphTab,df,name="Worksheet", file=None)
+        new_tab.typeNum = 0
+        new_tab.custom_plot()
+
+
+
     def fx(self):
         current_index = self.ui.graphTab.currentIndex()
         function_str, ok = QInputDialog.getText(self, 'Enter Custom Function', 'Enter your custom function:')
@@ -604,14 +613,14 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
-            data = tab.dataframe.values
+            data = tab.dataframe
             num_rows, num_cols = data.shape
             self.worksheet_btn.ui.tableWidget.setRowCount(num_rows)
             self.worksheet_btn.ui.tableWidget.setColumnCount(num_cols)
             for i in range(num_rows):
-                for j in range(num_cols):
-                    item = QTableWidgetItem(str(data[i][j]))
-                    self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
+                    for j in range(num_cols):
+                        item = QTableWidgetItem(str(data.iloc[i, j]))
+                        self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
             self.worksheet_btn.show()
 
     def show_customize_dialog(self):
