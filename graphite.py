@@ -598,30 +598,27 @@ class Graphite(QMainWindow):
 
 
 
-
-
-
-
-
-
                 ## customize ##
 
     def show_worksheet(self):
-        current_index = self.ui.graphTab.currentIndex()
-        if current_index != -1:
-            self.worksheet_btn.show()
-            widget = self.ui.graphTab.widget(current_index)
-            tab_index = self.tabs.index(widget)
-            tab = self.tabs[tab_index]
-            data = tab.dataframe
-            num_rows, num_cols = data.shape
-            self.worksheet_btn.ui.tableWidget.setRowCount(num_rows)
-            self.worksheet_btn.ui.tableWidget.setColumnCount(num_cols)
-            for i in range(num_rows):
-                    for j in range(num_cols):
-                        item = QTableWidgetItem(str(data.iloc[i, j]))
-                        self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
-            self.worksheet_btn.show()
+        if len(self.tabs) == 0:  # Check if there are no tabs open
+               self.worksheet_btn.show()
+        else:
+           current_index = self.ui.graphTab.currentIndex()
+           if current_index != -1:
+              self.worksheet_btn.show()
+              widget = self.ui.graphTab.widget(current_index)
+              tab_index = self.tabs.index(widget)
+              tab = self.tabs[tab_index]
+              data = tab.dataframe
+              num_rows, num_cols = data.shape
+              self.worksheet_btn.ui.tableWidget.setRowCount(num_rows)
+              self.worksheet_btn.ui.tableWidget.setColumnCount(num_cols)
+              for i in range(num_rows):
+                for j in range(num_cols):
+                    item = QTableWidgetItem(str(data.iloc[i, j]))
+                    self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
+              self.worksheet_btn.show()
 
     def show_customize_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
