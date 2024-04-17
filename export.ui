@@ -17,9 +17,7 @@
    <string notr="true">QFrame { 
 	border: none;
 }
-QLabel {
-    color: black;
-}</string>
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" rowstretch="2,0,0,0,0,0,0,0,0,0,0,3,0,0">
    <item row="1" column="2">
@@ -44,7 +42,7 @@ QLabel {
    <item row="6" column="0" colspan="3">
     <spacer name="verticalSpacer_4">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -66,7 +64,7 @@ QLabel {
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -93,7 +91,7 @@ QLabel {
       <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -166,7 +164,7 @@ QLabel {
    <item row="0" column="0" colspan="3">
     <spacer name="verticalSpacer_2">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -186,7 +184,7 @@ QLabel {
    <item row="11" column="0" colspan="3">
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -234,7 +232,7 @@ QLabel {
    <item row="3" column="0" colspan="3">
     <spacer name="verticalSpacer_3">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>

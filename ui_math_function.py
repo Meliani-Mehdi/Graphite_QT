@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'math_function.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.7.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -26,14 +26,12 @@ class Ui_Dialog(object):
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(320, 160)
         Dialog.setMaximumSize(QSize(320, 160))
-        Dialog.setStyleSheet(u"QLabel {\n"
-"    color: black;\n"
-"}")
+        Dialog.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.func_lab = QLabel(Dialog)
         self.func_lab.setObjectName(u"func_lab")
-        self.func_lab.setAlignment(Qt.AlignBottom|Qt.AlignLeading|Qt.AlignLeft)
+        self.func_lab.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft)
 
         self.verticalLayout.addWidget(self.func_lab)
 
@@ -51,8 +49,8 @@ class Ui_Dialog(object):
 
         self.starter = QSpinBox(Dialog)
         self.starter.setObjectName(u"starter")
-        self.starter.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-        self.starter.setButtonSymbols(QAbstractSpinBox.PlusMinus)
+        self.starter.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.starter.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.PlusMinus)
         self.starter.setMinimum(-999999999)
         self.starter.setMaximum(999999999)
         self.starter.setValue(-100)
@@ -61,7 +59,7 @@ class Ui_Dialog(object):
 
         self.end = QSpinBox(Dialog)
         self.end.setObjectName(u"end")
-        self.end.setButtonSymbols(QAbstractSpinBox.PlusMinus)
+        self.end.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.PlusMinus)
         self.end.setMinimum(-999999999)
         self.end.setMaximum(999999999)
         self.end.setValue(100)
@@ -90,13 +88,13 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 

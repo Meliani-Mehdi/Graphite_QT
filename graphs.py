@@ -25,6 +25,7 @@ class Tab(QWidget):
             '#e7cb94', '#e7ba52', '#bd9e39', '#8c6d31', '#bd3939', '#ad494a', '#d6616b', '#e7969c', '#7b4173',
             '#a55194', '#ce6dbd',
         ]
+        self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", "TICKLEFT"]
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
@@ -34,7 +35,7 @@ class Tab(QWidget):
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
         self.legend = True
-        self.marker = '1'
+        self.marker = 0
 
         self.time_check = False
         self.timer = QTimer(self)
@@ -438,7 +439,7 @@ class Tab(QWidget):
         self.ax = self.figure.add_subplot()
         for i, col in enumerate(filtered_data.columns):
             try:
-                self.ax.plot(self.dataframe.iloc[:, 0], filtered_data[col], label=f'{col} (Filtered)', marker='o')
+                self.ax.plot(self.dataframe.iloc[:, 0], filtered_data[col], label=f'{col} (Filtered)', marker=self.markers[self.marker])
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
         self.custom_plot()
@@ -667,7 +668,7 @@ class Tab(QWidget):
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
-                self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker=self.marker)
+                self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker=self.markers[self.marker])
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
@@ -677,9 +678,6 @@ class Tab(QWidget):
             xlim = self.ax.get_xlim()
             ylim = self.ax.get_ylim()
             self.def_vals = [xlim, ylim]
-
-
-        
 
         self.custom_plot()
 

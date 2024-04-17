@@ -30,11 +30,9 @@
     <normaloff>assets/Graphite.png</normaloff>assets/Graphite.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLabel {
-    color: black;
-}</string>
+   <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1,1,1,1">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1,1,1">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,9">
      <item>
@@ -436,29 +434,16 @@
     </layout>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
       <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>20</width>
+         <height>40</height>
         </size>
        </property>
       </spacer>

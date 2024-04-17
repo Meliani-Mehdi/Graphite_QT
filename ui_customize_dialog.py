@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.7.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -29,9 +29,7 @@ class Ui_Dialog(object):
         icon = QIcon()
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Dialog.setWindowIcon(icon)
-        Dialog.setStyleSheet(u"QLabel {\n"
-"    color: black;\n"
-"}")
+        Dialog.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
@@ -225,13 +223,9 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
-        self.verticalSpacer = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.verticalLayout.addItem(self.verticalSpacer)
-
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer)
 
@@ -254,7 +248,6 @@ class Ui_Dialog(object):
         self.verticalLayout.setStretch(3, 1)
         self.verticalLayout.setStretch(4, 1)
         self.verticalLayout.setStretch(5, 1)
-        self.verticalLayout.setStretch(6, 1)
 
         self.retranslateUi(Dialog)
 

@@ -641,10 +641,11 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
-            self.customize_dialog.ui.graph_title.setPlainText(tab.name)
-            self.customize_dialog.ui.xLabel.setPlainText(tab.xlabel)
-            self.customize_dialog.ui.yLabel.setPlainText(tab.ylabel)
+            self.customize_dialog.ui.graph_title.setText(tab.name)
+            self.customize_dialog.ui.xLabel.setText(tab.xlabel)
+            self.customize_dialog.ui.yLabel.setText(tab.ylabel)
             self.customize_dialog.ui.lagend.setChecked(tab.legend)
+            self.customize_dialog.ui.marker.setCurrentIndex(tab.marker)
 
     def apply_custom(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -652,14 +653,16 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab =self.tabs[tab_index]
-            title = self.customize_dialog.ui.graph_title.toPlainText() 
-            xlabel = self.customize_dialog.ui.xLabel.toPlainText() 
-            ylabel = self.customize_dialog.ui.yLabel.toPlainText() 
+            title = self.customize_dialog.ui.graph_title.text() 
+            xlabel = self.customize_dialog.ui.xLabel.text() 
+            ylabel = self.customize_dialog.ui.yLabel.text() 
+            marker = self.customize_dialog.ui.marker.currentIndex()
             legend = self.customize_dialog.ui.lagend.isChecked()
             real_time = self.customize_dialog.ui.real.isChecked()
             tab.name=title
             tab.xlabel=xlabel
             tab.ylabel=ylabel
+            tab.marker=marker
             tab.legend=legend
             tab.time_check=real_time 
             tab.custom_plot()

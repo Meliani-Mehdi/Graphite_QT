@@ -20,9 +20,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLabel {
-    color: black;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,4,2,0,1,0">
    <item>
@@ -31,7 +29,7 @@
       <string>function :</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
      </property>
     </widget>
    </item>
@@ -50,10 +48,10 @@
      <item>
       <widget class="QSpinBox" name="starter">
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::PlusMinus</enum>
+        <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
        </property>
        <property name="minimum">
         <number>-999999999</number>
@@ -69,7 +67,7 @@
      <item>
       <widget class="QSpinBox" name="end">
        <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::PlusMinus</enum>
+        <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
        </property>
        <property name="minimum">
         <number>-999999999</number>
@@ -114,7 +112,7 @@
    <item>
     <spacer name="verticalSpacer_2">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -129,7 +127,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
