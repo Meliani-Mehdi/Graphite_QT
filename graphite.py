@@ -92,6 +92,8 @@ class Graphite(QMainWindow):
         self.ui.graphTab.tabCloseRequested.connect(self.close_tab)
         shortcut = QShortcut(QKeySequence("Alt+d"), self.ui.graphTab)
         shortcut.activated.connect(self.close_current_tab)
+
+        self.tabs = []
          
         # Set the tooltip style
         tooltip_style = "QToolTip { color: #ffffff; background-color: #000000; border: 1px solid black; }"
@@ -160,9 +162,9 @@ class Graphite(QMainWindow):
 
         #buttons
 
-        self.ui.focus.clicked.connect(self.focus)
+        self.ui.open_btn.clicked.connect(self.open_file_dialog)
 
-        self.tabs = []
+        self.ui.focus.clicked.connect(self.focus)
 
         self.customize_dialog = CustomizeDialog(self)
         self.customize_dialog.ui.apply_btn.clicked.connect(self.apply_custom)

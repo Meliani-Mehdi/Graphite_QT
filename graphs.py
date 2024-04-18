@@ -36,6 +36,7 @@ class Tab(QWidget):
         self.ylabel = 'ylabel'
         self.legend = True
         self.marker = 0
+        self.last_marker = 0
 
         self.time_check = False
         self.timer = QTimer(self)
@@ -653,6 +654,9 @@ class Tab(QWidget):
         self.ax.set_xlabel(self.xlabel)
         self.ax.set_ylabel(self.ylabel)
         self.ax.legend().set_visible(self.legend)
+        if self.last_marker != self.marker:
+            self.last_marker = self.marker
+            self.last_plot()
         if self.time_check:
             self.timer.start(self.interval)
         else:

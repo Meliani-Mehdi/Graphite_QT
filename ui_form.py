@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -42,7 +42,7 @@ class Ui_Graphite(object):
         self.open_recent.setObjectName(u"open_recent")
         self.exit_app = QAction(Graphite)
         self.exit_app.setObjectName(u"exit_app")
-        self.exit_app.setMenuRole(QAction.MenuRole.NoRole)
+        self.exit_app.setMenuRole(QAction.NoRole)
         self.actionpref = QAction(Graphite)
         self.actionpref.setObjectName(u"actionpref")
         self.settings = QAction(Graphite)
@@ -90,7 +90,7 @@ class Ui_Graphite(object):
         self.frame1.setMinimumSize(QSize(0, 160))
         self.frame1.setMaximumSize(QSize(16777215, 160))
         self.frame1.setStyleSheet(u"background-color: rgb(30, 30, 30);")
-        self.frame1.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame1.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_3 = QHBoxLayout(self.frame1)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -98,8 +98,8 @@ class Ui_Graphite(object):
         self.frame = QFrame(self.frame1)
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(250, 0))
-        self.frame.setMaximumSize(QSize(250, 16777215))
-        self.frame.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame.setMaximumSize(QSize(300, 16777215))
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_4 = QHBoxLayout(self.frame)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.frame_2 = QFrame(self.frame)
@@ -107,14 +107,83 @@ class Ui_Graphite(object):
         self.frame_2.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
 "}")
-        self.frame_2.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_2.setFrameShape(QFrame.NoFrame)
+        self.verticalLayout_4 = QVBoxLayout(self.frame_2)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.open_btn = QPushButton(self.frame_2)
+        self.open_btn.setObjectName(u"open_btn")
+        self.open_btn.setMinimumSize(QSize(0, 32))
+        self.open_btn.setMaximumSize(QSize(16777215, 16777215))
+        font = QFont()
+        font.setFamilies([u"ProFontWindows Nerd Font Propo"])
+        font.setPointSize(12)
+        font.setBold(True)
+        self.open_btn.setFont(font)
+        self.open_btn.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"QPushButton {\n"
+"    color: white;\n"
+"}")
+        icon1 = QIcon()
+        icon1.addFile(u"assets/upload.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.open_btn.setIcon(icon1)
+        self.open_btn.setIconSize(QSize(28, 28))
+
+        self.verticalLayout_4.addWidget(self.open_btn)
+
+        self.save_btn = QPushButton(self.frame_2)
+        self.save_btn.setObjectName(u"save_btn")
+        self.save_btn.setMinimumSize(QSize(0, 32))
+        self.save_btn.setMaximumSize(QSize(16777215, 16777215))
+        self.save_btn.setFont(font)
+        self.save_btn.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"QPushButton {\n"
+"    color: white;\n"
+"}")
+        icon2 = QIcon()
+        icon2.addFile(u"assets/download.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.save_btn.setIcon(icon2)
+        self.save_btn.setIconSize(QSize(28, 28))
+
+        self.verticalLayout_4.addWidget(self.save_btn)
+
+        self.export_btn = QPushButton(self.frame_2)
+        self.export_btn.setObjectName(u"export_btn")
+        self.export_btn.setMinimumSize(QSize(0, 32))
+        self.export_btn.setMaximumSize(QSize(16777215, 16777215))
+        self.export_btn.setFont(font)
+        self.export_btn.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}\n"
+"QPushButton {\n"
+"    color: white;\n"
+"}")
+        icon3 = QIcon()
+        icon3.addFile(u"assets/export.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.export_btn.setIcon(icon3)
+        self.export_btn.setIconSize(QSize(28, 28))
+
+        self.verticalLayout_4.addWidget(self.export_btn)
+
 
         self.horizontalLayout_4.addWidget(self.frame_2)
 
         self.line = QFrame(self.frame)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.VLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.line.setFrameShape(QFrame.VLine)
+        self.line.setFrameShadow(QFrame.Sunken)
 
         self.horizontalLayout_4.addWidget(self.line)
 
@@ -123,17 +192,13 @@ class Ui_Graphite(object):
         self.frame_3.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
 "}")
-        self.frame_3.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_3.setFrameShape(QFrame.NoFrame)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.custom_button_2 = QPushButton(self.frame_3)
         self.custom_button_2.setObjectName(u"custom_button_2")
-        self.custom_button_2.setMinimumSize(QSize(0, 0))
+        self.custom_button_2.setMinimumSize(QSize(0, 32))
         self.custom_button_2.setMaximumSize(QSize(16777215, 16777215))
-        font = QFont()
-        font.setFamilies([u"ProFontWindows Nerd Font Propo"])
-        font.setPointSize(12)
-        font.setBold(True)
         self.custom_button_2.setFont(font)
         self.custom_button_2.setStyleSheet(u"QPushButton {\n"
 "    border: none;\n"
@@ -144,12 +209,16 @@ class Ui_Graphite(object):
 "QPushButton {\n"
 "    color: white;\n"
 "}")
+        icon4 = QIcon()
+        icon4.addFile(u"assets/hypothesis.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.custom_button_2.setIcon(icon4)
+        self.custom_button_2.setIconSize(QSize(28, 28))
 
         self.verticalLayout_2.addWidget(self.custom_button_2)
 
         self.custom_button = QPushButton(self.frame_3)
         self.custom_button.setObjectName(u"custom_button")
-        self.custom_button.setMinimumSize(QSize(0, 0))
+        self.custom_button.setMinimumSize(QSize(0, 32))
         self.custom_button.setMaximumSize(QSize(16777215, 16777215))
         self.custom_button.setFont(font)
         self.custom_button.setCursor(QCursor(Qt.PointingHandCursor))
@@ -162,16 +231,16 @@ class Ui_Graphite(object):
 "QPushButton {\n"
 "    color: white;\n"
 "}")
-        icon1 = QIcon()
-        icon1.addFile(u"assets/pen.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.custom_button.setIcon(icon1)
+        icon5 = QIcon()
+        icon5.addFile(u"assets/pen.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.custom_button.setIcon(icon5)
         self.custom_button.setIconSize(QSize(32, 32))
 
         self.verticalLayout_2.addWidget(self.custom_button)
 
         self.worksheet = QPushButton(self.frame_3)
         self.worksheet.setObjectName(u"worksheet")
-        self.worksheet.setMinimumSize(QSize(0, 0))
+        self.worksheet.setMinimumSize(QSize(0, 32))
         self.worksheet.setMaximumSize(QSize(16777215, 16777215))
         font1 = QFont()
         font1.setFamilies([u"ProFontWindows Nerd Font Propo"])
@@ -191,9 +260,9 @@ class Ui_Graphite(object):
 "}\n"
 "\n"
 "")
-        icon2 = QIcon()
-        icon2.addFile(u"assets/formula.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.worksheet.setIcon(icon2)
+        icon6 = QIcon()
+        icon6.addFile(u"assets/formula.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.worksheet.setIcon(icon6)
         self.worksheet.setIconSize(QSize(32, 32))
 
         self.verticalLayout_2.addWidget(self.worksheet)
@@ -298,9 +367,9 @@ class Ui_Graphite(object):
         self.boxcar.setMinimumSize(QSize(64, 64))
         self.boxcar.setMaximumSize(QSize(64, 64))
         self.boxcar.setStyleSheet(u"")
-        icon3 = QIcon()
-        icon3.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.boxcar.setIcon(icon3)
+        icon7 = QIcon()
+        icon7.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.boxcar.setIcon(icon7)
         self.boxcar.setIconSize(QSize(64, 64))
         self.median = QPushButton(self.filter)
         self.median.setObjectName(u"median")
@@ -380,9 +449,9 @@ class Ui_Graphite(object):
         self.focus.setMinimumSize(QSize(32, 32))
         self.focus.setMaximumSize(QSize(32, 32))
         self.focus.setCursor(QCursor(Qt.PointingHandCursor))
-        icon4 = QIcon()
-        icon4.addFile(u"assets/focus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.focus.setIcon(icon4)
+        icon8 = QIcon()
+        icon8.addFile(u"assets/focus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.focus.setIcon(icon8)
 
         self.horizontalLayout_2.addWidget(self.focus)
 
@@ -416,12 +485,12 @@ class Ui_Graphite(object):
         self.graphTypes.setObjectName(u"graphTypes")
         self.graphTypes.setMinimumSize(QSize(130, 0))
         self.graphTypes.setMaximumSize(QSize(130, 16777215))
-        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 1364))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -433,9 +502,9 @@ class Ui_Graphite(object):
         self.plot.setMinimumSize(QSize(110, 110))
         self.plot.setMaximumSize(QSize(110, 110))
         self.plot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon5 = QIcon()
-        icon5.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.plot.setIcon(icon5)
+        icon9 = QIcon()
+        icon9.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.plot.setIcon(icon9)
         self.plot.setIconSize(QSize(120, 120))
 
         self.verticalLayout_3.addWidget(self.plot)
@@ -445,9 +514,9 @@ class Ui_Graphite(object):
         self.histogram.setMinimumSize(QSize(110, 110))
         self.histogram.setMaximumSize(QSize(110, 110))
         self.histogram.setCursor(QCursor(Qt.PointingHandCursor))
-        icon6 = QIcon()
-        icon6.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.histogram.setIcon(icon6)
+        icon10 = QIcon()
+        icon10.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.histogram.setIcon(icon10)
         self.histogram.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.histogram)
@@ -457,9 +526,9 @@ class Ui_Graphite(object):
         self.piechart.setMinimumSize(QSize(110, 110))
         self.piechart.setMaximumSize(QSize(110, 110))
         self.piechart.setCursor(QCursor(Qt.PointingHandCursor))
-        icon7 = QIcon()
-        icon7.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.piechart.setIcon(icon7)
+        icon11 = QIcon()
+        icon11.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.piechart.setIcon(icon11)
         self.piechart.setIconSize(QSize(110, 110))
 
         self.verticalLayout_3.addWidget(self.piechart)
@@ -469,9 +538,9 @@ class Ui_Graphite(object):
         self.fill_between.setMinimumSize(QSize(110, 110))
         self.fill_between.setMaximumSize(QSize(110, 110))
         self.fill_between.setCursor(QCursor(Qt.PointingHandCursor))
-        icon8 = QIcon()
-        icon8.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.fill_between.setIcon(icon8)
+        icon12 = QIcon()
+        icon12.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.fill_between.setIcon(icon12)
         self.fill_between.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.fill_between)
@@ -481,9 +550,9 @@ class Ui_Graphite(object):
         self.stackplot.setMinimumSize(QSize(110, 110))
         self.stackplot.setMaximumSize(QSize(110, 110))
         self.stackplot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon9 = QIcon()
-        icon9.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.stackplot.setIcon(icon9)
+        icon13 = QIcon()
+        icon13.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stackplot.setIcon(icon13)
         self.stackplot.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.stackplot)
@@ -551,7 +620,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -581,7 +650,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1200, 31))
+        self.menubar.setGeometry(QRect(0, 0, 1200, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -668,6 +737,9 @@ class Ui_Graphite(object):
         self.actionfilters.setText(QCoreApplication.translate("Graphite", u"filters", None))
         self.actiondata_manipulation.setText(QCoreApplication.translate("Graphite", u"data manipulation", None))
         self.actionfx.setText(QCoreApplication.translate("Graphite", u"fx", None))
+        self.open_btn.setText(QCoreApplication.translate("Graphite", u"Open", None))
+        self.save_btn.setText(QCoreApplication.translate("Graphite", u" save", None))
+        self.export_btn.setText(QCoreApplication.translate("Graphite", u"export", None))
         self.custom_button_2.setText(QCoreApplication.translate("Graphite", u"Validation", None))
         self.custom_button.setText(QCoreApplication.translate("Graphite", u"Customize", None))
         self.worksheet.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
