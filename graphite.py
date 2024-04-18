@@ -4,15 +4,15 @@ import numpy as np
 import pandas as pd
 import math
 from PySide6.QtGui import QKeySequence, QShortcut
-from PySide6.QtCore import QDir,Qt
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem
+from PySide6.QtCore import QDir,Qt, QPointF
+import pandas as pd
+from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
 from ui_math_function import Ui_Dialog as function
 from graphs import Tab
-
 
 
 class Worksheet(QDialog):
@@ -22,6 +22,7 @@ class Worksheet(QDialog):
         self.ui.setupUi(self)
         self.ui.addwork.clicked.connect(self.add_row)
         self.ui.addwork_2.clicked.connect(self.add_column)
+        self.ui.draw_ladder_button.clicked.connect(self.draw_ladder)
 
     def add_row(self):
         row_count = self.ui.tableWidget.rowCount()
@@ -30,7 +31,12 @@ class Worksheet(QDialog):
     def add_column(self):
         column_count = self.ui.tableWidget.columnCount()
         self.ui.tableWidget.setColumnCount(column_count + 1)
-
+        header_width = self.ui.tableWidget.horizontalHeader().length()
+        column_width = self.ui.tableWidget.columnWidth(column_count)
+        table_width = header_width + column_width
+        self.ui.tableWidget.setFixedWidth(table_width)
+        dialog_width = self.width()
+        self.setFixedWidth(dialog_width + column_width)
 
 
 class CustomizeDialog(QDialog):
@@ -202,11 +208,6 @@ class Graphite(QMainWindow):
         new_tab.custom_plot()
 
 
-
-            #    # Create a new tab for plotting the worksheet data
-            #    new_tab = Tab(self.ui.graphTab,tab.dataframe,name="Worksheet", file=None)
-            #    new_tab.typeNum = 0  # Set plot type if needed
-            #    new_tab.custom_plot()  # Plot the worksheet data
 
     def apply_chebyshev_filter(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -611,7 +612,7 @@ class Graphite(QMainWindow):
                 ## worksheet ##
 
     def show_worksheet(self):
-        if len(self.tabs) == 0:  # Check if there are no tabs open
+        if len(self.tabs) == 0:
                self.worksheet_btn.show()
         else:
            current_index = self.ui.graphTab.currentIndex()
