@@ -39,8 +39,8 @@ class Ui_Dialog2(object):
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        if (self.tableWidget.rowCount() < 3):
-            self.tableWidget.setRowCount(3)
+        if (self.tableWidget.rowCount() < 10):
+            self.tableWidget.setRowCount(10)
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget.setItem(0, 0, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
@@ -55,13 +55,22 @@ class Ui_Dialog2(object):
         self.tableWidget.setItem(2, 1, __qtablewidgetitem7)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(20, 10, 331, 401))
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setMaximumSize(QSize(331, 16777215))
+        self.tableWidget.setRowCount(10)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(159)
         self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
         self.tableWidget.horizontalHeader().setStretchLastSection(False)
         self.addwork_2 = QPushButton(Dialog2)
         self.addwork_2.setObjectName(u"addwork_2")
         self.addwork_2.setGeometry(QRect(130, 420, 101, 41))
+        self.draw_ladder_button = QPushButton(Dialog2)
+        self.draw_ladder_button.setObjectName(u"draw_ladder_button")
+        self.draw_ladder_button.setGeometry(QRect(360, 10, 31, 111))
 
         self.retranslateUi(Dialog2)
 
@@ -79,20 +88,9 @@ class Ui_Dialog2(object):
 
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(False)
-        ___qtablewidgetitem2 = self.tableWidget.item(0, 0)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Dialog2", u"h", None));
-        ___qtablewidgetitem3 = self.tableWidget.item(0, 1)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Dialog2", u"n", None));
-        ___qtablewidgetitem4 = self.tableWidget.item(1, 0)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Dialog2", u"n", None));
-        ___qtablewidgetitem5 = self.tableWidget.item(1, 1)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("Dialog2", u"n", None));
-        ___qtablewidgetitem6 = self.tableWidget.item(2, 0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("Dialog2", u"n", None));
-        ___qtablewidgetitem7 = self.tableWidget.item(2, 1)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("Dialog2", u"n", None));
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
+        self.draw_ladder_button.setText(QCoreApplication.translate("Dialog2", u"lad", None))
     # retranslateUi
 

@@ -5,6 +5,7 @@
         "customize_dialog.ui",
         "worksheet_dialog.ui",
         "export.ui",
-        "math_function.ui"
+        "math_function.ui",
+        "ladder.ui"
     ]
 }
