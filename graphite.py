@@ -5,7 +5,6 @@ import pandas as pd
 import math
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt, QPointF
-import pandas as pd
 from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
@@ -22,7 +21,7 @@ class Worksheet(QDialog):
         self.ui.setupUi(self)
         self.ui.addwork.clicked.connect(self.add_row)
         self.ui.addwork_2.clicked.connect(self.add_column)
-        self.ui.draw_ladder_button.clicked.connect(self.draw_ladder)
+        # self.ui.draw_ladder_button.clicked.connect(self.draw_ladder)
 
     def add_row(self):
         row_count = self.ui.tableWidget.rowCount()
