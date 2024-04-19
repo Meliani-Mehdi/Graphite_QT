@@ -139,7 +139,7 @@ class Ui_Dialog(object):
         self.file.setMinimumSize(QSize(45, 45))
         self.file.setMaximumSize(QSize(45, 45))
         icon = QIcon()
-        icon.addFile(u"assets/folders.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"assets/fold.png", QSize(), QIcon.Normal, QIcon.Off)
         self.file.setIcon(icon)
         self.file.setIconSize(QSize(35, 35))
 

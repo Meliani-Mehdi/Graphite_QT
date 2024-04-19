@@ -298,7 +298,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>assets/folders.png</normaloff>assets/folders.png</iconset>
+          <normaloff>assets/fold.png</normaloff>assets/fold.png</iconset>
         </property>
         <property name="iconSize">
          <size>

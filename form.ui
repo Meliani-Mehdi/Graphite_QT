@@ -939,7 +939,7 @@ QPushButton {
                 <string/>
                </property>
                <property name="pixmap">
-                <pixmap>assets/folders.png</pixmap>
+                <pixmap>assets/fold.png</pixmap>
                </property>
                <property name="scaledContents">
                 <bool>true</bool>
@@ -998,6 +998,10 @@ QPushButton {
                </property>
                <property name="text">
                 <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>assets/full-screen.png</normaloff>assets/full-screen.png</iconset>
                </property>
               </widget>
              </item>
