@@ -35,6 +35,7 @@ class Tab(QWidget):
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
         self.legend = True
+        self.legend_location = 0
         self.marker = 0
         self.last_marker = 0
 
@@ -653,7 +654,7 @@ class Tab(QWidget):
         self.ax.set_title(self.name)
         self.ax.set_xlabel(self.xlabel)
         self.ax.set_ylabel(self.ylabel)
-        self.ax.legend().set_visible(self.legend)
+        self.ax.legend(loc=self.legend_location).set_visible(self.legend)
         if self.last_marker != self.marker:
             self.last_marker = self.marker
             self.last_plot()
@@ -786,7 +787,6 @@ class Tab(QWidget):
         self.custom_plot()
         
     def saveFile(self, filepath, file_format):
-        print(filepath,file_format)
         try:
             if file_format == 'csv':
                 self.dataframe.to_csv(filepath, index=False)

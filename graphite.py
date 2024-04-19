@@ -3,6 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 import math
+import platform
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt, QPointF
 from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView
@@ -94,14 +95,11 @@ class Graphite(QMainWindow):
         shortcut.activated.connect(self.close_current_tab)
 
         self.tabs = []
-         
-        # Set the tooltip style
-        tooltip_style = "QToolTip { color: #ffffff; background-color: #000000; border: 1px solid black; }"
-        QApplication.instance().setStyleSheet(tooltip_style)
 
         #menu functions
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
+        self.ui.save.triggered.connect(self.save)
         self.ui.save_as.triggered.connect(self.saveAs)
         self.ui.exit_app.triggered.connect(self.exit_app)
 
@@ -163,6 +161,8 @@ class Graphite(QMainWindow):
         #buttons
 
         self.ui.open_btn.clicked.connect(self.open_file_dialog)
+        self.ui.save_btn.clicked.connect(self.save)
+        self.ui.export_btn.clicked.connect(self.show_export_dialog)
 
         self.ui.focus.clicked.connect(self.focus)
 
@@ -647,6 +647,7 @@ class Graphite(QMainWindow):
             self.customize_dialog.ui.xLabel.setText(tab.xlabel)
             self.customize_dialog.ui.yLabel.setText(tab.ylabel)
             self.customize_dialog.ui.lagend.setChecked(tab.legend)
+            self.customize_dialog.ui.location.setCurrentIndex(tab.legend_location)
             self.customize_dialog.ui.marker.setCurrentIndex(tab.marker)
 
     def apply_custom(self):
@@ -660,12 +661,14 @@ class Graphite(QMainWindow):
             ylabel = self.customize_dialog.ui.yLabel.text() 
             marker = self.customize_dialog.ui.marker.currentIndex()
             legend = self.customize_dialog.ui.lagend.isChecked()
+            location = self.customize_dialog.ui.location.currentIndex()
             real_time = self.customize_dialog.ui.real.isChecked()
             tab.name=title
             tab.xlabel=xlabel
             tab.ylabel=ylabel
             tab.marker=marker
             tab.legend=legend
+            tab.legend_location=location
             tab.time_check=real_time 
             tab.custom_plot()
             self.customize_dialog.reject()
@@ -681,6 +684,7 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             self.export_dialog.ui.filename.setText(tab.name)
+            self.export_dialog.ui.location.setText(self.get_download_dir())
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
@@ -922,6 +926,32 @@ class Graphite(QMainWindow):
             tab = self.tabs[tab_index]
             tab.focus()
 
+    def get_download_dir(self):
+        if platform.system() == 'Windows':
+            return os.path.join(os.environ['USERPROFILE'], 'Downloads')
+        elif platform.system() == 'Darwin':
+            return os.path.join(os.path.expanduser('~'), 'Downloads')
+        else:
+            return os.path.join(os.path.expanduser('~'), 'Downloads')
+
+    def save(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            file_path = tab.file
+            if not file_path:
+                options = QFileDialog.Options()
+                file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
+
+            if file_path:
+                file_format = os.path.splitext(file_path)[-1][1:]
+                return tab.saveFile(file_path, file_format)
+        else :
+            QMessageBox.warning(self, 'Warning', 'No plot selected.')
+        return False
+
 
     def saveAs(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -933,7 +963,6 @@ class Graphite(QMainWindow):
             file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
             if file_path:
                 file_format = os.path.splitext(file_path)[-1][1:]
-                print(file_path,file_format)
                 return tab.saveFile(file_path, file_format)
         return False
 

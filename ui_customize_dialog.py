@@ -95,11 +95,36 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_5.addWidget(self.lagend)
 
+        self.location_lab = QLabel(Dialog)
+        self.location_lab.setObjectName(u"location_lab")
+
+        self.horizontalLayout_5.addWidget(self.location_lab)
+
+        self.location = QComboBox(Dialog)
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.addItem("")
+        self.location.setObjectName(u"location")
+
+        self.horizontalLayout_5.addWidget(self.location)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.marker_lab = QLabel(Dialog)
         self.marker_lab.setObjectName(u"marker_lab")
-        self.marker_lab.setMaximumSize(QSize(50, 16777215))
+        self.marker_lab.setMaximumSize(QSize(16777215, 16777215))
 
-        self.horizontalLayout_5.addWidget(self.marker_lab)
+        self.horizontalLayout.addWidget(self.marker_lab)
 
         self.marker = QComboBox(Dialog)
         self.marker.addItem("")
@@ -201,10 +226,10 @@ class Ui_Dialog(object):
         self.marker.addItem(icon32, "")
         self.marker.setObjectName(u"marker")
 
-        self.horizontalLayout_5.addWidget(self.marker)
+        self.horizontalLayout.addWidget(self.marker)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_5)
+        self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -246,8 +271,8 @@ class Ui_Dialog(object):
         self.verticalLayout.setStretch(1, 1)
         self.verticalLayout.setStretch(2, 1)
         self.verticalLayout.setStretch(3, 1)
-        self.verticalLayout.setStretch(4, 1)
         self.verticalLayout.setStretch(5, 1)
+        self.verticalLayout.setStretch(6, 1)
 
         self.retranslateUi(Dialog)
 
@@ -261,7 +286,19 @@ class Ui_Dialog(object):
         self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
         self.lagend_lab.setText(QCoreApplication.translate("Dialog", u"Lagend :", None))
         self.lagend.setText("")
-        self.marker_lab.setText(QCoreApplication.translate("Dialog", u"marker: ", None))
+        self.location_lab.setText(QCoreApplication.translate("Dialog", u"Legend location :", None))
+        self.location.setItemText(0, QCoreApplication.translate("Dialog", u"Auto", None))
+        self.location.setItemText(1, QCoreApplication.translate("Dialog", u"upper right", None))
+        self.location.setItemText(2, QCoreApplication.translate("Dialog", u"upper left", None))
+        self.location.setItemText(3, QCoreApplication.translate("Dialog", u"lower left", None))
+        self.location.setItemText(4, QCoreApplication.translate("Dialog", u"lower right", None))
+        self.location.setItemText(5, QCoreApplication.translate("Dialog", u"right", None))
+        self.location.setItemText(6, QCoreApplication.translate("Dialog", u"center right", None))
+        self.location.setItemText(7, QCoreApplication.translate("Dialog", u"lower center", None))
+        self.location.setItemText(8, QCoreApplication.translate("Dialog", u"upper center", None))
+        self.location.setItemText(9, QCoreApplication.translate("Dialog", u"center", None))
+
+        self.marker_lab.setText(QCoreApplication.translate("Dialog", u"marker : ", None))
         self.marker.setItemText(0, QCoreApplication.translate("Dialog", u"None", None))
         self.marker.setItemText(1, QCoreApplication.translate("Dialog", u"point", None))
         self.marker.setItemText(2, QCoreApplication.translate("Dialog", u"pixel", None))

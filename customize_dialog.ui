@@ -32,7 +32,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1,1,1">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1,0,1,1">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,9">
      <item>
@@ -92,15 +92,80 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="location_lab">
+       <property name="text">
+        <string>Legend location :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="location">
+       <item>
+        <property name="text">
+         <string>Auto</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>upper right</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>upper left</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>lower left</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>lower right</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>right</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>center right</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>lower center</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>upper center</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>center</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
       <widget class="QLabel" name="marker_lab">
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>16777215</width>
          <height>16777215</height>
         </size>
        </property>
        <property name="text">
-        <string>marker: </string>
+        <string>marker : </string>
        </property>
       </widget>
      </item>

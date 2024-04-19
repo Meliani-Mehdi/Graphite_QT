@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'worksheet_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.7.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -55,7 +55,7 @@ class Ui_Dialog2(object):
         self.tableWidget.setItem(2, 1, __qtablewidgetitem7)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(20, 10, 331, 401))
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
