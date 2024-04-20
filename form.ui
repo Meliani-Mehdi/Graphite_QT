@@ -977,6 +977,16 @@ QPushButton {
                <property name="text">
                 <string/>
                </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>assets/pop.png</normaloff>assets/pop.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
               </widget>
              </item>
              <item>
@@ -1001,7 +1011,13 @@ QPushButton {
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>assets/full-screen.png</normaloff>assets/full-screen.png</iconset>
+                 <normaloff>assets/fullscreen.png</normaloff>assets/fullscreen.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -1028,6 +1044,12 @@ QPushButton {
                <property name="icon">
                 <iconset>
                  <normaloff>assets/focus.png</normaloff>assets/focus.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
                </property>
                <property name="shortcut">
                 <string>Shift+F</string>
