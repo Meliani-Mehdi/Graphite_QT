@@ -750,20 +750,12 @@ class Tab(QWidget):
     def to_stack_plot(self):
         self.figure.clear()
         self.ax = self.figure.add_subplot()
-        x = self.dataframe.iloc[:, 0]
-        y = self.dataframe.iloc[:, 1:].values.T
-        labels = self.dataframe.columns[1:]
-        colors = self.colors[:len(labels)]
 
-        try:
-            self.ax.stackplot(x, y, labels=labels, colors=colors, baseline='zero')
-        except Exception as e:
-            print(f"Error plotting stack plot: {e}")
+        self.dataframe.plot(kind='area', ax=self.ax)
 
         if self.typeNum != 4:
             self.typeNum = 4
             self.last_plot = self.to_stack_plot
-            self.last_plot = self.to_fill_between
             xlim = self.ax.get_xlim()
             ylim = self.ax.get_ylim()
             self.def_vals = [xlim, ylim]

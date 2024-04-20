@@ -500,7 +500,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, -80, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -567,11 +567,26 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.stackplot)
 
+        self.pushButton_6 = QPushButton(self.typeButtons)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setMinimumSize(QSize(110, 110))
+        self.pushButton_6.setMaximumSize(QSize(110, 110))
+        self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
+        icon16 = QIcon()
+        icon16.addFile(u"assets/buttons/types/contour.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_6.setIcon(icon16)
+        self.pushButton_6.setIconSize(QSize(100, 100))
+
+        self.verticalLayout_3.addWidget(self.pushButton_6)
+
         self.pushButton_11 = QPushButton(self.typeButtons)
         self.pushButton_11.setObjectName(u"pushButton_11")
         self.pushButton_11.setMinimumSize(QSize(110, 110))
         self.pushButton_11.setMaximumSize(QSize(110, 110))
         self.pushButton_11.setCursor(QCursor(Qt.PointingHandCursor))
+        icon17 = QIcon()
+        icon17.addFile(u"assets/buttons/types/contourf.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_11.setIcon(icon17)
         self.pushButton_11.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_11)
@@ -581,6 +596,9 @@ class Ui_Graphite(object):
         self.pushButton_10.setMinimumSize(QSize(110, 110))
         self.pushButton_10.setMaximumSize(QSize(110, 110))
         self.pushButton_10.setCursor(QCursor(Qt.PointingHandCursor))
+        icon18 = QIcon()
+        icon18.addFile(u"assets/buttons/types/imshow.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_10.setIcon(icon18)
         self.pushButton_10.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_10)
@@ -590,24 +608,21 @@ class Ui_Graphite(object):
         self.pushButton_9.setMinimumSize(QSize(110, 110))
         self.pushButton_9.setMaximumSize(QSize(110, 110))
         self.pushButton_9.setCursor(QCursor(Qt.PointingHandCursor))
+        icon19 = QIcon()
+        icon19.addFile(u"assets/buttons/types/pcolormesh.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_9.setIcon(icon19)
         self.pushButton_9.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_9)
-
-        self.pushButton_6 = QPushButton(self.typeButtons)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setMinimumSize(QSize(110, 110))
-        self.pushButton_6.setMaximumSize(QSize(110, 110))
-        self.pushButton_6.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_6.setIconSize(QSize(100, 100))
-
-        self.verticalLayout_3.addWidget(self.pushButton_6)
 
         self.pushButton_8 = QPushButton(self.typeButtons)
         self.pushButton_8.setObjectName(u"pushButton_8")
         self.pushButton_8.setMinimumSize(QSize(110, 110))
         self.pushButton_8.setMaximumSize(QSize(110, 110))
         self.pushButton_8.setCursor(QCursor(Qt.PointingHandCursor))
+        icon20 = QIcon()
+        icon20.addFile(u"assets/buttons/types/surface_3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_8.setIcon(icon20)
         self.pushButton_8.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_8)
@@ -617,6 +632,9 @@ class Ui_Graphite(object):
         self.pushButton_7.setMinimumSize(QSize(110, 110))
         self.pushButton_7.setMaximumSize(QSize(110, 110))
         self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
+        icon21 = QIcon()
+        icon21.addFile(u"assets/buttons/types/trisurf3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_7.setIcon(icon21)
         self.pushButton_7.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_7)
@@ -626,6 +644,9 @@ class Ui_Graphite(object):
         self.pushButton_5.setMinimumSize(QSize(110, 110))
         self.pushButton_5.setMaximumSize(QSize(110, 110))
         self.pushButton_5.setCursor(QCursor(Qt.PointingHandCursor))
+        icon22 = QIcon()
+        icon22.addFile(u"assets/buttons/types/wire3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_5.setIcon(icon22)
         self.pushButton_5.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
@@ -638,7 +659,6 @@ class Ui_Graphite(object):
         self.plot.raise_()
         self.histogram.raise_()
         self.piechart.raise_()
-        self.pushButton_6.raise_()
         self.pushButton_5.raise_()
         self.fill_between.raise_()
         self.pushButton_7.raise_()
@@ -647,6 +667,7 @@ class Ui_Graphite(object):
         self.pushButton_10.raise_()
         self.pushButton_11.raise_()
         self.stackplot.raise_()
+        self.pushButton_6.raise_()
 
         self.horizontalLayout.addWidget(self.graphTypes)
 
@@ -815,10 +836,10 @@ class Ui_Graphite(object):
         self.piechart.setText("")
         self.fill_between.setText("")
         self.stackplot.setText("")
+        self.pushButton_6.setText("")
         self.pushButton_11.setText("")
         self.pushButton_10.setText("")
         self.pushButton_9.setText("")
-        self.pushButton_6.setText("")
         self.pushButton_8.setText("")
         self.pushButton_7.setText("")
         self.pushButton_5.setText("")

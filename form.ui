@@ -1124,7 +1124,7 @@ QPushButton {
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-80</y>
              <width>114</width>
              <height>1324</height>
             </rect>
@@ -1310,6 +1310,38 @@ background-color: rgb(23, 23, 23);</string>
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="pushButton_6">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>110</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/contour.png</normaloff>assets/buttons/types/contour.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>100</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton_11">
               <property name="minimumSize">
                <size>
@@ -1328,6 +1360,10 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/contourf.png</normaloff>assets/buttons/types/contourf.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1357,6 +1393,10 @@ background-color: rgb(23, 23, 23);</string>
               <property name="text">
                <string/>
               </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/imshow.png</normaloff>assets/buttons/types/imshow.png</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>100</width>
@@ -1385,33 +1425,9 @@ background-color: rgb(23, 23, 23);</string>
               <property name="text">
                <string/>
               </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_6">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/pcolormesh.png</normaloff>assets/buttons/types/pcolormesh.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1441,6 +1457,10 @@ background-color: rgb(23, 23, 23);</string>
               <property name="text">
                <string/>
               </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/surface_3d.png</normaloff>assets/buttons/types/surface_3d.png</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>100</width>
@@ -1468,6 +1488,10 @@ background-color: rgb(23, 23, 23);</string>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/trisurf3d.png</normaloff>assets/buttons/types/trisurf3d.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -1497,6 +1521,10 @@ background-color: rgb(23, 23, 23);</string>
               <property name="text">
                <string/>
               </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>assets/buttons/types/wire3d.png</normaloff>assets/buttons/types/wire3d.png</iconset>
+              </property>
               <property name="iconSize">
                <size>
                 <width>100</width>
@@ -1522,7 +1550,6 @@ background-color: rgb(23, 23, 23);</string>
            <zorder>plot</zorder>
            <zorder>histogram</zorder>
            <zorder>piechart</zorder>
-           <zorder>pushButton_6</zorder>
            <zorder>pushButton_5</zorder>
            <zorder>fill_between</zorder>
            <zorder>pushButton_7</zorder>
@@ -1532,6 +1559,7 @@ background-color: rgb(23, 23, 23);</string>
            <zorder>pushButton_11</zorder>
            <zorder>stackplot</zorder>
            <zorder>verticalSpacer</zorder>
+           <zorder>pushButton_6</zorder>
           </widget>
          </widget>
         </item>
