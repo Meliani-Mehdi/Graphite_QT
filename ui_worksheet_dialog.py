@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'worksheet_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -22,7 +22,7 @@ class Ui_Dialog2(object):
     def setupUi(self, Dialog2):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
-        Dialog2.resize(400, 480)
+        Dialog2.resize(373, 480)
         Dialog2.setStyleSheet(u"QLabel {\n"
 "    color: black;\n"
 "}")
@@ -55,7 +55,7 @@ class Ui_Dialog2(object):
         self.tableWidget.setItem(2, 1, __qtablewidgetitem7)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(20, 10, 331, 401))
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
@@ -68,9 +68,6 @@ class Ui_Dialog2(object):
         self.addwork_2 = QPushButton(Dialog2)
         self.addwork_2.setObjectName(u"addwork_2")
         self.addwork_2.setGeometry(QRect(130, 420, 101, 41))
-        self.draw_ladder_button = QPushButton(Dialog2)
-        self.draw_ladder_button.setObjectName(u"draw_ladder_button")
-        self.draw_ladder_button.setGeometry(QRect(360, 10, 31, 111))
 
         self.retranslateUi(Dialog2)
 
@@ -91,6 +88,5 @@ class Ui_Dialog2(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
-        self.draw_ladder_button.setText(QCoreApplication.translate("Dialog2", u"lad", None))
     # retranslateUi
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>373</width>
     <height>480</height>
    </rect>
   </property>
@@ -139,19 +139,6 @@
    </property>
    <property name="text">
     <string>add column</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="draw_ladder_button">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>10</y>
-     <width>31</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>lad</string>
    </property>
   </widget>
  </widget>
