@@ -1144,9 +1144,9 @@ QPushButton {
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-80</y>
+             <y>0</y>
              <width>114</width>
-             <height>1364</height>
+             <height>1324</height>
             </rect>
            </property>
            <property name="styleSheet">
@@ -1555,6 +1555,9 @@ background-color: rgb(23, 23, 23);</string>
             </item>
             <item>
              <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
