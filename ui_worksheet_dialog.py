@@ -23,7 +23,7 @@ class Ui_Dialog2(object):
     def setupUi(self, Dialog2):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
-        Dialog2.resize(373, 480)
+        Dialog2.resize(346, 466)
         Dialog2.setStyleSheet(u"QLabel {\n"
 "    color: black;\n"
 "}")
