@@ -727,7 +727,8 @@ class Graphite(QMainWindow):
         self.calculate_function(func, start, end, step)
 
 
-    def calculate_function(self, function, start, end, step=1.0):
+    def calculate_function(self, function, start, end, step):
+        step = 0.1 if step is None else step
         try:
             x_values = np.round(np.arange(start, end + step, step))
             function_values = []  

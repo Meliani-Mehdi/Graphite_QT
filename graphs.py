@@ -54,6 +54,8 @@ class Tab(QWidget):
         layout = QHBoxLayout()
         layout.addWidget(self.plot_widget)
 
+        self.text = self.figure.text(0.95, 0.95, '', ha='right')
+
         self.figure.canvas.mpl_connect('button_press_event', self.on_press)
         self.figure.canvas.mpl_connect('button_release_event', self.on_release)
         self.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
@@ -79,13 +81,17 @@ class Tab(QWidget):
             self.button_pressed = False
 
     def on_motion(self, event):
-        if self.button_pressed:
-            if event.xdata is not None and event.ydata is not None:
-                dx = event.xdata - self.press_x
-                dy = event.ydata - self.press_y
-                self.ax.set_xlim(self.ax.get_xlim() - dx)
-                self.ax.set_ylim(self.ax.get_ylim() - dy)
-                self.figure.canvas.draw()
+        if event.inaxes == self.ax:
+            x = event.xdata
+            y = event.ydata
+            self.text.set_text(f'x={x:.2f}, y={y:.2f}')
+            if x is not None and y is not None:
+                if self.button_pressed:
+                    dx = x - self.press_x
+                    dy = y - self.press_y
+                    self.ax.set_xlim(self.ax.get_xlim() - dx)
+                    self.ax.set_ylim(self.ax.get_ylim() - dy)
+            self.figure.canvas.draw()
 
     def on_scroll(self, event):
         if event.button == 'up':
@@ -662,6 +668,7 @@ class Tab(QWidget):
             self.timer.start(self.interval)
         else:
             self.timer.stop()
+        self.text = self.figure.text(0.95, 0.95, '', ha='right')
         self.plot_widget.draw()
 
 
