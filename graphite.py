@@ -6,7 +6,7 @@ import math
 import platform
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt, QPointF
-from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView
+from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
@@ -630,6 +630,14 @@ class Graphite(QMainWindow):
                 for j in range(num_cols):
                     item = QTableWidgetItem(str(data.iloc[i, j]))
                     self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
+              self.worksheet_btn.ui.tableWidget.resizeColumnsToContents()
+                                # Adjust size policy to allow horizontal expansion
+              self.worksheet_btn.ui.tableWidget.setSizeAdjustPolicy(
+              QAbstractScrollArea.AdjustToContents)
+                                # Set maximum width to prevent excessive expansion
+              max_width = 800  # Adjust as needed
+              self.worksheet_btn.setMaximumWidth(max_width)
+              self.worksheet_btn.adjustSize()  # Resize the dialog
               self.worksheet_btn.show()
 
 
