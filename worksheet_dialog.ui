@@ -29,12 +29,12 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>331</width>
+       <width>16777215</width>
        <height>16777215</height>
       </size>
      </property>
      <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustToContents</enum>
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
      </property>
      <property name="rowCount">
       <number>10</number>
