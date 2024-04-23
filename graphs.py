@@ -795,6 +795,7 @@ class Tab(QWidget):
                 self.dataframe.to_json(filepath, orient='records')
             else:
                 raise ValueError("Unsupported file format. Please select 'csv', 'excel' or 'json'.")
+            self.file = filepath
             return True
         except Exception as e:
             print(f"Error saving file: {e}")
