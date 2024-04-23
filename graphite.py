@@ -22,7 +22,23 @@ class Worksheet(QDialog):
         self.ui.setupUi(self)
         self.ui.addwork.clicked.connect(self.add_row)
         self.ui.addwork_2.clicked.connect(self.add_column)
-        # self.ui.draw_ladder_button.clicked.connect(self.draw_ladder)
+        self.ui.remrow.clicked.connect(self.remove_row)
+        self.ui.remcol.clicked.connect(self.remove_column)
+
+    def remove_row(self):
+        row, ok = QInputDialog.getInt(self, "Remove Row", "Enter row number to remove:")
+        if ok:
+            row_index = row - 1
+            if 0 <= row_index < self.ui.tableWidget.rowCount():
+                self.ui.tableWidget.removeRow(row_index)
+
+
+    def remove_column(self):
+        column, ok = QInputDialog.getInt(self, "Remove Column", "Enter column number to remove:")
+        if ok:
+            column_index = column - 1
+            if 0 <= column_index < self.ui.tableWidget.columnCount():
+                self.ui.tableWidget.removeColumn(column_index)
 
     def add_row(self):
         row_count = self.ui.tableWidget.rowCount()

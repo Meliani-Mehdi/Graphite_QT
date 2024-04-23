@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>346</width>
-    <height>466</height>
+    <width>347</width>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     color: black;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTableWidget" name="tableWidget">
      <property name="sizePolicy">
@@ -101,9 +101,6 @@
     </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout"/>
-   </item>
-   <item>
     <widget class="QPushButton" name="plotwork">
      <property name="text">
       <string>plot</string>
@@ -111,9 +108,23 @@
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="remcol">
+     <property name="text">
+      <string>remove column</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="addwork_2">
      <property name="text">
       <string>add column</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="remrow">
+     <property name="text">
+      <string>remove row</string>
      </property>
     </widget>
    </item>

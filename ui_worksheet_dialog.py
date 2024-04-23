@@ -23,12 +23,12 @@ class Ui_Dialog2(object):
     def setupUi(self, Dialog2):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
-        Dialog2.resize(346, 466)
+        Dialog2.resize(347, 530)
         Dialog2.setStyleSheet(u"QLabel {\n"
 "    color: black;\n"
 "}")
-        self.verticalLayout_2 = QVBoxLayout(Dialog2)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout = QVBoxLayout(Dialog2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.tableWidget = QTableWidget(Dialog2)
         if (self.tableWidget.columnCount() < 2):
             self.tableWidget.setColumnCount(2)
@@ -63,27 +63,32 @@ class Ui_Dialog2(object):
         self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
         self.tableWidget.horizontalHeader().setStretchLastSection(False)
 
-        self.verticalLayout_2.addWidget(self.tableWidget)
-
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-
-        self.verticalLayout_2.addLayout(self.verticalLayout)
+        self.verticalLayout.addWidget(self.tableWidget)
 
         self.plotwork = QPushButton(Dialog2)
         self.plotwork.setObjectName(u"plotwork")
 
-        self.verticalLayout_2.addWidget(self.plotwork)
+        self.verticalLayout.addWidget(self.plotwork)
+
+        self.remcol = QPushButton(Dialog2)
+        self.remcol.setObjectName(u"remcol")
+
+        self.verticalLayout.addWidget(self.remcol)
 
         self.addwork_2 = QPushButton(Dialog2)
         self.addwork_2.setObjectName(u"addwork_2")
 
-        self.verticalLayout_2.addWidget(self.addwork_2)
+        self.verticalLayout.addWidget(self.addwork_2)
+
+        self.remrow = QPushButton(Dialog2)
+        self.remrow.setObjectName(u"remrow")
+
+        self.verticalLayout.addWidget(self.remrow)
 
         self.addwork = QPushButton(Dialog2)
         self.addwork.setObjectName(u"addwork")
 
-        self.verticalLayout_2.addWidget(self.addwork)
+        self.verticalLayout.addWidget(self.addwork)
 
 
         self.retranslateUi(Dialog2)
@@ -103,7 +108,9 @@ class Ui_Dialog2(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
+        self.remcol.setText(QCoreApplication.translate("Dialog2", u"remove column", None))
         self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
+        self.remrow.setText(QCoreApplication.translate("Dialog2", u"remove row", None))
         self.addwork.setText(QCoreApplication.translate("Dialog2", u"add row", None))
     # retranslateUi
 
