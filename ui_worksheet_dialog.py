@@ -15,23 +15,20 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QHeaderView, QPushButton,
-    QSizePolicy, QTableWidget, QTableWidgetItem, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDialog, QHeaderView,
+    QPushButton, QSizePolicy, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 
 class Ui_Dialog2(object):
     def setupUi(self, Dialog2):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
-        Dialog2.resize(373, 480)
+        Dialog2.resize(347, 530)
         Dialog2.setStyleSheet(u"QLabel {\n"
 "    color: black;\n"
 "}")
-        self.addwork = QPushButton(Dialog2)
-        self.addwork.setObjectName(u"addwork")
-        self.addwork.setGeometry(QRect(20, 420, 101, 41))
-        self.plotwork = QPushButton(Dialog2)
-        self.plotwork.setObjectName(u"plotwork")
-        self.plotwork.setGeometry(QRect(250, 420, 101, 41))
+        self.verticalLayout = QVBoxLayout(Dialog2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.tableWidget = QTableWidget(Dialog2)
         if (self.tableWidget.columnCount() < 2):
             self.tableWidget.setColumnCount(2)
@@ -54,20 +51,45 @@ class Ui_Dialog2(object):
         __qtablewidgetitem7 = QTableWidgetItem()
         self.tableWidget.setItem(2, 1, __qtablewidgetitem7)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(20, 10, 331, 401))
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setMaximumSize(QSize(331, 16777215))
+        self.tableWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.tableWidget.setRowCount(10)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(159)
         self.tableWidget.horizontalHeader().setProperty("showSortIndicator", False)
         self.tableWidget.horizontalHeader().setStretchLastSection(False)
+
+        self.verticalLayout.addWidget(self.tableWidget)
+
+        self.plotwork = QPushButton(Dialog2)
+        self.plotwork.setObjectName(u"plotwork")
+
+        self.verticalLayout.addWidget(self.plotwork)
+
+        self.remcol = QPushButton(Dialog2)
+        self.remcol.setObjectName(u"remcol")
+
+        self.verticalLayout.addWidget(self.remcol)
+
         self.addwork_2 = QPushButton(Dialog2)
         self.addwork_2.setObjectName(u"addwork_2")
-        self.addwork_2.setGeometry(QRect(130, 420, 101, 41))
+
+        self.verticalLayout.addWidget(self.addwork_2)
+
+        self.remrow = QPushButton(Dialog2)
+        self.remrow.setObjectName(u"remrow")
+
+        self.verticalLayout.addWidget(self.remrow)
+
+        self.addwork = QPushButton(Dialog2)
+        self.addwork.setObjectName(u"addwork")
+
+        self.verticalLayout.addWidget(self.addwork)
+
 
         self.retranslateUi(Dialog2)
 
@@ -76,8 +98,6 @@ class Ui_Dialog2(object):
 
     def retranslateUi(self, Dialog2):
         Dialog2.setWindowTitle(QCoreApplication.translate("Dialog2", u"Dialog", None))
-        self.addwork.setText(QCoreApplication.translate("Dialog2", u"add row", None))
-        self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Dialog2", u"X", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
@@ -87,6 +107,10 @@ class Ui_Dialog2(object):
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
+        self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
+        self.remcol.setText(QCoreApplication.translate("Dialog2", u"remove column", None))
         self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
+        self.remrow.setText(QCoreApplication.translate("Dialog2", u"remove row", None))
+        self.addwork.setText(QCoreApplication.translate("Dialog2", u"add row", None))
     # retranslateUi
 

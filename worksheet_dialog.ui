@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>373</width>
-    <height>480</height>
+    <width>347</width>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,129 +18,124 @@
     color: black;
 }</string>
   </property>
-  <widget class="QPushButton" name="addwork">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>420</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>add row</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="plotwork">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>420</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>plot</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>331</width>
-     <height>401</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>331</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="rowCount">
-    <number>10</number>
-   </property>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>159</number>
-   </attribute>
-   <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="horizontalHeaderStretchLastSection">
-    <bool>false</bool>
-   </attribute>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <column>
-    <property name="text">
-     <string>X</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Y (graph 1)</string>
-    </property>
-   </column>
-   <item row="0" column="0">
-    <property name="text">
-     <string/>
-    </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>331</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="rowCount">
+      <number>10</number>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>159</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <column>
+      <property name="text">
+       <string>X</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Y (graph 1)</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="1" column="1">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="2" column="0">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="2" column="1">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+    </widget>
    </item>
-   <item row="0" column="1">
-    <property name="text">
-     <string/>
-    </property>
+   <item>
+    <widget class="QPushButton" name="plotwork">
+     <property name="text">
+      <string>plot</string>
+     </property>
+    </widget>
    </item>
-   <item row="1" column="0">
-    <property name="text">
-     <string/>
-    </property>
+   <item>
+    <widget class="QPushButton" name="remcol">
+     <property name="text">
+      <string>remove column</string>
+     </property>
+    </widget>
    </item>
-   <item row="1" column="1">
-    <property name="text">
-     <string/>
-    </property>
+   <item>
+    <widget class="QPushButton" name="addwork_2">
+     <property name="text">
+      <string>add column</string>
+     </property>
+    </widget>
    </item>
-   <item row="2" column="0">
-    <property name="text">
-     <string/>
-    </property>
+   <item>
+    <widget class="QPushButton" name="remrow">
+     <property name="text">
+      <string>remove row</string>
+     </property>
+    </widget>
    </item>
-   <item row="2" column="1">
-    <property name="text">
-     <string/>
-    </property>
+   <item>
+    <widget class="QPushButton" name="addwork">
+     <property name="text">
+      <string>add row</string>
+     </property>
+    </widget>
    </item>
-  </widget>
-  <widget class="QPushButton" name="addwork_2">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>420</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>add column</string>
-   </property>
-  </widget>
+  </layout>
  </widget>
  <resources/>
  <connections/>
