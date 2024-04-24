@@ -38,6 +38,7 @@ class Tab(QWidget):
         self.legend_location = 0
         self.marker = 0
         self.last_marker = 0
+        self.grid = True
 
         self.time_check = False
         self.timer = QTimer(self)
@@ -91,7 +92,9 @@ class Tab(QWidget):
                     dy = y - self.press_y
                     self.ax.set_xlim(self.ax.get_xlim() - dx)
                     self.ax.set_ylim(self.ax.get_ylim() - dy)
-            self.figure.canvas.draw()
+        else:
+            self.text.set_text('')
+        self.figure.canvas.draw()
 
     def on_scroll(self, event):
         if event.button == 'up':
@@ -661,6 +664,7 @@ class Tab(QWidget):
         self.ax.set_xlabel(self.xlabel)
         self.ax.set_ylabel(self.ylabel)
         self.ax.legend(loc=self.legend_location).set_visible(self.legend)
+        self.ax.grid(self.grid)
         if self.last_marker != self.marker:
             self.last_marker = self.marker
             self.last_plot()

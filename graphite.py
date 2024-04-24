@@ -20,6 +20,8 @@ class Worksheet(QDialog):
         super().__init__(parent)
         self.ui = worksheet()
         self.ui.setupUi(self)
+        self.ui.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.ui.tableWidget.horizontalHeader().setMinimumSectionSize(100)
         self.ui.addwork.clicked.connect(self.add_row)
         self.ui.addwork_2.clicked.connect(self.add_column)
         self.ui.remrow.clicked.connect(self.remove_row)
@@ -47,12 +49,6 @@ class Worksheet(QDialog):
     def add_column(self):
         column_count = self.ui.tableWidget.columnCount()
         self.ui.tableWidget.setColumnCount(column_count + 1)
-        header_width = self.ui.tableWidget.horizontalHeader().length()
-        column_width = self.ui.tableWidget.columnWidth(column_count)
-        table_width = header_width + column_width
-        self.ui.tableWidget.setFixedWidth(table_width)
-        dialog_width = self.width()
-        self.setFixedWidth(dialog_width + column_width)
 
 
 class CustomizeDialog(QDialog):
@@ -107,8 +103,10 @@ class Graphite(QMainWindow):
         self.ui = Ui_Graphite()
         self.ui.setupUi(self)
         self.ui.graphTab.tabCloseRequested.connect(self.close_tab)
+        self.full_screen = False
         shortcut = QShortcut(QKeySequence("Alt+d"), self.ui.graphTab)
         shortcut.activated.connect(self.close_current_tab)
+
 
         self.tabs = []
 
@@ -190,8 +188,8 @@ class Graphite(QMainWindow):
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
 
-        self.worksheet_btn = Worksheet(self)
-        self.worksheet_btn.ui.plotwork.clicked.connect(self.plotwork)
+        self.worksheet_dialog = Worksheet(self)
+        self.worksheet_dialog.ui.plotwork.clicked.connect(self.plotwork)
         self.ui.worksheet.clicked.connect(self.show_worksheet)
 
         self.function_dialog = FunctionDialog(self)
@@ -203,7 +201,7 @@ class Graphite(QMainWindow):
 
 
     def plotwork(self):
-        table_widget = self.worksheet_btn.ui.tableWidget
+        table_widget = self.worksheet_dialog.ui.tableWidget
 
         num_rows = table_widget.rowCount()
         num_cols = table_widget.columnCount()
@@ -220,9 +218,7 @@ class Graphite(QMainWindow):
 
 
         df = pd.DataFrame(data)
-        new_tab = Tab(self.ui.graphTab,df,name="Worksheet", file=None)
-        new_tab.typeNum = 0
-        new_tab.custom_plot()
+        self.tabs.append(Tab(self.ui.graphTab,df,name="Worksheet", file=None))
 
 
 
@@ -629,33 +625,24 @@ class Graphite(QMainWindow):
                 ## worksheet ##
 
     def show_worksheet(self):
-        if len(self.tabs) == 0:
-               self.worksheet_btn.show()
-        else:
-           current_index = self.ui.graphTab.currentIndex()
-           if current_index != -1:
-              self.worksheet_btn.show()
-              widget = self.ui.graphTab.widget(current_index)
-              tab_index = self.tabs.index(widget)
-              tab = self.tabs[tab_index]
-              data = tab.dataframe
-              num_rows, num_cols = data.shape
-              self.worksheet_btn.ui.tableWidget.setRowCount(num_rows)
-              self.worksheet_btn.ui.tableWidget.setColumnCount(num_cols)
-              for i in range(num_rows):
-                for j in range(num_cols):
-                    item = QTableWidgetItem(str(data.iloc[i, j]))
-                    self.worksheet_btn.ui.tableWidget.setItem(i, j, item)
-              self.worksheet_btn.ui.tableWidget.resizeColumnsToContents()
-                                # Adjust size policy to allow horizontal expansion
-              self.worksheet_btn.ui.tableWidget.setSizeAdjustPolicy(
-              QAbstractScrollArea.AdjustToContents)
-                                # Set maximum width to prevent excessive expansion
-              max_width = 800  # Adjust as needed
-              self.worksheet_btn.setMaximumWidth(max_width)
-              self.worksheet_btn.adjustSize()  # Resize the dialog
-              self.worksheet_btn.show()
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            df= tab.dataframe
+            data = df.values.tolist()
+            columns = df.columns.tolist()
+            self.worksheet_dialog.ui.tableWidget.setRowCount(len(data))
+            self.worksheet_dialog.ui.tableWidget.setColumnCount(len(columns))
+            self.worksheet_dialog.ui.tableWidget.setHorizontalHeaderLabels(columns)
 
+            for row_idx, row_data in enumerate(data):
+                for col_idx, cell_data in enumerate(row_data):
+                    item = QTableWidgetItem(str(cell_data))
+                    self.worksheet_dialog.ui.tableWidget.setItem(row_idx, col_idx, item)
+
+        self.worksheet_dialog.show()
 
                 ## customize ##
 
@@ -673,6 +660,7 @@ class Graphite(QMainWindow):
             self.customize_dialog.ui.lagend.setChecked(tab.legend)
             self.customize_dialog.ui.location.setCurrentIndex(tab.legend_location)
             self.customize_dialog.ui.marker.setCurrentIndex(tab.marker)
+            self.customize_dialog.ui.grid.setChecked(tab.grid)
 
     def apply_custom(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -687,6 +675,7 @@ class Graphite(QMainWindow):
             legend = self.customize_dialog.ui.lagend.isChecked()
             location = self.customize_dialog.ui.location.currentIndex()
             real_time = self.customize_dialog.ui.real.isChecked()
+            grid = self.customize_dialog.ui.grid.isChecked()
             tab.name=title
             tab.xlabel=xlabel
             tab.ylabel=ylabel
@@ -694,6 +683,7 @@ class Graphite(QMainWindow):
             tab.legend=legend
             tab.legend_location=location
             tab.time_check=real_time 
+            tab.grid=grid 
             tab.custom_plot()
             self.customize_dialog.reject()
 
@@ -990,6 +980,16 @@ class Graphite(QMainWindow):
                 file_format = os.path.splitext(file_path)[-1][1:]
                 return tab.saveFile(file_path, file_format)
         return False
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_F11:
+            self.toggle_full_screen()
+        else:
+            super().keyPressEvent(event)
+
+    def toggle_full_screen(self):
+        self.full_screen = not self.full_screen
+        self.showFullScreen() if self.full_screen else self.showNormal()
 
 
 if __name__ == "__main__":

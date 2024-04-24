@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>347</width>
-    <height>530</height>
+    <width>758</width>
+    <height>672</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -21,83 +27,24 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTableWidget" name="tableWidget">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-     </property>
-     <property name="rowCount">
-      <number>10</number>
-     </property>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>159</number>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>true</bool>
      </attribute>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>100</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>false</bool>
      </attribute>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <row/>
-     <column>
-      <property name="text">
-       <string>X</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Y (graph 1)</string>
-      </property>
-     </column>
-     <item row="0" column="0">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="0" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="1" column="0">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="1" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="2" column="0">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="2" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
     </widget>
    </item>
    <item>
@@ -108,32 +55,40 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="remcol">
-     <property name="text">
-      <string>remove column</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="addwork_2">
+       <property name="text">
+        <string>add column</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="remcol">
+       <property name="text">
+        <string>remove column</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
-    <widget class="QPushButton" name="addwork_2">
-     <property name="text">
-      <string>add column</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="remrow">
-     <property name="text">
-      <string>remove row</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="addwork">
-     <property name="text">
-      <string>add row</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QPushButton" name="addwork">
+       <property name="text">
+        <string>add row</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="remrow">
+       <property name="text">
+        <string>remove row</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

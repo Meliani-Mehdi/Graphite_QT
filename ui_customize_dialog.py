@@ -245,6 +245,17 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_6.addWidget(self.real)
 
+        self.lab_grid = QLabel(Dialog)
+        self.lab_grid.setObjectName(u"lab_grid")
+        self.lab_grid.setMaximumSize(QSize(50, 16777215))
+
+        self.horizontalLayout_6.addWidget(self.lab_grid)
+
+        self.grid = QCheckBox(Dialog)
+        self.grid.setObjectName(u"grid")
+
+        self.horizontalLayout_6.addWidget(self.grid)
+
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
@@ -335,6 +346,8 @@ class Ui_Dialog(object):
 
         self.real_lab.setText(QCoreApplication.translate("Dialog", u"real time :", None))
         self.real.setText("")
+        self.lab_grid.setText(QCoreApplication.translate("Dialog", u"Grid :", None))
+        self.grid.setText("")
         self.cancel_btn.setText(QCoreApplication.translate("Dialog", u"cancel", None))
         self.apply_btn.setText(QCoreApplication.translate("Dialog", u"apply", None))
     # retranslateUi
