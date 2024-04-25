@@ -6,6 +6,7 @@
         "worksheet_dialog.ui",
         "export.ui",
         "math_function.ui",
-        "ladder.ui"
+        "ladder.ui",
+        "graphs.py"
     ]
 }

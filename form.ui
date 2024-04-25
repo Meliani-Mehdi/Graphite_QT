@@ -51,95 +51,115 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
-      <item>
-       <widget class="QFrame" name="frame1">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>160</height>
-         </size>
+     <widget class="QStackedWidget" name="main">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="Page1" native="true">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+        <property name="spacing">
+         <number>0</number>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>160</height>
-         </size>
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(30, 30, 30);</string>
+        <property name="topMargin">
+         <number>0</number>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
+        <property name="rightMargin">
+         <number>0</number>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QFrame" name="frame">
-           <property name="minimumSize">
-            <size>
-             <width>250</width>
-             <height>0</height>
-            </size>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame1">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>160</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>160</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(30, 30, 30);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Shape::NoFrame</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>0</number>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>300</width>
-             <height>16777215</height>
-            </size>
+           <property name="leftMargin">
+            <number>0</number>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
+           <property name="topMargin">
+            <number>0</number>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QFrame" name="frame_2">
-              <property name="styleSheet">
-               <string notr="true">QFrame { 
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::NoFrame</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QFrame" name="frame_2">
+                <property name="styleSheet">
+                 <string notr="true">QFrame { 
 	border: none;
 }</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_4">
-               <item>
-                <widget class="QPushButton" name="open_btn">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>ProFontWindows Nerd Font Propo</family>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::NoFrame</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QPushButton" name="open_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>ProFontWindows Nerd Font Propo</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     border: none;
 }
 QPushButton:pressed {
@@ -148,45 +168,45 @@ QPushButton:pressed {
 QPushButton {
     color: white;
 }</string>
-                 </property>
-                 <property name="text">
-                  <string>Open</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>assets/upload.png</normaloff>assets/upload.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="save_btn">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>ProFontWindows Nerd Font Propo</family>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string>Open</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>assets/upload.png</normaloff>assets/upload.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>28</width>
+                     <height>28</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="save_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>ProFontWindows Nerd Font Propo</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     border: none;
 }
 QPushButton:pressed {
@@ -195,45 +215,45 @@ QPushButton:pressed {
 QPushButton {
     color: white;
 }</string>
-                 </property>
-                 <property name="text">
-                  <string> save</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>assets/download.png</normaloff>assets/download.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="export_btn">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>ProFontWindows Nerd Font Propo</family>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string> save</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>assets/download.png</normaloff>assets/download.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>28</width>
+                     <height>28</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="export_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>ProFontWindows Nerd Font Propo</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     border: none;
 }
 QPushButton:pressed {
@@ -242,66 +262,66 @@ QPushButton:pressed {
 QPushButton {
     color: white;
 }</string>
-                 </property>
-                 <property name="text">
-                  <string>export</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>assets/export.png</normaloff>assets/export.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="Line" name="line">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QFrame" name="frame_3">
-              <property name="styleSheet">
-               <string notr="true">QFrame { 
+                   </property>
+                   <property name="text">
+                    <string>export</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>assets/export.png</normaloff>assets/export.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>28</width>
+                     <height>28</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_3">
+                <property name="styleSheet">
+                 <string notr="true">QFrame { 
 	border: none;
 }</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_2">
-               <item>
-                <widget class="QPushButton" name="custom_button_2">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>ProFontWindows Nerd Font Propo</family>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Shape::NoFrame</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <item>
+                  <widget class="QPushButton" name="custom_button_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>ProFontWindows Nerd Font Propo</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     border: none;
 }
 QPushButton:pressed {
@@ -310,48 +330,48 @@ QPushButton:pressed {
 QPushButton {
     color: white;
 }</string>
-                 </property>
-                 <property name="text">
-                  <string>Validation</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>assets/hypothesis.png</normaloff>assets/hypothesis.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>28</width>
-                   <height>28</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="custom_button">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>ProFontWindows Nerd Font Propo</family>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string>Validation</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>assets/hypothesis.png</normaloff>assets/hypothesis.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>28</width>
+                     <height>28</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="custom_button">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>ProFontWindows Nerd Font Propo</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     border: none;
 }
 QPushButton:pressed {
@@ -360,49 +380,49 @@ QPushButton:pressed {
 QPushButton {
     color: white;
 }</string>
-                 </property>
-                 <property name="text">
-                  <string>Customize</string>
-                 </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>assets/pen.png</normaloff>assets/pen.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>32</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="worksheet">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>32</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>ProFontWindows Nerd Font Propo</family>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                   <stylestrategy>PreferDefault</stylestrategy>
-                  </font>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
+                   </property>
+                   <property name="text">
+                    <string>Customize</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>assets/pen.png</normaloff>assets/pen.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="worksheet">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>ProFontWindows Nerd Font Propo</family>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                     <stylestrategy>PreferDefault</stylestrategy>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
     border: none;
 }
 QPushButton:pressed {
@@ -413,1179 +433,1299 @@ QPushButton {
 }
 
 </string>
+                   </property>
+                   <property name="text">
+                    <string>worksheet</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>assets/formula.png</normaloff>assets/formula.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QStackedWidget" name="mode_frames">
+             <property name="currentIndex">
+              <number>3</number>
+             </property>
+             <widget class="QWidget" name="Math_page">
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(0, 0, 127)</string>
+              </property>
+             </widget>
+             <widget class="QWidget" name="Eccomerce_page">
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(85, 255, 0)</string>
+              </property>
+             </widget>
+             <widget class="QWidget" name="Biology_page">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <widget class="QPushButton" name="min_max">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>find min max</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="Polynome">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>73</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>assets/buttons/algo/ppnl.png</normaloff>assets/buttons/algo/ppnl.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>80</width>
+                 <height>64</height>
+                </size>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="linear">
+               <property name="geometry">
+                <rect>
+                 <x>150</x>
+                 <y>10</y>
+                 <width>91</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>assets/buttons/algo/linearfff.png</normaloff>assets/buttons/algo/linearfff.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+              </widget>
+              <widget class="QToolButton" name="quadraple">
+               <property name="geometry">
+                <rect>
+                 <x>150</x>
+                 <y>73</y>
+                 <width>91</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>quadriple</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="cubic">
+               <property name="geometry">
+                <rect>
+                 <x>300</x>
+                 <y>10</y>
+                 <width>91</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>cubic</string>
+               </property>
+              </widget>
+              <widget class="QComboBox" name="expo_2">
+               <property name="geometry">
+                <rect>
+                 <x>300</x>
+                 <y>70</y>
+                 <width>91</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>expononcial</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>double expononcial</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>triple expononcial</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QPushButton" name="power">
+               <property name="geometry">
+                <rect>
+                 <x>440</x>
+                 <y>10</y>
+                 <width>91</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>power fit</string>
+               </property>
+              </widget>
+              <widget class="QComboBox" name="log">
+               <property name="geometry">
+                <rect>
+                 <x>440</x>
+                 <y>70</y>
+                 <width>91</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>logarithm</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>logistic</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QComboBox" name="gauss">
+               <property name="geometry">
+                <rect>
+                 <x>580</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Gaussian</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>lorenzian</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>voigt</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QComboBox" name="weibull">
+               <property name="geometry">
+                <rect>
+                 <x>580</x>
+                 <y>70</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>weibull</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>segmoidal</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>meichaelis-menten</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>hill</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>gompertz</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QComboBox" name="fourier">
+               <property name="geometry">
+                <rect>
+                 <x>720</x>
+                 <y>10</y>
+                 <width>71</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>fourier</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>sine</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>cosine</string>
+                </property>
+               </item>
+              </widget>
+              <widget class="QComboBox" name="spline">
+               <property name="geometry">
+                <rect>
+                 <x>720</x>
+                 <y>70</y>
+                 <width>69</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>spline</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>lowess</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Savitzky-Golay </string>
+                </property>
+               </item>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="filter">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <widget class="QPushButton" name="move">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Moving Average</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="savi">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>70</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Savitzky-Golay</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="butter">
+               <property name="geometry">
+                <rect>
+                 <x>150</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Butterworth</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="sheb">
+               <property name="geometry">
+                <rect>
+                 <x>150</x>
+                 <y>70</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Chebyshev</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="gaus">
+               <property name="geometry">
+                <rect>
+                 <x>290</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Gaussian</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="boxcar">
+               <property name="geometry">
+                <rect>
+                 <x>290</x>
+                 <y>70</y>
+                 <width>64</width>
+                 <height>64</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>boxcar function</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>64</width>
+                 <height>64</height>
+                </size>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="median">
+               <property name="geometry">
+                <rect>
+                 <x>430</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Median</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="lowess">
+               <property name="geometry">
+                <rect>
+                 <x>430</x>
+                 <y>70</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Lowess</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="exponon">
+               <property name="geometry">
+                <rect>
+                 <x>580</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Exponential </string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="kalman">
+               <property name="geometry">
+                <rect>
+                 <x>580</x>
+                 <y>70</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Kalman</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="notch">
+               <property name="geometry">
+                <rect>
+                 <x>720</x>
+                 <y>10</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Notch</string>
+               </property>
+              </widget>
+              <widget class="QComboBox" name="passe">
+               <property name="geometry">
+                <rect>
+                 <x>720</x>
+                 <y>70</y>
+                 <width>81</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Bandpass</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Highpass</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Lowpass</string>
+                </property>
+               </item>
+              </widget>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0">
+          <item>
+           <layout class="QVBoxLayout" name="frame2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="tree_header" native="true">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: white;
+}</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <property name="spacing">
+                <number>6</number>
+               </property>
+               <property name="leftMargin">
+                <number>3</number>
+               </property>
+               <property name="topMargin">
+                <number>3</number>
+               </property>
+               <property name="rightMargin">
+                <number>3</number>
+               </property>
+               <property name="bottomMargin">
+                <number>3</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="folder_icon">
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
                  </property>
                  <property name="text">
-                  <string>worksheet</string>
+                  <string/>
                  </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>assets/formula.png</normaloff>assets/formula.png</iconset>
+                 <property name="pixmap">
+                  <pixmap>assets/fold.png</pixmap>
                  </property>
-                 <property name="iconSize">
+                 <property name="scaledContents">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="project_lab">
+                 <property name="styleSheet">
+                  <string notr="true">font: 700 10pt &quot;ProFontWindows Nerd Font Propo&quot;;
+</string>
+                 </property>
+                 <property name="text">
+                  <string> Project Tree</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="minimumSize">
                   <size>
                    <width>32</width>
                    <height>32</height>
                   </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>assets/pop.png</normaloff>assets/pop.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="fullscreen">
+                 <property name="minimumSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>assets/fullscreen.png</normaloff>assets/fullscreen.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="focus">
+                 <property name="minimumSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>assets/focus.png</normaloff>assets/focus.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>24</width>
+                   <height>24</height>
+                  </size>
+                 </property>
+                 <property name="shortcut">
+                  <string>Shift+F</string>
                  </property>
                 </widget>
                </item>
               </layout>
              </widget>
             </item>
+            <item>
+             <widget class="QTreeView" name="treeView">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
            </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QStackedWidget" name="mode_frames">
-           <property name="currentIndex">
-            <number>2</number>
-           </property>
-           <widget class="QWidget" name="Math_page">
-            <property name="styleSheet">
-             <string notr="true">background-color:rgb(0, 0, 127)</string>
-            </property>
-           </widget>
-           <widget class="QWidget" name="Eccomerce_page">
-            <property name="styleSheet">
-             <string notr="true">background-color:rgb(85, 255, 0)</string>
-            </property>
-           </widget>
-           <widget class="QWidget" name="Biology_page">
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <widget class="QPushButton" name="min_max">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string>find min max</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="Polynome">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>73</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>assets/buttons/algo/ppnl.png</normaloff>assets/buttons/algo/ppnl.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>80</width>
-               <height>64</height>
-              </size>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="linear">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>10</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>assets/buttons/algo/linearfff.png</normaloff>assets/buttons/algo/linearfff.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>64</width>
-               <height>64</height>
-              </size>
-             </property>
-            </widget>
-            <widget class="QToolButton" name="quadraple">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>73</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>quadriple</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="cubic">
-             <property name="geometry">
-              <rect>
-               <x>300</x>
-               <y>10</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>cubic</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="expo_2">
-             <property name="geometry">
-              <rect>
-               <x>300</x>
-               <y>70</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>expononcial</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>double expononcial</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>triple expononcial</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QPushButton" name="power">
-             <property name="geometry">
-              <rect>
-               <x>440</x>
-               <y>10</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>power fit</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="log">
-             <property name="geometry">
-              <rect>
-               <x>440</x>
-               <y>70</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>logarithm</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>logistic</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QComboBox" name="gauss">
-             <property name="geometry">
-              <rect>
-               <x>580</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>Gaussian</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>lorenzian</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>voigt</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QComboBox" name="weibull">
-             <property name="geometry">
-              <rect>
-               <x>580</x>
-               <y>70</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>weibull</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>segmoidal</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>meichaelis-menten</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>hill</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>gompertz</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QComboBox" name="fourier">
-             <property name="geometry">
-              <rect>
-               <x>720</x>
-               <y>10</y>
-               <width>71</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>fourier</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>sine</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>cosine</string>
-              </property>
-             </item>
-            </widget>
-            <widget class="QComboBox" name="spline">
-             <property name="geometry">
-              <rect>
-               <x>720</x>
-               <y>70</y>
-               <width>69</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>spline</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>lowess</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Savitzky-Golay </string>
-              </property>
-             </item>
-            </widget>
-           </widget>
-           <widget class="QWidget" name="filter">
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <widget class="QPushButton" name="move">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Moving Average</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="savi">
-             <property name="geometry">
-              <rect>
-               <x>20</x>
-               <y>70</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Savitzky-Golay</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="butter">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Butterworth</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="sheb">
-             <property name="geometry">
-              <rect>
-               <x>150</x>
-               <y>70</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Chebyshev</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="gaus">
-             <property name="geometry">
-              <rect>
-               <x>290</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Gaussian</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="boxcar">
-             <property name="geometry">
-              <rect>
-               <x>290</x>
-               <y>70</y>
-               <width>64</width>
-               <height>64</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>64</width>
-               <height>64</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>64</width>
-               <height>64</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>boxcar function</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>64</width>
-               <height>64</height>
-              </size>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="median">
-             <property name="geometry">
-              <rect>
-               <x>430</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Median</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="lowess">
-             <property name="geometry">
-              <rect>
-               <x>430</x>
-               <y>70</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Lowess</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="exponon">
-             <property name="geometry">
-              <rect>
-               <x>580</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Exponential </string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="kalman">
-             <property name="geometry">
-              <rect>
-               <x>580</x>
-               <y>70</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Kalman</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="notch">
-             <property name="geometry">
-              <rect>
-               <x>720</x>
-               <y>10</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Notch</string>
-             </property>
-            </widget>
-            <widget class="QComboBox" name="passe">
-             <property name="geometry">
-              <rect>
-               <x>720</x>
-               <y>70</y>
-               <width>81</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <item>
-              <property name="text">
-               <string>Bandpass</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Highpass</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Lowpass</string>
-              </property>
-             </item>
-            </widget>
-           </widget>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1,0">
-        <item>
-         <layout class="QVBoxLayout" name="frame2">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QWidget" name="tree_header" native="true">
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: white;
-}</string>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <property name="spacing">
-              <number>6</number>
-             </property>
-             <property name="leftMargin">
-              <number>3</number>
-             </property>
-             <property name="topMargin">
-              <number>3</number>
-             </property>
-             <property name="rightMargin">
-              <number>3</number>
-             </property>
-             <property name="bottomMargin">
-              <number>3</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="folder_icon">
-               <property name="maximumSize">
-                <size>
-                 <width>30</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap>assets/fold.png</pixmap>
-               </property>
-               <property name="scaledContents">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="project_lab">
-               <property name="styleSheet">
-                <string notr="true">font: 700 10pt &quot;ProFontWindows Nerd Font Propo&quot;;
-</string>
-               </property>
-               <property name="text">
-                <string> Project Tree</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton">
-               <property name="minimumSize">
-                <size>
-                 <width>32</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>32</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>assets/pop.png</normaloff>assets/pop.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="pushButton_3">
-               <property name="minimumSize">
-                <size>
-                 <width>32</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>32</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>assets/fullscreen.png</normaloff>assets/fullscreen.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="focus">
-               <property name="minimumSize">
-                <size>
-                 <width>32</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>32</width>
-                 <height>32</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>assets/focus.png</normaloff>assets/focus.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>24</width>
-                 <height>24</height>
-                </size>
-               </property>
-               <property name="shortcut">
-                <string>Shift+F</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
           </item>
           <item>
-           <widget class="QTreeView" name="treeView">
+           <layout class="QHBoxLayout" name="Tab_graph">
+            <item>
+             <widget class="QTabWidget" name="graphTab">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(0, 0, 0);</string>
+              </property>
+              <property name="currentIndex">
+               <number>-1</number>
+              </property>
+              <property name="tabsClosable">
+               <bool>true</bool>
+              </property>
+              <property name="movable">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QScrollArea" name="graphTypes">
             <property name="minimumSize">
              <size>
-              <width>250</width>
+              <width>130</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>250</width>
+              <width>130</width>
               <height>16777215</height>
              </size>
             </property>
+            <property name="verticalScrollBarPolicy">
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+            </property>
+            <property name="horizontalScrollBarPolicy">
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+            </property>
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="typeButtons">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>114</width>
+               <height>1324</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+background-color: rgb(23, 23, 23);</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="plot">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/plot.png</normaloff>assets/buttons/types/plot.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>120</width>
+                  <height>120</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="histogram">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/Bar-Chart.png</normaloff>assets/buttons/types/Bar-Chart.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="piechart">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/Pie-Chart.png</normaloff>assets/buttons/types/Pie-Chart.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="fill_between">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/fill_between.png</normaloff>assets/buttons/types/fill_between.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="stackplot">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/stackplot.png</normaloff>assets/buttons/types/stackplot.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/contour.png</normaloff>assets/buttons/types/contour.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_11">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/contourf.png</normaloff>assets/buttons/types/contourf.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_10">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/imshow.png</normaloff>assets/buttons/types/imshow.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_9">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/pcolormesh.png</normaloff>assets/buttons/types/pcolormesh.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_8">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/surface_3d.png</normaloff>assets/buttons/types/surface_3d.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_7">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/trisurf3d.png</normaloff>assets/buttons/types/trisurf3d.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_5">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/wire3d.png</normaloff>assets/buttons/types/wire3d.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>100</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+             <zorder>plot</zorder>
+             <zorder>histogram</zorder>
+             <zorder>piechart</zorder>
+             <zorder>pushButton_5</zorder>
+             <zorder>fill_between</zorder>
+             <zorder>pushButton_7</zorder>
+             <zorder>pushButton_8</zorder>
+             <zorder>pushButton_9</zorder>
+             <zorder>pushButton_10</zorder>
+             <zorder>pushButton_11</zorder>
+             <zorder>stackplot</zorder>
+             <zorder>verticalSpacer</zorder>
+             <zorder>pushButton_6</zorder>
+            </widget>
            </widget>
           </item>
          </layout>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="can">
+       <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,16">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <layout class="QHBoxLayout" name="Tab_graph">
-          <item>
-           <widget class="QTabWidget" name="graphTab">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(0, 0, 0);</string>
-            </property>
-            <property name="currentIndex">
-             <number>-1</number>
-            </property>
-            <property name="tabsClosable">
-             <bool>true</bool>
-            </property>
-            <property name="movable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QScrollArea" name="graphTypes">
+         <widget class="QFrame" name="can_btns">
           <property name="minimumSize">
            <size>
-            <width>130</width>
-            <height>0</height>
+            <width>0</width>
+            <height>45</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>130</width>
-            <height>16777215</height>
+            <width>16777215</width>
+            <height>45</height>
            </size>
           </property>
-          <property name="verticalScrollBarPolicy">
-           <enum>Qt::ScrollBarAsNeeded</enum>
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
           </property>
-          <property name="horizontalScrollBarPolicy">
-           <enum>Qt::ScrollBarAsNeeded</enum>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="typeButtons">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>114</width>
-             <height>1324</height>
-            </rect>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="spacing">
+            <number>0</number>
            </property>
-           <property name="styleSheet">
-            <string notr="true">
-background-color: rgb(23, 23, 23);</string>
+           <property name="leftMargin">
+            <number>0</number>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>2</number>
-            </property>
-            <property name="topMargin">
-             <number>2</number>
-            </property>
-            <property name="rightMargin">
-             <number>2</number>
-            </property>
-            <property name="bottomMargin">
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="QPushButton" name="plot">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/plot.png</normaloff>assets/buttons/types/plot.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>120</width>
-                <height>120</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="histogram">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/Bar-Chart.png</normaloff>assets/buttons/types/Bar-Chart.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="piechart">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/Pie-Chart.png</normaloff>assets/buttons/types/Pie-Chart.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="fill_between">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/fill_between.png</normaloff>assets/buttons/types/fill_between.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="stackplot">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/stackplot.png</normaloff>assets/buttons/types/stackplot.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_6">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/contour.png</normaloff>assets/buttons/types/contour.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_11">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/contourf.png</normaloff>assets/buttons/types/contourf.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_10">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/imshow.png</normaloff>assets/buttons/types/imshow.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_9">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/pcolormesh.png</normaloff>assets/buttons/types/pcolormesh.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_8">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/surface_3d.png</normaloff>assets/buttons/types/surface_3d.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_7">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/trisurf3d.png</normaloff>assets/buttons/types/trisurf3d.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_5">
-              <property name="minimumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>110</width>
-                <height>110</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>assets/buttons/types/wire3d.png</normaloff>assets/buttons/types/wire3d.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>100</width>
-                <height>100</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-           <zorder>plot</zorder>
-           <zorder>histogram</zorder>
-           <zorder>piechart</zorder>
-           <zorder>pushButton_5</zorder>
-           <zorder>fill_between</zorder>
-           <zorder>pushButton_7</zorder>
-           <zorder>pushButton_8</zorder>
-           <zorder>pushButton_9</zorder>
-           <zorder>pushButton_10</zorder>
-           <zorder>pushButton_11</zorder>
-           <zorder>stackplot</zorder>
-           <zorder>verticalSpacer</zorder>
-           <zorder>pushButton_6</zorder>
-          </widget>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="backM">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    border: none;
+}
+QPushButton:pressed {
+    background-color: rgba(0, 0, 0, 0.5);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>assets/back.png</normaloff>assets/back.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="canv">
+          <property name="frameShape">
+           <enum>QFrame::Shape::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Shadow::Raised</enum>
+          </property>
          </widget>
         </item>
        </layout>
-      </item>
-     </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -1595,7 +1735,7 @@ background-color: rgb(23, 23, 23);</string>
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -1690,7 +1830,7 @@ background-color: rgb(23, 23, 23);</string>
     <string>Exit</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="actionpref">

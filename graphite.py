@@ -179,6 +179,8 @@ class Graphite(QMainWindow):
         self.ui.export_btn.clicked.connect(self.show_export_dialog)
 
         self.ui.focus.clicked.connect(self.focus)
+        self.ui.fullscreen.clicked.connect(self.graph_full_screen)
+        self.ui.backM.clicked.connect(self.graph_normal_screen)
 
         self.customize_dialog = CustomizeDialog(self)
         self.customize_dialog.ui.apply_btn.clicked.connect(self.apply_custom)
@@ -744,7 +746,7 @@ class Graphite(QMainWindow):
     def calculate_function(self, function, start, end, step):
         step = 0.1 if step is None else step
         try:
-            x_values = np.round(np.arange(start, end + step, step))
+            x_values = np.arange(start, end + step, step)
             function_values = []  
 
             for x in x_values:
@@ -980,6 +982,24 @@ class Graphite(QMainWindow):
                 file_format = os.path.splitext(file_path)[-1][1:]
                 return tab.saveFile(file_path, file_format)
         return False
+
+    def graph_full_screen(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            self.lastTab = tab
+            self.ui.menubar.hide()
+            self.ui.main.setCurrentIndex(1)
+            self.ui.canv.setLayout(tab.lay)
+
+    def graph_normal_screen(self):
+        self.lastTab.setLayout(self.lastTab.lay)
+        self.ui.menubar.show()
+        self.ui.main.setCurrentIndex(0)
+
+
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_F11:

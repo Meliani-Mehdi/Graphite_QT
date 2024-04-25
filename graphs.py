@@ -52,8 +52,9 @@ class Tab(QWidget):
 
         self.figure, self.ax = plt.subplots()
         self.plot_widget = FigureCanvasQTAgg(self.figure)
-        layout = QHBoxLayout()
-        layout.addWidget(self.plot_widget)
+        self.lay = QHBoxLayout()
+        self.lay.setContentsMargins(0, 0, 0, 0)
+        self.lay.addWidget(self.plot_widget)
 
         self.text = self.figure.text(0.95, 0.95, '', ha='right')
 
@@ -62,7 +63,7 @@ class Tab(QWidget):
         self.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
         self.figure.canvas.mpl_connect('scroll_event', self.on_scroll)
 
-        self.setLayout(layout)
+        self.setLayout(self.lay)
         self.to_plot()
 
         self.add_to_tab_widget()
