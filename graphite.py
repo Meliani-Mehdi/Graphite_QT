@@ -179,6 +179,7 @@ class Graphite(QMainWindow):
         self.ui.export_btn.clicked.connect(self.show_export_dialog)
 
         self.ui.focus.clicked.connect(self.focus)
+        self.ui.focus_2.clicked.connect(self.focus)
         self.ui.fullscreen.clicked.connect(self.graph_full_screen)
         self.ui.backM.clicked.connect(self.graph_normal_screen)
 

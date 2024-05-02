@@ -1095,7 +1095,7 @@ QPushButton {
                   </size>
                  </property>
                  <property name="shortcut">
-                  <string>Shift+F</string>
+                  <string>F</string>
                  </property>
                 </widget>
                </item>
@@ -1647,9 +1647,9 @@ background-color: rgb(23, 23, 23);</string>
           <property name="frameShadow">
            <enum>QFrame::Shadow::Raised</enum>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="spacing">
-            <number>0</number>
+            <number>6</number>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -1700,6 +1700,49 @@ QPushButton:pressed {
              </property>
              <property name="shortcut">
               <string>F5</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="focus_2">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    border: none;
+}
+QPushButton:pressed {
+    background-color: rgba(0, 0, 0, 0.5);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>assets/focus.png</normaloff>assets/focus.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="shortcut">
+              <string>F</string>
              </property>
             </widget>
            </item>
