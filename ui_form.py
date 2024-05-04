@@ -702,10 +702,10 @@ class Ui_Graphite(object):
         self.can_btns.setMaximumSize(QSize(16777215, 45))
         self.can_btns.setFrameShape(QFrame.Shape.StyledPanel)
         self.can_btns.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_6 = QHBoxLayout(self.can_btns)
-        self.horizontalLayout_6.setSpacing(0)
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5 = QHBoxLayout(self.can_btns)
+        self.horizontalLayout_5.setSpacing(6)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.backM = QPushButton(self.can_btns)
         self.backM.setObjectName(u"backM")
         self.backM.setMinimumSize(QSize(40, 40))
@@ -721,11 +721,27 @@ class Ui_Graphite(object):
         self.backM.setIcon(icon25)
         self.backM.setIconSize(QSize(40, 40))
 
-        self.horizontalLayout_6.addWidget(self.backM)
+        self.horizontalLayout_5.addWidget(self.backM)
+
+        self.focus_2 = QPushButton(self.can_btns)
+        self.focus_2.setObjectName(u"focus_2")
+        self.focus_2.setMinimumSize(QSize(40, 40))
+        self.focus_2.setMaximumSize(QSize(40, 40))
+        self.focus_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.focus_2.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}")
+        self.focus_2.setIcon(icon12)
+        self.focus_2.setIconSize(QSize(40, 40))
+
+        self.horizontalLayout_5.addWidget(self.focus_2)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.horizontalLayout_6.addItem(self.horizontalSpacer)
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
 
         self.verticalLayout_5.addWidget(self.can_btns)
@@ -898,7 +914,7 @@ class Ui_Graphite(object):
 #endif // QT_CONFIG(shortcut)
         self.focus.setText("")
 #if QT_CONFIG(shortcut)
-        self.focus.setShortcut(QCoreApplication.translate("Graphite", u"Shift+F", None))
+        self.focus.setShortcut(QCoreApplication.translate("Graphite", u"F", None))
 #endif // QT_CONFIG(shortcut)
         self.plot.setText("")
         self.histogram.setText("")
@@ -915,6 +931,10 @@ class Ui_Graphite(object):
         self.backM.setText("")
 #if QT_CONFIG(shortcut)
         self.backM.setShortcut(QCoreApplication.translate("Graphite", u"F5", None))
+#endif // QT_CONFIG(shortcut)
+        self.focus_2.setText("")
+#if QT_CONFIG(shortcut)
+        self.focus_2.setShortcut(QCoreApplication.translate("Graphite", u"F", None))
 #endif // QT_CONFIG(shortcut)
         self.menuFile.setTitle(QCoreApplication.translate("Graphite", u"File", None))
         self.menuNew.setTitle(QCoreApplication.translate("Graphite", u"New", None))
