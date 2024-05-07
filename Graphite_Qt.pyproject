@@ -7,6 +7,7 @@
         "export.ui",
         "math_function.ui",
         "ladder.ui",
-        "graphs.py"
+        "graphs.py",
+        "interpolation.ui"
     ]
 }

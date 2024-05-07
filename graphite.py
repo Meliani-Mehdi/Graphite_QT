@@ -2,16 +2,20 @@ import sys
 import os
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import math
 import platform
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt, QPointF
 from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
 from ui_export import Ui_Dialog as export
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
 from ui_math_function import Ui_Dialog as function
+from ui_interpolation import Ui_Dialog as interpolation
 from graphs import Tab
 
 
@@ -96,6 +100,14 @@ class ExportDialog(QDialog):
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             self.reject()
+
+class interpolationDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = interpolation()
+        self.ui.setupUi(self)
+        # self.ui.plot.clicked.connect(self.setFile)
+        # self.ui.cancel.clicked.connect(self.cancel)
 
 class Graphite(QMainWindow):
     def __init__(self, parent=None):
@@ -194,6 +206,8 @@ class Graphite(QMainWindow):
         self.worksheet_dialog = Worksheet(self)
         self.worksheet_dialog.ui.plotwork.clicked.connect(self.plotwork)
         self.ui.worksheet.clicked.connect(self.show_worksheet)
+
+        self.interpolation_dialog = interpolationDialog(self)
 
         self.function_dialog = FunctionDialog(self)
         self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
@@ -730,6 +744,15 @@ class Graphite(QMainWindow):
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
+                ## interpolation ##
+    def show_interpolation(self, file):
+        self.figure, self.ax = plt.subplots()
+        self.plot_widget = FigureCanvasQTAgg(self.figure)
+        img = mpimg.imread(file)
+        self.ax.imshow(img)
+        self.interpolation_dialog.show()
+        self.interpolation_dialog.ui.image.addWidget(self.plot_widget)
+
 
                 ## function ##
 
@@ -919,7 +942,7 @@ class Graphite(QMainWindow):
     def open_file_dialog(self):
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getOpenFileName(
-            self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
+            self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;PNG Files (*.png)", options=options)
         if file_name:
             self.open_file(file_name)
 
@@ -927,7 +950,7 @@ class Graphite(QMainWindow):
         if file_path and not os.path.isdir(file_path):
             df = pd.DataFrame()
             name, ext = os.path.splitext(file_path)
-            supported_formats = ['.csv', '.xlsx', '.json']
+            supported_formats = ['.csv', '.xlsx', '.json', '.png']
             if ext in supported_formats:
                 try:
                     if ext == '.csv':
@@ -936,6 +959,9 @@ class Graphite(QMainWindow):
                         df = pd.read_excel(file_path)
                     elif ext == '.json':
                         df = pd.read_json(file_path)
+                    elif ext == '.png':
+                        self.show_interpolation(file_path)
+                        return 
                     name = os.path.basename(name)
                     self.tabs.append(Tab(self.ui.graphTab, df, name, file_path))
                 except Exception as e:
@@ -950,6 +976,7 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             tab.focus()
+
 
     def get_download_dir(self):
         if platform.system() == 'Windows':
