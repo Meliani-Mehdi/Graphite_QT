@@ -26,6 +26,7 @@ class Tab(QWidget):
             '#a55194', '#ce6dbd',
         ]
         self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", "TICKLEFT"]
+        self.fig_colors = ['black', 'white', 'green']
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
@@ -38,6 +39,8 @@ class Tab(QWidget):
         self.legend_location = 0
         self.marker = 0
         self.last_marker = 0
+        self.fig_color = 0
+        self.last_fig_color = 0
         self.grid = True
 
         self.time_check = False
@@ -661,14 +664,18 @@ class Tab(QWidget):
 
 
     def custom_plot(self):
+        if self.last_marker != self.marker:
+            self.last_marker = self.marker
+            self.last_plot()
+            return 
         self.ax.set_title(self.name)
         self.ax.set_xlabel(self.xlabel)
         self.ax.set_ylabel(self.ylabel)
         self.ax.legend(loc=self.legend_location).set_visible(self.legend)
         self.ax.grid(self.grid)
-        if self.last_marker != self.marker:
-            self.last_marker = self.marker
-            self.last_plot()
+        if self.last_fig_color != self.fig_color:
+            self.last_fig_color = self.fig_color
+            self.ax.set_facecolor(self.fig_colors[self.fig_color])
         if self.time_check:
             self.timer.start(self.interval)
         else:

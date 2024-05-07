@@ -32,7 +32,7 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,1,0,1,1">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,0,1,0,1,1">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,9">
      <item>
@@ -72,6 +72,36 @@
      </item>
      <item>
       <widget class="QLineEdit" name="yLabel"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,1">
+     <item>
+      <widget class="QLabel" name="lab_bg">
+       <property name="text">
+        <string>Background color :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="bg_color">
+       <item>
+        <property name="text">
+         <string>Black</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>White</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Green</string>
+        </property>
+       </item>
+      </widget>
      </item>
     </layout>
    </item>
@@ -165,7 +195,7 @@
         </size>
        </property>
        <property name="text">
-        <string>marker : </string>
+        <string>Marker : </string>
        </property>
       </widget>
      </item>
@@ -485,7 +515,7 @@
         </size>
        </property>
        <property name="text">
-        <string>real time :</string>
+        <string>Real time :</string>
        </property>
       </widget>
      </item>

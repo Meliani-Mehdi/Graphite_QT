@@ -83,6 +83,26 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_4)
 
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.lab_bg = QLabel(Dialog)
+        self.lab_bg.setObjectName(u"lab_bg")
+
+        self.horizontalLayout_8.addWidget(self.lab_bg)
+
+        self.bg_color = QComboBox(Dialog)
+        self.bg_color.addItem("")
+        self.bg_color.addItem("")
+        self.bg_color.addItem("")
+        self.bg_color.setObjectName(u"bg_color")
+
+        self.horizontalLayout_8.addWidget(self.bg_color)
+
+        self.horizontalLayout_8.setStretch(0, 1)
+        self.horizontalLayout_8.setStretch(1, 1)
+
+        self.verticalLayout.addLayout(self.horizontalLayout_8)
+
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.lagend_lab = QLabel(Dialog)
@@ -281,9 +301,9 @@ class Ui_Dialog(object):
         self.verticalLayout.setStretch(0, 1)
         self.verticalLayout.setStretch(1, 1)
         self.verticalLayout.setStretch(2, 1)
-        self.verticalLayout.setStretch(3, 1)
-        self.verticalLayout.setStretch(5, 1)
+        self.verticalLayout.setStretch(4, 1)
         self.verticalLayout.setStretch(6, 1)
+        self.verticalLayout.setStretch(7, 1)
 
         self.retranslateUi(Dialog)
 
@@ -295,6 +315,11 @@ class Ui_Dialog(object):
         self.title_lab.setText(QCoreApplication.translate("Dialog", u"Title :", None))
         self.xLab.setText(QCoreApplication.translate("Dialog", u"X Label :", None))
         self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
+        self.lab_bg.setText(QCoreApplication.translate("Dialog", u"Background color :", None))
+        self.bg_color.setItemText(0, QCoreApplication.translate("Dialog", u"Black", None))
+        self.bg_color.setItemText(1, QCoreApplication.translate("Dialog", u"White", None))
+        self.bg_color.setItemText(2, QCoreApplication.translate("Dialog", u"Green", None))
+
         self.lagend_lab.setText(QCoreApplication.translate("Dialog", u"Lagend :", None))
         self.lagend.setText("")
         self.location_lab.setText(QCoreApplication.translate("Dialog", u"Legend location :", None))
@@ -309,7 +334,7 @@ class Ui_Dialog(object):
         self.location.setItemText(8, QCoreApplication.translate("Dialog", u"upper center", None))
         self.location.setItemText(9, QCoreApplication.translate("Dialog", u"center", None))
 
-        self.marker_lab.setText(QCoreApplication.translate("Dialog", u"marker : ", None))
+        self.marker_lab.setText(QCoreApplication.translate("Dialog", u"Marker : ", None))
         self.marker.setItemText(0, QCoreApplication.translate("Dialog", u"None", None))
         self.marker.setItemText(1, QCoreApplication.translate("Dialog", u"point", None))
         self.marker.setItemText(2, QCoreApplication.translate("Dialog", u"pixel", None))
@@ -344,7 +369,7 @@ class Ui_Dialog(object):
         self.marker.setItemText(31, QCoreApplication.translate("Dialog", u"caret right", None))
         self.marker.setItemText(32, QCoreApplication.translate("Dialog", u"caret left", None))
 
-        self.real_lab.setText(QCoreApplication.translate("Dialog", u"real time :", None))
+        self.real_lab.setText(QCoreApplication.translate("Dialog", u"Real time :", None))
         self.real.setText("")
         self.lab_grid.setText(QCoreApplication.translate("Dialog", u"Grid :", None))
         self.grid.setText("")
