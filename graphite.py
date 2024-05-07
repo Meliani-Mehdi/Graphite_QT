@@ -664,6 +664,7 @@ class Graphite(QMainWindow):
             self.customize_dialog.ui.location.setCurrentIndex(tab.legend_location)
             self.customize_dialog.ui.marker.setCurrentIndex(tab.marker)
             self.customize_dialog.ui.bg_color.setCurrentIndex(tab.fig_color)
+            self.customize_dialog.ui.bg_color_2.setCurrentIndex(tab.can_color)
             self.customize_dialog.ui.grid.setChecked(tab.grid)
 
     def apply_custom(self):
@@ -677,6 +678,7 @@ class Graphite(QMainWindow):
             ylabel = self.customize_dialog.ui.yLabel.text() 
             marker = self.customize_dialog.ui.marker.currentIndex()
             bg_color = self.customize_dialog.ui.bg_color.currentIndex()
+            bg_color_2 = self.customize_dialog.ui.bg_color_2.currentIndex()
             legend = self.customize_dialog.ui.lagend.isChecked()
             location = self.customize_dialog.ui.location.currentIndex()
             real_time = self.customize_dialog.ui.real.isChecked()
@@ -687,6 +689,7 @@ class Graphite(QMainWindow):
             tab.ylabel=ylabel
             tab.marker=marker
             tab.fig_color=bg_color
+            tab.can_color=bg_color_2
             tab.legend=legend
             tab.legend_location=location
             tab.time_check=real_time 

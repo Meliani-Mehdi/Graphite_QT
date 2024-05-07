@@ -26,7 +26,7 @@ class Tab(QWidget):
             '#a55194', '#ce6dbd',
         ]
         self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", "TICKLEFT"]
-        self.fig_colors = ['black', 'white', 'green']
+        self.fig_colors = ['black', 'gray', 'lightgray', 'white', 'green', 'orange', 'red', 'pink', 'yellow', 'lightyellow', 'cyan', 'lightcyan']
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
@@ -39,6 +39,8 @@ class Tab(QWidget):
         self.legend_location = 0
         self.marker = 0
         self.last_marker = 0
+        self.can_color = 0
+        self.last_can_color = 0
         self.fig_color = 0
         self.last_fig_color = 0
         self.grid = True
@@ -676,6 +678,9 @@ class Tab(QWidget):
         if self.last_fig_color != self.fig_color:
             self.last_fig_color = self.fig_color
             self.ax.set_facecolor(self.fig_colors[self.fig_color])
+        if self.last_can_color != self.can_color:
+            self.last_can_color = self.can_color
+            self.figure.set_facecolor(self.fig_colors[self.can_color])
         if self.time_check:
             self.timer.start(self.interval)
         else:
