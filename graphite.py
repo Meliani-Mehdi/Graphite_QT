@@ -132,13 +132,12 @@ class InterpolationDialog(QDialog):
         self.delete_shortcut = QShortcut(QKeySequence("n"), self)
         self.delete_shortcut.activated.connect(self.delete_last_point)
 
-        # self.ui.plot.clicked.connect(self.plot)
         self.ui.cancel.clicked.connect(self.cancel)
 
     def onclick(self, event):
         if event.inaxes == self.ax:
             x, y = event.xdata, event.ydata
-            self.coordinates.append((x, y))
+            self.coordinates.append((x, -y))
             point, = self.ax.plot(x, y, 'ro') 
             self.points.append(point)
             self.plot_widget.draw()
@@ -263,6 +262,7 @@ class Graphite(QMainWindow):
         self.ui.worksheet.clicked.connect(self.show_worksheet)
 
         self.interpolation_dialog = InterpolationDialog(self)
+        self.interpolation_dialog.ui.plot.clicked.connect(self.interpolate)
 
         self.function_dialog = FunctionDialog(self)
         self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
@@ -835,7 +835,8 @@ class Graphite(QMainWindow):
 
                 ## interpolation ##
     def show_interpolation(self, file):
-        self.interpolation_dialog.name = file
+        filename, _ = os.path.splitext(file)
+        self.interpolation_dialog.name = os.path.basename(filename)
         self.interpolation_dialog.delete_all_points()
 
         self.interpolation_dialog.points = []
@@ -850,6 +851,10 @@ class Graphite(QMainWindow):
         self.interpolation_dialog.plot_widget.draw()
         self.interpolation_dialog.show()
 
+    def interpolate(self):
+        df = pd.DataFrame(self.interpolation_dialog.coordinates)
+        self.tabs.append(Tab(self.ui.graphTab, df, self.interpolation_dialog.name, None))
+        pass
                 ## function ##
 
     def show_function_dialog(self):
