@@ -32,19 +32,32 @@ class Worksheet(QDialog):
         self.ui.remcol.clicked.connect(self.remove_column)
 
     def remove_row(self):
-        row, ok = QInputDialog.getInt(self, "Remove Row", "Enter row number to remove:")
-        if ok:
-            row_index = row - 1
-            if 0 <= row_index < self.ui.tableWidget.rowCount():
-                self.ui.tableWidget.removeRow(row_index)
-
+        selected_ranges = self.ui.tableWidget.selectedRanges()
+        if selected_ranges:
+            for selected_range in selected_ranges:
+                for row in range(selected_range.topRow(), selected_range.bottomRow() + 1):
+                    if 0 <= row < self.ui.tableWidget.rowCount():
+                        self.ui.tableWidget.removeRow(row)
+        else:
+            row, ok = QInputDialog.getInt(self, "Remove Row", "Enter row number to remove:")
+            if ok:
+                row_index = row - 1
+                if 0 <= row_index < self.ui.tableWidget.rowCount():
+                    self.ui.tableWidget.removeRow(row_index)
 
     def remove_column(self):
-        column, ok = QInputDialog.getInt(self, "Remove Column", "Enter column number to remove:")
-        if ok:
-            column_index = column - 1
-            if 0 <= column_index < self.ui.tableWidget.columnCount():
-                self.ui.tableWidget.removeColumn(column_index)
+        selected_ranges = self.ui.tableWidget.selectedRanges()
+        if selected_ranges:
+            for selected_range in selected_ranges:
+                for column in range(selected_range.leftColumn(), selected_range.rightColumn() + 1):
+                    if 0 <= column < self.ui.tableWidget.columnCount():
+                        self.ui.tableWidget.removeColumn(column)
+        else:
+            column, ok = QInputDialog.getInt(self, "Remove Column", "Enter column number to remove:")
+            if ok:
+                column_index = column - 1
+                if 0 <= column_index < self.ui.tableWidget.columnCount():
+                    self.ui.tableWidget.removeColumn(column_index)
 
     def add_row(self):
         row_count = self.ui.tableWidget.rowCount()
