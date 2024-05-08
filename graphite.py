@@ -101,13 +101,54 @@ class ExportDialog(QDialog):
         if reply == QMessageBox.Yes:
             self.reject()
 
-class interpolationDialog(QDialog):
+class InterpolationDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = interpolation()
         self.ui.setupUi(self)
-        # self.ui.plot.clicked.connect(self.setFile)
-        # self.ui.cancel.clicked.connect(self.cancel)
+        self.name = ''
+        self.coordinates = []
+        self.points = []
+        self.figure, self.ax = plt.subplots()
+        self.ax.set_position([0, 0, 1, 1])
+        self.plot_widget = FigureCanvasQTAgg(self.figure)
+        self.ui.image.addWidget(self.plot_widget)
+
+        self.figure.canvas.mpl_connect('button_press_event', self.onclick)
+        self.delete_shortcut = QShortcut(QKeySequence("n"), self)
+        self.delete_shortcut.activated.connect(self.delete_last_point)
+
+        # self.ui.plot.clicked.connect(self.plot)
+        self.ui.cancel.clicked.connect(self.cancel)
+
+    def onclick(self, event):
+        if event.inaxes == self.ax:
+            x, y = event.xdata, event.ydata
+            self.coordinates.append((x, y))
+            point, = self.ax.plot(x, y, 'ro') 
+            self.points.append(point)
+            self.plot_widget.draw()
+
+    def delete_last_point(self):
+        if self.points:
+            self.points[-1].remove()
+            self.points.pop()
+            self.coordinates.pop()
+            print(self.coordinates)
+            self.plot_widget.draw()
+
+    def delete_all_points(self):
+        while self.points:
+            self.points[-1].remove()
+            self.points.pop()
+            self.coordinates.pop()
+
+
+    def cancel(self):
+        reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.close()
 
 class Graphite(QMainWindow):
     def __init__(self, parent=None):
@@ -207,7 +248,7 @@ class Graphite(QMainWindow):
         self.worksheet_dialog.ui.plotwork.clicked.connect(self.plotwork)
         self.ui.worksheet.clicked.connect(self.show_worksheet)
 
-        self.interpolation_dialog = interpolationDialog(self)
+        self.interpolation_dialog = InterpolationDialog(self)
 
         self.function_dialog = FunctionDialog(self)
         self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
@@ -746,13 +787,18 @@ class Graphite(QMainWindow):
 
                 ## interpolation ##
     def show_interpolation(self, file):
-        self.figure, self.ax = plt.subplots()
-        self.plot_widget = FigureCanvasQTAgg(self.figure)
-        img = mpimg.imread(file)
-        self.ax.imshow(img)
-        self.interpolation_dialog.show()
-        self.interpolation_dialog.ui.image.addWidget(self.plot_widget)
+        self.interpolation_dialog.name = file
+        self.interpolation_dialog.delete_all_points()
 
+        self.interpolation_dialog.points = []
+        self.interpolation_dialog.coordinates = []
+
+        img = mpimg.imread(file)
+        self.interpolation_dialog.figure.clear()
+        self.interpolation_dialog.ax = self.interpolation_dialog.figure.add_subplot()
+        self.interpolation_dialog.ax.imshow(img)
+        self.interpolation_dialog.plot_widget.draw()
+        self.interpolation_dialog.show()
 
                 ## function ##
 
