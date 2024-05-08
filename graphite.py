@@ -220,22 +220,49 @@ class Graphite(QMainWindow):
     def plotwork(self):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
-        num_rows = table_widget.rowCount()
-        num_cols = table_widget.columnCount()
-        data = []
-        for row in range(num_rows):
-            row_data = []
-            for col in range(num_cols):
-                item = table_widget.item(row, col)
-                if item is not None:
-                    row_data.append(float(item.text()))
-                else:
-                    row_data.append(np.nan)  # Handle empty cells
-            data.append(row_data)
+        selected_ranges = table_widget.selectedRanges()
+        if selected_ranges:
+            selected_range = selected_ranges[0]  # Assuming only one selection range for simplicity
+            start_row = selected_range.topRow()
+            end_row = selected_range.bottomRow()
+            start_column = selected_range.leftColumn()
+            end_column = selected_range.rightColumn()
 
+            data = []
+            headers = []
+            for column in range(start_column, end_column + 1):
+                headers.append(table_widget.horizontalHeaderItem(column).text())
 
-        df = pd.DataFrame(data)
-        self.tabs.append(Tab(self.ui.graphTab,df,name="Worksheet", file=None))
+            for row in range(start_row, end_row + 1):
+                row_data = []
+                for column in range(start_column, end_column + 1):
+                    item = table_widget.item(row, column)
+                    if item is not None:
+                        row_data.append(float(item.text()))
+                    else:
+                        row_data.append(np.nan)  # Handle empty cells
+                data.append(row_data)
+
+            df = pd.DataFrame(data, columns=headers)
+
+            self.tabs.append(Tab(self.ui.graphTab, df, name="Selected Data", file=None))
+        else:
+            num_rows = table_widget.rowCount()
+            num_cols = table_widget.columnCount()
+            data = []
+            for row in range(num_rows):
+                row_data = []
+                for col in range(num_cols):
+                    item = table_widget.item(row, col)
+                    if item is not None:
+                        row_data.append(float(item.text()))
+                    else:
+                        row_data.append(np.nan)  # Handle empty cells
+                data.append(row_data)
+
+            df = pd.DataFrame(data)
+            self.tabs.append(Tab(self.ui.graphTab, df, name="Worksheet", file=None))
+
 
 
 
