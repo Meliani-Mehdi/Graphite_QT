@@ -137,7 +137,7 @@ class InterpolationDialog(QDialog):
     def onclick(self, event):
         if event.inaxes == self.ax:
             x, y = event.xdata, event.ydata
-            self.coordinates.append((x, -y))
+            self.coordinates.append((x, y))
             point, = self.ax.plot(x, y, 'ro') 
             self.points.append(point)
             self.plot_widget.draw()
@@ -843,11 +843,12 @@ class Graphite(QMainWindow):
         self.interpolation_dialog.coordinates = []
 
         img = mpimg.imread(file)
+        rotated_img = np.flipud(img)
         self.interpolation_dialog.figure.clear()
         self.interpolation_dialog.ax = self.interpolation_dialog.figure.add_subplot()
-        self.interpolation_dialog.ax.set_position([0, 0, 1, 1])
         self.interpolation_dialog.ax.axis('off')
-        self.interpolation_dialog.ax.imshow(img)
+        self.interpolation_dialog.ax.set_position([0, 0, 1, 1])
+        self.interpolation_dialog.ax.imshow(rotated_img, origin='lower')
         self.interpolation_dialog.plot_widget.draw()
         self.interpolation_dialog.show()
 
