@@ -124,6 +124,7 @@ class InterpolationDialog(QDialog):
         self.points = []
         self.figure, self.ax = plt.subplots()
         self.ax.set_position([0, 0, 1, 1])
+        self.ax.axis('off')
         self.plot_widget = FigureCanvasQTAgg(self.figure)
         self.ui.image.addWidget(self.plot_widget)
 
@@ -843,6 +844,8 @@ class Graphite(QMainWindow):
         img = mpimg.imread(file)
         self.interpolation_dialog.figure.clear()
         self.interpolation_dialog.ax = self.interpolation_dialog.figure.add_subplot()
+        self.interpolation_dialog.ax.set_position([0, 0, 1, 1])
+        self.interpolation_dialog.ax.axis('off')
         self.interpolation_dialog.ax.imshow(img)
         self.interpolation_dialog.plot_widget.draw()
         self.interpolation_dialog.show()
