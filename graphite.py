@@ -32,19 +32,32 @@ class Worksheet(QDialog):
         self.ui.remcol.clicked.connect(self.remove_column)
 
     def remove_row(self):
-        row, ok = QInputDialog.getInt(self, "Remove Row", "Enter row number to remove:")
-        if ok:
-            row_index = row - 1
-            if 0 <= row_index < self.ui.tableWidget.rowCount():
-                self.ui.tableWidget.removeRow(row_index)
-
+        selected_ranges = self.ui.tableWidget.selectedRanges()
+        if selected_ranges:
+            for selected_range in selected_ranges:
+                for row in range(selected_range.topRow(), selected_range.bottomRow() + 1):
+                    if 0 <= row < self.ui.tableWidget.rowCount():
+                        self.ui.tableWidget.removeRow(row)
+        else:
+            row, ok = QInputDialog.getInt(self, "Remove Row", "Enter row number to remove:")
+            if ok:
+                row_index = row - 1
+                if 0 <= row_index < self.ui.tableWidget.rowCount():
+                    self.ui.tableWidget.removeRow(row_index)
 
     def remove_column(self):
-        column, ok = QInputDialog.getInt(self, "Remove Column", "Enter column number to remove:")
-        if ok:
-            column_index = column - 1
-            if 0 <= column_index < self.ui.tableWidget.columnCount():
-                self.ui.tableWidget.removeColumn(column_index)
+        selected_ranges = self.ui.tableWidget.selectedRanges()
+        if selected_ranges:
+            for selected_range in selected_ranges:
+                for column in range(selected_range.leftColumn(), selected_range.rightColumn() + 1):
+                    if 0 <= column < self.ui.tableWidget.columnCount():
+                        self.ui.tableWidget.removeColumn(column)
+        else:
+            column, ok = QInputDialog.getInt(self, "Remove Column", "Enter column number to remove:")
+            if ok:
+                column_index = column - 1
+                if 0 <= column_index < self.ui.tableWidget.columnCount():
+                    self.ui.tableWidget.removeColumn(column_index)
 
     def add_row(self):
         row_count = self.ui.tableWidget.rowCount()
@@ -261,22 +274,52 @@ class Graphite(QMainWindow):
     def plotwork(self):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
-        num_rows = table_widget.rowCount()
-        num_cols = table_widget.columnCount()
-        data = []
-        for row in range(num_rows):
-            row_data = []
-            for col in range(num_cols):
-                item = table_widget.item(row, col)
-                if item is not None:
-                    row_data.append(float(item.text()))
+        selected_ranges = table_widget.selectedRanges()
+        if selected_ranges:
+            selected_range = selected_ranges[0]
+            start_row = selected_range.topRow()
+            end_row = selected_range.bottomRow()
+            start_column = selected_range.leftColumn()
+            end_column = selected_range.rightColumn()
+
+            data = []
+            headers = []
+            for column in range(start_column, end_column + 1):
+                header_item = table_widget.horizontalHeaderItem(column)
+                if header_item is not None:
+                    headers.append(header_item.text())
                 else:
-                    row_data.append(np.nan)  # Handle empty cells
-            data.append(row_data)
+                    headers.append("test")
+            for row in range(start_row, end_row + 1):
+                row_data = []
+                for column in range(start_column, end_column + 1):
+                    item = table_widget.item(row, column)
+                    if item is not None:
+                        row_data.append(float(item.text()))
+                    else:
+                        row_data.append(np.nan)  # Handle empty cells
+                data.append(row_data)
 
+            df = pd.DataFrame(data, columns=headers)
 
-        df = pd.DataFrame(data)
-        self.tabs.append(Tab(self.ui.graphTab,df,name="Worksheet", file=None))
+            self.tabs.append(Tab(self.ui.graphTab, df, name="Selected Data", file=None))
+        else:
+            num_rows = table_widget.rowCount()
+            num_cols = table_widget.columnCount()
+            data = []
+            for row in range(num_rows):
+                row_data = []
+                for col in range(num_cols):
+                    item = table_widget.item(row, col)
+                    if item is not None:
+                        row_data.append(float(item.text()))
+                    else:
+                        row_data.append(np.nan)  # Handle empty cells
+                data.append(row_data)
+
+            df = pd.DataFrame(data)
+            self.tabs.append(Tab(self.ui.graphTab, df, name="Worksheet", file=None))
+
 
 
 
@@ -683,23 +726,27 @@ class Graphite(QMainWindow):
                 ## worksheet ##
 
     def show_worksheet(self):
+
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
-            tab = self.tabs[tab_index]
-            df= tab.dataframe
+            df = self.tabs[tab_index].dataframe
             data = df.values.tolist()
             columns = df.columns.tolist()
             self.worksheet_dialog.ui.tableWidget.setRowCount(len(data))
             self.worksheet_dialog.ui.tableWidget.setColumnCount(len(columns))
             self.worksheet_dialog.ui.tableWidget.setHorizontalHeaderLabels(columns)
-
             for row_idx, row_data in enumerate(data):
                 for col_idx, cell_data in enumerate(row_data):
                     item = QTableWidgetItem(str(cell_data))
                     self.worksheet_dialog.ui.tableWidget.setItem(row_idx, col_idx, item)
 
+                    # If there is no tab selected, clear the table
+        else:
+            self.worksheet_dialog.ui.tableWidget.setRowCount(0)
+            self.worksheet_dialog.ui.tableWidget.setColumnCount(0)
+            self.worksheet_dialog.ui.tableWidget.clear()
         self.worksheet_dialog.show()
 
                 ## customize ##
