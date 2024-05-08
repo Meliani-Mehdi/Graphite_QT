@@ -3,6 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
+from matplotlib.patches import Rectangle
 from PySide6.QtWidgets import QWidget, QHBoxLayout
 from PySide6.QtCore import QTimer
 from scipy.optimize import curve_fit
@@ -54,6 +55,8 @@ class Tab(QWidget):
 
         self.def_vals = None
         self.button_pressed = False
+        self.zoom_rect = None
+        self.press = None
 
         self.figure, self.ax = plt.subplots()
         self.plot_widget = FigureCanvasQTAgg(self.figure)
@@ -83,11 +86,47 @@ class Tab(QWidget):
             self.press_x = event.xdata
             self.press_y = event.ydata
 
+        elif event.button == 3:
+            self.press = event.xdata, event.ydata
+            if self.zoom_rect is not None:
+                self.zoom_rect.remove()
+            self.zoom_rect = Rectangle((self.press[0], self.press[1]), 0, 0,
+                                        linewidth=1, edgecolor='r', facecolor='none')
+            self.ax.add_patch(self.zoom_rect)
+            self.figure.canvas.draw()
+
     def on_release(self, event):
         if event.button == 1:
             self.button_pressed = False
+        if event.button == 3 and self.press is not None:
+            xpress, ypress = self.press
+            xrelease, yrelease = event.xdata, event.ydata
+            xmin = min(xpress, xrelease)
+            xmax = max(xpress, xrelease)
+            ymin = min(ypress, yrelease)
+            ymax = max(ypress, yrelease)
+            self.ax.set_xlim(xmin, xmax)
+            self.ax.set_ylim(ymin, ymax)
+            if self.zoom_rect is not None:
+                self.zoom_rect.remove()
+            self.figure.canvas.draw()
+            self.press = None
+            self.zoom_rect = None
+
 
     def on_motion(self, event):
+        if event.button == 3 and self.press is not None:
+            xpress, ypress = self.press
+            xrelease, yrelease = event.xdata, event.ydata
+            xmin = min(xpress, xrelease)
+            xmax = max(xpress, xrelease)
+            ymin = min(ypress, yrelease)
+            ymax = max(ypress, yrelease)
+            self.zoom_rect.set_xy((xmin, ymin))
+            self.zoom_rect.set_width(xmax - xmin)
+            self.zoom_rect.set_height(ymax - ymin)
+            self.figure.canvas.draw()
+
         if event.inaxes == self.ax:
             x = event.xdata
             y = event.ydata

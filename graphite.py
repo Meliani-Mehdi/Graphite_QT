@@ -138,7 +138,7 @@ class InterpolationDialog(QDialog):
         if event.inaxes == self.ax:
             x, y = event.xdata, event.ydata
             self.coordinates.append((x, y))
-            point, = self.ax.plot(x, y, 'ro') 
+            point, = self.ax.plot(x, y, 'rx') 
             self.points.append(point)
             self.plot_widget.draw()
 
