@@ -235,7 +235,7 @@ class Graphite(QMainWindow):
 
         selected_ranges = table_widget.selectedRanges()
         if selected_ranges:
-            selected_range = selected_ranges[0]  # Assuming only one selection range for simplicity
+            selected_range = selected_ranges[0]
             start_row = selected_range.topRow()
             end_row = selected_range.bottomRow()
             start_column = selected_range.leftColumn()
@@ -244,8 +244,11 @@ class Graphite(QMainWindow):
             data = []
             headers = []
             for column in range(start_column, end_column + 1):
-                headers.append(table_widget.horizontalHeaderItem(column).text())
-
+                header_item = table_widget.horizontalHeaderItem(column)
+                if header_item is not None:
+                    headers.append(header_item.text())
+                else:
+                    headers.append("test")
             for row in range(start_row, end_row + 1):
                 row_data = []
                 for column in range(start_column, end_column + 1):
@@ -682,23 +685,27 @@ class Graphite(QMainWindow):
                 ## worksheet ##
 
     def show_worksheet(self):
+
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
-            tab = self.tabs[tab_index]
-            df= tab.dataframe
+            df = self.tabs[tab_index].dataframe
             data = df.values.tolist()
             columns = df.columns.tolist()
             self.worksheet_dialog.ui.tableWidget.setRowCount(len(data))
             self.worksheet_dialog.ui.tableWidget.setColumnCount(len(columns))
             self.worksheet_dialog.ui.tableWidget.setHorizontalHeaderLabels(columns)
-
             for row_idx, row_data in enumerate(data):
                 for col_idx, cell_data in enumerate(row_data):
                     item = QTableWidgetItem(str(cell_data))
                     self.worksheet_dialog.ui.tableWidget.setItem(row_idx, col_idx, item)
 
+                    # If there is no tab selected, clear the table
+        else:
+            self.worksheet_dialog.ui.tableWidget.setRowCount(0)
+            self.worksheet_dialog.ui.tableWidget.setColumnCount(0)
+            self.worksheet_dialog.ui.tableWidget.clear()
         self.worksheet_dialog.show()
 
                 ## customize ##
