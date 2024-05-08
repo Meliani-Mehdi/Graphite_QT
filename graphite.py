@@ -129,7 +129,7 @@ class InterpolationDialog(QDialog):
         self.ui.image.addWidget(self.plot_widget)
 
         self.figure.canvas.mpl_connect('button_press_event', self.onclick)
-        self.delete_shortcut = QShortcut(QKeySequence("n"), self)
+        self.delete_shortcut = QShortcut(QKeySequence(Qt.Key_Backspace), self)
         self.delete_shortcut.activated.connect(self.delete_last_point)
 
         self.ui.cancel.clicked.connect(self.cancel)
