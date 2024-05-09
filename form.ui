@@ -998,7 +998,7 @@ QPushButton {
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="lagend_select">
                  <property name="minimumSize">
                   <size>
                    <width>32</width>
