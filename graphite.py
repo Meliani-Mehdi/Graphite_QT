@@ -16,6 +16,7 @@ from ui_export import Ui_Dialog as export
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
 from ui_math_function import Ui_Dialog as function
 from ui_interpolation import Ui_Dialog as interpolation
+from line_toggle import MatplotlibLegendToggler as lagend_dialog
 from graphs import Tab
 
 
@@ -267,6 +268,8 @@ class Graphite(QMainWindow):
         self.function_dialog = FunctionDialog(self)
         self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
         self.ui.actionfx.triggered.connect(self.show_function_dialog)
+        
+        self.ui.lagend_select.clicked.connect(self.show_lagend_dialog)
 
 
 
@@ -799,6 +802,18 @@ class Graphite(QMainWindow):
             tab.grid=grid 
             tab.custom_plot()
             self.customize_dialog.close()
+
+                
+                ## lagend ##
+                
+    def show_lagend_dialog(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
+            lagend_dialog(tab)
+            
 
 
                 ## export ##
