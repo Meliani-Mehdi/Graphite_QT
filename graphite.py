@@ -16,7 +16,7 @@ from ui_export import Ui_Dialog as export
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
 from ui_math_function import Ui_Dialog as function
 from ui_interpolation import Ui_Dialog as interpolation
-from line_toggle import MatplotlibLegendToggler as lagend_dialog
+from line_toggle import MatplotlibLegendToggler as legend_dialog
 from graphs import Tab
 
 
@@ -812,7 +812,7 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
-            lagend_dialog(tab)
+            legend_dialog(tab)
             
 
 

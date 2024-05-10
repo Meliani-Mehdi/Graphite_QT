@@ -36,6 +36,7 @@ class Tab(QWidget):
             self.last_time = os.path.getmtime(self.file)
         self.xlabel = 'xlabel'
         self.ylabel = 'ylabel'
+        self.artists = []
         self.legend = True
         self.legend_location = 0
         self.marker = 0
@@ -736,7 +737,8 @@ class Tab(QWidget):
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
-                self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker=self.markers[self.marker])
+                artist, = self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker=self.markers[self.marker])
+                self.artists.append(artist)
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
@@ -751,10 +753,13 @@ class Tab(QWidget):
 
     def to_pie_chart(self):
         self.figure.clear()
+        self.artists = []
         self.last_plot = self.to_pie_chart
         self.ax = self.figure.add_subplot()
         data = self.dataframe.iloc[:, 1:].sum()
-        self.ax.pie(data, labels=data.index, colors=self.colors, autopct='%1.1f%%')
+        artist = self.ax.pie(data, labels=data.index, colors=self.colors, autopct='%1.1f%%')
+        self.artists.extend(artist[0])
+        print(self.artists)
 
         if self.typeNum != 1:
             self.typeNum = 1
