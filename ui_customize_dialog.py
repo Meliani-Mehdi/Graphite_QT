@@ -167,6 +167,7 @@ class Ui_Dialog(object):
         self.location.addItem("")
         self.location.addItem("")
         self.location.addItem("")
+        self.location.addItem("")
         self.location.setObjectName(u"location")
 
         self.horizontalLayout_5.addWidget(self.location)
@@ -382,10 +383,11 @@ class Ui_Dialog(object):
         self.location.setItemText(3, QCoreApplication.translate("Dialog", u"lower left", None))
         self.location.setItemText(4, QCoreApplication.translate("Dialog", u"lower right", None))
         self.location.setItemText(5, QCoreApplication.translate("Dialog", u"right", None))
-        self.location.setItemText(6, QCoreApplication.translate("Dialog", u"center right", None))
-        self.location.setItemText(7, QCoreApplication.translate("Dialog", u"lower center", None))
-        self.location.setItemText(8, QCoreApplication.translate("Dialog", u"upper center", None))
-        self.location.setItemText(9, QCoreApplication.translate("Dialog", u"center", None))
+        self.location.setItemText(6, QCoreApplication.translate("Dialog", u"left", None))
+        self.location.setItemText(7, QCoreApplication.translate("Dialog", u"center right", None))
+        self.location.setItemText(8, QCoreApplication.translate("Dialog", u"lower center", None))
+        self.location.setItemText(9, QCoreApplication.translate("Dialog", u"upper center", None))
+        self.location.setItemText(10, QCoreApplication.translate("Dialog", u"center", None))
 
         self.marker_lab.setText(QCoreApplication.translate("Dialog", u"Marker : ", None))
         self.marker.setItemText(0, QCoreApplication.translate("Dialog", u"None", None))

@@ -282,6 +282,11 @@
        </item>
        <item>
         <property name="text">
+         <string>left</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>center right</string>
         </property>
        </item>

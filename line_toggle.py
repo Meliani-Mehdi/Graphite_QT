@@ -17,8 +17,8 @@ class MatplotlibLegendToggler(QDialog):
 
         self.legend_widgets = []
         for i, line in enumerate(self.plot.lines):
-            label = f'Line {i+1}'
-            checkbox = QCheckBox(label)
+            label = self.plot.get_legend().get_texts()[i].get_text()
+            checkbox = QCheckBox()
             checkbox.setChecked(True)
             checkbox.stateChanged.connect(lambda state, idx=i: self.toggle_legend(idx, state))
             layout.addWidget(checkbox)
@@ -33,12 +33,13 @@ class MatplotlibLegendToggler(QDialog):
 
     def toggle_legend(self, idx, state):
         self.plot.lines[idx].set_visible(state)
-        self.plot.legend([widget.text() for widget in self.legend_widgets], loc='best')
-        self.tab.figure.canvas.draw()
+        self.plot.legend([widget.text() for widget in self.legend_widgets])
+        self.plot.legend(loc=self.tab.legend_location).set_visible(self.tab.legend)
+        self.tab.plot_widget.draw()
 
     def apply_legend_names(self):
-        self.plot.legend([widget.text() for widget in self.legend_widgets], loc='best')
-        self.canvas.draw()
+        self.plot.legend([widget.text() for widget in self.legend_widgets],loc=self.tab.legend_location).set_visible(self.tab.legend)
+        self.tab.plot_widget.draw()
 
 # Example usage
 # import matplotlib.pyplot as plt
