@@ -733,7 +733,7 @@ class Tab(QWidget):
 
     def to_plot(self):
         self.figure.clear()
-
+        self.artists.clear()
         self.ax = self.figure.add_subplot()
         for _, col in enumerate(self.dataframe.columns[1:]):
             try:
@@ -753,7 +753,7 @@ class Tab(QWidget):
 
     def to_pie_chart(self):
         self.figure.clear()
-        self.artists = []
+        self.artists.clear()
         self.last_plot = self.to_pie_chart
         self.ax = self.figure.add_subplot()
         data = self.dataframe.iloc[:, 1:].sum()
@@ -772,16 +772,19 @@ class Tab(QWidget):
 
     def to_bar_chart(self):
         self.figure.clear()
+        self.artists.clear()
         self.ax = self.figure.add_subplot()
 
         num_cols = len(self.dataframe.columns)
         total_width = 0.8  
         width = total_width / num_cols  
 
-        for i, col in enumerate(self.dataframe.columns):
+        for i, col in enumerate(self.dataframe.columns[1:]):
             data = self.dataframe[col]
             try:
-                self.ax.bar(data.index + i * width, data, width=width, label=col)
+                artist = self.ax.bar(data.index + i * width, data, width=width, label=col)
+                print(artist)
+                self.artists.append(artist)
             except (ValueError, TypeError) as e:
                 print(f"Error plotting column '{col}': {e}")
 

@@ -1,9 +1,5 @@
-import sys
-from PySide6.QtWidgets import QApplication, QDialog, QVBoxLayout, QCheckBox, QLineEdit, QPushButton
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
-import numpy as np
+from PySide6.QtWidgets import  QDialog, QVBoxLayout, QCheckBox, QLineEdit, QPushButton
+import matplotlib.container as container
 
 class MatplotlibLegendToggler(QDialog):
     def __init__(self, tab, parent=None):
@@ -18,7 +14,7 @@ class MatplotlibLegendToggler(QDialog):
         layout = QVBoxLayout(self)
 
         self.legend_widgets = []
-        for i, artist in enumerate(self.artists):
+        for i, _ in enumerate(self.artists):
             label = self.plot.get_legend().get_texts()[i].get_text()
             checkbox = QCheckBox()
             checkbox.setChecked(True)
@@ -26,6 +22,7 @@ class MatplotlibLegendToggler(QDialog):
             layout.addWidget(checkbox)
 
             line_edit = QLineEdit(label)
+            line_edit.textChanged.connect(self.apply_legend_names)
             self.legend_widgets.append(line_edit)
             layout.addWidget(line_edit)
 
@@ -35,9 +32,13 @@ class MatplotlibLegendToggler(QDialog):
 
     def toggle_legend(self, idx, state):
         artist = self.artists[idx]
-        artist.set_visible(state)
+        if isinstance(artist, container.BarContainer):
+            for art in artist:
+                art.set_visible(state)
+        else:
+            artist.set_visible(state)
+        self.apply_legend_names()
 
-        self.tab.plot_widget.draw()
 
     def apply_legend_names(self):
         self.plot.legend([widget.text() for widget in self.legend_widgets], loc=self.tab.legend_location).set_visible(self.tab.legend)
