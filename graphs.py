@@ -1,3 +1,4 @@
+from platform import architecture
 import matplotlib.pyplot as plt
 import os
 import numpy as np
@@ -735,7 +736,7 @@ class Tab(QWidget):
         self.figure.clear()
         self.artists.clear()
         self.ax = self.figure.add_subplot()
-        for _, col in enumerate(self.dataframe.columns[1:]):
+        for col in self.dataframe.columns[1:]:
             try:
                 artist, = self.ax.plot(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker=self.markers[self.marker])
                 self.artists.append(artist)
@@ -759,7 +760,6 @@ class Tab(QWidget):
         data = self.dataframe.iloc[:, 1:].sum()
         artist = self.ax.pie(data, labels=data.index, colors=self.colors, autopct='%1.1f%%')
         self.artists.extend(artist[0])
-        print(self.artists)
 
         if self.typeNum != 1:
             self.typeNum = 1
@@ -783,7 +783,6 @@ class Tab(QWidget):
             data = self.dataframe[col]
             try:
                 artist = self.ax.bar(data.index + i * width, data, width=width, label=col)
-                print(artist)
                 self.artists.append(artist)
             except (ValueError, TypeError) as e:
                 print(f"Error plotting column '{col}': {e}")
@@ -800,12 +799,14 @@ class Tab(QWidget):
 
     def to_fill_between(self):
         self.figure.clear()
+        self.artists.clear()
         self.ax = self.figure.add_subplot()
         x = np.array(self.dataframe.iloc[:, 0])
         for col in self.dataframe.columns[1:]:
             y = np.array(self.dataframe[col])
             try:
-                self.ax.fill_between(x, y, alpha=0.5, linewidth=0)
+                artist = self.ax.fill_between(x, y, label=col, alpha=0.5, linewidth=0)
+                self.artists.append(artist)
             except Exception as e:
                 print(f"Skipping column '{col}' because it could not be plotted: {e}")
 
@@ -820,13 +821,42 @@ class Tab(QWidget):
 
     def to_stack_plot(self):
         self.figure.clear()
+        self.artists.clear()
         self.ax = self.figure.add_subplot()
 
-        self.dataframe.plot(kind='area', ax=self.ax)
+        try:
+            artist = self.ax.stackplot(self.dataframe.iloc[:, 0], self.dataframe.iloc[:, 1:].T, labels=self.dataframe.columns[1:], alpha=0.8)
+            self.artists.extend(artist)
+        except Exception as e:
+            print(f"Failed to create stack plot: {e}")
+
 
         if self.typeNum != 4:
             self.typeNum = 4
             self.last_plot = self.to_stack_plot
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
+
+        self.custom_plot()
+
+
+    def to_contour_plot(self):
+        self.figure.clear()
+        self.artists.clear()
+        self.ax = self.figure.add_subplot()
+
+        try:
+            artist = self.ax.contour(self.dataframe.iloc[1:, 1:], origin='upper')
+            self.artists.extend(artist.collections)
+            print(artist.collections)
+            self.legend = False
+        except Exception as e:
+            print(f"Failed to create contour plot: {e}")
+
+        if self.typeNum != 5:
+            self.typeNum = 5
+            self.last_plot = self.to_contour_plot
             xlim = self.ax.get_xlim()
             ylim = self.ax.get_ylim()
             self.def_vals = [xlim, ylim]
@@ -910,7 +940,6 @@ class Tab(QWidget):
                 except Exception as e:
                     pass
 
-            # Call the plot function to update the plot
         self.last_plot()
 
     def closePlot(self):

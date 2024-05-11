@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import  QDialog, QVBoxLayout, QCheckBox, QLineEdit, QPushButton
+from PySide6.QtWidgets import  QDialog, QHBoxLayout, QLabel, QVBoxLayout, QCheckBox, QLineEdit, QPushButton
 import matplotlib.container as container
 
 class MatplotlibLegendToggler(QDialog):
@@ -15,20 +15,33 @@ class MatplotlibLegendToggler(QDialog):
 
         self.legend_widgets = []
         for i, _ in enumerate(self.artists):
-            label = self.plot.get_legend().get_texts()[i].get_text()
+            holder = QHBoxLayout()
+            layout.addLayout(holder)
+            label= None
+            try:
+                label = self.plot.get_legend().get_texts()[i].get_text()
+            except Exception as e:
+                print("no lab")
             checkbox = QCheckBox()
-            checkbox.setChecked(True)
+            t = self.isVis(self.artists[i])
+            checkbox.setChecked(t)
             checkbox.stateChanged.connect(lambda state, idx=i: self.toggle_legend(idx, state))
-            layout.addWidget(checkbox)
+            holder.addWidget(checkbox)
 
-            line_edit = QLineEdit(label)
-            line_edit.textChanged.connect(self.apply_legend_names)
-            self.legend_widgets.append(line_edit)
-            layout.addWidget(line_edit)
+            if label:
+                line_edit = QLineEdit(label)
+                line_edit.textChanged.connect(self.apply_legend_names)
+                self.legend_widgets.append(line_edit)
+                holder.addWidget(line_edit)
+            else:
+                lab = QLabel(f'Level {i+1}')
+                holder.addWidget(lab)
 
-        apply_button = QPushButton('Apply')
-        apply_button.clicked.connect(self.apply_legend_names)
-        layout.addWidget(apply_button)
+    def isVis(self, artist) -> bool:
+        if isinstance(artist, container.BarContainer):
+            return artist[0].get_visible()
+        else:
+            return artist.get_visible()
 
     def toggle_legend(self, idx, state):
         artist = self.artists[idx]

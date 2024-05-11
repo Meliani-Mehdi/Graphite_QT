@@ -238,6 +238,7 @@ class Graphite(QMainWindow):
         self.ui.histogram.clicked.connect(self.toBar)
         self.ui.fill_between.clicked.connect(self.toFill)
         self.ui.stackplot.clicked.connect(self.toStack)
+        self.ui.contour.clicked.connect(self.toContour)
 
         #buttons
 
@@ -812,7 +813,7 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
-            legend_dialog(tab)
+            legend_dialog(tab, self)
             
 
 
@@ -969,6 +970,13 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].to_stack_plot()
+
+    def toContour(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_contour_plot()
 
     #closing logic
     def close_current_tab(self):
