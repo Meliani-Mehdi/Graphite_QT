@@ -88,7 +88,7 @@ class Tab(QWidget):
             self.press_x = event.xdata
             self.press_y = event.ydata
 
-        elif event.button == 3:
+        elif event.button == 3 and event.inaxes == self.ax:
             self.press = event.xdata, event.ydata
             if self.zoom_rect is not None:
                 self.zoom_rect.remove()
@@ -100,7 +100,7 @@ class Tab(QWidget):
     def on_release(self, event):
         if event.button == 1:
             self.button_pressed = False
-        if event.button == 3 and self.press is not None:
+        if event.button == 3 and self.press is not None and event.inaxes == self.ax:
             xpress, ypress = self.press
             xrelease, yrelease = event.xdata, event.ydata
             xmin = min(xpress, xrelease)
@@ -117,7 +117,7 @@ class Tab(QWidget):
 
 
     def on_motion(self, event):
-        if event.button == 3 and self.press is not None:
+        if event.button == 3 and self.press is not None and event.inaxes == self.ax:
             xpress, ypress = self.press
             xrelease, yrelease = event.xdata, event.ydata
             xmin = min(xpress, xrelease)
