@@ -1008,7 +1008,7 @@ class Graphite(QMainWindow):
             model = QFileSystemModel()
             model.setRootPath(folder_path)
             model.setFilter(QDir.AllDirs | QDir.Files | QDir.NoDotAndDotDot)
-            model.setNameFilters(["*.xlsx", "*.csv", "*.json"])
+            model.setNameFilters(["*.xlsx", "*.csv", "*.json", "*.png", "*.jpeg", "*.jpg", "*.bmp", "*.tif", "*.tiff", "*.gif", "*.ppm", "*.tga"])
             model.setNameFilterDisables(False)
             
             self.ui.treeView.setModel(model)
@@ -1067,7 +1067,7 @@ class Graphite(QMainWindow):
     def open_file_dialog(self):
         options = QFileDialog.Options()
         file_name, _ = QFileDialog.getOpenFileName(
-            self, "Open File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;PNG Files (*.png)", options=options)
+            self, "Open File", "", "All Files (*.xlsx *.csv *.json *.png *.jpeg *.jpg *.bmp *.tif *.tiff *.gif *.ppm *.tga);;Worksheet Files (*.xlsx *.csv *.json);;Image Files (*.png *.jpg *.jpeg *.bmp *.tif *.tiff *.gif *.ppm *.tga);;Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json);;PNG Files (*.png);;JPEG Files (*.jpg *.jpeg);;Bitmap Files (*.bmp);;TIFF Files (*.tif *.tiff);;GIF Files (*.gif);;PPM Files (*.ppm);;TGA Files (*.tga)", options=options)
         if file_name:
             self.open_file(file_name)
 
@@ -1075,7 +1075,7 @@ class Graphite(QMainWindow):
         if file_path and not os.path.isdir(file_path):
             df = pd.DataFrame()
             name, ext = os.path.splitext(file_path)
-            supported_formats = ['.csv', '.xlsx', '.json', '.png']
+            supported_formats = [".xlsx", ".csv", ".json", ".png", ".jpeg", ".jpg", ".bmp", ".tif", ".tiff", ".gif", ".ppm", ".tga"]
             if ext in supported_formats:
                 try:
                     if ext == '.csv':
@@ -1084,7 +1084,7 @@ class Graphite(QMainWindow):
                         df = pd.read_excel(file_path)
                     elif ext == '.json':
                         df = pd.read_json(file_path)
-                    elif ext == '.png':
+                    elif ext == '.png' or ext == '.jpeg' or ext == '.jpg' or ext == '.gif' or ext == '.bmp' or ext == '.tiff' or ext == '.tif' or ext == '.ppm' or ext == '.tga':
                         self.show_interpolation(file_path)
                         return 
                     name = os.path.basename(name)
