@@ -1,4 +1,3 @@
-from platform import architecture
 import matplotlib.pyplot as plt
 import os
 import numpy as np
@@ -27,7 +26,7 @@ class Tab(QWidget):
             '#e7cb94', '#e7ba52', '#bd9e39', '#8c6d31', '#bd3939', '#ad494a', '#d6616b', '#e7969c', '#7b4173',
             '#a55194', '#ce6dbd',
         ]
-        self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", "TICKLEFT"]
+        self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", 2, 3, 1, 0, 6, 7, 5, 4,]
         self.fig_colors = ['black', 'gray', 'lightgray', 'white', 'green', 'orange', 'red', 'pink', 'yellow', 'lightyellow', 'cyan', 'lightcyan']
         self.tab_widget = tab_widget
         self.dataframe = dataframe
@@ -857,6 +856,28 @@ class Tab(QWidget):
         if self.typeNum != 5:
             self.typeNum = 5
             self.last_plot = self.to_contour_plot
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
+
+        self.custom_plot()
+
+    def to_contourf_plot(self):
+        self.figure.clear()
+        self.artists.clear()
+        self.ax = self.figure.add_subplot()
+
+        try:
+            artist = self.ax.contourf(self.dataframe.iloc[1:, 1:], origin='upper')
+            self.artists.extend(artist.collections)
+            print(artist.collections)
+            self.legend = False
+        except Exception as e:
+            print(f"Failed to create contour plot: {e}")
+
+        if self.typeNum != 6:
+            self.typeNum = 6
+            self.last_plot = self.to_contourf_plot
             xlim = self.ax.get_xlim()
             ylim = self.ax.get_ylim()
             self.def_vals = [xlim, ylim]

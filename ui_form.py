@@ -514,7 +514,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, -388, 114, 1324))
+        self.typeButtons.setGeometry(QRect(0, -571, 114, 1324))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -593,17 +593,17 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.contour)
 
-        self.pushButton_11 = QPushButton(self.typeButtons)
-        self.pushButton_11.setObjectName(u"pushButton_11")
-        self.pushButton_11.setMinimumSize(QSize(110, 110))
-        self.pushButton_11.setMaximumSize(QSize(110, 110))
-        self.pushButton_11.setCursor(QCursor(Qt.PointingHandCursor))
+        self.contourf = QPushButton(self.typeButtons)
+        self.contourf.setObjectName(u"contourf")
+        self.contourf.setMinimumSize(QSize(110, 110))
+        self.contourf.setMaximumSize(QSize(110, 110))
+        self.contourf.setCursor(QCursor(Qt.PointingHandCursor))
         icon19 = QIcon()
         icon19.addFile(u"assets/buttons/types/contourf.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_11.setIcon(icon19)
-        self.pushButton_11.setIconSize(QSize(100, 100))
+        self.contourf.setIcon(icon19)
+        self.contourf.setIconSize(QSize(100, 100))
 
-        self.verticalLayout_3.addWidget(self.pushButton_11)
+        self.verticalLayout_3.addWidget(self.contourf)
 
         self.pushButton_10 = QPushButton(self.typeButtons)
         self.pushButton_10.setObjectName(u"pushButton_10")
@@ -679,7 +679,7 @@ class Ui_Graphite(object):
         self.pushButton_8.raise_()
         self.pushButton_9.raise_()
         self.pushButton_10.raise_()
-        self.pushButton_11.raise_()
+        self.contourf.raise_()
         self.stackplot.raise_()
         self.contour.raise_()
 
@@ -920,7 +920,7 @@ class Ui_Graphite(object):
         self.fill_between.setText("")
         self.stackplot.setText("")
         self.contour.setText("")
-        self.pushButton_11.setText("")
+        self.contourf.setText("")
         self.pushButton_10.setText("")
         self.pushButton_9.setText("")
         self.pushButton_8.setText("")

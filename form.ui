@@ -1167,7 +1167,7 @@ QPushButton {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-388</y>
+               <y>-571</y>
                <width>114</width>
                <height>1324</height>
               </rect>
@@ -1385,7 +1385,7 @@ background-color: rgb(23, 23, 23);</string>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_11">
+               <widget class="QPushButton" name="contourf">
                 <property name="minimumSize">
                  <size>
                   <width>110</width>
@@ -1599,7 +1599,7 @@ background-color: rgb(23, 23, 23);</string>
              <zorder>pushButton_8</zorder>
              <zorder>pushButton_9</zorder>
              <zorder>pushButton_10</zorder>
-             <zorder>pushButton_11</zorder>
+             <zorder>contourf</zorder>
              <zorder>stackplot</zorder>
              <zorder>verticalSpacer</zorder>
              <zorder>contour</zorder>
