@@ -713,7 +713,8 @@ class Tab(QWidget):
         self.ax.set_title(self.name)
         self.ax.set_xlabel(self.xlabel)
         self.ax.set_ylabel(self.ylabel)
-        self.ax.legend(loc=self.legend_location).set_visible(self.legend)
+        if self.last_plot not in [self.to_contour_plot, self.to_contourf_plot]:
+            self.ax.legend(loc=self.legend_location).set_visible(self.legend)
         self.ax.grid(self.grid)
         if self.last_fig_color != self.fig_color:
             self.last_fig_color = self.fig_color
@@ -848,8 +849,6 @@ class Tab(QWidget):
         try:
             artist = self.ax.contour(self.dataframe.iloc[1:, 1:], origin='upper')
             self.artists.extend(artist.collections)
-            print(artist.collections)
-            self.legend = False
         except Exception as e:
             print(f"Failed to create contour plot: {e}")
 
@@ -870,8 +869,6 @@ class Tab(QWidget):
         try:
             artist = self.ax.contourf(self.dataframe.iloc[1:, 1:], origin='upper')
             self.artists.extend(artist.collections)
-            print(artist.collections)
-            self.legend = False
         except Exception as e:
             print(f"Failed to create contour plot: {e}")
 
