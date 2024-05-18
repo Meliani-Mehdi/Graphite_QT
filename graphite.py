@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import math
 import platform
+import sqlite3
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtCore import QDir,Qt, QPointF
-from PySide6.QtWidgets import  QApplication, QMainWindow, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea
+from PySide6.QtWidgets import  QApplication, QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit, QPushButton,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea, QWidget, QWidgetAction
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
@@ -19,6 +20,40 @@ from ui_interpolation import Ui_Dialog as interpolation
 from line_toggle import MatplotlibLegendToggler as legend_dialog
 from graphs import Tab
 
+
+
+
+conn = sqlite3.connect('graphite_DB.db')
+cursor = conn.cursor()
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS recent (
+        id INTEGER PRIMARY KEY,
+        path TEXT NOT NULL
+    )
+''')
+
+conn.commit()
+conn.close()
+
+
+class RecentFileWidget(QWidget):
+    def __init__(self, path, remove_callback, parent=None):
+        super().__init__(parent)
+        self.path = path
+        self.remove_callback = remove_callback
+
+        layout = QHBoxLayout()
+        self.label = QLabel(path)
+        self.remove_button = QPushButton("Remove")
+        self.remove_button.clicked.connect(self.on_remove)
+
+        layout.addWidget(self.label)
+        layout.addWidget(self.remove_button)
+        self.setLayout(layout)
+
+    def on_remove(self):
+        self.remove_callback(self.path)
 
 class Worksheet(QDialog):
     def __init__(self, parent=None):
@@ -180,6 +215,8 @@ class Graphite(QMainWindow):
         #menu functions
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
+        self.load_open_recent()
+
         self.ui.save.triggered.connect(self.save)
         self.ui.save_as.triggered.connect(self.saveAs)
         self.ui.exit_app.triggered.connect(self.exit_app)
@@ -1178,6 +1215,72 @@ class Graphite(QMainWindow):
     def toggle_full_screen(self):
         self.full_screen = not self.full_screen
         self.showFullScreen() if self.full_screen else self.showNormal()
+
+    def add_file_path(self, file_path):
+        conn = sqlite3.connect('graphite_DB.db')
+        cursor = conn.cursor()
+        try:
+            cursor.execute('BEGIN TRANSACTION')
+            
+            cursor.execute('UPDATE recent SET id = id + 1')
+            
+            cursor.execute('INSERT INTO recent (id, path) VALUES (1, ?)', (file_path,))
+            
+            cursor.execute('DELETE FROM recent WHERE id > 10')
+            
+            conn.commit()
+        except sqlite3.Error as e:
+            conn.rollback()
+            print(f"An error occurred: {e}")
+        finally:
+            if conn:
+                conn.close()
+
+    def load_open_recent(self):
+        conn = sqlite3.connect('graphite_DB.db')
+        cursor = conn.cursor()
+        try:
+            cursor.execute('SELECT path FROM recent ORDER BY id ASC')
+            recent_paths = [row[0] for row in cursor.fetchall()]
+            
+            self.ui.open_recent_path.clear()
+            
+            for path in recent_paths:
+                widget = RecentFileWidget(path, self.remove_recent_file)
+                widget_action = QWidgetAction(self.ui.open_recent_path)
+                widget_action.setDefaultWidget(widget)
+                self.ui.open_recent_path.addAction(widget_action)
+            
+        except sqlite3.Error as e:
+            print(f"An error occurred: {e}")
+        
+        finally:
+            if conn:
+                conn.close()
+
+    def remove_recent_file(self, path):
+        conn = sqlite3.connect('graphite_DB.db')
+        cursor = conn.cursor()
+        try:
+            cursor.execute('DELETE FROM recent WHERE path = ?', (path,))
+            conn.commit()
+
+            cursor.execute('SELECT rowid, * FROM recent')
+            rows = cursor.fetchall()
+
+            for index, row in enumerate(rows):
+                new_id = index + 1
+                cursor.execute('UPDATE recent SET id = ? WHERE rowid = ?', (new_id, row[0]))
+            conn.commit()
+
+            self.load_open_recent()
+        except sqlite3.Error as e:
+            print(f"An error occurred: {e}")
+        finally:
+            if conn:
+                conn.close()
+        
+
 
 
 if __name__ == "__main__":
