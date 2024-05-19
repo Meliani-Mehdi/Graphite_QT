@@ -7,9 +7,9 @@ import matplotlib.image as mpimg
 import math
 import platform
 import sqlite3
-from PySide6.QtGui import QKeySequence, QShortcut
-from PySide6.QtCore import QDir,Qt, QPointF
-from PySide6.QtWidgets import  QApplication, QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit, QPushButton,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea, QWidget, QWidgetAction
+from PySide6.QtGui import QAction, QIcon, QKeySequence, QShortcut
+from PySide6.QtCore import QDir, QSize,Qt, QPointF
+from PySide6.QtWidgets import  QApplication, QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit, QPushButton, QToolTip,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea, QWidget, QWidgetAction
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom
@@ -28,7 +28,8 @@ cursor = conn.cursor()
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS recent (
-        id INTEGER PRIMARY KEY,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        placement INTEGER NOT NULL,
         path TEXT NOT NULL
     )
 ''')
@@ -38,17 +39,28 @@ conn.close()
 
 
 class RecentFileWidget(QWidget):
-    def __init__(self, path, remove_callback, parent=None):
+    def __init__(self, index, path, remove_callback, parent=None):
         super().__init__(parent)
+        self.index = index
         self.path = path
         self.remove_callback = remove_callback
 
         layout = QHBoxLayout()
-        self.label = QLabel(path)
-        self.remove_button = QPushButton("Remove")
+        self.index_label = QLabel(str(index))
+        self.index_label.setFixedWidth(20)  # Adjust width as needed
+        self.separator = QLabel('|')
+        self.file_name = QLabel(os.path.basename(path))
+        self.remove_button = QPushButton()
+        self.remove_button.setIcon(QIcon(u"assets/close.png"))  # Set your icon path here
+        self.remove_button.setIconSize(QSize(14, 14))
+        self.remove_button.setFixedSize(15, 15)
+        self.remove_button.setToolTip(path)
         self.remove_button.clicked.connect(self.on_remove)
 
-        layout.addWidget(self.label)
+        layout.addWidget(self.index_label)
+        layout.addWidget(self.separator)
+        layout.addWidget(self.file_name)
+        layout.addStretch()
         layout.addWidget(self.remove_button)
         self.setLayout(layout)
 
@@ -1118,6 +1130,7 @@ class Graphite(QMainWindow):
 
     def open_file(self, file_path):
         if file_path and not os.path.isdir(file_path):
+            self.add_file_path(file_path)
             df = pd.DataFrame()
             name, ext = os.path.splitext(file_path)
             supported_formats = [".xlsx", ".csv", ".json", ".png", ".jpeg", ".jpg", ".bmp", ".tif", ".tiff", ".gif", ".ppm", ".tga"]
@@ -1221,14 +1234,21 @@ class Graphite(QMainWindow):
         cursor = conn.cursor()
         try:
             cursor.execute('BEGIN TRANSACTION')
+
+            cursor.execute('SELECT placement FROM recent WHERE path = ?', (file_path,))
+            row = cursor.fetchone()
+
+            if row:
+                cursor.execute('UPDATE recent SET placement = placement + 1 WHERE placement < ?', (row[0],))
+                cursor.execute('UPDATE recent SET placement = 1 WHERE path = ?', (file_path,))
+            else:
+                cursor.execute('UPDATE recent SET placement = placement + 1')
+                cursor.execute('INSERT INTO recent (placement, path) VALUES (1, ?)', (file_path,))
             
-            cursor.execute('UPDATE recent SET id = id + 1')
-            
-            cursor.execute('INSERT INTO recent (id, path) VALUES (1, ?)', (file_path,))
-            
-            cursor.execute('DELETE FROM recent WHERE id > 10')
+            cursor.execute('DELETE FROM recent WHERE placement > 10')
             
             conn.commit()
+            self.load_open_recent()
         except sqlite3.Error as e:
             conn.rollback()
             print(f"An error occurred: {e}")
@@ -1236,21 +1256,27 @@ class Graphite(QMainWindow):
             if conn:
                 conn.close()
 
+
     def load_open_recent(self):
         conn = sqlite3.connect('graphite_DB.db')
         cursor = conn.cursor()
         try:
-            cursor.execute('SELECT path FROM recent ORDER BY id ASC')
+            cursor.execute('SELECT path FROM recent ORDER BY placement ASC')
             recent_paths = [row[0] for row in cursor.fetchall()]
             
             self.ui.open_recent_path.clear()
             
-            for path in recent_paths:
-                widget = RecentFileWidget(path, self.remove_recent_file)
+            for index, path in enumerate(recent_paths, 1):
+                widget = RecentFileWidget(index, path, self.remove_recent_file)
                 widget_action = QWidgetAction(self.ui.open_recent_path)
                 widget_action.setDefaultWidget(widget)
+                print(path)
+                widget_action.triggered.connect(lambda file_path=path : self.open_file(file_path))
+                widget_action.setShortcut(f"Ctrl+{index}")
+                widget_action.setToolTip(path)
                 self.ui.open_recent_path.addAction(widget_action)
-            
+
+            print()
         except sqlite3.Error as e:
             print(f"An error occurred: {e}")
         
@@ -1269,8 +1295,8 @@ class Graphite(QMainWindow):
             rows = cursor.fetchall()
 
             for index, row in enumerate(rows):
-                new_id = index + 1
-                cursor.execute('UPDATE recent SET id = ? WHERE rowid = ?', (new_id, row[0]))
+                new_placement = index + 1
+                cursor.execute('UPDATE recent SET placement = ? WHERE rowid = ?', (new_placement, row[0]))
             conn.commit()
 
             self.load_open_recent()
