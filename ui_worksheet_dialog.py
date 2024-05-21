@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'worksheet_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -40,6 +40,11 @@ class Ui_Dialog2(object):
         self.tableWidget.verticalHeader().setStretchLastSection(False)
 
         self.verticalLayout.addWidget(self.tableWidget)
+
+        self.modify = QPushButton(Dialog2)
+        self.modify.setObjectName(u"modify")
+
+        self.verticalLayout.addWidget(self.modify)
 
         self.plotwork = QPushButton(Dialog2)
         self.plotwork.setObjectName(u"plotwork")
@@ -84,6 +89,7 @@ class Ui_Dialog2(object):
 
     def retranslateUi(self, Dialog2):
         Dialog2.setWindowTitle(QCoreApplication.translate("Dialog2", u"Dialog", None))
+        self.modify.setText(QCoreApplication.translate("Dialog2", u"modify", None))
         self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
         self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
         self.remcol.setText(QCoreApplication.translate("Dialog2", u"remove column", None))
