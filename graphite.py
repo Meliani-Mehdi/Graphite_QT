@@ -39,21 +39,27 @@ conn.close()
 
 
 class RecentFileWidget(QWidget):
-    def __init__(self, index, path, remove_callback, parent=None):
+    def __init__(self, index, path, remove_callback, open_callback, parent=None):
         super().__init__(parent)
         self.index = index
         self.path = path
         self.remove_callback = remove_callback
+        self.open_path = open_callback
 
         layout = QHBoxLayout()
         self.index_label = QLabel(str(index))
-        self.index_label.setFixedWidth(20)  # Adjust width as needed
+        self.index_label.setFixedWidth(20)
         self.separator = QLabel('|')
         self.file_name = QLabel(os.path.basename(path))
+        self.cut = QLabel(f"   Ctrl+{self.index}   ")
         self.remove_button = QPushButton()
-        self.remove_button.setIcon(QIcon(u"assets/close.png"))  # Set your icon path here
+        self.remove_button.setIcon(QIcon(u"assets/close.png")) 
         self.remove_button.setIconSize(QSize(14, 14))
         self.remove_button.setFixedSize(15, 15)
+        self.remove_button.setStyleSheet(u"QPushButton {\n"
+                                        "    border: none;\n"
+                                        "}")
+
         self.remove_button.setToolTip(path)
         self.remove_button.clicked.connect(self.on_remove)
 
@@ -61,11 +67,15 @@ class RecentFileWidget(QWidget):
         layout.addWidget(self.separator)
         layout.addWidget(self.file_name)
         layout.addStretch()
+        layout.addWidget(self.cut)
         layout.addWidget(self.remove_button)
         self.setLayout(layout)
 
     def on_remove(self):
         self.remove_callback(self.path)
+
+    def on_open(self):
+        self.open_path(self.path)
 
 class Worksheet(QDialog):
     def __init__(self, parent=None):
@@ -1267,13 +1277,12 @@ class Graphite(QMainWindow):
             self.ui.open_recent_path.clear()
             
             for index, path in enumerate(recent_paths, 1):
-                widget = RecentFileWidget(index, path, self.remove_recent_file)
+                widget = RecentFileWidget(index, path, self.remove_recent_file, self.open_file)
                 widget_action = QWidgetAction(self.ui.open_recent_path)
                 widget_action.setDefaultWidget(widget)
-                print(path)
-                widget_action.triggered.connect(lambda file_path=path : self.open_file(file_path))
+                widget_action.triggered.connect(widget.on_open)
                 widget_action.setShortcut(f"Ctrl+{index}")
-                widget_action.setToolTip(path)
+                widget.setToolTip(path)
                 self.ui.open_recent_path.addAction(widget_action)
 
             print()
