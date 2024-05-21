@@ -48,6 +48,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="modify">
+     <property name="text">
+      <string>modify</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="plotwork">
      <property name="text">
       <string>plot</string>

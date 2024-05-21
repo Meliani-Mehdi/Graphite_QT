@@ -321,6 +321,7 @@ class Graphite(QMainWindow):
 
         self.worksheet_dialog = Worksheet(self)
         self.worksheet_dialog.ui.plotwork.clicked.connect(self.plotwork)
+        self.worksheet_dialog.ui.modify.clicked.connect(self.modify_current_tab)
         self.ui.worksheet.clicked.connect(self.show_worksheet)
 
         self.interpolation_dialog = InterpolationDialog(self)
@@ -331,6 +332,89 @@ class Graphite(QMainWindow):
         self.ui.actionfx.triggered.connect(self.show_function_dialog)
         
         self.ui.lagend_select.clicked.connect(self.show_lagend_dialog)
+
+
+
+    def modify_current_tab(self):
+        table_widget = self.worksheet_dialog.ui.tableWidget
+
+        selected_ranges = table_widget.selectedRanges()
+
+        if selected_ranges:
+            selected_range = selected_ranges[0]
+            start_row = selected_range.topRow()
+            end_row = selected_range.bottomRow()
+            start_column = selected_range.leftColumn()
+            end_column = selected_range.rightColumn()
+
+
+            if end_row - start_row + 1 < 3:
+                QMessageBox.warning(self, "Selection Error", "Please select at least 3 rows to modify the plot.")
+                return
+
+            data = []
+            headers = []
+            for column in range(start_column, end_column + 1):
+                header_item = table_widget.horizontalHeaderItem(column)
+                if header_item is not None:
+                    headers.append(header_item.text())
+                else:
+                    headers.append(f"Column {column + 1}")
+            for row in range(start_row, end_row + 1):
+                row_data = []
+                for column in range(start_column, end_column + 1):
+                    item = table_widget.item(row, column)
+                    if item is not None:
+                        try:
+                            row_data.append(float(item.text()))
+                        except ValueError:
+                            row_data.append(np.nan)  # Handle non-numeric cells
+                    else:
+                        row_data.append(np.nan)  # Handle empty cells
+                data.append(row_data)
+        else:
+
+            num_rows = table_widget.rowCount()
+            num_cols = table_widget.columnCount()
+
+                # Check if at least 3 rows are present in the worksheet
+            if num_rows < 2:
+                QMessageBox.warning(self, "Selection Error", "The worksheet must have at least 3 rows to modify the plot.")
+                return
+
+            data = []
+            headers = []
+            for col in range(num_cols):
+                header_item = table_widget.horizontalHeaderItem(col)
+                if header_item is not None:
+                    headers.append(header_item.text())
+                else:
+                    headers.append(f"Column {col + 1}")
+
+            for row in range(num_rows):
+                row_data = []
+                for col in range(num_cols):
+                    item = table_widget.item(row, col)
+                    if item is not None:
+                        try:
+                            row_data.append(float(item.text()))
+                        except ValueError:
+                            row_data.append(np.nan)  # Handle non-numeric cells
+                    else:
+                        row_data.append(np.nan)  # Handle empty cells
+                data.append(row_data)
+
+        df = pd.DataFrame(data, columns=headers)
+
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].dataframe = df
+            self.tabs[tab_index].name = "Modified Data"
+            self.tabs[tab_index].to_plot()  # Assuming to_plot method handles plotting
+        else:
+            QMessageBox.warning(self, "No Tab", "There is no active tab to modify.")
 
 
 
@@ -346,6 +430,9 @@ class Graphite(QMainWindow):
             end_row = selected_range.bottomRow()
             start_column = selected_range.leftColumn()
             end_column = selected_range.rightColumn()
+            if end_row - start_row + 1 < 3:
+                QMessageBox.warning(self, "Selection Error", "Please select at least 3 rows to plot.")
+                return
 
             data = []
             headers = []
