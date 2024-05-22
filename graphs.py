@@ -190,6 +190,8 @@ class Tab(QWidget):
         self.ax.plot(x_data, y_data, 'bx', label='Data')
         self.ax.plot(x_fit, y_fit, 'r', label=f'Polynomial Fit (Degree {degree})')
         self.custom_plot()
+        fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+        self.dataframe = fitted_data
 
 
     def plot_cubic_curve(self, x_data, y_data, x_values, y_values):
@@ -216,6 +218,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Gaussian Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Gaussian fit: {e}")
@@ -236,6 +240,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Lorentzian Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Lorentzian fit: {e}")
@@ -260,6 +266,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Voigt Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Voigt fit: {e}")
@@ -284,6 +292,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Fourier Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Fourier fit: {e}")
@@ -305,6 +315,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Sine Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Sine fit: {e}")
@@ -325,6 +337,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Cosine Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Cosine fit: {e}")
@@ -345,6 +359,8 @@ class Tab(QWidget):
         self.ax.plot(x_fit, y_fit, 'r', label='Power Fit')
 
         self.custom_plot()
+        fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+        self.dataframe = fitted_data
 
     def plot_exponential_fit(self, x_data, y_data):
         def exponential_func(x, a, b):
@@ -362,6 +378,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='Exponential Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting exponential fit: {e}")
@@ -384,6 +402,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='Double Exponential Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting double exponential fit: {e}")
@@ -421,6 +441,7 @@ class Tab(QWidget):
     def apply_chebyshev_filter(self, dataframe, Wn, rp, rs):
         b, a = cheby1(4, rp, Wn, 'lowpass', fs=1)
         filtered_data = np.apply_along_axis(lambda x: np.convolve(x, b/a, mode='same'), axis=0, arr=dataframe)
+        self.dataframe = pd.DataFrame(filtered_data, columns=dataframe.columns)
         return filtered_data
 
     def apply_boxcar_filter(self, dataframe, window_size):
@@ -428,14 +449,6 @@ class Tab(QWidget):
         filtered_data = np.apply_along_axis(lambda x: np.convolve(x, kernel, mode='same'), axis=0, arr=dataframe)
         return filtered_data
 
-    def apply_kalman_filter(self, dataframe, process_noise, measurement_noise):
-        dim_x = dataframe.shape[1] - 1
-        dim_z = 1
-        kf = KalmanFilter(dim_x=dim_x, dim_z=dim_z)
-        kf.predict()
-        z = np.mean(dataframe.iloc[:, 1].values)
-        filtered_data = kf.update(z, process_noise, measurement_noise)
-        return filtered_data
 
 
    # def create_notch_filter(fs, f0, Q):
@@ -486,6 +499,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='Triple Exponential Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting triple exponential fit: {e}")
@@ -513,6 +528,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Spline Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Spline fit: {e}")
@@ -529,6 +546,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='LOWESS Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting LOWESS fit: {e}")
@@ -544,6 +563,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Savitzky-Golay Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Savitzky-Golay fit: {e}")
@@ -566,6 +587,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Weibull Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Weibull fit: {e}")
@@ -587,6 +610,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Sigmoidal Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Sigmoidal fit: {e}")
@@ -608,6 +633,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Michaelis-Menten Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Michaelis-Menten fit: {e}")
@@ -629,6 +656,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Hill Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Hill fit: {e}")
@@ -650,6 +679,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Gompertz Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting Gompertz fit: {e}")
@@ -667,6 +698,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Logarithmic Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting logarithmic fit: {e}")
@@ -688,6 +721,8 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Logistic Fit')
             self.custom_plot()
+            fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
+            self.dataframe = fitted_data
 
         except Exception as e:
             print(f"Error plotting logistic fit: {e}")
@@ -700,6 +735,8 @@ class Tab(QWidget):
 
 
         self.custom_plot()
+        fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
+        self.dataframe = fitted_data
 
 
     #refresh

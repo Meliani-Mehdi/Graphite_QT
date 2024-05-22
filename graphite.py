@@ -284,7 +284,6 @@ class Graphite(QMainWindow):
         self.ui.sheb.clicked.connect(self.apply_chebyshev_filter)
         self.ui.gaus.clicked.connect(self.apply_gaussian_filter)
         self.ui.boxcar.clicked.connect(self.apply_boxcar_filter)
-        self.ui.kalman.clicked.connect(self.apply_kalman_filter)
         # self.ui.notch.clicked.connect(self.apply_notch_filter)
         self.ui.passe.currentIndexChanged.connect(self.handle_fit_type_changed_pass)
 
@@ -588,17 +587,6 @@ class Graphite(QMainWindow):
                 filtered_dataframe = pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index)
                 tab.plot_filtered_data(filtered_dataframe)
 
-    def apply_kalman_filter(self):
-        current_index = self.ui.graphTab.currentIndex()
-        if current_index != -1:
-            process_noise, ok1 = QInputDialog.getDouble(self, "Kalman Filter", "Enter process noise:", value=0.01, decimals=3)
-            measurement_noise, ok2 = QInputDialog.getDouble(self, "Kalman Filter", "Enter measurement noise:", value=0.01, decimals=3)
-            if ok1 and ok2:
-                widget = self.ui.graphTab.widget(current_index)
-                tab_index = self.tabs.index(widget)
-                tab = self.tabs[tab_index]
-                filtered_data = tab.apply_kalman_filter(tab.dataframe, process_noise, measurement_noise)
-                tab.plot_filtered_data(pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index))
 
     # def apply_notch_filter(self):
     #    current_index = self.ui.graphTab.currentIndex()
@@ -819,9 +807,8 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
 
-            x_data = tab.dataframe.iloc[:, 0].values  # Replace [...] with actual x-axis data
-            y_data = tab.dataframe.iloc[:, 1].values  # Replace [...] with actual y-axis data
-
+            x_data = tab.dataframe.iloc[:, 0].values
+            y_data = tab.dataframe.iloc[:, 1].values
             tab.plot_power_fit(x_data, y_data)
 
 
@@ -840,7 +827,8 @@ class Graphite(QMainWindow):
             x_values = np.linspace(min(x_data), max(x_data), 100)
 
             y_values = np.polyval(coeffs, x_values)
-
+            fitted_data = pd.DataFrame({'x': x_values, 'y': y_values})
+            tab.dataframe = fitted_data
             tab.plot_cubic_curve(x_data, y_data, x_values, y_values)
 
 
