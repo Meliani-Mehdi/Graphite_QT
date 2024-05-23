@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 import pandas as pd
+import seaborn as sns
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.patches import Rectangle
 from PySide6.QtWidgets import QWidget, QHBoxLayout
@@ -956,6 +957,71 @@ class Tab(QWidget):
                     dpi=int(dpi),
                     transparent=transparent,
                     pad_inches=pad_inches)
+
+    def handle_missing_values(self, df):
+        return df.fillna(df.mean())
+
+    def generate_summary_statistics(self, df):
+        summary_stats = df.describe().T
+        return summary_stats
+
+    def visualize_data_distribution(self, df, output_dir):
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        for column in df.columns:
+            plt.figure(figsize=(12, 5))
+
+            plt.subplot(1, 2, 1)
+            sns.histplot(df[column], kde=True)
+            plt.title(f'Histogram of {column}')
+
+            plt.subplot(1, 2, 2)
+            sns.boxplot(x=df[column])
+            plt.title(f'Boxplot of {column}')
+
+            plt.tight_layout()
+            plt.savefig(f'{output_dir}/{column}_distribution.png')
+            plt.close()
+
+    def correlation_analysis(self, df, output_dir):
+        corr_matrix = df.corr()
+
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+        plt.title('Correlation Matrix Heatmap')
+        plt.savefig(f'{output_dir}/correlation_matrix.png')
+        plt.close()
+
+    def create_html_report(self, summary_stats, output_dir):
+        html_report = "<!DOCTYPE html><html><head><title>Data Analysis Report</title></head><body>"
+
+        html_report += "<h2>Summary Statistics</h2>"
+        html_report += summary_stats.to_html()
+
+        html_report += "<h2>Data Distribution</h2>"
+        for column in summary_stats.index:
+            html_report += f"<h3>{column}</h3>"
+            html_report += f'<img src="{output_dir}/{column}_distribution.png" alt="{column} distribution">'
+
+        html_report += "<h2>Correlation Matrix</h2>"
+        html_report += f'<img src="{output_dir}/correlation_matrix.png" alt="Correlation Matrix">'
+
+        html_report += "</body></html>"
+
+        with open("report.html", "w") as file:
+            file.write(html_report)
+
+    def main_summary(self, output_dir):
+        df = self.handle_missing_values(self.dataframe)
+        summary_stats = self.generate_summary_statistics(df)
+        self.visualize_data_distribution(df, output_dir)
+        self.correlation_analysis(df, output_dir)
+        self.create_html_report(summary_stats, output_dir)
+
+    def package_report(self):
+        #i will finish later, 3yit
+        pass
     
     def realtime(self):
         if self.file is not None:
