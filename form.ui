@@ -462,439 +462,482 @@ QPushButton {
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
-               <string/>
+               <string>Fittings</string>
               </attribute>
-              <widget class="QPushButton" name="min_max">
-               <property name="geometry">
-                <rect>
-                 <x>10</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <property name="spacing">
+                <number>0</number>
                </property>
-               <property name="styleSheet">
-                <string notr="true"/>
+               <property name="leftMargin">
+                <number>0</number>
                </property>
-               <property name="text">
-                <string>find min max</string>
+               <property name="topMargin">
+                <number>0</number>
                </property>
-              </widget>
-              <widget class="QPushButton" name="Polynome">
-               <property name="geometry">
-                <rect>
-                 <x>10</x>
-                 <y>73</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
+               <property name="rightMargin">
+                <number>0</number>
                </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>assets/buttons/algo/ppnl.png</normaloff>assets/buttons/algo/ppnl.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>80</width>
-                 <height>64</height>
-                </size>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="linear">
-               <property name="geometry">
-                <rect>
-                 <x>150</x>
-                 <y>10</y>
-                 <width>91</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>assets/buttons/algo/linearfff.png</normaloff>assets/buttons/algo/linearfff.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>64</width>
-                 <height>64</height>
-                </size>
-               </property>
-              </widget>
-              <widget class="QToolButton" name="quadraple">
-               <property name="geometry">
-                <rect>
-                 <x>150</x>
-                 <y>73</y>
-                 <width>91</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>quadriple</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="cubic">
-               <property name="geometry">
-                <rect>
-                 <x>300</x>
-                 <y>10</y>
-                 <width>91</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>cubic</string>
-               </property>
-              </widget>
-              <widget class="QComboBox" name="expo_2">
-               <property name="geometry">
-                <rect>
-                 <x>300</x>
-                 <y>70</y>
-                 <width>91</width>
-                 <height>41</height>
-                </rect>
+               <property name="bottomMargin">
+                <number>0</number>
                </property>
                <item>
-                <property name="text">
-                 <string>expononcial</string>
-                </property>
+                <widget class="QScrollArea" name="scrollArea_2">
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>923</width>
+                    <height>144</height>
+                   </rect>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_8">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                     <item>
+                      <widget class="QComboBox" name="fourier">
+                       <item>
+                        <property name="text">
+                         <string>fourier</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>sine</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>cosine</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="power">
+                       <property name="text">
+                        <string>power fit</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="cubic">
+                       <property name="text">
+                        <string>cubic</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="min_max">
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>find min max</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="linear">
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>assets/buttons/algo/linearfff.png</normaloff>assets/buttons/algo/linearfff.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="gauss">
+                       <item>
+                        <property name="text">
+                         <string>Gaussian</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>lorenzian</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>voigt</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_4">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_9">
+                     <item>
+                      <widget class="QComboBox" name="log">
+                       <item>
+                        <property name="text">
+                         <string>logarithm</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>logistic</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QToolButton" name="quadraple">
+                       <property name="text">
+                        <string>quadriple</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="weibull">
+                       <item>
+                        <property name="text">
+                         <string>weibull</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>segmoidal</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>meichaelis-menten</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>hill</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>gompertz</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="Polynome">
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>assets/buttons/algo/ppnl.png</normaloff>assets/buttons/algo/ppnl.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>80</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="expo_2">
+                       <item>
+                        <property name="text">
+                         <string>expononcial</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>double expononcial</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>triple expononcial</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="spline">
+                       <item>
+                        <property name="text">
+                         <string>spline</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>lowess</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Savitzky-Golay </string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
                </item>
-               <item>
-                <property name="text">
-                 <string>double expononcial</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>triple expononcial</string>
-                </property>
-               </item>
-              </widget>
-              <widget class="QPushButton" name="power">
-               <property name="geometry">
-                <rect>
-                 <x>440</x>
-                 <y>10</y>
-                 <width>91</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>power fit</string>
-               </property>
-              </widget>
-              <widget class="QComboBox" name="log">
-               <property name="geometry">
-                <rect>
-                 <x>440</x>
-                 <y>70</y>
-                 <width>91</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <item>
-                <property name="text">
-                 <string>logarithm</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>logistic</string>
-                </property>
-               </item>
-              </widget>
-              <widget class="QComboBox" name="gauss">
-               <property name="geometry">
-                <rect>
-                 <x>580</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Gaussian</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>lorenzian</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>voigt</string>
-                </property>
-               </item>
-              </widget>
-              <widget class="QComboBox" name="weibull">
-               <property name="geometry">
-                <rect>
-                 <x>580</x>
-                 <y>70</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <item>
-                <property name="text">
-                 <string>weibull</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>segmoidal</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>meichaelis-menten</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>hill</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>gompertz</string>
-                </property>
-               </item>
-              </widget>
-              <widget class="QComboBox" name="fourier">
-               <property name="geometry">
-                <rect>
-                 <x>720</x>
-                 <y>10</y>
-                 <width>71</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <item>
-                <property name="text">
-                 <string>fourier</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>sine</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>cosine</string>
-                </property>
-               </item>
-              </widget>
-              <widget class="QComboBox" name="spline">
-               <property name="geometry">
-                <rect>
-                 <x>720</x>
-                 <y>70</y>
-                 <width>69</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <item>
-                <property name="text">
-                 <string>spline</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>lowess</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Savitzky-Golay </string>
-                </property>
-               </item>
-              </widget>
+              </layout>
              </widget>
              <widget class="QWidget" name="mode_framesPage4">
               <attribute name="title">
-               <string/>
+               <string>Filters</string>
               </attribute>
-              <widget class="QPushButton" name="move">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <property name="spacing">
+                <number>0</number>
                </property>
-               <property name="text">
-                <string>Moving Average</string>
+               <property name="leftMargin">
+                <number>0</number>
                </property>
-              </widget>
-              <widget class="QPushButton" name="savi">
-               <property name="geometry">
-                <rect>
-                 <x>20</x>
-                 <y>70</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
+               <property name="topMargin">
+                <number>0</number>
                </property>
-               <property name="text">
-                <string>Savitzky-Golay</string>
+               <property name="rightMargin">
+                <number>0</number>
                </property>
-              </widget>
-              <widget class="QPushButton" name="butter">
-               <property name="geometry">
-                <rect>
-                 <x>150</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Butterworth</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="sheb">
-               <property name="geometry">
-                <rect>
-                 <x>150</x>
-                 <y>70</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Chebyshev</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="gaus">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Gaussian</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="boxcar">
-               <property name="geometry">
-                <rect>
-                 <x>290</x>
-                 <y>70</y>
-                 <width>64</width>
-                 <height>64</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>64</width>
-                 <height>64</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>64</width>
-                 <height>64</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>boxcar function</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>64</width>
-                 <height>64</height>
-                </size>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="median">
-               <property name="geometry">
-                <rect>
-                 <x>430</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Median</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="lowess">
-               <property name="geometry">
-                <rect>
-                 <x>430</x>
-                 <y>70</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Lowess</string>
-               </property>
-              </widget>
-              <widget class="QPushButton" name="exponon">
-               <property name="geometry">
-                <rect>
-                 <x>580</x>
-                 <y>10</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
-               </property>
-               <property name="text">
-                <string>Exponential </string>
-               </property>
-              </widget>
-              <widget class="QComboBox" name="passe">
-               <property name="geometry">
-                <rect>
-                 <x>580</x>
-                 <y>70</y>
-                 <width>81</width>
-                 <height>41</height>
-                </rect>
+               <property name="bottomMargin">
+                <number>0</number>
                </property>
                <item>
-                <property name="text">
-                 <string>Bandpass</string>
-                </property>
+                <widget class="QScrollArea" name="scrollArea">
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>937</width>
+                    <height>118</height>
+                   </rect>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_7">
+                     <item>
+                      <widget class="QComboBox" name="passe">
+                       <item>
+                        <property name="text">
+                         <string>Bandpass</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Highpass</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Lowpass</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="lowess">
+                       <property name="text">
+                        <string>Lowess</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="boxcar">
+                       <property name="minimumSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                       <property name="toolTip">
+                        <string>boxcar function</string>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>64</width>
+                         <height>64</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="sheb">
+                       <property name="text">
+                        <string>Chebyshev</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="savi">
+                       <property name="text">
+                        <string>Savitzky-Golay</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_2">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item>
+                      <widget class="QPushButton" name="move">
+                       <property name="text">
+                        <string>Moving Average</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="butter">
+                       <property name="text">
+                        <string>Butterworth</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="median">
+                       <property name="text">
+                        <string>Median</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="gaus">
+                       <property name="text">
+                        <string>Gaussian</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="exponon">
+                       <property name="text">
+                        <string>Exponential </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_3">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
                </item>
-               <item>
-                <property name="text">
-                 <string>Highpass</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Lowpass</string>
-                </property>
-               </item>
-              </widget>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab">
+              <attribute name="title">
+               <string>Page</string>
+              </attribute>
              </widget>
             </widget>
            </item>
@@ -1131,9 +1174,9 @@ QPushButton {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
+               <y>-73</y>
                <width>114</width>
-               <height>1324</height>
+               <height>1434</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -1222,6 +1265,38 @@ background-color: rgb(23, 23, 23);</string>
               </item>
               <item>
                <widget class="QPushButton" name="piechart">
+                <property name="minimumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>assets/buttons/types/Pie-Chart.png</normaloff>assets/buttons/types/Pie-Chart.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>110</width>
+                  <height>110</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="scatterplot">
                 <property name="minimumSize">
                  <size>
                   <width>110</width>
@@ -1567,6 +1642,7 @@ background-color: rgb(23, 23, 23);</string>
              <zorder>stackplot</zorder>
              <zorder>verticalSpacer</zorder>
              <zorder>contour</zorder>
+             <zorder>scatterplot</zorder>
             </widget>
            </widget>
           </item>
