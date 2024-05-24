@@ -1,12 +1,12 @@
 import sys
 import os
+import platform
 import numpy as np
 import pandas as pd
+import math
+import sqlite3
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-import math
-import platform
-import sqlite3
 from PySide6.QtGui import QAction, QIcon, QKeySequence, QShortcut
 from PySide6.QtCore import QDir, QSize,Qt, QPointF
 from PySide6.QtWidgets import  QApplication, QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit, QPushButton, QToolTip,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea, QWidget, QWidgetAction
@@ -17,6 +17,7 @@ from ui_export import Ui_Dialog as export
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
 from ui_math_function import Ui_Dialog as function
 from ui_interpolation import Ui_Dialog as interpolation
+from ui_describe import Ui_Dialog as describe
 from line_toggle import MatplotlibLegendToggler as legend_dialog
 from graphs import Tab
 
@@ -172,6 +173,25 @@ class ExportDialog(QDialog):
         if reply == QMessageBox.Yes:
             self.reject()
 
+class DescribeDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = describe()
+        self.ui.setupUi(self)
+        self.ui.local.clicked.connect(self.setFile)
+        self.ui.cancel.clicked.connect(self.cancel)
+
+    def setFile(self):
+        options = QFileDialog.Options()
+        folder_path = QFileDialog.getExistingDirectory(self, "Open Folder", options=options)
+        self.ui.localpath.setText(folder_path)
+
+    def cancel(self):
+        reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.reject()
+
 class InterpolationDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -317,6 +337,10 @@ class Graphite(QMainWindow):
         self.export_dialog = ExportDialog(self)
         self.export_dialog.ui.expo.clicked.connect(self.export)
         self.ui.expo.triggered.connect(self.show_export_dialog)
+
+        self.describe_dialog = DescribeDialog(self)
+        self.describe_dialog.ui.save.clicked.connect(self.output_report)
+        self.ui.describe.clicked.connect(self.show_describe_dialog)
 
         self.worksheet_dialog = Worksheet(self)
         self.worksheet_dialog.ui.plotwork.clicked.connect(self.plotwork)
@@ -980,11 +1004,40 @@ class Graphite(QMainWindow):
             transparent = self.export_dialog.ui.transparent.isChecked()
             padding = self.export_dialog.ui.padding.text()
             tab.export(file_path, format, dpi, transparent, padding)
-            self.export_dialog.reject()
+            self.export_dialog.close()
+        else :
+            QMessageBox.warning(self, 'Warning', 'No plot selected.')
+
+
+                ## describe ##
+
+    def show_describe_dialog(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab =self.tabs[tab_index]
+            self.describe_dialog.show()
+            self.describe_dialog.ui.zip_name.setText(tab.name)
+            self.describe_dialog.ui.localpath.setText(self.get_download_dir())
+        else :
+            QMessageBox.warning(self, 'Warning', 'No plot selected.')
+
+    def output_report(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab =self.tabs[tab_index]
+            zip_name = self.describe_dialog.ui.zip_name.text()
+            output_dir = self.describe_dialog.ui.localpath.text()
+            tab.package_report(output_dir, zip_name)
+            self.describe_dialog.close()
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
                 ## interpolation ##
+
     def show_interpolation(self, file):
         filename, _ = os.path.splitext(file)
         self.interpolation_dialog.name = os.path.basename(filename)
@@ -1006,7 +1059,8 @@ class Graphite(QMainWindow):
     def interpolate(self):
         df = pd.DataFrame(self.interpolation_dialog.coordinates)
         self.tabs.append(Tab(self.ui.graphTab, df, self.interpolation_dialog.name, None))
-        pass
+
+
                 ## function ##
 
     def show_function_dialog(self):
@@ -1054,9 +1108,6 @@ class Graphite(QMainWindow):
             
 
 
-
-    def exit_app(self):
-        QApplication.quit()
 
     def get_min_max_values(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -1391,6 +1442,9 @@ class Graphite(QMainWindow):
                 conn.close()
         
 
+
+    def exit_app(self):
+        QApplication.quit()
 
 
 if __name__ == "__main__":

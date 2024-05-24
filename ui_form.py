@@ -202,12 +202,12 @@ class Ui_Graphite(object):
         self.frame_3.setFrameShape(QFrame.Shape.NoFrame)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.custom_button_2 = QPushButton(self.frame_3)
-        self.custom_button_2.setObjectName(u"custom_button_2")
-        self.custom_button_2.setMinimumSize(QSize(0, 32))
-        self.custom_button_2.setMaximumSize(QSize(16777215, 16777215))
-        self.custom_button_2.setFont(font)
-        self.custom_button_2.setStyleSheet(u"QPushButton {\n"
+        self.describe = QPushButton(self.frame_3)
+        self.describe.setObjectName(u"describe")
+        self.describe.setMinimumSize(QSize(0, 32))
+        self.describe.setMaximumSize(QSize(16777215, 16777215))
+        self.describe.setFont(font)
+        self.describe.setStyleSheet(u"QPushButton {\n"
 "    border: none;\n"
 "}\n"
 "QPushButton:pressed {\n"
@@ -218,10 +218,10 @@ class Ui_Graphite(object):
 "}")
         icon4 = QIcon()
         icon4.addFile(u"assets/hypothesis.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.custom_button_2.setIcon(icon4)
-        self.custom_button_2.setIconSize(QSize(28, 28))
+        self.describe.setIcon(icon4)
+        self.describe.setIconSize(QSize(28, 28))
 
-        self.verticalLayout_2.addWidget(self.custom_button_2)
+        self.verticalLayout_2.addWidget(self.describe)
 
         self.custom_button = QPushButton(self.frame_3)
         self.custom_button.setObjectName(u"custom_button")
@@ -722,7 +722,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_5.addWidget(self.focus_2)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.horizontalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
@@ -834,7 +834,7 @@ class Ui_Graphite(object):
         self.open_btn.setText(QCoreApplication.translate("Graphite", u"Open", None))
         self.save_btn.setText(QCoreApplication.translate("Graphite", u" save", None))
         self.export_btn.setText(QCoreApplication.translate("Graphite", u"export", None))
-        self.custom_button_2.setText(QCoreApplication.translate("Graphite", u"Validation", None))
+        self.describe.setText(QCoreApplication.translate("Graphite", u"describe", None))
         self.custom_button.setText(QCoreApplication.translate("Graphite", u"Customize", None))
         self.worksheet.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
         self.min_max.setText(QCoreApplication.translate("Graphite", u"find min max", None))

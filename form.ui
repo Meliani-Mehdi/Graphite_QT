@@ -300,7 +300,7 @@ QPushButton {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_2">
                  <item>
-                  <widget class="QPushButton" name="custom_button_2">
+                  <widget class="QPushButton" name="describe">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -332,7 +332,7 @@ QPushButton {
 }</string>
                    </property>
                    <property name="text">
-                    <string>Validation</string>
+                    <string>describe</string>
                    </property>
                    <property name="icon">
                     <iconset>
@@ -460,7 +460,7 @@ QPushButton {
              <property name="currentIndex">
               <number>0</number>
              </property>
-             <widget class="QWidget" name="mode_framesPage3" native="true">
+             <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
                <string/>
               </attribute>
@@ -721,7 +721,7 @@ QPushButton {
                </item>
               </widget>
              </widget>
-             <widget class="QWidget" name="mode_framesPage4" native="true">
+             <widget class="QWidget" name="mode_framesPage4">
               <attribute name="title">
                <string/>
               </attribute>
@@ -1710,12 +1710,12 @@ QPushButton:pressed {
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
-               <height>20</height>
+               <width>20</width>
+               <height>40</height>
               </size>
              </property>
             </spacer>

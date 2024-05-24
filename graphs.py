@@ -3,6 +3,8 @@ import os
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import shutil
+import zipfile
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.patches import Rectangle
 from PySide6.QtWidgets import QWidget, QHBoxLayout
@@ -1019,9 +1021,29 @@ class Tab(QWidget):
         self.correlation_analysis(df, output_dir)
         self.create_html_report(summary_stats, output_dir)
 
-    def package_report(self):
-        #i will finish later, 3yit
-        pass
+    def package_report(self, file_path, zip_name):
+        output_dir = "output"
+        self.main_summary(output_dir)
+        
+        zip_file_path = os.path.join(file_path, zip_name)
+        
+        with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+            zipf.write("report.html")
+            for root, dirs, files in os.walk(output_dir):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    zipf.write(file_path, os.path.relpath(file_path, os.path.dirname(output_dir)))
+
+        os.remove("report.html")
+
+        for root, dirs, files in os.walk(output_dir):
+            for file in files:
+                os.remove(os.path.join(root, file))
+            for dir in dirs:
+                shutil.rmtree(os.path.join(root, dir))
+
+        if os.path.exists(output_dir):
+            os.rmdir(output_dir)
     
     def realtime(self):
         if self.file is not None:
