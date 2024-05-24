@@ -1024,17 +1024,20 @@ class Tab(QWidget):
     def package_report(self, file_path, zip_name):
         output_dir = "output"
         self.main_summary(output_dir)
-        
+        zip_name+=".zip"
         zip_file_path = os.path.join(file_path, zip_name)
         
-        with zipfile.ZipFile(zip_file_path, 'w') as zipf:
-            zipf.write("report.html")
+        with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            if os.path.exists("report.html"):
+                zipf.write("report.html", os.path.basename("report.html"))
+            
             for root, dirs, files in os.walk(output_dir):
                 for file in files:
                     file_path = os.path.join(root, file)
                     zipf.write(file_path, os.path.relpath(file_path, os.path.dirname(output_dir)))
-
-        os.remove("report.html")
+        
+        if os.path.exists("report.html"):
+            os.remove("report.html")
 
         for root, dirs, files in os.walk(output_dir):
             for file in files:

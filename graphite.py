@@ -1031,8 +1031,8 @@ class Graphite(QMainWindow):
             tab =self.tabs[tab_index]
             zip_name = self.describe_dialog.ui.zip_name.text()
             output_dir = self.describe_dialog.ui.localpath.text()
-            tab.package_report(output_dir, zip_name)
             self.describe_dialog.close()
+            tab.package_report(output_dir, zip_name)
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
