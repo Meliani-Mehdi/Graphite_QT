@@ -922,6 +922,28 @@ class Tab(QWidget):
         self.custom_plot()
 
 
+    def to_scatter_plot(self):
+        self.figure.clear()
+        self.artists.clear()
+        self.ax = self.figure.add_subplot()
+        for col in self.dataframe.columns[1:]:
+            try:
+                marker = self.markers[self.marker] if self.marker != 0 else 'o'
+                artist = self.ax.scatter(self.dataframe.iloc[:, 0], self.dataframe[col], label=col, marker = marker)
+                self.artists.append(artist)
+            except Exception as e:
+                print(f"Skipping column '{col}' because it could not be plotted: {e}")
+
+        if self.typeNum != 7:
+            self.typeNum = 7
+            self.last_plot = self.to_scatter_plot
+            xlim = self.ax.get_xlim()
+            ylim = self.ax.get_ylim()
+            self.def_vals = [xlim, ylim]
+
+        self.custom_plot()
+
+
     def plot_quadratic_fit(self, x_data, y_data):
         self.figure.clear()
         self.ax = self.figure.add_subplot()

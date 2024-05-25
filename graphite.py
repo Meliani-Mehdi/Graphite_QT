@@ -315,6 +315,7 @@ class Graphite(QMainWindow):
         #types
         self.ui.plot.clicked.connect(self.toPlot)
         self.ui.piechart.clicked.connect(self.toPiechart)
+        self.ui.scatterplot.clicked.connect(self.toScatter)
         self.ui.histogram.clicked.connect(self.toBar)
         self.ui.fill_between.clicked.connect(self.toFill)
         self.ui.stackplot.clicked.connect(self.toStack)
@@ -1137,6 +1138,13 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].to_pie_chart()
+
+    def toScatter(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_scatter_plot()
 
     def toBar(self):
         current_index = self.ui.graphTab.currentIndex()
