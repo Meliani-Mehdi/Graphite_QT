@@ -255,6 +255,8 @@ class Graphite(QMainWindow):
         self.tabs = []
 
         #menu functions
+        self.ui.new_work_sheet.triggered.connect(self.show_worksheet)
+
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
         self.load_open_recent()
@@ -1411,7 +1413,6 @@ class Graphite(QMainWindow):
                 widget.setToolTip(path)
                 self.ui.open_recent_path.addAction(widget_action)
 
-            print()
         except sqlite3.Error as e:
             print(f"An error occurred: {e}")
         
