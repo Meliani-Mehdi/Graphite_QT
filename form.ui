@@ -158,6 +158,9 @@
                      <bold>true</bold>
                     </font>
                    </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     border: none;
@@ -205,6 +208,9 @@ QPushButton {
                      <bold>true</bold>
                     </font>
                    </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
     border: none;
@@ -251,6 +257,9 @@ QPushButton {
                      <pointsize>12</pointsize>
                      <bold>true</bold>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
@@ -319,6 +328,9 @@ QPushButton {
                      <pointsize>12</pointsize>
                      <bold>true</bold>
                     </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QPushButton {
@@ -593,6 +605,9 @@ QPushButton {
                      </item>
                      <item>
                       <spacer name="horizontalSpacer_4">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
                        <property name="sizeHint" stdset="0">
                         <size>
                          <width>40</width>
@@ -712,6 +727,9 @@ QPushButton {
                      </item>
                      <item>
                       <spacer name="horizontalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
                        <property name="sizeHint" stdset="0">
                         <size>
                          <width>40</width>
@@ -779,7 +797,7 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1012</width>
+                    <width>1100</width>
                     <height>114</height>
                    </rect>
                   </property>
@@ -801,6 +819,21 @@ QPushButton:pressed {
                    </property>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_7">
+                     <property name="spacing">
+                      <number>10</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>5</number>
+                     </property>
                      <item>
                       <widget class="QComboBox" name="passe">
                        <property name="minimumSize">
@@ -846,6 +879,9 @@ QPushButton:pressed {
                          <height>95</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="toolTip">
                         <string>Lowess filter</string>
                        </property>
@@ -877,6 +913,9 @@ QPushButton:pressed {
                          <width>95</width>
                          <height>95</height>
                         </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="toolTip">
                         <string>Boxcar function</string>
@@ -913,6 +952,9 @@ QPushButton:pressed {
                          <height>95</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="toolTip">
                         <string>Chebyshev filter</string>
                        </property>
@@ -944,6 +986,9 @@ QPushButton:pressed {
                          <width>95</width>
                          <height>95</height>
                         </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="toolTip">
                         <string>Savitzky-Golay filter</string>
@@ -977,6 +1022,9 @@ QPushButton:pressed {
                          <height>95</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="toolTip">
                         <string>Moving Average</string>
                        </property>
@@ -1008,6 +1056,9 @@ QPushButton:pressed {
                          <width>95</width>
                          <height>95</height>
                         </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="toolTip">
                         <string>Butterworth filter</string>
@@ -1041,6 +1092,9 @@ QPushButton:pressed {
                          <height>95</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="toolTip">
                         <string>Median</string>
                        </property>
@@ -1072,6 +1126,9 @@ QPushButton:pressed {
                          <width>95</width>
                          <height>95</height>
                         </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="toolTip">
                         <string>Gaussian</string>
@@ -1105,6 +1162,9 @@ QPushButton:pressed {
                          <height>95</height>
                         </size>
                        </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
                        <property name="text">
                         <string>Exponential </string>
                        </property>
@@ -1118,6 +1178,12 @@ QPushButton:pressed {
                      </item>
                      <item>
                       <spacer name="horizontalSpacer_2">
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
                        <property name="sizeHint" stdset="0">
                         <size>
                          <width>40</width>
@@ -1374,9 +1440,9 @@ QPushButton:pressed {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-195</y>
+               <y>-946</y>
                <width>114</width>
-               <height>1474</height>
+               <height>1434</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -1817,6 +1883,9 @@ background-color: rgb(23, 23, 23);</string>
               </item>
               <item>
                <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
@@ -1982,6 +2051,9 @@ QPushButton:pressed {
            </item>
            <item>
             <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
              <property name="sizeHint" stdset="0">
               <size>
                <width>20</width>
