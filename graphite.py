@@ -361,6 +361,10 @@ class Graphite(QMainWindow):
 
 
 
+
+
+
+
     def modify_current_tab(self):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
@@ -1327,6 +1331,7 @@ class Graphite(QMainWindow):
                 file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
 
             if file_path:
+                self.update_dataframe_with_fitted_data(tab)
                 file_format = os.path.splitext(file_path)[-1][1:]
                 return tab.saveFile(file_path, file_format)
         else :
@@ -1343,9 +1348,16 @@ class Graphite(QMainWindow):
             options = QFileDialog.Options()
             file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
             if file_path:
+                tab.file = file_path
+                self.update_dataframe_with_fitted_data(tab)
                 file_format = os.path.splitext(file_path)[-1][1:]
                 return tab.saveFile(file_path, file_format)
         return False
+
+    def update_dataframe_with_fitted_data(self, tab):
+          if tab.fitted_dataframe is not None:
+              tab.dataframe = tab.fitted_dataframe
+              tab.fitted_dataframe = None
 
     def graph_full_screen(self):
         current_index = self.ui.graphTab.currentIndex()
