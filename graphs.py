@@ -12,7 +12,6 @@ from PySide6.QtCore import QTimer
 from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
-from statsmodels.nonparametric.smoothers_lowess import lowess
 from scipy.signal import savgol_filter, butter, filtfilt, medfilt,cheby1,butter
 from statsmodels.nonparametric.smoothers_lowess import lowess
 from filterpy.kalman import KalmanFilter
