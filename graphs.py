@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import shutil
-import sqlite3
 import zipfile
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.patches import Rectangle
