@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>758</width>
-    <height>672</height>
+    <height>623</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -58,6 +58,13 @@
     <widget class="QPushButton" name="plotwork">
      <property name="text">
       <string>plot</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="idb">
+     <property name="text">
+      <string>generate ID</string>
      </property>
     </widget>
    </item>

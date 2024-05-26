@@ -23,7 +23,7 @@ class Ui_Dialog2(object):
     def setupUi(self, Dialog2):
         if not Dialog2.objectName():
             Dialog2.setObjectName(u"Dialog2")
-        Dialog2.resize(758, 672)
+        Dialog2.resize(758, 623)
         Dialog2.setMinimumSize(QSize(400, 500))
         Dialog2.setStyleSheet(u"QLabel {\n"
 "    color: black;\n"
@@ -50,6 +50,11 @@ class Ui_Dialog2(object):
         self.plotwork.setObjectName(u"plotwork")
 
         self.verticalLayout.addWidget(self.plotwork)
+
+        self.idb = QPushButton(Dialog2)
+        self.idb.setObjectName(u"idb")
+
+        self.verticalLayout.addWidget(self.idb)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -91,6 +96,7 @@ class Ui_Dialog2(object):
         Dialog2.setWindowTitle(QCoreApplication.translate("Dialog2", u"Dialog", None))
         self.modify.setText(QCoreApplication.translate("Dialog2", u"modify", None))
         self.plotwork.setText(QCoreApplication.translate("Dialog2", u"plot", None))
+        self.idb.setText(QCoreApplication.translate("Dialog2", u"generate ID", None))
         self.addwork_2.setText(QCoreApplication.translate("Dialog2", u"add column", None))
         self.remcol.setText(QCoreApplication.translate("Dialog2", u"remove column", None))
         self.addwork.setText(QCoreApplication.translate("Dialog2", u"add row", None))
