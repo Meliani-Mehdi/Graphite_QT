@@ -93,8 +93,14 @@ class Worksheet(QDialog):
     def remove_row(self):
         selected_ranges = self.ui.tableWidget.selectedRanges()
         if selected_ranges:
+            rows_to_remove = set()
             for selected_range in selected_ranges:
                 for row in range(selected_range.topRow(), selected_range.bottomRow() + 1):
+                    if self.is_entire_row_selected(row):
+                        rows_to_remove.add(row)
+
+            if rows_to_remove:
+                for row in sorted(rows_to_remove, reverse=True):
                     if 0 <= row < self.ui.tableWidget.rowCount():
                         self.ui.tableWidget.removeRow(row)
         else:
@@ -103,6 +109,14 @@ class Worksheet(QDialog):
                 row_index = row - 1
                 if 0 <= row_index < self.ui.tableWidget.rowCount():
                     self.ui.tableWidget.removeRow(row_index)
+
+    def is_entire_row_selected(self, row):
+        for column in range(self.ui.tableWidget.columnCount()):
+            item = self.ui.tableWidget.item(row, column)
+            if item is None or not item.isSelected():
+                return False
+        return True
+
 
     def remove_column(self):
         selected_ranges = self.ui.tableWidget.selectedRanges()
@@ -849,17 +863,12 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
-
             x_data = tab.dataframe.iloc[:, 0].values
             y_data = tab.dataframe.iloc[:, 1].values
-
             coeffs = np.polyfit(x_data, y_data, 3)
-
             x_values = np.linspace(min(x_data), max(x_data), 100)
-
             y_values = np.polyval(coeffs, x_values)
-            fitted_data = pd.DataFrame({'x': x_values, 'y': y_values})
-            tab.dataframe = fitted_data
+            tab.fitted_dataframe = pd.DataFrame({'x': x_values, 'y': y_values})
             tab.plot_cubic_curve(x_data, y_data, x_values, y_values)
 
 
@@ -870,27 +879,18 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
-
             x_data = tab.dataframe.iloc[:, 0].values  # Replace [...] with actual x-axis data
             y_data = tab.dataframe.iloc[:, 1].values  # Replace [...] with actual y-axis data
-
                     # Perform linear fitting
             coeffs = np.polyfit(x_data, y_data, 1)
-
                     # Create a linear function from the coefficients
             poly_linear = np.poly1d(coeffs)
-
                     # Generate the x values for the fitted line
             x_fit = np.linspace(min(x_data), max(x_data), 100)
-
-                    # Generate the y values using the fitted line function
+                   # Generate the y values using the fitted line function
             y_fit = poly_linear(x_fit)
-
                     # Plot the original data and the fitted line using Matplotlib
             tab.plot_linear_fit(x_data, y_data, x_fit, y_fit)
-
-
-
 
 
 

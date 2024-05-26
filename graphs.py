@@ -227,6 +227,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Gaussian Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -249,6 +250,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Lorentzian Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -275,6 +277,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Voigt Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -301,6 +304,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Fourier Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -324,6 +328,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Sine Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -346,6 +351,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Cosine Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -368,6 +374,7 @@ class Tab(QWidget):
         self.ax.plot(x_fit, y_fit, 'r', label='Power Fit')
 
         self.custom_plot()
+        self.fitted_dataframe = pd.DataFrame({'x': x_fit, 'y': y_fit})
         #fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
         #self.dataframe = fitted_data
 
@@ -387,6 +394,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='Exponential Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -411,6 +419,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='Double Exponential Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -508,6 +517,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='Triple Exponential Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -537,6 +547,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Spline Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -555,6 +566,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_fit, y_fit, 'r', label='LOWESS Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -572,6 +584,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Savitzky-Golay Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -596,6 +609,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Weibull Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -619,6 +633,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Sigmoidal Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -642,6 +657,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Michaelis-Menten Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -665,6 +681,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Hill Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -688,6 +705,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Gompertz Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -707,6 +725,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Logarithmic Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -730,6 +749,7 @@ class Tab(QWidget):
             self.ax.plot(x_data, y_data, 'bx', label='Data')
             self.ax.plot(x_data, y_fit, 'r', label='Logistic Fit')
             self.custom_plot()
+            self.fitted_dataframe = pd.DataFrame({'x': x_data, 'y': y_fit})
             #fitted_data = pd.DataFrame({'x': x_data, 'y': y_fit})
             #self.dataframe = fitted_data
 
@@ -744,6 +764,7 @@ class Tab(QWidget):
 
 
         self.custom_plot()
+        self.fitted_dataframe = pd.DataFrame({'x': x_fit, 'y': y_fit})
         #fitted_data = pd.DataFrame({'x': x_fit, 'y': y_fit})
         #self.dataframe = fitted_data
 

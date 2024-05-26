@@ -470,7 +470,7 @@ QPushButton {
            <item>
             <widget class="QTabWidget" name="mode_frames">
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -502,8 +502,8 @@ QPushButton {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>903</width>
-                    <height>144</height>
+                    <width>898</width>
+                    <height>148</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -798,7 +798,7 @@ QPushButton:pressed {
                     <x>0</x>
                     <y>0</y>
                     <width>1100</width>
-                    <height>114</height>
+                    <height>112</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1179,7 +1179,7 @@ QPushButton:pressed {
                      <item>
                       <spacer name="horizontalSpacer_2">
                        <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
+                        <cursorShape>ArrowCursor</cursorShape>
                        </property>
                        <property name="orientation">
                         <enum>Qt::Vertical</enum>
@@ -1440,7 +1440,7 @@ QPushButton:pressed {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-946</y>
+               <y>0</y>
                <width>114</width>
                <height>1434</height>
               </rect>
@@ -2084,7 +2084,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
