@@ -470,7 +470,7 @@ QPushButton {
            <item>
             <widget class="QTabWidget" name="mode_frames">
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -502,8 +502,8 @@ QPushButton {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>898</width>
-                    <height>148</height>
+                    <width>903</width>
+                    <height>144</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -797,402 +797,486 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1100</width>
-                    <height>112</height>
+                    <width>1374</width>
+                    <height>114</height>
                    </rect>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_6">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_7">
-                     <property name="spacing">
-                      <number>10</number>
+                    <widget class="QComboBox" name="passe">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
                      </property>
-                     <property name="leftMargin">
-                      <number>5</number>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
                      </property>
-                     <property name="topMargin">
-                      <number>5</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>5</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>5</number>
+                     <property name="toolTip">
+                      <string>Bandpass</string>
                      </property>
                      <item>
-                      <widget class="QComboBox" name="passe">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <item>
-                        <property name="text">
-                         <string>Bandpass</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>Highpass</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>Lowpass</string>
-                        </property>
-                       </item>
-                      </widget>
+                      <property name="text">
+                       <string>Bandpass</string>
+                      </property>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="lowess">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Lowess filter</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/lowess_plot.png</normaloff>assets/buttons/algo/lowess_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
+                      <property name="text">
+                       <string>Highpass</string>
+                      </property>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="boxcar">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Boxcar function</string>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
+                      <property name="text">
+                       <string>Lowpass</string>
+                      </property>
                      </item>
-                     <item>
-                      <widget class="QPushButton" name="sheb">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Chebyshev filter</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/chebyshev_plot.png</normaloff>assets/buttons/algo/chebyshev_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="savi">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Savitzky-Golay filter</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/savgol_plot.png</normaloff>assets/buttons/algo/savgol_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="move">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Moving Average</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/moving_avg_plot.png</normaloff>assets/buttons/algo/moving_avg_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="butter">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Butterworth filter</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/butterworth_plot.png</normaloff>assets/buttons/algo/butterworth_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="median">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Median</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/median_filter_plot.png</normaloff>assets/buttons/algo/median_filter_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="gaus">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="toolTip">
-                        <string>Gaussian</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/gaussian_filter_plot.png</normaloff>assets/buttons/algo/gaussian_filter_plot.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="exponon">
-                       <property name="minimumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>95</width>
-                         <height>95</height>
-                        </size>
-                       </property>
-                       <property name="cursor">
-                        <cursorShape>PointingHandCursor</cursorShape>
-                       </property>
-                       <property name="text">
-                        <string>Exponential </string>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>80</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_2">
-                       <property name="cursor">
-                        <cursorShape>ArrowCursor</cursorShape>
-                       </property>
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="lowpass">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Lowpass</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/lowpass_filter_plot.png</normaloff>assets/buttons/algo/lowpass_filter_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="bandpass">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Bandpass</string>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/bandpass_filter_plot.png</normaloff>assets/buttons/algo/bandpass_filter_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="highpass">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Highpass</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/highpass_filter_plot.png</normaloff>assets/buttons/algo/highpass_filter_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="lowess">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Lowess filter</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/lowess_plot.png</normaloff>assets/buttons/algo/lowess_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="boxcar">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Boxcar function</string>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/boxcar_no_bg.png</normaloff>assets/buttons/algo/boxcar_no_bg.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="sheb">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Chebyshev filter</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/chebyshev_plot.png</normaloff>assets/buttons/algo/chebyshev_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="savi">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Savitzky-Golay filter</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/savgol_plot.png</normaloff>assets/buttons/algo/savgol_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="move">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Moving Average</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/moving_avg_plot.png</normaloff>assets/buttons/algo/moving_avg_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="butter">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Butterworth filter</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/butterworth_plot.png</normaloff>assets/buttons/algo/butterworth_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="median">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Median</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/median_filter_plot.png</normaloff>assets/buttons/algo/median_filter_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="gaus">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Gaussian</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/gaussian_filter_plot.png</normaloff>assets/buttons/algo/gaussian_filter_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="exponon">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="toolTip">
+                      <string>Exponential </string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/exponential_filter_plot.png</normaloff>assets/buttons/algo/exponential_filter_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_2">
+                     <property name="cursor">
+                      <cursorShape>ArrowCursor</cursorShape>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>93</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                   </layout>
                  </widget>
@@ -2084,7 +2168,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
