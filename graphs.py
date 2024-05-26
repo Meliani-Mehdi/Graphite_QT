@@ -30,7 +30,7 @@ class Tab(QWidget):
             '#a55194', '#ce6dbd',
         ]
         self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", 2, 3, 1, 0, 6, 7, 5, 4,]
-        self.fig_colors = ['black', 'gray', 'lightgray', 'white', 'green', 'orange', 'red', 'pink', 'yellow', 'lightyellow', 'cyan', 'lightcyan']
+        self.fig_colors = [ '#000000', '#808080', '#D3D3D3', '#FFFFFF', '#008000', '#FFA500', '#FF0000', '#FFC0CB', '#FFFF00', '#FFFFE0', '#00FFFF', '#E0FFFF' ]
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
@@ -796,6 +796,9 @@ class Tab(QWidget):
         self.plot_widget.draw()
 
 
+
+
+
     #plot types
 
     def to_plot(self):
@@ -985,6 +988,20 @@ class Tab(QWidget):
 
         self.custom_plot()
         
+
+            ## general functions ##
+
+    def complementary_color(self, hex_color):
+        if hex_color.startswith('#'):
+            hex_color = hex_color[1:]
+        comp_hex_color = ''
+        for hex in hex_color:
+            component = int(hex, 16)
+            comp_component = 15 - component
+            comp_hex_color += f'{comp_component:1x}'
+        
+        return f'#{comp_hex_color}'
+
     def saveFile(self, filepath, file_format):
         try:
             dataframe_to_save = self.fitted_dataframe if self.fitted_dataframe is not None else self.dataframe
