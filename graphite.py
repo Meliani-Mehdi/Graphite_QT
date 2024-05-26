@@ -89,6 +89,7 @@ class Worksheet(QDialog):
         self.ui.addwork_2.clicked.connect(self.add_column)
         self.ui.remrow.clicked.connect(self.remove_row)
         self.ui.remcol.clicked.connect(self.remove_column)
+        self.ui.idb.clicked.connect(self.add_id_column)
 
     def remove_row(self):
         selected_ranges = self.ui.tableWidget.selectedRanges()
@@ -121,8 +122,14 @@ class Worksheet(QDialog):
     def remove_column(self):
         selected_ranges = self.ui.tableWidget.selectedRanges()
         if selected_ranges:
+            columns_to_remove = set()
             for selected_range in selected_ranges:
                 for column in range(selected_range.leftColumn(), selected_range.rightColumn() + 1):
+                    if self.is_entire_column_selected(column):
+                        columns_to_remove.add(column)
+
+            if columns_to_remove:
+                for column in sorted(columns_to_remove, reverse=True):
                     if 0 <= column < self.ui.tableWidget.columnCount():
                         self.ui.tableWidget.removeColumn(column)
         else:
@@ -132,6 +139,14 @@ class Worksheet(QDialog):
                 if 0 <= column_index < self.ui.tableWidget.columnCount():
                     self.ui.tableWidget.removeColumn(column_index)
 
+    def is_entire_column_selected(self, column):
+        for row in range(self.ui.tableWidget.rowCount()):
+            item = self.ui.tableWidget.item(row, column)
+            if item is None or not item.isSelected():
+                return False
+        return True
+
+
     def add_row(self):
         row_count = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.setRowCount(row_count + 1)
@@ -139,6 +154,19 @@ class Worksheet(QDialog):
     def add_column(self):
         column_count = self.ui.tableWidget.columnCount()
         self.ui.tableWidget.setColumnCount(column_count + 1)
+
+
+    def add_id_column(self):
+        num_rows = self.ui.tableWidget.rowCount()
+        if num_rows == 0:
+            num_rows, ok = QInputDialog.getInt(self, "Add ID", "Enter number of rows for ID:")
+            if not ok or num_rows <= 0:
+                return
+            self.ui.tableWidget.setRowCount(num_rows)
+        self.ui.tableWidget.insertColumn(0)
+        self.ui.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("ID"))
+        for row in range(num_rows):
+            self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(row + 1)))
 
 
 class CustomizeDialog(QDialog):
