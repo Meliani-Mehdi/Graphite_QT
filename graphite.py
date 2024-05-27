@@ -428,6 +428,8 @@ class Graphite(QMainWindow):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
         selected_ranges = table_widget.selectedRanges()
+        if len(selected_ranges) == 1 and selected_ranges[0].rowCount() == 1 and selected_ranges[0].columnCount() == 1:
+            selected_ranges = []
 
         if selected_ranges:
             selected_range = selected_ranges[0]
@@ -501,7 +503,7 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].dataframe = df
             self.tabs[tab_index].name = "Modified Data"
-            self.tabs[tab_index].to_plot()  # Assuming to_plot method handles plotting
+            self.tabs[tab_index].to_plot()
         else:
             QMessageBox.warning(self, "No Tab", "There is no active tab to modify.")
 
@@ -513,6 +515,8 @@ class Graphite(QMainWindow):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
         selected_ranges = table_widget.selectedRanges()
+        if len(selected_ranges) == 1 and selected_ranges[0].rowCount() == 1 and selected_ranges[0].columnCount() == 1:
+            selected_ranges = []
         if selected_ranges:
             selected_range = selected_ranges[0]
             start_row = selected_range.topRow()
