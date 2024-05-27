@@ -349,7 +349,10 @@ class Graphite(QMainWindow):
         self.ui.gaus.clicked.connect(self.apply_gaussian_filter)
         self.ui.boxcar.clicked.connect(self.apply_boxcar_filter)
         # self.ui.notch.clicked.connect(self.apply_notch_filter)
-        self.ui.passe.currentIndexChanged.connect(self.handle_fit_type_changed_pass)
+        self.ui.bandpass.clicked.connect(self.handle_fit_type_changed_pass)
+        self.ui.highpass.clicked.connect(self.handle_fit_type_changed_pass)
+        self.ui.lowpass.clicked.connect(self.handle_fit_type_changed_pass)
+
 
 
 
@@ -737,11 +740,14 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_pass(self, index):
-        selected_fit = self.ui.passe.itemText(index)
+
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-            if selected_fit == "Lowpass":
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
+            if button == "lowpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the cutoff frequency:", value=0.5)
                 fs, ok2 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the sampling frequency:", value=100.0)
                 order, ok3 = QInputDialog.getInt(self, "Lowpass Filter", "Enter the filter order:", value=3)
@@ -751,7 +757,7 @@ class Graphite(QMainWindow):
                     tab = self.tabs[tab_index]
                     filtered_data = tab.apply_lowpass_filter(tab.dataframe, cutoff, fs, order)
                     tab.plot_filtered_data(filtered_data)
-            elif selected_fit == "Bandpass":
+            elif button == "bandpass":
                 lowcut, ok1 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the lowcut frequency:", value=0.1)
                 highcut, ok2 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the highcut frequency:", value=0.9)
                 fs, ok3 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the sampling frequency:", value=100.0)
@@ -762,7 +768,7 @@ class Graphite(QMainWindow):
                     tab = self.tabs[tab_index]
                     filtered_data = tab.apply_bandpass_filter(tab.dataframe, lowcut, highcut, fs, order)
                     tab.plot_filtered_data(filtered_data)
-            elif selected_fit == "Hipass":
+            elif button == "highpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the cutoff frequency:", value=0.1)
                 fs, ok2 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the sampling frequency:", value=100.0)
                 order, ok3 = QInputDialog.getInt(self, "Highpass Filter", "Enter the filter order:", value=3)

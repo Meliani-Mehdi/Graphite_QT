@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
+    <width>1364</width>
     <height>673</height>
    </rect>
   </property>
@@ -470,7 +470,7 @@ QPushButton {
            <item>
             <widget class="QTabWidget" name="mode_frames">
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -502,7 +502,7 @@ QPushButton {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>898</width>
+                    <width>1062</width>
                     <height>148</height>
                    </rect>
                   </property>
@@ -797,45 +797,11 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1371</width>
+                    <width>1270</width>
                     <height>113</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
-                   <item>
-                    <widget class="QComboBox" name="passe">
-                     <property name="minimumSize">
-                      <size>
-                       <width>95</width>
-                       <height>95</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>95</width>
-                       <height>95</height>
-                      </size>
-                     </property>
-                     <property name="toolTip">
-                      <string>Bandpass</string>
-                     </property>
-                     <item>
-                      <property name="text">
-                       <string>Bandpass</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Highpass</string>
-                      </property>
-                     </item>
-                     <item>
-                      <property name="text">
-                       <string>Lowpass</string>
-                      </property>
-                     </item>
-                    </widget>
-                   </item>
                    <item>
                     <widget class="QPushButton" name="lowpass">
                      <property name="minimumSize">
@@ -2167,7 +2133,7 @@ QPushButton:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1364</width>
      <height>22</height>
     </rect>
    </property>
