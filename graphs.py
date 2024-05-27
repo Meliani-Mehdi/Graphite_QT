@@ -524,6 +524,8 @@ class Tab(QWidget):
             print(f"Error plotting triple exponential fit: {e}")
 
 
+
+
     def plot_filtered_data(self, filtered_data):
         self.figure.clear()
         self.ax = self.figure.add_subplot()
@@ -531,7 +533,7 @@ class Tab(QWidget):
             try:
                 self.ax.plot(self.dataframe.iloc[:, 0], filtered_data[col], label=f'{col} (Filtered)', marker=self.markers[self.marker])
             except Exception as e:
-                print(f"Skipping column '{col}' because it could not be plotted: {e}")
+               print(f"Skipping column '{col}' because it could not be plotted: {e}")
         self.custom_plot()
 
     def plot_spline_fit(self, x_data, y_data, smoothing_factor=0.1):

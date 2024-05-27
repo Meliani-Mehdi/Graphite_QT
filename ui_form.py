@@ -16,17 +16,17 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
-    QMenu, QMenuBar, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStackedWidget, QTabWidget,
-    QToolButton, QTreeView, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QHeaderView, QLabel, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTabWidget, QToolButton,
+    QTreeView, QVBoxLayout, QWidget)
 
 class Ui_Graphite(object):
     def setupUi(self, Graphite):
         if not Graphite.objectName():
             Graphite.setObjectName(u"Graphite")
-        Graphite.resize(1364, 673)
+        Graphite.resize(1436, 673)
         icon = QIcon()
         icon.addFile(u"assets/Graphite.png", QSize(), QIcon.Normal, QIcon.Off)
         Graphite.setWindowIcon(icon)
@@ -297,21 +297,13 @@ class Ui_Graphite(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1062, 148))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1408, 112))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.fourier = QComboBox(self.scrollAreaWidgetContents_2)
-        self.fourier.addItem("")
-        self.fourier.addItem("")
-        self.fourier.addItem("")
-        self.fourier.setObjectName(u"fourier")
-
-        self.horizontalLayout_8.addWidget(self.fourier)
-
         self.power = QPushButton(self.scrollAreaWidgetContents_2)
         self.power.setObjectName(u"power")
 
@@ -337,13 +329,69 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_8.addWidget(self.linear)
 
-        self.gauss = QComboBox(self.scrollAreaWidgetContents_2)
-        self.gauss.addItem("")
-        self.gauss.addItem("")
-        self.gauss.addItem("")
-        self.gauss.setObjectName(u"gauss")
+        self.fourier = QPushButton(self.scrollAreaWidgetContents_2)
+        self.fourier.setObjectName(u"fourier")
 
-        self.horizontalLayout_8.addWidget(self.gauss)
+        self.horizontalLayout_8.addWidget(self.fourier)
+
+        self.sine = QPushButton(self.scrollAreaWidgetContents_2)
+        self.sine.setObjectName(u"sine")
+
+        self.horizontalLayout_8.addWidget(self.sine)
+
+        self.Polynome = QPushButton(self.scrollAreaWidgetContents_2)
+        self.Polynome.setObjectName(u"Polynome")
+        icon8 = QIcon()
+        icon8.addFile(u"assets/buttons/algo/ppnl.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Polynome.setIcon(icon8)
+        self.Polynome.setIconSize(QSize(80, 64))
+
+        self.horizontalLayout_8.addWidget(self.Polynome)
+
+        self.cosine = QPushButton(self.scrollAreaWidgetContents_2)
+        self.cosine.setObjectName(u"cosine")
+
+        self.horizontalLayout_8.addWidget(self.cosine)
+
+        self.Gaussian = QPushButton(self.scrollAreaWidgetContents_2)
+        self.Gaussian.setObjectName(u"Gaussian")
+
+        self.horizontalLayout_8.addWidget(self.Gaussian)
+
+        self.lorenzian = QPushButton(self.scrollAreaWidgetContents_2)
+        self.lorenzian.setObjectName(u"lorenzian")
+
+        self.horizontalLayout_8.addWidget(self.lorenzian)
+
+        self.voigt = QPushButton(self.scrollAreaWidgetContents_2)
+        self.voigt.setObjectName(u"voigt")
+
+        self.horizontalLayout_8.addWidget(self.voigt)
+
+        self.spline = QPushButton(self.scrollAreaWidgetContents_2)
+        self.spline.setObjectName(u"spline")
+
+        self.horizontalLayout_8.addWidget(self.spline)
+
+        self.lowess_2 = QPushButton(self.scrollAreaWidgetContents_2)
+        self.lowess_2.setObjectName(u"lowess_2")
+
+        self.horizontalLayout_8.addWidget(self.lowess_2)
+
+        self.sav = QPushButton(self.scrollAreaWidgetContents_2)
+        self.sav.setObjectName(u"sav")
+
+        self.horizontalLayout_8.addWidget(self.sav)
+
+        self.mac = QPushButton(self.scrollAreaWidgetContents_2)
+        self.mac.setObjectName(u"mac")
+
+        self.horizontalLayout_8.addWidget(self.mac)
+
+        self.segmoidal = QPushButton(self.scrollAreaWidgetContents_2)
+        self.segmoidal.setObjectName(u"segmoidal")
+
+        self.horizontalLayout_8.addWidget(self.segmoidal)
 
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -354,52 +402,50 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.log = QComboBox(self.scrollAreaWidgetContents_2)
-        self.log.addItem("")
-        self.log.addItem("")
-        self.log.setObjectName(u"log")
-
-        self.horizontalLayout_9.addWidget(self.log)
-
         self.quadraple = QToolButton(self.scrollAreaWidgetContents_2)
         self.quadraple.setObjectName(u"quadraple")
 
         self.horizontalLayout_9.addWidget(self.quadraple)
 
-        self.weibull = QComboBox(self.scrollAreaWidgetContents_2)
-        self.weibull.addItem("")
-        self.weibull.addItem("")
-        self.weibull.addItem("")
-        self.weibull.addItem("")
-        self.weibull.addItem("")
+        self.log = QPushButton(self.scrollAreaWidgetContents_2)
+        self.log.setObjectName(u"log")
+
+        self.horizontalLayout_9.addWidget(self.log)
+
+        self.logi = QPushButton(self.scrollAreaWidgetContents_2)
+        self.logi.setObjectName(u"logi")
+
+        self.horizontalLayout_9.addWidget(self.logi)
+
+        self.weibull = QPushButton(self.scrollAreaWidgetContents_2)
         self.weibull.setObjectName(u"weibull")
 
         self.horizontalLayout_9.addWidget(self.weibull)
 
-        self.Polynome = QPushButton(self.scrollAreaWidgetContents_2)
-        self.Polynome.setObjectName(u"Polynome")
-        icon8 = QIcon()
-        icon8.addFile(u"assets/buttons/algo/ppnl.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Polynome.setIcon(icon8)
-        self.Polynome.setIconSize(QSize(80, 64))
+        self.hill = QPushButton(self.scrollAreaWidgetContents_2)
+        self.hill.setObjectName(u"hill")
 
-        self.horizontalLayout_9.addWidget(self.Polynome)
+        self.horizontalLayout_9.addWidget(self.hill)
 
-        self.expo_2 = QComboBox(self.scrollAreaWidgetContents_2)
-        self.expo_2.addItem("")
-        self.expo_2.addItem("")
-        self.expo_2.addItem("")
-        self.expo_2.setObjectName(u"expo_2")
+        self.expof = QPushButton(self.scrollAreaWidgetContents_2)
+        self.expof.setObjectName(u"expof")
 
-        self.horizontalLayout_9.addWidget(self.expo_2)
+        self.horizontalLayout_9.addWidget(self.expof)
 
-        self.spline = QComboBox(self.scrollAreaWidgetContents_2)
-        self.spline.addItem("")
-        self.spline.addItem("")
-        self.spline.addItem("")
-        self.spline.setObjectName(u"spline")
+        self.gompertz = QPushButton(self.scrollAreaWidgetContents_2)
+        self.gompertz.setObjectName(u"gompertz")
 
-        self.horizontalLayout_9.addWidget(self.spline)
+        self.horizontalLayout_9.addWidget(self.gompertz)
+
+        self.dexpof = QPushButton(self.scrollAreaWidgetContents_2)
+        self.dexpof.setObjectName(u"dexpof")
+
+        self.horizontalLayout_9.addWidget(self.dexpof)
+
+        self.texpof = QPushButton(self.scrollAreaWidgetContents_2)
+        self.texpof.setObjectName(u"texpof")
+
+        self.horizontalLayout_9.addWidget(self.texpof)
 
         self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -969,7 +1015,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1364, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1436, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -1014,7 +1060,7 @@ class Ui_Graphite(object):
         self.retranslateUi(Graphite)
 
         self.main.setCurrentIndex(0)
-        self.mode_frames.setCurrentIndex(1)
+        self.mode_frames.setCurrentIndex(0)
         self.graphTab.setCurrentIndex(-1)
 
 
@@ -1065,37 +1111,31 @@ class Ui_Graphite(object):
         self.describe.setText(QCoreApplication.translate("Graphite", u"describe", None))
         self.custom_button.setText(QCoreApplication.translate("Graphite", u"Customize", None))
         self.worksheet.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
-        self.fourier.setItemText(0, QCoreApplication.translate("Graphite", u"fourier", None))
-        self.fourier.setItemText(1, QCoreApplication.translate("Graphite", u"sine", None))
-        self.fourier.setItemText(2, QCoreApplication.translate("Graphite", u"cosine", None))
-
         self.power.setText(QCoreApplication.translate("Graphite", u"power fit", None))
         self.cubic.setText(QCoreApplication.translate("Graphite", u"cubic", None))
         self.min_max.setText(QCoreApplication.translate("Graphite", u"find min max", None))
         self.linear.setText("")
-        self.gauss.setItemText(0, QCoreApplication.translate("Graphite", u"Gaussian", None))
-        self.gauss.setItemText(1, QCoreApplication.translate("Graphite", u"lorenzian", None))
-        self.gauss.setItemText(2, QCoreApplication.translate("Graphite", u"voigt", None))
-
-        self.log.setItemText(0, QCoreApplication.translate("Graphite", u"logarithm", None))
-        self.log.setItemText(1, QCoreApplication.translate("Graphite", u"logistic", None))
-
-        self.quadraple.setText(QCoreApplication.translate("Graphite", u"quadriple", None))
-        self.weibull.setItemText(0, QCoreApplication.translate("Graphite", u"weibull", None))
-        self.weibull.setItemText(1, QCoreApplication.translate("Graphite", u"segmoidal", None))
-        self.weibull.setItemText(2, QCoreApplication.translate("Graphite", u"meichaelis-menten", None))
-        self.weibull.setItemText(3, QCoreApplication.translate("Graphite", u"hill", None))
-        self.weibull.setItemText(4, QCoreApplication.translate("Graphite", u"gompertz", None))
-
+        self.fourier.setText(QCoreApplication.translate("Graphite", u"fourier", None))
+        self.sine.setText(QCoreApplication.translate("Graphite", u"sine", None))
         self.Polynome.setText("")
-        self.expo_2.setItemText(0, QCoreApplication.translate("Graphite", u"expononcial", None))
-        self.expo_2.setItemText(1, QCoreApplication.translate("Graphite", u"double expononcial", None))
-        self.expo_2.setItemText(2, QCoreApplication.translate("Graphite", u"triple expononcial", None))
-
-        self.spline.setItemText(0, QCoreApplication.translate("Graphite", u"spline", None))
-        self.spline.setItemText(1, QCoreApplication.translate("Graphite", u"lowess", None))
-        self.spline.setItemText(2, QCoreApplication.translate("Graphite", u"Savitzky-Golay ", None))
-
+        self.cosine.setText(QCoreApplication.translate("Graphite", u"cosine", None))
+        self.Gaussian.setText(QCoreApplication.translate("Graphite", u"Gaussian", None))
+        self.lorenzian.setText(QCoreApplication.translate("Graphite", u"lorenzian", None))
+        self.voigt.setText(QCoreApplication.translate("Graphite", u"voigt", None))
+        self.spline.setText(QCoreApplication.translate("Graphite", u"spline", None))
+        self.lowess_2.setText(QCoreApplication.translate("Graphite", u"lowess", None))
+        self.sav.setText(QCoreApplication.translate("Graphite", u"Savitzky-Golay ", None))
+        self.mac.setText(QCoreApplication.translate("Graphite", u"meichaelis-menten", None))
+        self.segmoidal.setText(QCoreApplication.translate("Graphite", u"segmoidal", None))
+        self.quadraple.setText(QCoreApplication.translate("Graphite", u"quadriple", None))
+        self.log.setText(QCoreApplication.translate("Graphite", u"logarithm", None))
+        self.logi.setText(QCoreApplication.translate("Graphite", u"logistic", None))
+        self.weibull.setText(QCoreApplication.translate("Graphite", u"weibull", None))
+        self.hill.setText(QCoreApplication.translate("Graphite", u"hill", None))
+        self.expof.setText(QCoreApplication.translate("Graphite", u"expononcial", None))
+        self.gompertz.setText(QCoreApplication.translate("Graphite", u"gompertz", None))
+        self.dexpof.setText(QCoreApplication.translate("Graphite", u"dexpof", None))
+        self.texpof.setText(QCoreApplication.translate("Graphite", u"txpof", None))
         self.mode_frames.setTabText(self.mode_frames.indexOf(self.mode_framesPage3), QCoreApplication.translate("Graphite", u"Fittings", None))
 #if QT_CONFIG(tooltip)
         self.lowpass.setToolTip(QCoreApplication.translate("Graphite", u"Lowpass", None))

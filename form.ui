@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1364</width>
+    <width>1436</width>
     <height>673</height>
    </rect>
   </property>
@@ -502,8 +502,8 @@ QPushButton {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1062</width>
-                    <height>148</height>
+                    <width>1408</width>
+                    <height>112</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -524,25 +524,6 @@ QPushButton {
                    </property>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_8">
-                     <item>
-                      <widget class="QComboBox" name="fourier">
-                       <item>
-                        <property name="text">
-                         <string>fourier</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>sine</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>cosine</string>
-                        </property>
-                       </item>
-                      </widget>
-                     </item>
                      <item>
                       <widget class="QPushButton" name="power">
                        <property name="text">
@@ -585,89 +566,17 @@ QPushButton {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="gauss">
-                       <item>
-                        <property name="text">
-                         <string>Gaussian</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>lorenzian</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>voigt</string>
-                        </property>
-                       </item>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_4">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_9">
-                     <item>
-                      <widget class="QComboBox" name="log">
-                       <item>
-                        <property name="text">
-                         <string>logarithm</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>logistic</string>
-                        </property>
-                       </item>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QToolButton" name="quadraple">
+                      <widget class="QPushButton" name="fourier">
                        <property name="text">
-                        <string>quadriple</string>
+                        <string>fourier</string>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="weibull">
-                       <item>
-                        <property name="text">
-                         <string>weibull</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>segmoidal</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>meichaelis-menten</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>hill</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>gompertz</string>
-                        </property>
-                       </item>
+                      <widget class="QPushButton" name="sine">
+                       <property name="text">
+                        <string>sine</string>
+                       </property>
                       </widget>
                      </item>
                      <item>
@@ -688,41 +597,146 @@ QPushButton {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="expo_2">
-                       <item>
-                        <property name="text">
-                         <string>expononcial</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>double expononcial</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>triple expononcial</string>
-                        </property>
-                       </item>
+                      <widget class="QPushButton" name="cosine">
+                       <property name="text">
+                        <string>cosine</string>
+                       </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="spline">
-                       <item>
-                        <property name="text">
-                         <string>spline</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>lowess</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
-                         <string>Savitzky-Golay </string>
-                        </property>
-                       </item>
+                      <widget class="QPushButton" name="Gaussian">
+                       <property name="text">
+                        <string>Gaussian</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="lorenzian">
+                       <property name="text">
+                        <string>lorenzian</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="voigt">
+                       <property name="text">
+                        <string>voigt</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="spline">
+                       <property name="text">
+                        <string>spline</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="lowess_2">
+                       <property name="text">
+                        <string>lowess</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="sav">
+                       <property name="text">
+                        <string>Savitzky-Golay </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="mac">
+                       <property name="text">
+                        <string>meichaelis-menten</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="segmoidal">
+                       <property name="text">
+                        <string>segmoidal</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_4">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_9">
+                     <item>
+                      <widget class="QToolButton" name="quadraple">
+                       <property name="text">
+                        <string>quadriple</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="log">
+                       <property name="text">
+                        <string>logarithm</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="logi">
+                       <property name="text">
+                        <string>logistic</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="weibull">
+                       <property name="text">
+                        <string>weibull</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="hill">
+                       <property name="text">
+                        <string>hill</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="expof">
+                       <property name="text">
+                        <string>expononcial</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="gompertz">
+                       <property name="text">
+                        <string>gompertz</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="dexpof">
+                       <property name="text">
+                        <string>dexpof</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="texpof">
+                       <property name="text">
+                        <string>txpof</string>
+                       </property>
                       </widget>
                      </item>
                      <item>
@@ -2133,7 +2147,7 @@ QPushButton:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1364</width>
+     <width>1436</width>
      <height>22</height>
     </rect>
    </property>
