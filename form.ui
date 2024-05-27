@@ -502,8 +502,8 @@ QPushButton {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>903</width>
-                    <height>144</height>
+                    <width>898</width>
+                    <height>148</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -797,8 +797,8 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1374</width>
-                    <height>114</height>
+                    <width>1371</width>
+                    <height>113</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -2168,7 +2168,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
