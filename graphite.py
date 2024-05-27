@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from PySide6.QtGui import QAction, QIcon, QKeySequence, QShortcut
 from PySide6.QtCore import QDir, QSize,Qt, QPointF
-from PySide6.QtWidgets import  QApplication, QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QLineEdit, QPushButton, QToolTip,QVBoxLayout,QTableWidgetItem,QHeaderView,QAbstractScrollArea, QWidget, QWidgetAction
+from PySide6.QtWidgets import  QApplication, QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QFileDialog, QFileSystemModel, QAbstractItemView, QDialog,QInputDialog, QPushButton, QTableWidgetItem, QHeaderView, QAbstractScrollArea, QWidget, QWidgetAction
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from ui_form import Ui_Graphite
 from ui_customize_dialog import Ui_Dialog as custom

@@ -31,6 +31,7 @@ class Tab(QWidget):
         ]
         self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", 2, 3, 1, 0, 6, 7, 5, 4,]
         self.fig_colors = [ '#000000', '#808080', '#D3D3D3', '#FFFFFF', '#008000', '#FFA500', '#FF0000', '#FFC0CB', '#FFFF00', '#FFFFE0', '#00FFFF', '#E0FFFF' ]
+        self.rev_colors = self.rev_all(self.fig_colors)
         self.tab_widget = tab_widget
         self.dataframe = dataframe
         self.name = name
@@ -1001,6 +1002,13 @@ class Tab(QWidget):
             comp_hex_color += f'{comp_component:1x}'
         
         return f'#{comp_hex_color}'
+
+    def rev_all(self, arr):
+        ren = []
+        for c in arr:
+            ren.append(self.complementary_color(c))
+        return ren
+
 
     def saveFile(self, filepath, file_format):
         try:
