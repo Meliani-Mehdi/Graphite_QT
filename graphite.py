@@ -331,13 +331,27 @@ class Graphite(QMainWindow):
         self.ui.linear.clicked.connect(self.perform_linear_fit)
         self.ui.quadraple.clicked.connect(self.perform_quadratic_fit)
         self.ui.cubic.clicked.connect(self.perform_cubic_fit)
-        self.ui.expo_2.currentIndexChanged.connect(self.handle_fit_type_changed_expo)
+        self.ui.expof.clicked.connect(self.handle_fit_type_changed_expo)
+        self.ui.dexpof.clicked.connect(self.handle_fit_type_changed_expo)
+        self.ui.texpof.clicked.connect(self.handle_fit_type_changed_expo)
         self.ui.power.clicked.connect(self.perform_power_fit)
-        self.ui.log.currentIndexChanged.connect(self.handle_fit_type_changed_log)
-        self.ui.gauss.currentIndexChanged.connect(self.handle_fit_type_changed_gauss)
-        self.ui.weibull.currentIndexChanged.connect(self.handle_fit_type_changed_w)
-        self.ui.fourier.currentIndexChanged.connect(self.handle_fit_type_changed_f)
-        self.ui.spline.currentIndexChanged.connect(self.handle_fit_type_changed_s)
+        self.ui.log.clicked.connect(self.handle_fit_type_changed_log)
+        self.ui.logi.clicked.connect(self.handle_fit_type_changed_log)
+        self.ui.Gaussian.clicked.connect(self.handle_fit_type_changed_gauss)
+        self.ui.lorenzian.clicked.connect(self.handle_fit_type_changed_gauss)
+        self.ui.voigt.clicked.connect(self.handle_fit_type_changed_gauss)
+        self.ui.weibull.clicked.connect(self.handle_fit_type_changed_w)
+        self.ui.segmoidal.clicked.connect(self.handle_fit_type_changed_w)
+        self.ui.mac.clicked.connect(self.handle_fit_type_changed_w)
+        self.ui.hill.clicked.connect(self.handle_fit_type_changed_w)
+        self.ui.gompertz.clicked.connect(self.handle_fit_type_changed_w)
+        self.ui.fourier.clicked.connect(self.handle_fit_type_changed_f)
+        self.ui.sine.clicked.connect(self.handle_fit_type_changed_f)
+        self.ui.cosine.clicked.connect(self.handle_fit_type_changed_f)
+        self.ui.spline.clicked.connect(self.handle_fit_type_changed_s)
+        self.ui.lowess_2.clicked.connect(self.handle_fit_type_changed_s)
+        self.ui.sav.clicked.connect(self.handle_fit_type_changed_s)
+
 
         self.ui.median.clicked.connect(self.apply_median_filter)
         self.ui.lowess.clicked.connect(self.apply_lowess_filter)
@@ -349,7 +363,10 @@ class Graphite(QMainWindow):
         self.ui.gaus.clicked.connect(self.apply_gaussian_filter)
         self.ui.boxcar.clicked.connect(self.apply_boxcar_filter)
         # self.ui.notch.clicked.connect(self.apply_notch_filter)
-        self.ui.passe.currentIndexChanged.connect(self.handle_fit_type_changed_pass)
+        self.ui.bandpass.clicked.connect(self.handle_fit_type_changed_pass)
+        self.ui.highpass.clicked.connect(self.handle_fit_type_changed_pass)
+        self.ui.lowpass.clicked.connect(self.handle_fit_type_changed_pass)
+
 
 
 
@@ -411,6 +428,8 @@ class Graphite(QMainWindow):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
         selected_ranges = table_widget.selectedRanges()
+        if len(selected_ranges) == 1 and selected_ranges[0].rowCount() == 1 and selected_ranges[0].columnCount() == 1:
+            selected_ranges = []
 
         if selected_ranges:
             selected_range = selected_ranges[0]
@@ -484,7 +503,7 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].dataframe = df
             self.tabs[tab_index].name = "Modified Data"
-            self.tabs[tab_index].to_plot()  # Assuming to_plot method handles plotting
+            self.tabs[tab_index].to_plot()
         else:
             QMessageBox.warning(self, "No Tab", "There is no active tab to modify.")
 
@@ -496,6 +515,8 @@ class Graphite(QMainWindow):
         table_widget = self.worksheet_dialog.ui.tableWidget
 
         selected_ranges = table_widget.selectedRanges()
+        if len(selected_ranges) == 1 and selected_ranges[0].rowCount() == 1 and selected_ranges[0].columnCount() == 1:
+            selected_ranges = []
         if selected_ranges:
             selected_range = selected_ranges[0]
             start_row = selected_range.topRow()
@@ -718,30 +739,35 @@ class Graphite(QMainWindow):
             tab.plot_quadratic_fit(x_data, y_data)
 
     def handle_fit_type_changed_expo(self, index):
-        selected_fit = self.ui.expo_2.itemText(index)
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "expononcial":
+            if button == "expof": # expononcial
                 tab.plot_exponential_fit(x_data, y_data)
-            elif selected_fit == "double expononcial":
+            elif button == "dexpof": #double expononcial
                 tab.plot_double_exponential_fit(x_data, y_data)
-            elif selected_fit == "triple expononcial":
+            elif button == "texpof": # triple expononcial
                 tab.plot_triple_exponential_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_pass(self, index):
-        selected_fit = self.ui.passe.itemText(index)
+
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-            if selected_fit == "Lowpass":
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
+            if button == "lowpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the cutoff frequency:", value=0.5)
                 fs, ok2 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the sampling frequency:", value=100.0)
                 order, ok3 = QInputDialog.getInt(self, "Lowpass Filter", "Enter the filter order:", value=3)
@@ -751,7 +777,7 @@ class Graphite(QMainWindow):
                     tab = self.tabs[tab_index]
                     filtered_data = tab.apply_lowpass_filter(tab.dataframe, cutoff, fs, order)
                     tab.plot_filtered_data(filtered_data)
-            elif selected_fit == "Bandpass":
+            elif button == "bandpass":
                 lowcut, ok1 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the lowcut frequency:", value=0.1)
                 highcut, ok2 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the highcut frequency:", value=0.9)
                 fs, ok3 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the sampling frequency:", value=100.0)
@@ -762,7 +788,7 @@ class Graphite(QMainWindow):
                     tab = self.tabs[tab_index]
                     filtered_data = tab.apply_bandpass_filter(tab.dataframe, lowcut, highcut, fs, order)
                     tab.plot_filtered_data(filtered_data)
-            elif selected_fit == "Hipass":
+            elif button == "highpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the cutoff frequency:", value=0.1)
                 fs, ok2 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the sampling frequency:", value=100.0)
                 order, ok3 = QInputDialog.getInt(self, "Highpass Filter", "Enter the filter order:", value=3)
@@ -776,99 +802,113 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_w(self, index):
-        selected_fit = self.ui.weibull.itemText(index)
+
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "weibull":
+            if button == "weibull":
                 tab.plot_weibull_fit(x_data, y_data)
-            elif selected_fit == "segmoidal":
+            elif button == "segmoidal":
                 tab.plot_sigmoidal_fit(x_data, y_data)
-            elif selected_fit == "meichaelis-menten":
+            elif button == "mac":  #meichaelis-menten
                 tab.plot_michaelis_menten_fit(x_data, y_data)
-            elif selected_fit == "hill":
+            elif button == "hill":
                 tab.plot_hill_fit(x_data, y_data)
-            elif selected_fit == "gompertz":
+            elif button == "gompertz":
                 tab.plot_gompertz_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 
 
     def handle_fit_type_changed_f(self, index):
-        selected_fit = self.ui.fourier.itemText(index)
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "fourier":
+            if button == "fourier":
                 tab.plot_fourier_fit(x_data, y_data)
-            elif selected_fit == "sine":
+            elif button == "sine":
                 tab.plot_sine_fit(x_data, y_data)
-            elif selected_fit == "cosine":
+            elif button == "cosine":
                 tab.plot_cosine_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_s(self, index):
-        selected_fit = self.ui.spline.itemText(index)
+
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "spline":
+            if button == "spline":
                 tab.plot_spline_fit(x_data, y_data)
-            elif selected_fit == "lowess":
+            elif button == "lowess_2":
                 tab.plot_lowess_fit(x_data, y_data)
-            elif selected_fit == "Savitzky-Golay ":
+            elif button == "sav":
                 tab.plot_savitzky_golay_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_log(self, index):
-        selected_fit = self.ui.log.itemText(index)
+
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "logarithm":
+            if button == "log":
                 tab.plot_logarithmic_fit(x_data, y_data)
-            elif selected_fit == "logistic":
+            elif button == "logi":
                 tab.plot_logistic_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_gauss(self, index):
-        selected_fit = self.ui.gauss.itemText(index)
+
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
+          selected_button=self.sender()
+          if selected_button:
+            button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             x_data= tab.dataframe.iloc[:, 0].values
             y_data= tab.dataframe.iloc[:, 1].values
-            if selected_fit == "Gaussian":
+            if button == "Gaussian":
                 tab.plot_gaussian_fit(x_data, y_data)
-            elif selected_fit == "lorenzian":
+            elif button == "lorenzian":
                 tab.plot_lorentzian_fit(x_data, y_data)
-            elif selected_fit == "voigt":
+            elif button == "voigt":
                 tab.plot_voigt_fit(x_data, y_data)
             else:
                 print("Unsupported fit type selected")
