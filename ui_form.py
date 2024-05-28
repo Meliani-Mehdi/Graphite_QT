@@ -490,7 +490,7 @@ class Ui_Graphite(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(-97, 0, 1270, 113))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1270, 113))
         self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.lowpass = QPushButton(self.scrollAreaWidgetContents)
@@ -994,7 +994,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_5.addWidget(self.focus_2)
 
-        self.horizontalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
@@ -1061,7 +1061,7 @@ class Ui_Graphite(object):
         self.retranslateUi(Graphite)
 
         self.main.setCurrentIndex(0)
-        self.mode_frames.setCurrentIndex(1)
+        self.mode_frames.setCurrentIndex(0)
         self.graphTab.setCurrentIndex(-1)
 
 

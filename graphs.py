@@ -14,7 +14,6 @@ from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
 from scipy.signal import savgol_filter, butter, filtfilt, medfilt, cheby1, butter
 from statsmodels.nonparametric.smoothers_lowess import lowess
-from filterpy.kalman import KalmanFilter
 from scipy.ndimage import gaussian_filter1d
 
 
