@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'customize_dialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.7.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -103,6 +103,7 @@ class Ui_Dialog(object):
         self.bg_color.addItem("")
         self.bg_color.addItem("")
         self.bg_color.addItem("")
+        self.bg_color.addItem("")
         self.bg_color.setObjectName(u"bg_color")
 
         self.horizontalLayout_8.addWidget(self.bg_color)
@@ -120,6 +121,7 @@ class Ui_Dialog(object):
         self.horizontalLayout_9.addWidget(self.label)
 
         self.bg_color_2 = QComboBox(Dialog)
+        self.bg_color_2.addItem("")
         self.bg_color_2.addItem("")
         self.bg_color_2.addItem("")
         self.bg_color_2.addItem("")
@@ -348,31 +350,33 @@ class Ui_Dialog(object):
         self.yLab.setText(QCoreApplication.translate("Dialog", u"Y Label :", None))
         self.lab_bg.setText(QCoreApplication.translate("Dialog", u"Plot bg color :", None))
         self.bg_color.setItemText(0, QCoreApplication.translate("Dialog", u"Black", None))
-        self.bg_color.setItemText(1, QCoreApplication.translate("Dialog", u"Gray", None))
-        self.bg_color.setItemText(2, QCoreApplication.translate("Dialog", u"Light gray", None))
-        self.bg_color.setItemText(3, QCoreApplication.translate("Dialog", u"White", None))
-        self.bg_color.setItemText(4, QCoreApplication.translate("Dialog", u"Green", None))
-        self.bg_color.setItemText(5, QCoreApplication.translate("Dialog", u"Orange", None))
-        self.bg_color.setItemText(6, QCoreApplication.translate("Dialog", u"red", None))
-        self.bg_color.setItemText(7, QCoreApplication.translate("Dialog", u"pink", None))
-        self.bg_color.setItemText(8, QCoreApplication.translate("Dialog", u"Yellow", None))
-        self.bg_color.setItemText(9, QCoreApplication.translate("Dialog", u"Light yellow", None))
-        self.bg_color.setItemText(10, QCoreApplication.translate("Dialog", u"Cyan", None))
-        self.bg_color.setItemText(11, QCoreApplication.translate("Dialog", u"Light cyan", None))
+        self.bg_color.setItemText(1, QCoreApplication.translate("Dialog", u"Dark gray", None))
+        self.bg_color.setItemText(2, QCoreApplication.translate("Dialog", u"Gray", None))
+        self.bg_color.setItemText(3, QCoreApplication.translate("Dialog", u"Light gray", None))
+        self.bg_color.setItemText(4, QCoreApplication.translate("Dialog", u"White", None))
+        self.bg_color.setItemText(5, QCoreApplication.translate("Dialog", u"Green", None))
+        self.bg_color.setItemText(6, QCoreApplication.translate("Dialog", u"Orange", None))
+        self.bg_color.setItemText(7, QCoreApplication.translate("Dialog", u"red", None))
+        self.bg_color.setItemText(8, QCoreApplication.translate("Dialog", u"pink", None))
+        self.bg_color.setItemText(9, QCoreApplication.translate("Dialog", u"Yellow", None))
+        self.bg_color.setItemText(10, QCoreApplication.translate("Dialog", u"Light yellow", None))
+        self.bg_color.setItemText(11, QCoreApplication.translate("Dialog", u"Cyan", None))
+        self.bg_color.setItemText(12, QCoreApplication.translate("Dialog", u"Light cyan", None))
 
         self.label.setText(QCoreApplication.translate("Dialog", u"Canvis bg color :", None))
         self.bg_color_2.setItemText(0, QCoreApplication.translate("Dialog", u"Black", None))
-        self.bg_color_2.setItemText(1, QCoreApplication.translate("Dialog", u"Gray", None))
-        self.bg_color_2.setItemText(2, QCoreApplication.translate("Dialog", u"Light gray", None))
-        self.bg_color_2.setItemText(3, QCoreApplication.translate("Dialog", u"White", None))
-        self.bg_color_2.setItemText(4, QCoreApplication.translate("Dialog", u"Green", None))
-        self.bg_color_2.setItemText(5, QCoreApplication.translate("Dialog", u"Orange", None))
-        self.bg_color_2.setItemText(6, QCoreApplication.translate("Dialog", u"red", None))
-        self.bg_color_2.setItemText(7, QCoreApplication.translate("Dialog", u"pink", None))
-        self.bg_color_2.setItemText(8, QCoreApplication.translate("Dialog", u"Yellow", None))
-        self.bg_color_2.setItemText(9, QCoreApplication.translate("Dialog", u"Light yellow", None))
-        self.bg_color_2.setItemText(10, QCoreApplication.translate("Dialog", u"Cyan", None))
-        self.bg_color_2.setItemText(11, QCoreApplication.translate("Dialog", u"Light cyan", None))
+        self.bg_color_2.setItemText(1, QCoreApplication.translate("Dialog", u"Dark gray", None))
+        self.bg_color_2.setItemText(2, QCoreApplication.translate("Dialog", u"Gray", None))
+        self.bg_color_2.setItemText(3, QCoreApplication.translate("Dialog", u"Light gray", None))
+        self.bg_color_2.setItemText(4, QCoreApplication.translate("Dialog", u"White", None))
+        self.bg_color_2.setItemText(5, QCoreApplication.translate("Dialog", u"Green", None))
+        self.bg_color_2.setItemText(6, QCoreApplication.translate("Dialog", u"Orange", None))
+        self.bg_color_2.setItemText(7, QCoreApplication.translate("Dialog", u"red", None))
+        self.bg_color_2.setItemText(8, QCoreApplication.translate("Dialog", u"pink", None))
+        self.bg_color_2.setItemText(9, QCoreApplication.translate("Dialog", u"Yellow", None))
+        self.bg_color_2.setItemText(10, QCoreApplication.translate("Dialog", u"Light yellow", None))
+        self.bg_color_2.setItemText(11, QCoreApplication.translate("Dialog", u"Cyan", None))
+        self.bg_color_2.setItemText(12, QCoreApplication.translate("Dialog", u"Light cyan", None))
 
         self.lagend_lab.setText(QCoreApplication.translate("Dialog", u"Lagend :", None))
         self.lagend.setText("")

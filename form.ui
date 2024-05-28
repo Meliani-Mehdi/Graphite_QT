@@ -90,7 +90,7 @@
            <string notr="true">background-color: rgb(30, 30, 30);</string>
           </property>
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <property name="spacing">
@@ -123,7 +123,7 @@
               </size>
              </property>
              <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
+              <enum>QFrame::Shape::NoFrame</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
@@ -134,7 +134,7 @@
 }</string>
                 </property>
                 <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
+                 <enum>QFrame::Shape::NoFrame</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
@@ -293,7 +293,7 @@ QPushButton {
               <item>
                <widget class="Line" name="line">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -305,7 +305,7 @@ QPushButton {
 }</string>
                 </property>
                 <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
+                 <enum>QFrame::Shape::NoFrame</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_2">
                  <item>
@@ -470,7 +470,7 @@ QPushButton {
            <item>
             <widget class="QTabWidget" name="mode_frames">
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -502,8 +502,8 @@ QPushButton {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1408</width>
-                    <height>112</height>
+                    <width>1513</width>
+                    <height>108</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -662,7 +662,7 @@ QPushButton {
                      <item>
                       <spacer name="horizontalSpacer_4">
                        <property name="orientation">
-                        <enum>Qt::Vertical</enum>
+                        <enum>Qt::Orientation::Vertical</enum>
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
@@ -742,7 +742,7 @@ QPushButton {
                      <item>
                       <spacer name="horizontalSpacer_5">
                        <property name="orientation">
-                        <enum>Qt::Vertical</enum>
+                        <enum>Qt::Orientation::Vertical</enum>
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
@@ -803,13 +803,16 @@ QPushButton:pressed {
                </property>
                <item>
                 <widget class="QScrollArea" name="scrollArea">
+                 <property name="verticalScrollBarPolicy">
+                  <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+                 </property>
                  <property name="widgetResizable">
                   <bool>true</bool>
                  </property>
                  <widget class="QWidget" name="scrollAreaWidgetContents">
                   <property name="geometry">
                    <rect>
-                    <x>0</x>
+                    <x>-97</x>
                     <y>0</y>
                     <width>1270</width>
                     <height>113</height>
@@ -1248,7 +1251,7 @@ QPushButton:pressed {
                       <cursorShape>ArrowCursor</cursorShape>
                      </property>
                      <property name="orientation">
-                      <enum>Qt::Vertical</enum>
+                      <enum>Qt::Orientation::Vertical</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -1492,10 +1495,10 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAsNeeded</enum>
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
             </property>
             <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAsNeeded</enum>
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
             </property>
             <property name="widgetResizable">
              <bool>true</bool>
@@ -1948,7 +1951,7 @@ background-color: rgb(23, 23, 23);</string>
               <item>
                <spacer name="verticalSpacer">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2012,7 +2015,7 @@ background-color: rgb(23, 23, 23);</string>
            </size>
           </property>
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="spacing">
@@ -2116,7 +2119,7 @@ QPushButton:pressed {
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Orientation::Vertical</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2132,7 +2135,7 @@ QPushButton:pressed {
         <item>
          <widget class="QFrame" name="canv">
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
          </widget>
         </item>
@@ -2148,7 +2151,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1436</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2240,7 +2243,7 @@ QPushButton:pressed {
     <string>Exit</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="actionpref">

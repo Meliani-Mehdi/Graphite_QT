@@ -12,7 +12,7 @@ from PySide6.QtCore import QTimer
 from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
-from scipy.signal import savgol_filter, butter, filtfilt, medfilt,cheby1,butter
+from scipy.signal import savgol_filter, butter, filtfilt, medfilt, cheby1, butter
 from statsmodels.nonparametric.smoothers_lowess import lowess
 from filterpy.kalman import KalmanFilter
 from scipy.ndimage import gaussian_filter1d
@@ -30,7 +30,7 @@ class Tab(QWidget):
             '#a55194', '#ce6dbd',
         ]
         self.markers = ["None", ".", ",", "o", "^", "v", ">", "<", "2", "1", "4", "3", "8", "s", "p", "+", "P", "x", "X", "*", "h", "D", "d", "|", "_", 2, 3, 1, 0, 6, 7, 5, 4,]
-        self.fig_colors = [ '#000000', '#808080', '#D3D3D3', '#FFFFFF', '#008000', '#FFA500', '#FF0000', '#FFC0CB', '#FFFF00', '#FFFFE0', '#00FFFF', '#E0FFFF' ]
+        self.fig_colors = [ '#000000', '#2c2c2c', '#404040', '#D3D3D3', '#FFFFFF', '#008000', '#FFA500', '#FF0000', '#FFC0CB', '#FFFF00', '#FFFFE0', '#00FFFF', '#E0FFFF' ]
         self.rev_colors = self.rev_all(self.fig_colors)
         self.tab_widget = tab_widget
         self.dataframe = dataframe
@@ -47,9 +47,7 @@ class Tab(QWidget):
         self.marker = 0
         self.last_marker = 0
         self.can_color = 0
-        self.last_can_color = 0
         self.fig_color = 0
-        self.last_fig_color = 0
         self.grid = True
 
         self.time_check = False
@@ -137,6 +135,7 @@ class Tab(QWidget):
             x = event.xdata
             y = event.ydata
             self.text.set_text(f'x={x:.2f}, y={y:.2f}')
+            self.text.set_color(self.rev_colors[self.can_color])
             if x is not None and y is not None:
                 if self.button_pressed:
                     dx = x - self.press_x
@@ -146,6 +145,7 @@ class Tab(QWidget):
         else:
             self.text.set_text('')
         self.figure.canvas.draw()
+        self.text.set_text('')
 
     def on_scroll(self, event):
         if event.button == 'up':
@@ -779,18 +779,23 @@ class Tab(QWidget):
             self.last_marker = self.marker
             self.last_plot()
             return 
-        self.ax.set_title(self.name)
-        self.ax.set_xlabel(self.xlabel)
-        self.ax.set_ylabel(self.ylabel)
+        self.ax.set_title(self.name, color=self.rev_colors[self.can_color])
+        self.ax.set_xlabel(self.xlabel, color=self.rev_colors[self.can_color])
+        self.ax.set_ylabel(self.ylabel, color=self.rev_colors[self.can_color])
         if self.last_plot not in [self.to_contour_plot, self.to_contourf_plot]:
-            self.ax.legend(loc=self.legend_location).set_visible(self.legend)
-        self.ax.grid(self.grid)
-        if self.last_fig_color != self.fig_color:
-            self.last_fig_color = self.fig_color
-            self.ax.set_facecolor(self.fig_colors[self.fig_color])
-        if self.last_can_color != self.can_color:
-            self.last_can_color = self.can_color
-            self.figure.set_facecolor(self.fig_colors[self.can_color])
+            self.ax.legend(loc=self.legend_location, fancybox=True, framealpha=0.85, facecolor=self.fig_colors[self.fig_color], edgecolor=self.rev_colors[self.fig_color]).set_visible(self.legend)
+            for text in self.ax.get_legend().get_texts():
+                text.set_color(self.rev_colors[self.fig_color])
+        if self.grid:
+            self.ax.grid(True, color=self.rev_colors[self.fig_color])
+        else:
+            self.ax.grid(False)
+        self.ax.set_facecolor(self.fig_colors[self.fig_color])
+        self.figure.set_facecolor(self.fig_colors[self.can_color])
+        for spine in self.ax.spines.values():
+            spine.set_edgecolor(self.rev_colors[self.can_color])
+        self.ax.tick_params(axis='x', labelcolor=self.rev_colors[self.can_color])
+        self.ax.tick_params(axis='y', labelcolor=self.rev_colors[self.can_color])
         if self.time_check:
             self.timer.start(self.interval)
         else:

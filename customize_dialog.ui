@@ -93,6 +93,11 @@
        </item>
        <item>
         <property name="text">
+         <string>Dark gray</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>Gray</string>
         </property>
        </item>
@@ -164,6 +169,11 @@
        <item>
         <property name="text">
          <string>Black</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dark gray</string>
         </property>
        </item>
        <item>
