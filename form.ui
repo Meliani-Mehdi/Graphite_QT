@@ -469,8 +469,28 @@ QPushButton {
            </item>
            <item>
             <widget class="QTabWidget" name="mode_frames">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: white;
+    color: black; /* Optional: Change the text color if needed */
+    border: 1px solid black; /* Optional: Add a border */
+    padding: 5px; /* Optional: Add some padding for better appearance */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+/* Optional: Change the background color on hover */
+QPushButton:hover {
+    background-color: lightgray;
+}
+
+/* Optional: Change the background color when the button is pressed */
+QPushButton:pressed {
+    background-color: gray;
+}
+</string>
+             </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -500,253 +520,623 @@ QPushButton {
                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
                   <property name="geometry">
                    <rect>
-                    <x>0</x>
+                    <x>-625</x>
                     <y>0</y>
-                    <width>1368</width>
-                    <height>112</height>
+                    <width>2404</width>
+                    <height>114</height>
                    </rect>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
                    <property name="spacing">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <property name="topMargin">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <property name="rightMargin">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_8">
-                     <item>
-                      <widget class="QPushButton" name="power">
-                       <property name="text">
-                        <string>power fit</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="cubic">
-                       <property name="text">
-                        <string>cubic</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="min_max">
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="text">
-                        <string>find min max</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="linear">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/linearfff.png</normaloff>assets/buttons/algo/linearfff.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>64</width>
-                         <height>64</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="fourier">
-                       <property name="text">
-                        <string>fourier</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="sine">
-                       <property name="text">
-                        <string>sine</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="Polynome">
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>assets/buttons/algo/ppnl.png</normaloff>assets/buttons/algo/ppnl.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>80</width>
-                         <height>64</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="cosine">
-                       <property name="text">
-                        <string>cosine</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="Gaussian">
-                       <property name="text">
-                        <string>Gaussian</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="lorenzian">
-                       <property name="text">
-                        <string>lorenzian</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="voigt">
-                       <property name="text">
-                        <string>voigt</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="spline">
-                       <property name="text">
-                        <string>spline</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="lowess_2">
-                       <property name="text">
-                        <string>lowess</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="sav">
-                       <property name="text">
-                        <string>Savitzky-Golay </string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="mac">
-                       <property name="text">
-                        <string>meichaelis-menten</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="segmoidal">
-                       <property name="text">
-                        <string>segmoidal</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_4">
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
+                    <widget class="QPushButton" name="power">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>power fit</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/power_fit_plot.png</normaloff>assets/buttons/algo/power_fit_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_9">
-                     <item>
-                      <widget class="QToolButton" name="quadraple">
-                       <property name="text">
-                        <string>quadriple</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="log">
-                       <property name="text">
-                        <string>logarithm</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="logi">
-                       <property name="text">
-                        <string>logistic</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="weibull">
-                       <property name="text">
-                        <string>weibull</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="hill">
-                       <property name="text">
-                        <string>hill</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="expof">
-                       <property name="text">
-                        <string>expononcial</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="gompertz">
-                       <property name="text">
-                        <string>gompertz</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="dexpof">
-                       <property name="text">
-                        <string>dexpof</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="texpof">
-                       <property name="text">
-                        <string>txpof</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_5">
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
+                    <widget class="QPushButton" name="quadraple">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>quadriple</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="cubic">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>cubic</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/cubic_fit_plot.png</normaloff>assets/buttons/algo/cubic_fit_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="log">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>logarithm</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="linear">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>linear</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/linear_fit_plot.png</normaloff>assets/buttons/algo/linear_fit_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="logi">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>logistic</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="fourier">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>fourier</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/fourier_fit_plot.png</normaloff>assets/buttons/algo/fourier_fit_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="weibull">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>weibull</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="sine">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>sine</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/sine_fit_plot.png</normaloff>assets/buttons/algo/sine_fit_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="hill">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>hill</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="Polynome">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>polynome</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/polynomial_fit_plot.png</normaloff>assets/buttons/algo/polynomial_fit_plot.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="expof">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>expononcial</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="cosine">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>cosine</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="gompertz">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>gompertz</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="Gaussian">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Gaussian</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="dexpof">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>dexpof</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="lorenzian">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>lorenzian</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="texpof">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>txpof</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="voigt">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>voigt</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="spline">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>spline</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="lowess_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>lowess</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="sav">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Savitzky-Golay </string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="mac">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>meichaelis-menten</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="segmoidal">
+                     <property name="minimumSize">
+                      <size>
+                       <width>95</width>
+                       <height>95</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>segmoidal</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>80</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_5">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>93</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>105</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                   </layout>
                  </widget>
@@ -756,25 +1146,7 @@ QPushButton {
              </widget>
              <widget class="QWidget" name="mode_framesPage4">
               <property name="styleSheet">
-               <string notr="true">QPushButton {
-    background-color: white;
-    color: black; /* Optional: Change the text color if needed */
-    border: 1px solid black; /* Optional: Add a border */
-    padding: 5px; /* Optional: Add some padding for better appearance */
-    border-radius: 5px; /* Optional: Add rounded corners */
-}
-
-/* Optional: Change the background color on hover */
-QPushButton:hover {
-    background-color: lightgray;
-}
-
-/* Optional: Change the background color when the button is pressed */
-QPushButton:pressed {
-    background-color: gray;
-}
-
-</string>
+               <string notr="true"/>
               </property>
               <attribute name="title">
                <string>Filters</string>
@@ -798,6 +1170,9 @@ QPushButton:pressed {
                <item>
                 <widget class="QScrollArea" name="scrollArea">
                  <property name="verticalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                 </property>
+                 <property name="horizontalScrollBarPolicy">
                   <enum>Qt::ScrollBarAsNeeded</enum>
                  </property>
                  <property name="widgetResizable">
@@ -808,11 +1183,26 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1230</width>
-                    <height>113</height>
+                    <width>1222</width>
+                    <height>114</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <property name="spacing">
+                    <number>3</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>3</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>3</number>
+                   </property>
                    <item>
                     <widget class="QPushButton" name="lowpass">
                      <property name="minimumSize">
@@ -1244,6 +1634,9 @@ QPushButton:pressed {
                      <property name="cursor">
                       <cursorShape>ArrowCursor</cursorShape>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
                      <property name="sizeHint" stdset="0">
                       <size>
                        <width>40</width>
@@ -1257,11 +1650,6 @@ QPushButton:pressed {
                 </widget>
                </item>
               </layout>
-             </widget>
-             <widget class="QWidget" name="tab">
-              <attribute name="title">
-               <string>Page</string>
-              </attribute>
              </widget>
             </widget>
            </item>
@@ -1489,7 +1877,7 @@ QPushButton:pressed {
              <enum>Qt::ScrollBarAsNeeded</enum>
             </property>
             <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAsNeeded</enum>
+             <enum>Qt::ScrollBarAlwaysOff</enum>
             </property>
             <property name="widgetResizable">
              <bool>true</bool>
@@ -1500,7 +1888,7 @@ QPushButton:pressed {
                <x>0</x>
                <y>0</y>
                <width>114</width>
-               <height>1474</height>
+               <height>1434</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -1941,6 +2329,9 @@ background-color: rgb(23, 23, 23);</string>
               </item>
               <item>
                <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
@@ -2106,6 +2497,9 @@ QPushButton:pressed {
            </item>
            <item>
             <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
              <property name="sizeHint" stdset="0">
               <size>
                <width>40</width>
@@ -2136,7 +2530,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1433</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
