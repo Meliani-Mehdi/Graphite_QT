@@ -1165,7 +1165,7 @@ class Tab(QWidget):
                         self.dataframe = pd.read_excel(self.file)
                     elif ext == '.json':
                         self.dataframe = pd.read_json(self.file)
-                except Exception as e:
+                except Exception:
                     pass
 
         self.last_plot()

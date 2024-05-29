@@ -326,7 +326,6 @@ class Graphite(QMainWindow):
         self.ui.BchimieMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(2))
         self.ui.actionfilters.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(3))
 
-        self.ui.min_max.clicked.connect(self.get_min_max_values)
         self.ui.Polynome.clicked.connect(self.perform_polynomial_fit)
         self.ui.linear.clicked.connect(self.perform_linear_fit)
         self.ui.quadraple.clicked.connect(self.perform_quadratic_fit)
@@ -1181,21 +1180,6 @@ class Graphite(QMainWindow):
         except Exception as e:
             print(f"Error: {e}")
             
-
-
-
-    def get_min_max_values(self):
-        current_index = self.ui.graphTab.currentIndex()
-        if current_index != -1:
-            widget = self.ui.graphTab.widget(current_index)
-            tab_index = self.tabs.index(widget)
-            df = self.tabs[tab_index].dataframe
-            x_column = df.columns[0]
-            y_column = df.columns[1]
-            min_val = np.min(df[y_column])
-            max_val = np.max(df[y_column])
-            QMessageBox.information(self, "Min/Max Values", f"Minimum Value: {min_val}\nMaximum Value: {max_val}")
-
     #change types
     def toPlot(self):
         current_index = self.ui.graphTab.currentIndex()
