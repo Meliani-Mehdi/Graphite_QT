@@ -19,8 +19,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
     QHeaderView, QLabel, QMainWindow, QMenu,
     QMenuBar, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTabWidget, QTreeView,
-    QVBoxLayout, QWidget)
+    QSpacerItem, QStackedWidget, QTabWidget, QToolButton,
+    QTreeView, QVBoxLayout, QWidget)
 
 class Ui_Graphite(object):
     def setupUi(self, Graphite):
@@ -286,7 +286,182 @@ class Ui_Graphite(object):
 
         self.mode_frames = QTabWidget(self.frame1)
         self.mode_frames.setObjectName(u"mode_frames")
-        self.mode_frames.setStyleSheet(u"QPushButton {\n"
+        self.mode_framesPage3 = QWidget()
+        self.mode_framesPage3.setObjectName(u"mode_framesPage3")
+        self.verticalLayout_9 = QVBoxLayout(self.mode_framesPage3)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea_2 = QScrollArea(self.mode_framesPage3)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_2 = QWidget()
+        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1368, 112))
+        self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.power = QPushButton(self.scrollAreaWidgetContents_2)
+        self.power.setObjectName(u"power")
+
+        self.horizontalLayout_8.addWidget(self.power)
+
+        self.cubic = QPushButton(self.scrollAreaWidgetContents_2)
+        self.cubic.setObjectName(u"cubic")
+
+        self.horizontalLayout_8.addWidget(self.cubic)
+
+        self.min_max = QPushButton(self.scrollAreaWidgetContents_2)
+        self.min_max.setObjectName(u"min_max")
+        self.min_max.setStyleSheet(u"")
+
+        self.horizontalLayout_8.addWidget(self.min_max)
+
+        self.linear = QPushButton(self.scrollAreaWidgetContents_2)
+        self.linear.setObjectName(u"linear")
+        icon7 = QIcon()
+        icon7.addFile(u"assets/buttons/algo/linearfff.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.linear.setIcon(icon7)
+        self.linear.setIconSize(QSize(64, 64))
+
+        self.horizontalLayout_8.addWidget(self.linear)
+
+        self.fourier = QPushButton(self.scrollAreaWidgetContents_2)
+        self.fourier.setObjectName(u"fourier")
+
+        self.horizontalLayout_8.addWidget(self.fourier)
+
+        self.sine = QPushButton(self.scrollAreaWidgetContents_2)
+        self.sine.setObjectName(u"sine")
+
+        self.horizontalLayout_8.addWidget(self.sine)
+
+        self.Polynome = QPushButton(self.scrollAreaWidgetContents_2)
+        self.Polynome.setObjectName(u"Polynome")
+        icon8 = QIcon()
+        icon8.addFile(u"assets/buttons/algo/ppnl.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Polynome.setIcon(icon8)
+        self.Polynome.setIconSize(QSize(80, 64))
+
+        self.horizontalLayout_8.addWidget(self.Polynome)
+
+        self.cosine = QPushButton(self.scrollAreaWidgetContents_2)
+        self.cosine.setObjectName(u"cosine")
+
+        self.horizontalLayout_8.addWidget(self.cosine)
+
+        self.Gaussian = QPushButton(self.scrollAreaWidgetContents_2)
+        self.Gaussian.setObjectName(u"Gaussian")
+
+        self.horizontalLayout_8.addWidget(self.Gaussian)
+
+        self.lorenzian = QPushButton(self.scrollAreaWidgetContents_2)
+        self.lorenzian.setObjectName(u"lorenzian")
+
+        self.horizontalLayout_8.addWidget(self.lorenzian)
+
+        self.voigt = QPushButton(self.scrollAreaWidgetContents_2)
+        self.voigt.setObjectName(u"voigt")
+
+        self.horizontalLayout_8.addWidget(self.voigt)
+
+        self.spline = QPushButton(self.scrollAreaWidgetContents_2)
+        self.spline.setObjectName(u"spline")
+
+        self.horizontalLayout_8.addWidget(self.spline)
+
+        self.lowess_2 = QPushButton(self.scrollAreaWidgetContents_2)
+        self.lowess_2.setObjectName(u"lowess_2")
+
+        self.horizontalLayout_8.addWidget(self.lowess_2)
+
+        self.sav = QPushButton(self.scrollAreaWidgetContents_2)
+        self.sav.setObjectName(u"sav")
+
+        self.horizontalLayout_8.addWidget(self.sav)
+
+        self.mac = QPushButton(self.scrollAreaWidgetContents_2)
+        self.mac.setObjectName(u"mac")
+
+        self.horizontalLayout_8.addWidget(self.mac)
+
+        self.segmoidal = QPushButton(self.scrollAreaWidgetContents_2)
+        self.segmoidal.setObjectName(u"segmoidal")
+
+        self.horizontalLayout_8.addWidget(self.segmoidal)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_4)
+
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_8)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.quadraple = QToolButton(self.scrollAreaWidgetContents_2)
+        self.quadraple.setObjectName(u"quadraple")
+
+        self.horizontalLayout_9.addWidget(self.quadraple)
+
+        self.log = QPushButton(self.scrollAreaWidgetContents_2)
+        self.log.setObjectName(u"log")
+
+        self.horizontalLayout_9.addWidget(self.log)
+
+        self.logi = QPushButton(self.scrollAreaWidgetContents_2)
+        self.logi.setObjectName(u"logi")
+
+        self.horizontalLayout_9.addWidget(self.logi)
+
+        self.weibull = QPushButton(self.scrollAreaWidgetContents_2)
+        self.weibull.setObjectName(u"weibull")
+
+        self.horizontalLayout_9.addWidget(self.weibull)
+
+        self.hill = QPushButton(self.scrollAreaWidgetContents_2)
+        self.hill.setObjectName(u"hill")
+
+        self.horizontalLayout_9.addWidget(self.hill)
+
+        self.expof = QPushButton(self.scrollAreaWidgetContents_2)
+        self.expof.setObjectName(u"expof")
+
+        self.horizontalLayout_9.addWidget(self.expof)
+
+        self.gompertz = QPushButton(self.scrollAreaWidgetContents_2)
+        self.gompertz.setObjectName(u"gompertz")
+
+        self.horizontalLayout_9.addWidget(self.gompertz)
+
+        self.dexpof = QPushButton(self.scrollAreaWidgetContents_2)
+        self.dexpof.setObjectName(u"dexpof")
+
+        self.horizontalLayout_9.addWidget(self.dexpof)
+
+        self.texpof = QPushButton(self.scrollAreaWidgetContents_2)
+        self.texpof.setObjectName(u"texpof")
+
+        self.horizontalLayout_9.addWidget(self.texpof)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_5)
+
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_9)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        self.verticalLayout_9.addWidget(self.scrollArea_2)
+
+        self.mode_frames.addTab(self.mode_framesPage3, "")
+        self.mode_framesPage4 = QWidget()
+        self.mode_framesPage4.setObjectName(u"mode_framesPage4")
+        self.mode_framesPage4.setStyleSheet(u"QPushButton {\n"
 "    background-color: white;\n"
 "    color: black; /* Optional: Change the text color if needed */\n"
 "    border: 1px solid black; /* Optional: Add a border */\n"
@@ -303,257 +478,29 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: gray;\n"
 "}\n"
+"\n"
 "")
-        self.mode_framesPage3 = QWidget()
-        self.mode_framesPage3.setObjectName(u"mode_framesPage3")
-        self.verticalLayout_9 = QVBoxLayout(self.mode_framesPage3)
-        self.verticalLayout_9.setSpacing(0)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.scrollArea_2 = QScrollArea(self.mode_framesPage3)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_2 = QWidget()
-        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 2491, 114))
-        self.horizontalLayout_7 = QHBoxLayout(self.scrollAreaWidgetContents_2)
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.power = QPushButton(self.scrollAreaWidgetContents_2)
-        self.power.setObjectName(u"power")
-        self.power.setMinimumSize(QSize(95, 95))
-        self.power.setMaximumSize(QSize(95, 95))
-        icon7 = QIcon()
-        icon7.addFile(u"assets/buttons/algo/power_fit_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.power.setIcon(icon7)
-        self.power.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.power)
-
-        self.quadraple = QPushButton(self.scrollAreaWidgetContents_2)
-        self.quadraple.setObjectName(u"quadraple")
-        self.quadraple.setMinimumSize(QSize(95, 95))
-        self.quadraple.setMaximumSize(QSize(95, 95))
-        self.quadraple.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.quadraple)
-
-        self.cubic = QPushButton(self.scrollAreaWidgetContents_2)
-        self.cubic.setObjectName(u"cubic")
-        self.cubic.setMinimumSize(QSize(95, 95))
-        icon8 = QIcon()
-        icon8.addFile(u"assets/buttons/algo/cubic_fit_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.cubic.setIcon(icon8)
-        self.cubic.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.cubic)
-
-        self.log = QPushButton(self.scrollAreaWidgetContents_2)
-        self.log.setObjectName(u"log")
-        self.log.setMinimumSize(QSize(95, 95))
-        self.log.setMaximumSize(QSize(95, 95))
-        self.log.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.log)
-
-        self.linear = QPushButton(self.scrollAreaWidgetContents_2)
-        self.linear.setObjectName(u"linear")
-        self.linear.setMinimumSize(QSize(95, 95))
-        icon9 = QIcon()
-        icon9.addFile(u"assets/buttons/algo/linear_fit_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.linear.setIcon(icon9)
-        self.linear.setIconSize(QSize(95, 95))
-
-        self.horizontalLayout_7.addWidget(self.linear)
-
-        self.logi = QPushButton(self.scrollAreaWidgetContents_2)
-        self.logi.setObjectName(u"logi")
-        self.logi.setMinimumSize(QSize(95, 95))
-        self.logi.setMaximumSize(QSize(95, 95))
-        self.logi.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.logi)
-
-        self.fourier = QPushButton(self.scrollAreaWidgetContents_2)
-        self.fourier.setObjectName(u"fourier")
-        self.fourier.setMinimumSize(QSize(95, 95))
-        icon10 = QIcon()
-        icon10.addFile(u"assets/buttons/algo/fourier_fit_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.fourier.setIcon(icon10)
-        self.fourier.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.fourier)
-
-        self.weibull = QPushButton(self.scrollAreaWidgetContents_2)
-        self.weibull.setObjectName(u"weibull")
-        self.weibull.setMinimumSize(QSize(95, 95))
-        self.weibull.setMaximumSize(QSize(95, 95))
-        self.weibull.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.weibull)
-
-        self.sine = QPushButton(self.scrollAreaWidgetContents_2)
-        self.sine.setObjectName(u"sine")
-        self.sine.setMinimumSize(QSize(95, 95))
-        icon11 = QIcon()
-        icon11.addFile(u"assets/buttons/algo/sine_fit_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sine.setIcon(icon11)
-        self.sine.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.sine)
-
-        self.hill = QPushButton(self.scrollAreaWidgetContents_2)
-        self.hill.setObjectName(u"hill")
-        self.hill.setMinimumSize(QSize(95, 95))
-        self.hill.setMaximumSize(QSize(95, 95))
-        self.hill.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.hill)
-
-        self.Polynome = QPushButton(self.scrollAreaWidgetContents_2)
-        self.Polynome.setObjectName(u"Polynome")
-        self.Polynome.setMinimumSize(QSize(95, 95))
-        icon12 = QIcon()
-        icon12.addFile(u"assets/buttons/algo/polynomial_fit_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Polynome.setIcon(icon12)
-        self.Polynome.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.Polynome)
-
-        self.expof = QPushButton(self.scrollAreaWidgetContents_2)
-        self.expof.setObjectName(u"expof")
-        self.expof.setMinimumSize(QSize(95, 95))
-        self.expof.setMaximumSize(QSize(95, 95))
-        self.expof.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.expof)
-
-        self.cosine = QPushButton(self.scrollAreaWidgetContents_2)
-        self.cosine.setObjectName(u"cosine")
-        self.cosine.setMinimumSize(QSize(95, 95))
-        self.cosine.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.cosine)
-
-        self.gompertz = QPushButton(self.scrollAreaWidgetContents_2)
-        self.gompertz.setObjectName(u"gompertz")
-        self.gompertz.setMinimumSize(QSize(95, 95))
-        self.gompertz.setMaximumSize(QSize(95, 95))
-        self.gompertz.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.gompertz)
-
-        self.Gaussian = QPushButton(self.scrollAreaWidgetContents_2)
-        self.Gaussian.setObjectName(u"Gaussian")
-        self.Gaussian.setMinimumSize(QSize(95, 95))
-        self.Gaussian.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.Gaussian)
-
-        self.dexpof = QPushButton(self.scrollAreaWidgetContents_2)
-        self.dexpof.setObjectName(u"dexpof")
-        self.dexpof.setMinimumSize(QSize(95, 95))
-        self.dexpof.setMaximumSize(QSize(95, 95))
-        self.dexpof.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.dexpof)
-
-        self.lorenzian = QPushButton(self.scrollAreaWidgetContents_2)
-        self.lorenzian.setObjectName(u"lorenzian")
-        self.lorenzian.setMinimumSize(QSize(95, 95))
-        self.lorenzian.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.lorenzian)
-
-        self.texpof = QPushButton(self.scrollAreaWidgetContents_2)
-        self.texpof.setObjectName(u"texpof")
-        self.texpof.setMinimumSize(QSize(95, 95))
-        self.texpof.setMaximumSize(QSize(95, 95))
-        self.texpof.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.texpof)
-
-        self.voigt = QPushButton(self.scrollAreaWidgetContents_2)
-        self.voigt.setObjectName(u"voigt")
-        self.voigt.setMinimumSize(QSize(95, 95))
-        self.voigt.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.voigt)
-
-        self.spline = QPushButton(self.scrollAreaWidgetContents_2)
-        self.spline.setObjectName(u"spline")
-        self.spline.setMinimumSize(QSize(95, 95))
-        self.spline.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.spline)
-
-        self.lowess_2 = QPushButton(self.scrollAreaWidgetContents_2)
-        self.lowess_2.setObjectName(u"lowess_2")
-        self.lowess_2.setMinimumSize(QSize(95, 95))
-        self.lowess_2.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.lowess_2)
-
-        self.sav = QPushButton(self.scrollAreaWidgetContents_2)
-        self.sav.setObjectName(u"sav")
-        self.sav.setMinimumSize(QSize(95, 95))
-        self.sav.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.sav)
-
-        self.mac = QPushButton(self.scrollAreaWidgetContents_2)
-        self.mac.setObjectName(u"mac")
-        self.mac.setMinimumSize(QSize(95, 95))
-        self.mac.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.mac)
-
-        self.segmoidal = QPushButton(self.scrollAreaWidgetContents_2)
-        self.segmoidal.setObjectName(u"segmoidal")
-        self.segmoidal.setMinimumSize(QSize(95, 95))
-        self.segmoidal.setIconSize(QSize(80, 80))
-
-        self.horizontalLayout_7.addWidget(self.segmoidal)
-
-        self.horizontalSpacer_5 = QSpacerItem(93, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_7.addItem(self.horizontalSpacer_5)
-
-        self.horizontalSpacer_4 = QSpacerItem(40, 93, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.horizontalLayout_7.addItem(self.horizontalSpacer_4)
-
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-
-        self.verticalLayout_9.addWidget(self.scrollArea_2)
-
-        self.mode_frames.addTab(self.mode_framesPage3, "")
-        self.mode_framesPage4 = QWidget()
-        self.mode_framesPage4.setObjectName(u"mode_framesPage4")
-        self.mode_framesPage4.setStyleSheet(u"")
         self.verticalLayout_7 = QVBoxLayout(self.mode_framesPage4)
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.scrollArea = QScrollArea(self.mode_framesPage4)
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1222, 114))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1230, 113))
         self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
-        self.horizontalLayout_6.setSpacing(3)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(3, 3, 3, 3)
         self.lowpass = QPushButton(self.scrollAreaWidgetContents)
         self.lowpass.setObjectName(u"lowpass")
         self.lowpass.setMinimumSize(QSize(95, 95))
         self.lowpass.setMaximumSize(QSize(95, 95))
         self.lowpass.setCursor(QCursor(Qt.PointingHandCursor))
-        icon13 = QIcon()
-        icon13.addFile(u"assets/buttons/algo/lowpass_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.lowpass.setIcon(icon13)
+        icon9 = QIcon()
+        icon9.addFile(u"assets/buttons/algo/lowpass_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.lowpass.setIcon(icon9)
         self.lowpass.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.lowpass)
@@ -564,9 +511,9 @@ class Ui_Graphite(object):
         self.bandpass.setMaximumSize(QSize(95, 95))
         self.bandpass.setCursor(QCursor(Qt.PointingHandCursor))
         self.bandpass.setStyleSheet(u"")
-        icon14 = QIcon()
-        icon14.addFile(u"assets/buttons/algo/bandpass_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.bandpass.setIcon(icon14)
+        icon10 = QIcon()
+        icon10.addFile(u"assets/buttons/algo/bandpass_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bandpass.setIcon(icon10)
         self.bandpass.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.bandpass)
@@ -576,9 +523,9 @@ class Ui_Graphite(object):
         self.highpass.setMinimumSize(QSize(95, 95))
         self.highpass.setMaximumSize(QSize(95, 95))
         self.highpass.setCursor(QCursor(Qt.PointingHandCursor))
-        icon15 = QIcon()
-        icon15.addFile(u"assets/buttons/algo/highpass_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.highpass.setIcon(icon15)
+        icon11 = QIcon()
+        icon11.addFile(u"assets/buttons/algo/highpass_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.highpass.setIcon(icon11)
         self.highpass.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.highpass)
@@ -588,9 +535,9 @@ class Ui_Graphite(object):
         self.lowess.setMinimumSize(QSize(95, 95))
         self.lowess.setMaximumSize(QSize(95, 95))
         self.lowess.setCursor(QCursor(Qt.PointingHandCursor))
-        icon16 = QIcon()
-        icon16.addFile(u"assets/buttons/algo/lowess_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.lowess.setIcon(icon16)
+        icon12 = QIcon()
+        icon12.addFile(u"assets/buttons/algo/lowess_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.lowess.setIcon(icon12)
         self.lowess.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.lowess)
@@ -601,9 +548,9 @@ class Ui_Graphite(object):
         self.boxcar.setMaximumSize(QSize(95, 95))
         self.boxcar.setCursor(QCursor(Qt.PointingHandCursor))
         self.boxcar.setStyleSheet(u"")
-        icon17 = QIcon()
-        icon17.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.boxcar.setIcon(icon17)
+        icon13 = QIcon()
+        icon13.addFile(u"assets/buttons/algo/boxcar_no_bg.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.boxcar.setIcon(icon13)
         self.boxcar.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.boxcar)
@@ -613,9 +560,9 @@ class Ui_Graphite(object):
         self.sheb.setMinimumSize(QSize(95, 95))
         self.sheb.setMaximumSize(QSize(95, 95))
         self.sheb.setCursor(QCursor(Qt.PointingHandCursor))
-        icon18 = QIcon()
-        icon18.addFile(u"assets/buttons/algo/chebyshev_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.sheb.setIcon(icon18)
+        icon14 = QIcon()
+        icon14.addFile(u"assets/buttons/algo/chebyshev_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.sheb.setIcon(icon14)
         self.sheb.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.sheb)
@@ -625,9 +572,9 @@ class Ui_Graphite(object):
         self.savi.setMinimumSize(QSize(95, 95))
         self.savi.setMaximumSize(QSize(95, 95))
         self.savi.setCursor(QCursor(Qt.PointingHandCursor))
-        icon19 = QIcon()
-        icon19.addFile(u"assets/buttons/algo/savgol_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.savi.setIcon(icon19)
+        icon15 = QIcon()
+        icon15.addFile(u"assets/buttons/algo/savgol_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.savi.setIcon(icon15)
         self.savi.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.savi)
@@ -637,9 +584,9 @@ class Ui_Graphite(object):
         self.move.setMinimumSize(QSize(95, 95))
         self.move.setMaximumSize(QSize(95, 95))
         self.move.setCursor(QCursor(Qt.PointingHandCursor))
-        icon20 = QIcon()
-        icon20.addFile(u"assets/buttons/algo/moving_avg_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.move.setIcon(icon20)
+        icon16 = QIcon()
+        icon16.addFile(u"assets/buttons/algo/moving_avg_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move.setIcon(icon16)
         self.move.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.move)
@@ -649,9 +596,9 @@ class Ui_Graphite(object):
         self.butter.setMinimumSize(QSize(95, 95))
         self.butter.setMaximumSize(QSize(95, 95))
         self.butter.setCursor(QCursor(Qt.PointingHandCursor))
-        icon21 = QIcon()
-        icon21.addFile(u"assets/buttons/algo/butterworth_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.butter.setIcon(icon21)
+        icon17 = QIcon()
+        icon17.addFile(u"assets/buttons/algo/butterworth_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.butter.setIcon(icon17)
         self.butter.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.butter)
@@ -661,9 +608,9 @@ class Ui_Graphite(object):
         self.median.setMinimumSize(QSize(95, 95))
         self.median.setMaximumSize(QSize(95, 95))
         self.median.setCursor(QCursor(Qt.PointingHandCursor))
-        icon22 = QIcon()
-        icon22.addFile(u"assets/buttons/algo/median_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.median.setIcon(icon22)
+        icon18 = QIcon()
+        icon18.addFile(u"assets/buttons/algo/median_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.median.setIcon(icon18)
         self.median.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.median)
@@ -673,9 +620,9 @@ class Ui_Graphite(object):
         self.gaus.setMinimumSize(QSize(95, 95))
         self.gaus.setMaximumSize(QSize(95, 95))
         self.gaus.setCursor(QCursor(Qt.PointingHandCursor))
-        icon23 = QIcon()
-        icon23.addFile(u"assets/buttons/algo/gaussian_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.gaus.setIcon(icon23)
+        icon19 = QIcon()
+        icon19.addFile(u"assets/buttons/algo/gaussian_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.gaus.setIcon(icon19)
         self.gaus.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.gaus)
@@ -685,14 +632,14 @@ class Ui_Graphite(object):
         self.exponon.setMinimumSize(QSize(95, 95))
         self.exponon.setMaximumSize(QSize(95, 95))
         self.exponon.setCursor(QCursor(Qt.PointingHandCursor))
-        icon24 = QIcon()
-        icon24.addFile(u"assets/buttons/algo/exponential_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.exponon.setIcon(icon24)
+        icon20 = QIcon()
+        icon20.addFile(u"assets/buttons/algo/exponential_filter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.exponon.setIcon(icon20)
         self.exponon.setIconSize(QSize(80, 80))
 
         self.horizontalLayout_6.addWidget(self.exponon)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 93, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer_2 = QSpacerItem(40, 93, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
 
@@ -701,6 +648,9 @@ class Ui_Graphite(object):
         self.verticalLayout_7.addWidget(self.scrollArea)
 
         self.mode_frames.addTab(self.mode_framesPage4, "")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.mode_frames.addTab(self.tab, "")
 
         self.horizontalLayout_3.addWidget(self.mode_frames)
 
@@ -741,9 +691,9 @@ class Ui_Graphite(object):
         self.lagend_select.setMinimumSize(QSize(32, 32))
         self.lagend_select.setMaximumSize(QSize(32, 32))
         self.lagend_select.setCursor(QCursor(Qt.PointingHandCursor))
-        icon25 = QIcon()
-        icon25.addFile(u"assets/legend.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.lagend_select.setIcon(icon25)
+        icon21 = QIcon()
+        icon21.addFile(u"assets/legend.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.lagend_select.setIcon(icon21)
         self.lagend_select.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_2.addWidget(self.lagend_select)
@@ -753,9 +703,9 @@ class Ui_Graphite(object):
         self.fullscreen.setMinimumSize(QSize(32, 32))
         self.fullscreen.setMaximumSize(QSize(32, 32))
         self.fullscreen.setCursor(QCursor(Qt.PointingHandCursor))
-        icon26 = QIcon()
-        icon26.addFile(u"assets/fullscreen.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.fullscreen.setIcon(icon26)
+        icon22 = QIcon()
+        icon22.addFile(u"assets/fullscreen.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.fullscreen.setIcon(icon22)
         self.fullscreen.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_2.addWidget(self.fullscreen)
@@ -765,9 +715,9 @@ class Ui_Graphite(object):
         self.focus.setMinimumSize(QSize(32, 32))
         self.focus.setMaximumSize(QSize(32, 32))
         self.focus.setCursor(QCursor(Qt.PointingHandCursor))
-        icon27 = QIcon()
-        icon27.addFile(u"assets/focus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.focus.setIcon(icon27)
+        icon23 = QIcon()
+        icon23.addFile(u"assets/focus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.focus.setIcon(icon23)
         self.focus.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_2.addWidget(self.focus)
@@ -803,11 +753,11 @@ class Ui_Graphite(object):
         self.graphTypes.setMinimumSize(QSize(130, 0))
         self.graphTypes.setMaximumSize(QSize(130, 16777215))
         self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1434))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 1474))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -819,9 +769,9 @@ class Ui_Graphite(object):
         self.plot.setMinimumSize(QSize(110, 110))
         self.plot.setMaximumSize(QSize(110, 110))
         self.plot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon28 = QIcon()
-        icon28.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.plot.setIcon(icon28)
+        icon24 = QIcon()
+        icon24.addFile(u"assets/buttons/types/plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.plot.setIcon(icon24)
         self.plot.setIconSize(QSize(120, 120))
 
         self.verticalLayout_3.addWidget(self.plot)
@@ -831,9 +781,9 @@ class Ui_Graphite(object):
         self.histogram.setMinimumSize(QSize(110, 110))
         self.histogram.setMaximumSize(QSize(110, 110))
         self.histogram.setCursor(QCursor(Qt.PointingHandCursor))
-        icon29 = QIcon()
-        icon29.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.histogram.setIcon(icon29)
+        icon25 = QIcon()
+        icon25.addFile(u"assets/buttons/types/Bar-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.histogram.setIcon(icon25)
         self.histogram.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.histogram)
@@ -843,9 +793,9 @@ class Ui_Graphite(object):
         self.piechart.setMinimumSize(QSize(110, 110))
         self.piechart.setMaximumSize(QSize(110, 110))
         self.piechart.setCursor(QCursor(Qt.PointingHandCursor))
-        icon30 = QIcon()
-        icon30.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.piechart.setIcon(icon30)
+        icon26 = QIcon()
+        icon26.addFile(u"assets/buttons/types/Pie-Chart.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.piechart.setIcon(icon26)
         self.piechart.setIconSize(QSize(110, 110))
 
         self.verticalLayout_3.addWidget(self.piechart)
@@ -855,9 +805,9 @@ class Ui_Graphite(object):
         self.scatterplot.setMinimumSize(QSize(110, 110))
         self.scatterplot.setMaximumSize(QSize(110, 110))
         self.scatterplot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon31 = QIcon()
-        icon31.addFile(u"assets/buttons/types/scatter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.scatterplot.setIcon(icon31)
+        icon27 = QIcon()
+        icon27.addFile(u"assets/buttons/types/scatter_plot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.scatterplot.setIcon(icon27)
         self.scatterplot.setIconSize(QSize(110, 110))
 
         self.verticalLayout_3.addWidget(self.scatterplot)
@@ -867,9 +817,9 @@ class Ui_Graphite(object):
         self.fill_between.setMinimumSize(QSize(110, 110))
         self.fill_between.setMaximumSize(QSize(110, 110))
         self.fill_between.setCursor(QCursor(Qt.PointingHandCursor))
-        icon32 = QIcon()
-        icon32.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.fill_between.setIcon(icon32)
+        icon28 = QIcon()
+        icon28.addFile(u"assets/buttons/types/fill_between.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.fill_between.setIcon(icon28)
         self.fill_between.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.fill_between)
@@ -879,9 +829,9 @@ class Ui_Graphite(object):
         self.stackplot.setMinimumSize(QSize(110, 110))
         self.stackplot.setMaximumSize(QSize(110, 110))
         self.stackplot.setCursor(QCursor(Qt.PointingHandCursor))
-        icon33 = QIcon()
-        icon33.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.stackplot.setIcon(icon33)
+        icon29 = QIcon()
+        icon29.addFile(u"assets/buttons/types/stackplot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.stackplot.setIcon(icon29)
         self.stackplot.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.stackplot)
@@ -891,9 +841,9 @@ class Ui_Graphite(object):
         self.contour.setMinimumSize(QSize(110, 110))
         self.contour.setMaximumSize(QSize(110, 110))
         self.contour.setCursor(QCursor(Qt.PointingHandCursor))
-        icon34 = QIcon()
-        icon34.addFile(u"assets/buttons/types/contour.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.contour.setIcon(icon34)
+        icon30 = QIcon()
+        icon30.addFile(u"assets/buttons/types/contour.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.contour.setIcon(icon30)
         self.contour.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.contour)
@@ -903,9 +853,9 @@ class Ui_Graphite(object):
         self.contourf.setMinimumSize(QSize(110, 110))
         self.contourf.setMaximumSize(QSize(110, 110))
         self.contourf.setCursor(QCursor(Qt.PointingHandCursor))
-        icon35 = QIcon()
-        icon35.addFile(u"assets/buttons/types/contourf.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.contourf.setIcon(icon35)
+        icon31 = QIcon()
+        icon31.addFile(u"assets/buttons/types/contourf.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.contourf.setIcon(icon31)
         self.contourf.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.contourf)
@@ -915,9 +865,9 @@ class Ui_Graphite(object):
         self.pushButton_10.setMinimumSize(QSize(110, 110))
         self.pushButton_10.setMaximumSize(QSize(110, 110))
         self.pushButton_10.setCursor(QCursor(Qt.PointingHandCursor))
-        icon36 = QIcon()
-        icon36.addFile(u"assets/buttons/types/imshow.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_10.setIcon(icon36)
+        icon32 = QIcon()
+        icon32.addFile(u"assets/buttons/types/imshow.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_10.setIcon(icon32)
         self.pushButton_10.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_10)
@@ -927,9 +877,9 @@ class Ui_Graphite(object):
         self.pushButton_9.setMinimumSize(QSize(110, 110))
         self.pushButton_9.setMaximumSize(QSize(110, 110))
         self.pushButton_9.setCursor(QCursor(Qt.PointingHandCursor))
-        icon37 = QIcon()
-        icon37.addFile(u"assets/buttons/types/pcolormesh.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_9.setIcon(icon37)
+        icon33 = QIcon()
+        icon33.addFile(u"assets/buttons/types/pcolormesh.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_9.setIcon(icon33)
         self.pushButton_9.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_9)
@@ -939,9 +889,9 @@ class Ui_Graphite(object):
         self.pushButton_8.setMinimumSize(QSize(110, 110))
         self.pushButton_8.setMaximumSize(QSize(110, 110))
         self.pushButton_8.setCursor(QCursor(Qt.PointingHandCursor))
-        icon38 = QIcon()
-        icon38.addFile(u"assets/buttons/types/surface_3d.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_8.setIcon(icon38)
+        icon34 = QIcon()
+        icon34.addFile(u"assets/buttons/types/surface_3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_8.setIcon(icon34)
         self.pushButton_8.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_8)
@@ -951,9 +901,9 @@ class Ui_Graphite(object):
         self.pushButton_7.setMinimumSize(QSize(110, 110))
         self.pushButton_7.setMaximumSize(QSize(110, 110))
         self.pushButton_7.setCursor(QCursor(Qt.PointingHandCursor))
-        icon39 = QIcon()
-        icon39.addFile(u"assets/buttons/types/trisurf3d.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_7.setIcon(icon39)
+        icon35 = QIcon()
+        icon35.addFile(u"assets/buttons/types/trisurf3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_7.setIcon(icon35)
         self.pushButton_7.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_7)
@@ -963,14 +913,14 @@ class Ui_Graphite(object):
         self.pushButton_5.setMinimumSize(QSize(110, 110))
         self.pushButton_5.setMaximumSize(QSize(110, 110))
         self.pushButton_5.setCursor(QCursor(Qt.PointingHandCursor))
-        icon40 = QIcon()
-        icon40.addFile(u"assets/buttons/types/wire3d.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_5.setIcon(icon40)
+        icon36 = QIcon()
+        icon36.addFile(u"assets/buttons/types/wire3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_5.setIcon(icon36)
         self.pushButton_5.setIconSize(QSize(100, 100))
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -1021,9 +971,9 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: rgba(0, 0, 0, 0.5);\n"
 "}")
-        icon41 = QIcon()
-        icon41.addFile(u"assets/back.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.backM.setIcon(icon41)
+        icon37 = QIcon()
+        icon37.addFile(u"assets/back.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.backM.setIcon(icon37)
         self.backM.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_5.addWidget(self.backM)
@@ -1039,12 +989,12 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: rgba(0, 0, 0, 0.5);\n"
 "}")
-        self.focus_2.setIcon(icon27)
+        self.focus_2.setIcon(icon23)
         self.focus_2.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_5.addWidget(self.focus_2)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
@@ -1066,7 +1016,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1433, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1433, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -1111,7 +1061,7 @@ class Ui_Graphite(object):
         self.retranslateUi(Graphite)
 
         self.main.setCurrentIndex(0)
-        self.mode_frames.setCurrentIndex(0)
+        self.mode_frames.setCurrentIndex(1)
         self.graphTab.setCurrentIndex(-1)
 
 
@@ -1162,48 +1112,31 @@ class Ui_Graphite(object):
         self.describe.setText(QCoreApplication.translate("Graphite", u"describe", None))
         self.custom_button.setText(QCoreApplication.translate("Graphite", u"Customize", None))
         self.worksheet.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
-#if QT_CONFIG(tooltip)
-        self.power.setToolTip(QCoreApplication.translate("Graphite", u"power fit", None))
-#endif // QT_CONFIG(tooltip)
-        self.power.setText("")
-        self.quadraple.setText(QCoreApplication.translate("Graphite", u"quadriple", None))
-#if QT_CONFIG(tooltip)
-        self.cubic.setToolTip(QCoreApplication.translate("Graphite", u"cubic", None))
-#endif // QT_CONFIG(tooltip)
-        self.cubic.setText("")
-        self.log.setText(QCoreApplication.translate("Graphite", u"logarithm", None))
-#if QT_CONFIG(tooltip)
-        self.linear.setToolTip(QCoreApplication.translate("Graphite", u"linear", None))
-#endif // QT_CONFIG(tooltip)
+        self.power.setText(QCoreApplication.translate("Graphite", u"power fit", None))
+        self.cubic.setText(QCoreApplication.translate("Graphite", u"cubic", None))
+        self.min_max.setText(QCoreApplication.translate("Graphite", u"find min max", None))
         self.linear.setText("")
-        self.logi.setText(QCoreApplication.translate("Graphite", u"logistic", None))
-#if QT_CONFIG(tooltip)
-        self.fourier.setToolTip(QCoreApplication.translate("Graphite", u"fourier", None))
-#endif // QT_CONFIG(tooltip)
-        self.fourier.setText("")
-        self.weibull.setText(QCoreApplication.translate("Graphite", u"weibull", None))
-#if QT_CONFIG(tooltip)
-        self.sine.setToolTip(QCoreApplication.translate("Graphite", u"sine", None))
-#endif // QT_CONFIG(tooltip)
-        self.sine.setText("")
-        self.hill.setText(QCoreApplication.translate("Graphite", u"hill", None))
-#if QT_CONFIG(tooltip)
-        self.Polynome.setToolTip(QCoreApplication.translate("Graphite", u"polynome", None))
-#endif // QT_CONFIG(tooltip)
+        self.fourier.setText(QCoreApplication.translate("Graphite", u"fourier", None))
+        self.sine.setText(QCoreApplication.translate("Graphite", u"sine", None))
         self.Polynome.setText("")
-        self.expof.setText(QCoreApplication.translate("Graphite", u"expononcial", None))
         self.cosine.setText(QCoreApplication.translate("Graphite", u"cosine", None))
-        self.gompertz.setText(QCoreApplication.translate("Graphite", u"gompertz", None))
         self.Gaussian.setText(QCoreApplication.translate("Graphite", u"Gaussian", None))
-        self.dexpof.setText(QCoreApplication.translate("Graphite", u"dexpof", None))
         self.lorenzian.setText(QCoreApplication.translate("Graphite", u"lorenzian", None))
-        self.texpof.setText(QCoreApplication.translate("Graphite", u"txpof", None))
         self.voigt.setText(QCoreApplication.translate("Graphite", u"voigt", None))
         self.spline.setText(QCoreApplication.translate("Graphite", u"spline", None))
         self.lowess_2.setText(QCoreApplication.translate("Graphite", u"lowess", None))
         self.sav.setText(QCoreApplication.translate("Graphite", u"Savitzky-Golay ", None))
         self.mac.setText(QCoreApplication.translate("Graphite", u"meichaelis-menten", None))
         self.segmoidal.setText(QCoreApplication.translate("Graphite", u"segmoidal", None))
+        self.quadraple.setText(QCoreApplication.translate("Graphite", u"quadriple", None))
+        self.log.setText(QCoreApplication.translate("Graphite", u"logarithm", None))
+        self.logi.setText(QCoreApplication.translate("Graphite", u"logistic", None))
+        self.weibull.setText(QCoreApplication.translate("Graphite", u"weibull", None))
+        self.hill.setText(QCoreApplication.translate("Graphite", u"hill", None))
+        self.expof.setText(QCoreApplication.translate("Graphite", u"expononcial", None))
+        self.gompertz.setText(QCoreApplication.translate("Graphite", u"gompertz", None))
+        self.dexpof.setText(QCoreApplication.translate("Graphite", u"dexpof", None))
+        self.texpof.setText(QCoreApplication.translate("Graphite", u"txpof", None))
         self.mode_frames.setTabText(self.mode_frames.indexOf(self.mode_framesPage3), QCoreApplication.translate("Graphite", u"Fittings", None))
 #if QT_CONFIG(tooltip)
         self.lowpass.setToolTip(QCoreApplication.translate("Graphite", u"Lowpass", None))
@@ -1254,6 +1187,7 @@ class Ui_Graphite(object):
 #endif // QT_CONFIG(tooltip)
         self.exponon.setText("")
         self.mode_frames.setTabText(self.mode_frames.indexOf(self.mode_framesPage4), QCoreApplication.translate("Graphite", u"Filters", None))
+        self.mode_frames.setTabText(self.mode_frames.indexOf(self.tab), QCoreApplication.translate("Graphite", u"Page", None))
         self.folder_icon.setText("")
         self.project_lab.setText(QCoreApplication.translate("Graphite", u" Project Tree", None))
         self.lagend_select.setText("")

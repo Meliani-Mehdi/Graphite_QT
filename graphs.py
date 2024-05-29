@@ -454,17 +454,31 @@ class Tab(QWidget):
            filtered_data = gaussian_filter1d(dataframe, sigma, axis=0)
            return filtered_data
 
-
     def apply_chebyshev_filter(self, dataframe, Wn, rp, rs):
         b, a = cheby1(4, rp, Wn, 'lowpass', fs=1)
         filtered_data = np.apply_along_axis(lambda x: np.convolve(x, b/a, mode='same'), axis=0, arr=dataframe)
         self.dataframe = pd.DataFrame(filtered_data, columns=dataframe.columns)
         return filtered_data
 
+
+
     def apply_boxcar_filter(self, dataframe, window_size):
         kernel = np.ones(window_size) / window_size
         filtered_data = np.apply_along_axis(lambda x: np.convolve(x, kernel, mode='same'), axis=0, arr=dataframe)
         return filtered_data
+
+    def apply_filter_with_dynamic_order(self, filter_func, dataframe, *args, **kwargs):
+           data_length = len(dataframe)
+           for order in range(1, 10):  # Try filter orders from 1 to 9
+               try:
+                   b, a = filter_func(order, *args, **kwargs)
+                   padlen = 3 * max(len(a), len(b))
+                   if data_length > padlen:
+                       filtered_data = filtfilt(b, a, dataframe.values, axis=0)
+                       return pd.DataFrame(filtered_data, columns=dataframe.columns, index=dataframe.index)
+               except ValueError as e:
+                   continue
+           raise ValueError(f"Input data length must be greater than padlen ({padlen}) even for the smallest order.")
 
 
 
@@ -479,20 +493,14 @@ class Tab(QWidget):
      #   filtered_data = np.apply_along_axis(lambda x: np.convolve(x, b/a, mode='same'), axis=0, arr=dataframe)
       #  return filtered_data
 
-    def apply_bandpass_filter(self, dataframe, lowcut, highcut, fs, order):
-        b, a = butter(order, [lowcut, highcut], btype='band', fs=fs)
-        filtered_data = filtfilt(b, a, dataframe, axis=0)
-        return filtered_data
-
     def apply_lowpass_filter(self, dataframe, cutoff, fs, order):
-        b, a = butter(order, cutoff, btype='low', fs=fs)
-        filtered_data = filtfilt(b, a, dataframe, axis=0)
-        return filtered_data
+        return self.apply_filter_with_dynamic_order(butter, dataframe, cutoff, btype='low', fs=fs)
+
+    def apply_bandpass_filter(self, dataframe, lowcut, highcut, fs, order):
+        return self.apply_filter_with_dynamic_order(butter, dataframe, [lowcut, highcut], btype='band', fs=fs)
 
     def apply_highpass_filter(self, dataframe, cutoff, fs, order):
-        b, a = butter(order, cutoff, btype='high', fs=fs)
-        filtered_data = filtfilt(b, a, dataframe, axis=0)
-        return filtered_data
+        return self.apply_filter_with_dynamic_order(butter, dataframe, cutoff, btype='high', fs=fs)
 
     def lowess_filter(self, x_data, y_data, frac):
         smoothed = lowess(y_data, x_data, frac=frac)
@@ -627,7 +635,7 @@ class Tab(QWidget):
                 return a / (1 + np.exp(-c * (x - d))) + b
 
             initial_guesses = [max(y_data), min(y_data), 1.0, np.mean(x_data)]
-            popt, pcov = curve_fit(sigmoidal_func, x_data, y_data,maxfev=10000, p0=initial_guesses)
+            popt, pcov = curve_fit(sigmoidal_func, x_data, y_data,maxfev=1000000, p0=initial_guesses)
             a, b, c, d = popt
             y_fit = sigmoidal_func(x_data, a, b, c, d)
 
