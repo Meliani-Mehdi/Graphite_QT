@@ -58,8 +58,8 @@ class RecentFileWidget(QWidget):
         self.remove_button.setIconSize(QSize(14, 14))
         self.remove_button.setFixedSize(15, 15)
         self.remove_button.setStyleSheet(u"QPushButton {\n"
-                                        "    border: none;\n"
-                                        "}")
+            "    border: none;\n"
+            "}")
 
         self.remove_button.setToolTip(path)
         self.remove_button.clicked.connect(self.on_remove)
@@ -311,13 +311,13 @@ class Graphite(QMainWindow):
         self.ui.treeView.setDragEnabled(True)
         self.ui.treeView.setAcceptDrops(True)
         self.ui.treeView.setDropIndicatorShown(True)
-        
+
         self.ui.treeView.setDragDropMode(QAbstractItemView.InternalMove)
 
         self.ui.treeView.dragEnterEvent = self.dragEnterEvent
         self.ui.treeView.dragMoveEvent = self.dragMoveEvent
         self.ui.treeView.dropEvent = self.dropEvent
-        
+
         self.ui.treeView.doubleClicked.connect(self.treeFileIndex)
 
 
@@ -414,13 +414,8 @@ class Graphite(QMainWindow):
         self.function_dialog = FunctionDialog(self)
         self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
         self.ui.actionfx.triggered.connect(self.show_function_dialog)
-        
+
         self.ui.lagend_select.clicked.connect(self.show_lagend_dialog)
-
-
-
-
-
 
 
     def modify_current_tab(self):
@@ -467,7 +462,7 @@ class Graphite(QMainWindow):
             num_rows = table_widget.rowCount()
             num_cols = table_widget.columnCount()
 
-                # Check if at least 3 rows are present in the worksheet
+            # Check if at least 3 rows are present in the worksheet
             if num_rows < 2:
                 QMessageBox.warning(self, "Selection Error", "The worksheet must have at least 3 rows to modify the plot.")
                 return
@@ -571,10 +566,14 @@ class Graphite(QMainWindow):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             Wn, ok1 = QInputDialog.getDouble(self, "Chebyshev Filter", "Enter the critical frequency (0-1):", value=0.5, decimals=2)
+            if not ok1:
+                return
             rp, ok2 = QInputDialog.getDouble(self, "Chebyshev Filter", "Enter the passband ripple (dB):", value=1.0)
+            if not ok2:
+                return
             rs, ok3 = QInputDialog.getDouble(self, "Chebyshev Filter", "Enter the stopband attenuation (dB):", value=20.0)
 
-            if ok1 and ok2 and ok3:
+            if ok3:
                 Wn /= 2.0
                 widget = self.ui.graphTab.widget(current_index)
                 tab_index = self.tabs.index(widget)
@@ -683,22 +682,24 @@ class Graphite(QMainWindow):
 
     # def apply_notch_filter(self):
     #    current_index = self.ui.graphTab.currentIndex()
-     #   if current_index != -1:
-      #      Q, ok1 = QInputDialog.getDouble(self, "Notch Filter", "Enter the Q factor:", value=10.0, decimals=1)
-       #     freq, ok2 = QInputDialog.getDouble(self, "Notch Filter", "Enter the frequency to be filtered:", value=0.0)
-        #    if ok1 and ok2:
-         #       widget = self.ui.graphTab.widget(current_index)
-          #      tab_index = self.tabs.index(widget)
-           #     tab = self.tabs[tab_index]
-            #    filtered_data = tab.apply_notch_filter(tab.dataframe, Q, freq)
-             #   tab.plot_filtered_data(filtered_data)
+    #   if current_index != -1:
+    #      Q, ok1 = QInputDialog.getDouble(self, "Notch Filter", "Enter the Q factor:", value=10.0, decimals=1)
+    #     freq, ok2 = QInputDialog.getDouble(self, "Notch Filter", "Enter the frequency to be filtered:", value=0.0)
+    #    if ok1 and ok2:
+    #       widget = self.ui.graphTab.widget(current_index)
+    #      tab_index = self.tabs.index(widget)
+    #     tab = self.tabs[tab_index]
+    #    filtered_data = tab.apply_notch_filter(tab.dataframe, Q, freq)
+    #   tab.plot_filtered_data(filtered_data)
 
     def apply_savitzky_golay_filter(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             window_length, ok1 = QInputDialog.getInt(self, "Savitzky-Golay Filter", "Enter window length:", value=5, minValue=3)
+            if not ok1:
+                return 
             polyorder, ok2 = QInputDialog.getInt(self, "Savitzky-Golay Filter", "Enter polynomial order:", value=2, minValue=0)
-            if ok1 and ok2:
+            if ok2:
                 widget = self.ui.graphTab.widget(current_index)
                 tab_index = self.tabs.index(widget)
                 tab = self.tabs[tab_index]
@@ -717,14 +718,14 @@ class Graphite(QMainWindow):
         if current_index != -1:
             degree, ok = QInputDialog.getInt(self, 'Degree of Polynomial', 'Enter the degree of the polynomial:')
             if ok:
-               widget = self.ui.graphTab.widget(current_index)
-               tab_index = self.tabs.index(widget)
-               tab = self.tabs[tab_index]
+                widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            tab = self.tabs[tab_index]
 
-               x_data = tab.dataframe.iloc[:, 0].values
-               y_data = tab.dataframe.iloc[:, 1].values
+            x_data = tab.dataframe.iloc[:, 0].values
+            y_data = tab.dataframe.iloc[:, 1].values
 
-               tab.plot_polynomial_curve(x_data, y_data, degree)
+            tab.plot_polynomial_curve(x_data, y_data, degree)
 
     def perform_quadratic_fit(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -741,8 +742,8 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
@@ -763,14 +764,18 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             if button == "lowpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the cutoff frequency:", value=0.5)
+                if not ok1:
+                    return
                 fs, ok2 = QInputDialog.getDouble(self, "Lowpass Filter", "Enter the sampling frequency:", value=100.0)
+                if not ok2:
+                    return
                 order, ok3 = QInputDialog.getInt(self, "Lowpass Filter", "Enter the filter order:", value=3)
-                if ok1 and ok2 and ok3:
+                if ok3:
                     widget = self.ui.graphTab.widget(current_index)
                     tab_index = self.tabs.index(widget)
                     tab = self.tabs[tab_index]
@@ -778,10 +783,16 @@ class Graphite(QMainWindow):
                     tab.plot_filtered_data(filtered_data)
             elif button == "bandpass":
                 lowcut, ok1 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the lowcut frequency:", value=0.1)
+                if not ok1:
+                    return
                 highcut, ok2 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the highcut frequency:", value=0.9)
+                if not ok2:
+                    return
                 fs, ok3 = QInputDialog.getDouble(self, "Bandpass Filter", "Enter the sampling frequency:", value=100.0)
+                if not ok3:
+                    return
                 order, ok4 = QInputDialog.getInt(self, "Bandpass Filter", "Enter the filter order:", value=3)
-                if ok1 and ok2 and ok3 and ok4:
+                if ok4:
                     widget = self.ui.graphTab.widget(current_index)
                     tab_index = self.tabs.index(widget)
                     tab = self.tabs[tab_index]
@@ -789,9 +800,13 @@ class Graphite(QMainWindow):
                     tab.plot_filtered_data(filtered_data)
             elif button == "highpass":
                 cutoff, ok1 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the cutoff frequency:", value=0.1)
+                if not ok1:
+                    return
                 fs, ok2 = QInputDialog.getDouble(self, "Highpass Filter", "Enter the sampling frequency:", value=100.0)
+                if not ok2:
+                    return
                 order, ok3 = QInputDialog.getInt(self, "Highpass Filter", "Enter the filter order:", value=3)
-                if ok1 and ok2 and ok3:
+                if ok3:
                     widget = self.ui.graphTab.widget(current_index)
                     tab_index = self.tabs.index(widget)
                     tab = self.tabs[tab_index]
@@ -802,11 +817,10 @@ class Graphite(QMainWindow):
 
     def handle_fit_type_changed_w(self, index):
 
-
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
@@ -831,8 +845,8 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
@@ -853,8 +867,8 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
@@ -875,8 +889,8 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
@@ -895,8 +909,8 @@ class Graphite(QMainWindow):
 
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
-          selected_button=self.sender()
-          if selected_button:
+            selected_button=self.sender()
+        if selected_button:
             button=selected_button.objectName()
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
@@ -948,20 +962,20 @@ class Graphite(QMainWindow):
             tab = self.tabs[tab_index]
             x_data = tab.dataframe.iloc[:, 0].values  # Replace [...] with actual x-axis data
             y_data = tab.dataframe.iloc[:, 1].values  # Replace [...] with actual y-axis data
-                    # Perform linear fitting
+            # Perform linear fitting
             coeffs = np.polyfit(x_data, y_data, 1)
-                    # Create a linear function from the coefficients
+            # Create a linear function from the coefficients
             poly_linear = np.poly1d(coeffs)
-                    # Generate the x values for the fitted line
+            # Generate the x values for the fitted line
             x_fit = np.linspace(min(x_data), max(x_data), 100)
-                   # Generate the y values using the fitted line function
+            # Generate the y values using the fitted line function
             y_fit = poly_linear(x_fit)
-                    # Plot the original data and the fitted line using Matplotlib
+            # Plot the original data and the fitted line using Matplotlib
             tab.plot_linear_fit(x_data, y_data, x_fit, y_fit)
 
 
 
-                ## worksheet ##
+            ## worksheet ##
 
     def show_worksheet(self):
 
@@ -987,7 +1001,7 @@ class Graphite(QMainWindow):
             self.worksheet_dialog.ui.tableWidget.clear()
         self.worksheet_dialog.show()
 
-                ## customize ##
+        ## customize ##
 
 
     def show_customize_dialog(self):
@@ -1037,9 +1051,9 @@ class Graphite(QMainWindow):
             tab.custom_plot()
             self.customize_dialog.close()
 
-                
-                ## lagend ##
-                
+
+            ## lagend ##
+
     def show_lagend_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
@@ -1047,10 +1061,10 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             legend_dialog(tab, self)
-            
 
 
-                ## export ##
+
+            ## export ##
 
     def show_export_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -1083,7 +1097,7 @@ class Graphite(QMainWindow):
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
 
-                ## describe ##
+            ## describe ##
 
     def show_describe_dialog(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -1110,7 +1124,7 @@ class Graphite(QMainWindow):
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
 
-                ## interpolation ##
+            ## interpolation ##
 
     def show_interpolation(self, file):
         filename, _ = os.path.splitext(file)
@@ -1135,7 +1149,7 @@ class Graphite(QMainWindow):
         self.tabs.append(Tab(self.ui.graphTab, df, self.interpolation_dialog.name, None))
 
 
-                ## function ##
+        ## function ##
 
     def show_function_dialog(self):
         self.function_dialog.show()
@@ -1179,7 +1193,7 @@ class Graphite(QMainWindow):
             self.tabs.append(Tab(self.ui.graphTab, results_df, function, None))
         except Exception as e:
             print(f"Error: {e}")
-            
+
     #change types
     def toPlot(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -1245,7 +1259,7 @@ class Graphite(QMainWindow):
 
     def close_tab(self, index):
         reply = QMessageBox.question(self, 'Close Tab', 'Are you sure you want to close this tab?',
-            QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             widget = self.ui.graphTab.widget(index)
             tab_index = self.tabs.index(widget)
@@ -1263,20 +1277,20 @@ class Graphite(QMainWindow):
         if folder_path:
             # Clear the existing model
             self.ui.treeView.setModel(None)
-            
+
             model = QFileSystemModel()
             model.setRootPath(folder_path)
             model.setFilter(QDir.AllDirs | QDir.Files | QDir.NoDotAndDotDot)
             model.setNameFilters(["*.xlsx", "*.csv", "*.json", "*.png", "*.jpeg", "*.jpg", "*.bmp", "*.tif", "*.tiff", "*.gif", "*.ppm", "*.tga"])
             model.setNameFilterDisables(False)
-            
+
             self.ui.treeView.setModel(model)
             self.ui.treeView.setRootIndex(model.index(folder_path))
             self.ui.treeView.setSortingEnabled(True)
-            
+
             for column in range(1, model.columnCount()):
                 self.ui.treeView.setColumnHidden(column, True)
-            
+
         else:
             QMessageBox.warning(self, 'Warning', 'No folder selected.')
 
@@ -1407,9 +1421,9 @@ class Graphite(QMainWindow):
         return False
 
     def update_dataframe_with_fitted_data(self, tab):
-          if tab.fitted_dataframe is not None:
-              tab.dataframe = tab.fitted_dataframe
-              tab.fitted_dataframe = None
+        if tab.fitted_dataframe is not None:
+            tab.dataframe = tab.fitted_dataframe
+            tab.fitted_dataframe = None
 
     def graph_full_screen(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -1454,9 +1468,9 @@ class Graphite(QMainWindow):
             else:
                 cursor.execute('UPDATE recent SET placement = placement + 1')
                 cursor.execute('INSERT INTO recent (placement, path) VALUES (1, ?)', (file_path,))
-            
+
             cursor.execute('DELETE FROM recent WHERE placement > 10')
-            
+
             conn.commit()
             self.load_open_recent()
         except sqlite3.Error as e:
@@ -1473,9 +1487,9 @@ class Graphite(QMainWindow):
         try:
             cursor.execute('SELECT path FROM recent ORDER BY placement ASC')
             recent_paths = [row[0] for row in cursor.fetchall()]
-            
+
             self.ui.open_recent_path.clear()
-            
+
             for index, path in enumerate(recent_paths, 1):
                 widget = RecentFileWidget(index, path, self.remove_recent_file, self.open_file)
                 widget_action = QWidgetAction(self.ui.open_recent_path)
@@ -1487,7 +1501,7 @@ class Graphite(QMainWindow):
 
         except sqlite3.Error as e:
             print(f"An error occurred: {e}")
-        
+
         finally:
             if conn:
                 conn.close()
@@ -1513,7 +1527,7 @@ class Graphite(QMainWindow):
         finally:
             if conn:
                 conn.close()
-        
+
 
 
     def exit_app(self):

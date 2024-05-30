@@ -8,7 +8,7 @@ import zipfile
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
 from matplotlib.patches import Rectangle
 from PySide6.QtWidgets import QWidget, QHBoxLayout
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, Qt
 from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 from scipy.interpolate import UnivariateSpline
@@ -61,6 +61,9 @@ class Tab(QWidget):
         self.zoom_rect = None
         self.press = None
 
+        self.shift_pressed = False
+        self.ctrl_pressed = False
+
         self.figure, self.ax = plt.subplots()
         self.plot_widget = FigureCanvasQTAgg(self.figure)
         self.lay = QHBoxLayout()
@@ -73,6 +76,8 @@ class Tab(QWidget):
         self.figure.canvas.mpl_connect('button_release_event', self.on_release)
         self.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
         self.figure.canvas.mpl_connect('scroll_event', self.on_scroll)
+        self.figure.canvas.mpl_connect('figure_enter_event', self.on_figure_enter)
+        self.figure.canvas.mpl_connect('figure_leave_event', self.on_figure_leave)
 
         self.setLayout(self.lay)
         self.to_plot()
@@ -82,6 +87,51 @@ class Tab(QWidget):
 
 
     #interactive plots
+    def on_figure_enter(self, event):
+        self.setFocus()
+
+    def on_figure_leave(self, event):
+        self.clearFocus()
+
+    def keyPressEvent(self, event):
+        print("yes")
+        if event.key() == Qt.Key_Shift:
+            self.shift_pressed = True
+        elif event.key() == Qt.Key_Control:
+            self.ctrl_pressed = True
+
+    def keyReleaseEvent(self, event):
+        if event.key() == Qt.Key_Shift:
+            self.shift_pressed = False
+        elif event.key() == Qt.Key_Control:
+            self.ctrl_pressed = False
+
+    def on_scroll(self, event):
+        if event.button == 'up':
+            scale_factor = 0.9
+        elif event.button == 'down':
+            scale_factor = 1.1
+        else:
+            scale_factor = 1.0
+
+        xdata, ydata = event.xdata, event.ydata
+        xlim = self.ax.get_xlim()
+        ylim = self.ax.get_ylim()
+
+        if not self.shift_pressed:
+            new_xlim = (xlim[0] - xdata) * scale_factor + xdata, (xlim[1] - xdata) * scale_factor + xdata
+        else:
+            new_xlim = xlim
+        
+        if not self.ctrl_pressed:
+            new_ylim = (ylim[0] - ydata) * scale_factor + ydata, (ylim[1] - ydata) * scale_factor + ydata
+        else:
+            new_ylim = ylim
+
+        self.ax.set_xlim(new_xlim)
+        self.ax.set_ylim(new_ylim)
+        self.figure.canvas.draw_idle()
+
 
     def on_press(self, event):
         if event.button == 1:
@@ -146,25 +196,6 @@ class Tab(QWidget):
         self.figure.canvas.draw()
         self.text.set_text('')
 
-    def on_scroll(self, event):
-        if event.button == 'up':
-            scale_factor = 0.9
-        elif event.button == 'down':
-            scale_factor = 1.1
-        else:
-            scale_factor = 1.0
-
-        xdata, ydata = event.xdata, event.ydata
-        xlim = self.ax.get_xlim()
-        ylim = self.ax.get_ylim()
-
-        new_xlim = (xlim[0] - xdata) * scale_factor + xdata, (xlim[1] - xdata) * scale_factor + xdata
-        new_ylim = (ylim[0] - ydata) * scale_factor + ydata, (ylim[1] - ydata) * scale_factor + ydata
-
-        self.ax.set_xlim(new_xlim)
-        self.ax.set_ylim(new_ylim)
-        self.figure.canvas.draw_idle()
-
     def focus(self):
         if self.def_vals is not None:
             self.ax.set_xlim(self.def_vals[0])
@@ -172,11 +203,7 @@ class Tab(QWidget):
             self.plot_widget.draw()
 
 
-
     #filtters
-
-
-
 
 
     def plot_entered_function(self, function_str):
