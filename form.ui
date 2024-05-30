@@ -514,15 +514,18 @@ QPushButton:pressed {
                </property>
                <item>
                 <widget class="QScrollArea" name="scrollArea_2">
+                 <property name="verticalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                 </property>
                  <property name="widgetResizable">
                   <bool>true</bool>
                  </property>
                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
                   <property name="geometry">
                    <rect>
-                    <x>-625</x>
+                    <x>0</x>
                     <y>0</y>
-                    <width>2404</width>
+                    <width>2361</width>
                     <height>114</height>
                    </rect>
                   </property>
@@ -588,8 +591,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>quadriple</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/quartic_fit_plot.png</normaloff>assets/buttons/algo/quartic_fit_plot.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -645,8 +655,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>logarithm</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/logarithm_fit_plot.png</normaloff>assets/buttons/algo/logarithm_fit_plot.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -702,8 +719,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>logistic</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/logistic_fit_plot.png</normaloff>assets/buttons/algo/logistic_fit_plot.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -753,8 +777,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>weibull</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/weibull_fit_icon.png</normaloff>assets/buttons/algo/weibull_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -804,8 +835,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>hill</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/hill_fit_icon.png</normaloff>assets/buttons/algo/hill_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -855,8 +893,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>expononcial</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/exponential_fit_icon.png</normaloff>assets/buttons/algo/exponential_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -874,8 +919,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>cosine</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/cosine_fit_icon.png</normaloff>assets/buttons/algo/cosine_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -899,8 +951,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>gompertz</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/gompertz_fit_icon.png</normaloff>assets/buttons/algo/gompertz_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -918,8 +977,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>Gaussian</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/gaussian_fit_icon.png</normaloff>assets/buttons/algo/gaussian_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -943,8 +1009,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>dexpof</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/dexpof_fit_icon.png</normaloff>assets/buttons/algo/dexpof_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -962,8 +1035,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>lorenzian</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/lorenzian_fit_icon.png</normaloff>assets/buttons/algo/lorenzian_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -987,8 +1067,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>txpof</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/truncated_exponential_fit_icon.png</normaloff>assets/buttons/algo/truncated_exponential_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1006,8 +1093,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>voigt</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/voigt_fit_icon.png</normaloff>assets/buttons/algo/voigt_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1025,8 +1119,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>spline</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/spline_fit_icon.png</normaloff>assets/buttons/algo/spline_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1044,8 +1145,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>lowess</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/lowess_plot.png</normaloff>assets/buttons/algo/lowess_plot.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1063,8 +1171,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>Savitzky-Golay </string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/savitzky_golay_fit_icon.png</normaloff>assets/buttons/algo/savitzky_golay_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1082,8 +1197,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
-                     <property name="text">
+                     <property name="toolTip">
                       <string>meichaelis-menten</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/michaelis_menten_fit_icon.png</normaloff>assets/buttons/algo/michaelis_menten_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1101,8 +1223,15 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
+                     <property name="toolTip">
+                      <string>sigmoidal</string>
+                     </property>
                      <property name="text">
-                      <string>segmoidal</string>
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>assets/buttons/algo/sigmoidal_fit_icon.png</normaloff>assets/buttons/algo/sigmoidal_fit_icon.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -1128,12 +1257,12 @@ QPushButton:pressed {
                    <item>
                     <spacer name="horizontalSpacer_4">
                      <property name="orientation">
-                      <enum>Qt::Vertical</enum>
+                      <enum>Qt::Horizontal</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
-                       <height>105</height>
+                       <width>105</width>
+                       <height>40</height>
                       </size>
                      </property>
                     </spacer>
@@ -1183,7 +1312,7 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1222</width>
+                    <width>1182</width>
                     <height>114</height>
                    </rect>
                   </property>
@@ -1635,12 +1764,12 @@ QPushButton:pressed {
                       <cursorShape>ArrowCursor</cursorShape>
                      </property>
                      <property name="orientation">
-                      <enum>Qt::Vertical</enum>
+                      <enum>Qt::Horizontal</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>40</width>
-                       <height>93</height>
+                       <width>93</width>
+                       <height>40</height>
                       </size>
                      </property>
                     </spacer>
