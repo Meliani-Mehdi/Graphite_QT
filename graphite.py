@@ -816,7 +816,7 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_w(self, index):
-
+        selected_button = None
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             selected_button=self.sender()
@@ -842,7 +842,7 @@ class Graphite(QMainWindow):
 
 
     def handle_fit_type_changed_f(self, index):
-
+        selected_button = None
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             selected_button=self.sender()
@@ -863,8 +863,7 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_s(self, index):
-
-
+        selected_button = None
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             selected_button=self.sender()
@@ -885,8 +884,7 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_log(self, index):
-
-
+        selected_button = None
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             selected_button=self.sender()
@@ -905,8 +903,7 @@ class Graphite(QMainWindow):
                 print("Unsupported fit type selected")
 
     def handle_fit_type_changed_gauss(self, index):
-
-
+        selected_button = None
         current_index = self.ui.graphTab.currentIndex()
         if current_index != -1:
             selected_button=self.sender()
