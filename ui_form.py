@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.1
+## Created by: Qt User Interface Compiler version 6.7.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -192,8 +192,8 @@ class Ui_Graphite(object):
 
         self.line = QFrame(self.frame)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.VLine)
-        self.line.setFrameShadow(QFrame.Sunken)
+        self.line.setFrameShape(QFrame.Shape.VLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.horizontalLayout_4.addWidget(self.line)
 
@@ -573,11 +573,11 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_7.addWidget(self.segmoidal)
 
-        self.horizontalSpacer_5 = QSpacerItem(93, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(93, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_5)
 
-        self.horizontalSpacer_4 = QSpacerItem(105, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(105, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_4)
 
@@ -749,7 +749,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_6.addWidget(self.exponon)
 
-        self.horizontalSpacer_2 = QSpacerItem(93, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(93, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
 
@@ -864,7 +864,7 @@ class Ui_Graphite(object):
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, 0, 114, 1434))
+        self.typeButtons.setGeometry(QRect(0, -895, 114, 1434))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -1027,7 +1027,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.pushButton_5)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -1063,6 +1063,12 @@ class Ui_Graphite(object):
         self.can_btns.setObjectName(u"can_btns")
         self.can_btns.setMinimumSize(QSize(0, 45))
         self.can_btns.setMaximumSize(QSize(16777215, 45))
+        self.can_btns.setStyleSheet(u"QPushButton {\n"
+"    border: none;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgba(0, 0, 0, 0.5);\n"
+"}")
         self.can_btns.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_5 = QHBoxLayout(self.can_btns)
         self.horizontalLayout_5.setSpacing(6)
@@ -1072,12 +1078,7 @@ class Ui_Graphite(object):
         self.backM.setObjectName(u"backM")
         self.backM.setMinimumSize(QSize(40, 40))
         self.backM.setMaximumSize(QSize(40, 40))
-        self.backM.setStyleSheet(u"QPushButton {\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgba(0, 0, 0, 0.5);\n"
-"}")
+        self.backM.setStyleSheet(u"")
         icon58 = QIcon()
         icon58.addFile(u"assets/back.png", QSize(), QIcon.Normal, QIcon.Off)
         self.backM.setIcon(icon58)
@@ -1085,23 +1086,28 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_5.addWidget(self.backM)
 
+        self.lagend_select_2 = QPushButton(self.can_btns)
+        self.lagend_select_2.setObjectName(u"lagend_select_2")
+        self.lagend_select_2.setMinimumSize(QSize(40, 40))
+        self.lagend_select_2.setMaximumSize(QSize(40, 40))
+        self.lagend_select_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.lagend_select_2.setIcon(icon42)
+        self.lagend_select_2.setIconSize(QSize(40, 40))
+
+        self.horizontalLayout_5.addWidget(self.lagend_select_2)
+
         self.focus_2 = QPushButton(self.can_btns)
         self.focus_2.setObjectName(u"focus_2")
         self.focus_2.setMinimumSize(QSize(40, 40))
         self.focus_2.setMaximumSize(QSize(40, 40))
         self.focus_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.focus_2.setStyleSheet(u"QPushButton {\n"
-"    border: none;\n"
-"}\n"
-"QPushButton:pressed {\n"
-"    background-color: rgba(0, 0, 0, 0.5);\n"
-"}")
+        self.focus_2.setStyleSheet(u"")
         self.focus_2.setIcon(icon44)
         self.focus_2.setIconSize(QSize(40, 40))
 
         self.horizontalLayout_5.addWidget(self.focus_2)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
@@ -1168,7 +1174,7 @@ class Ui_Graphite(object):
         self.retranslateUi(Graphite)
 
         self.main.setCurrentIndex(0)
-        self.mode_frames.setCurrentIndex(0)
+        self.mode_frames.setCurrentIndex(1)
         self.graphTab.setCurrentIndex(-1)
 
 
@@ -1393,6 +1399,7 @@ class Ui_Graphite(object):
 #if QT_CONFIG(shortcut)
         self.backM.setShortcut(QCoreApplication.translate("Graphite", u"F5", None))
 #endif // QT_CONFIG(shortcut)
+        self.lagend_select_2.setText("")
         self.focus_2.setText("")
 #if QT_CONFIG(shortcut)
         self.focus_2.setShortcut(QCoreApplication.translate("Graphite", u"F", None))

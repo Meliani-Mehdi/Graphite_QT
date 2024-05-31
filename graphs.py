@@ -94,7 +94,6 @@ class Tab(QWidget):
         self.clearFocus()
 
     def keyPressEvent(self, event):
-        print("yes")
         if event.key() == Qt.Key_Shift:
             self.shift_pressed = True
         elif event.key() == Qt.Key_Control:
@@ -1069,7 +1068,7 @@ class Tab(QWidget):
     
     def export(self, filename, format='png', dpi=100, transparent=False, pad_inches=0.1):
         filepath = filename+'.'+format
-        plt.savefig(filepath,
+        self.figure.savefig(filepath,
                     dpi=int(dpi),
                     transparent=transparent,
                     pad_inches=pad_inches)
