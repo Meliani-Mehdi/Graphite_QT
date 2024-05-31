@@ -490,7 +490,7 @@ QPushButton:pressed {
 </string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -2015,7 +2015,7 @@ QPushButton:pressed {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
+               <y>-895</y>
                <width>114</width>
                <height>1434</height>
               </rect>
@@ -2522,6 +2522,14 @@ background-color: rgb(23, 23, 23);</string>
             <height>45</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    border: none;
+}
+QPushButton:pressed {
+    background-color: rgba(0, 0, 0, 0.5);
+}</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -2556,12 +2564,7 @@ background-color: rgb(23, 23, 23);</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton {
-    border: none;
-}
-QPushButton:pressed {
-    background-color: rgba(0, 0, 0, 0.5);
-}</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -2578,6 +2581,38 @@ QPushButton:pressed {
              </property>
              <property name="shortcut">
               <string>F5</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="lagend_select_2">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>assets/legend.png</normaloff>assets/legend.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -2599,12 +2634,7 @@ QPushButton:pressed {
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton {
-    border: none;
-}
-QPushButton:pressed {
-    background-color: rgba(0, 0, 0, 0.5);
-}</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -2627,12 +2657,12 @@ QPushButton:pressed {
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
-              <enum>Qt::Vertical</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
-               <height>20</height>
+               <width>20</width>
+               <height>40</height>
               </size>
              </property>
             </spacer>
