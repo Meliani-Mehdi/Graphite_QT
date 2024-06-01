@@ -493,18 +493,26 @@ class Tab(QWidget):
         return filtered_data
 
     def apply_filter_with_dynamic_order(self, filter_func, dataframe, *args, **kwargs):
-           data_length = len(dataframe)
-           for order in range(1, 10):  # Try filter orders from 1 to 9
-               try:
-                   b, a = filter_func(order, *args, **kwargs)
-                   padlen = 3 * max(len(a), len(b))
-                   if data_length > padlen:
-                       filtered_data = filtfilt(b, a, dataframe.values, axis=0)
-                       return pd.DataFrame(filtered_data, columns=dataframe.columns, index=dataframe.index)
-               except ValueError as e:
-                   continue
-           raise ValueError(f"Input data length must be greater than padlen ({padlen}) even for the smallest order.")
+            data_length = len(dataframe)
+            filtered_data = dataframe.copy()
 
+            for col in dataframe.columns[1:]:  # Skip the first column
+                col_data = dataframe[col].values
+                for order in range(1, 10):  # Try filter orders from 1 to 9
+                    try:
+                        b, a = filter_func(order, *args, **kwargs)
+                        padlen = 3 * max(len(a), len(b))
+                        if data_length > padlen:
+                            padded_data = np.pad(col_data, (padlen, padlen), 'constant')
+                            filtered_col = filtfilt(b, a, padded_data)
+                            filtered_data[col] = filtered_col[padlen:-padlen]  # Remove padding
+                            break  # Exit the loop if filtering is successful
+                    except ValueError as e:
+                        continue
+                else:
+                    raise ValueError(f"Input data length for column '{col}' must be greater than padlen ({padlen}) even for the smallest order.")
+
+            return filtered_data
    # def create_notch_filter(fs, f0, Q):
     #    nyquist = 0.5 * fs
      #   w0 = f0 / nyquist
