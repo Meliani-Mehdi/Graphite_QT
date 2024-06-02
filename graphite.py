@@ -239,9 +239,17 @@ class InterpolationDialog(QDialog):
         super().__init__(parent)
         self.ui = interpolation()
         self.ui.setupUi(self)
+        self.setWindowTitle("graph digitization")
         self.name = ''
         self.coordinates = []
         self.points = []
+
+        self.points_lim = []
+        self.last_xline = None
+        self.last_yline = None
+        self.preview_xline = None
+        self.preview_yline = None
+
         self.figure, self.ax = plt.subplots()
         self.ax.set_position([0, 0, 1, 1])
         self.ax.axis('off')
@@ -249,21 +257,61 @@ class InterpolationDialog(QDialog):
         self.ui.image.addWidget(self.plot_widget)
 
         self.figure.canvas.mpl_connect('button_press_event', self.onclick)
+        self.figure.canvas.mpl_connect('motion_notify_event', self.onmotion)
         self.delete_shortcut = QShortcut(QKeySequence(Qt.Key_Backspace), self)
         self.delete_shortcut.activated.connect(self.delete_last_point)
 
         self.ui.cancel.clicked.connect(self.cancel)
 
+
+    def onmotion(self, event):
+        if event.inaxes != self.ax:
+            return
+        if self.preview_xline is not None and self.preview_yline is not None:
+            self.preview_xline.remove()
+            self.preview_yline.remove()
+            self.preview_xline = None
+            self.preview_yline = None
+        if len(self.points_lim) == 1:
+            x1, y1 = self.points_lim[0]
+            x2, y2 = event.xdata, event.ydata
+            self.preview_xline, = self.ax.plot([x1, x1], [y1, y2], color='blue', linestyle='--')
+            self.preview_yline, = self.ax.plot([x1, x2], [y1, y1], color='blue', linestyle='--')
+            self.figure.canvas.draw()
+
     def onclick(self, event):
-        if event.inaxes == self.ax:
+        if event.inaxes != self.ax:
+            return
+
+        if event.button == 1:
             x, y = event.xdata, event.ydata
             self.coordinates.append((x, y))
-            point, = self.ax.plot(x, y, 'rx') 
+            point, = self.ax.plot(x, y, 'bx') 
             self.points.append(point)
             self.plot_widget.draw()
+        if event.button == 3:
+            self.points_lim.append((event.xdata, event.ydata))
+            if len(self.points_lim) == 2:
+                x1, y1 = self.points_lim[0]
+                x2, y2 = self.points_lim[1]
+                if self.last_xline is not None and self.last_yline is not None:
+                    self.last_xline.remove()
+                    self.last_yline.remove()
+                self.last_xline, = self.ax.plot([x1, x1], [y1, y2], color='g', linestyle='-')
+                self.last_yline, = self.ax.plot([x1, x2], [y1, y1], color='r', linestyle='-')
+                self.figure.canvas.draw()
+                self.points_lim = []
 
     def delete_last_point(self):
-        if self.points:
+        if len(self.points_lim) == 1:
+            self.points_lim = []
+            if self.preview_xline is not None and self.preview_yline is not None:
+                self.preview_xline.remove()
+                self.preview_yline.remove()
+                self.preview_xline = None
+                self.preview_yline = None
+                self.figure.canvas.draw()
+        elif self.points:
             self.points[-1].remove()
             self.points.pop()
             self.coordinates.pop()
