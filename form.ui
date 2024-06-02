@@ -285,6 +285,9 @@ QPushButton {
                      <height>28</height>
                     </size>
                    </property>
+                   <property name="shortcut">
+                    <string/>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -356,6 +359,9 @@ QPushButton {
                      <height>28</height>
                     </size>
                    </property>
+                   <property name="shortcut">
+                    <string>Ctrl+D</string>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -405,6 +411,9 @@ QPushButton {
                      <width>32</width>
                      <height>32</height>
                     </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+C</string>
                    </property>
                   </widget>
                  </item>
@@ -458,6 +467,9 @@ QPushButton {
                      <width>32</width>
                      <height>32</height>
                     </size>
+                   </property>
+                   <property name="shortcut">
+                    <string>Ctrl+W</string>
                    </property>
                   </widget>
                  </item>
@@ -523,10 +535,10 @@ QPushButton:pressed {
                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
                   <property name="geometry">
                    <rect>
-                    <x>0</x>
+                    <x>-1213</x>
                     <y>0</y>
                     <width>2361</width>
-                    <height>114</height>
+                    <height>112</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -575,6 +587,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+P</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -606,6 +621,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+Q</string>
                      </property>
                     </widget>
                    </item>
@@ -639,6 +657,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+C</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -670,6 +691,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+L</string>
                      </property>
                     </widget>
                    </item>
@@ -703,6 +727,9 @@ QPushButton:pressed {
                        <height>95</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+L</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -735,6 +762,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+G</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -760,6 +790,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+F</string>
                      </property>
                     </widget>
                    </item>
@@ -793,6 +826,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+W</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -818,6 +854,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+I</string>
                      </property>
                     </widget>
                    </item>
@@ -851,6 +890,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+H</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -876,6 +918,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+U</string>
                      </property>
                     </widget>
                    </item>
@@ -909,6 +954,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+E</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -934,6 +982,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Shift+B</string>
                      </property>
                     </widget>
                    </item>
@@ -967,6 +1018,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+B</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -992,6 +1046,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+V</string>
                      </property>
                     </widget>
                    </item>
@@ -1025,6 +1082,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+D</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1050,6 +1110,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+L</string>
                      </property>
                     </widget>
                    </item>
@@ -1083,6 +1146,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+T</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1108,6 +1174,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+V</string>
                      </property>
                     </widget>
                    </item>
@@ -1161,6 +1230,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+L</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1186,6 +1258,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+S</string>
                      </property>
                     </widget>
                    </item>
@@ -1213,6 +1288,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+M</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1238,6 +1316,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+Alt+D</string>
                      </property>
                     </widget>
                    </item>
@@ -1313,7 +1394,7 @@ QPushButton:pressed {
                     <x>0</x>
                     <y>0</y>
                     <width>1182</width>
-                    <height>114</height>
+                    <height>112</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -1365,6 +1446,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+L</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1403,6 +1487,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+B</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1438,6 +1525,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+H</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1472,6 +1562,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+L</string>
                      </property>
                     </widget>
                    </item>
@@ -1511,6 +1604,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+B</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1545,6 +1641,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+C</string>
                      </property>
                     </widget>
                    </item>
@@ -1581,6 +1680,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+S</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1615,6 +1717,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+M</string>
                      </property>
                     </widget>
                    </item>
@@ -1651,6 +1756,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+B</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1685,6 +1793,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+N</string>
                      </property>
                     </widget>
                    </item>
@@ -1721,6 +1832,9 @@ QPushButton:pressed {
                        <height>80</height>
                       </size>
                      </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+G</string>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1755,6 +1869,9 @@ QPushButton:pressed {
                        <width>80</width>
                        <height>80</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Alt+Shift+E</string>
                      </property>
                     </widget>
                    </item>
@@ -1874,6 +1991,9 @@ QPushButton:pressed {
                    <width>24</width>
                    <height>24</height>
                   </size>
+                 </property>
+                 <property name="shortcut">
+                  <string>P</string>
                  </property>
                 </widget>
                </item>
@@ -2015,7 +2135,7 @@ QPushButton:pressed {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>-895</y>
+               <y>0</y>
                <width>114</width>
                <height>1434</height>
               </rect>
@@ -2070,6 +2190,9 @@ background-color: rgb(23, 23, 23);</string>
                   <height>120</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Alt+L</string>
+                </property>
                </widget>
               </item>
               <item>
@@ -2101,6 +2224,9 @@ background-color: rgb(23, 23, 23);</string>
                   <width>100</width>
                   <height>100</height>
                  </size>
+                </property>
+                <property name="shortcut">
+                 <string>Alt+H</string>
                 </property>
                </widget>
               </item>
@@ -2134,6 +2260,9 @@ background-color: rgb(23, 23, 23);</string>
                   <height>110</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Alt+C</string>
+                </property>
                </widget>
               </item>
               <item>
@@ -2166,6 +2295,9 @@ background-color: rgb(23, 23, 23);</string>
                   <height>110</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Alt+S</string>
+                </property>
                </widget>
               </item>
               <item>
@@ -2197,6 +2329,9 @@ background-color: rgb(23, 23, 23);</string>
                   <width>100</width>
                   <height>100</height>
                  </size>
+                </property>
+                <property name="shortcut">
+                 <string>Alt+F</string>
                 </property>
                </widget>
               </item>
@@ -2689,7 +2824,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1433</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2780,6 +2915,9 @@ QPushButton:pressed {
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
    </property>
@@ -2846,6 +2984,9 @@ QPushButton:pressed {
    <property name="text">
     <string>Export</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
   </action>
   <action name="new_work_sheet">
    <property name="text">
@@ -2871,6 +3012,9 @@ QPushButton:pressed {
   <action name="actionfx">
    <property name="text">
     <string>fx</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actiontest">
