@@ -286,7 +286,7 @@ class InterpolationDialog(QDialog):
         if event.button == 1:
             x, y = event.xdata, event.ydata
             self.coordinates.append((x, y))
-            point, = self.ax.plot(x, y, 'bx') 
+            point, = self.ax.plot(x, y, 'rx') 
             self.points.append(point)
             self.plot_widget.draw()
         if event.button == 3:
@@ -324,6 +324,9 @@ class InterpolationDialog(QDialog):
             self.points.pop()
             self.coordinates.pop()
 
+    def calc_coordinates(self, x_start, x_end, y_start, y_end):
+        
+        pass
 
     def cancel(self):
         reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
