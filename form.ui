@@ -90,7 +90,7 @@
            <string notr="true">background-color: rgb(30, 30, 30);</string>
           </property>
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <property name="spacing">
@@ -123,7 +123,7 @@
               </size>
              </property>
              <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
+              <enum>QFrame::Shape::NoFrame</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <item>
@@ -134,7 +134,7 @@
 }</string>
                 </property>
                 <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
+                 <enum>QFrame::Shape::NoFrame</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
@@ -296,7 +296,7 @@ QPushButton {
               <item>
                <widget class="Line" name="line">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -308,7 +308,7 @@ QPushButton {
 }</string>
                 </property>
                 <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
+                 <enum>QFrame::Shape::NoFrame</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_2">
                  <item>
@@ -527,7 +527,7 @@ QPushButton:pressed {
                <item>
                 <widget class="QScrollArea" name="scrollArea_2">
                  <property name="verticalScrollBarPolicy">
-                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                  <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
                  </property>
                  <property name="widgetResizable">
                   <bool>true</bool>
@@ -535,10 +535,10 @@ QPushButton:pressed {
                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
                   <property name="geometry">
                    <rect>
-                    <x>-1213</x>
+                    <x>0</x>
                     <y>0</y>
                     <width>2361</width>
-                    <height>112</height>
+                    <height>104</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -1325,7 +1325,7 @@ QPushButton:pressed {
                    <item>
                     <spacer name="horizontalSpacer_5">
                      <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                      <enum>Qt::Orientation::Horizontal</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -1338,7 +1338,7 @@ QPushButton:pressed {
                    <item>
                     <spacer name="horizontalSpacer_4">
                      <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                      <enum>Qt::Orientation::Horizontal</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -1380,10 +1380,10 @@ QPushButton:pressed {
                <item>
                 <widget class="QScrollArea" name="scrollArea">
                  <property name="verticalScrollBarPolicy">
-                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                  <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
                  </property>
                  <property name="horizontalScrollBarPolicy">
-                  <enum>Qt::ScrollBarAsNeeded</enum>
+                  <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
                  </property>
                  <property name="widgetResizable">
                   <bool>true</bool>
@@ -1394,7 +1394,7 @@ QPushButton:pressed {
                     <x>0</x>
                     <y>0</y>
                     <width>1182</width>
-                    <height>112</height>
+                    <height>104</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -1881,7 +1881,7 @@ QPushButton:pressed {
                       <cursorShape>ArrowCursor</cursorShape>
                      </property>
                      <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
+                      <enum>Qt::Orientation::Horizontal</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -1979,6 +1979,9 @@ QPushButton:pressed {
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
+                 <property name="toolTip">
+                  <string>Legend Selector     P</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -2014,6 +2017,9 @@ QPushButton:pressed {
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
+                 <property name="toolTip">
+                  <string>Full Graph View   F5</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -2048,6 +2054,9 @@ QPushButton:pressed {
                  </property>
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="toolTip">
+                  <string>Focus   F</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -2123,10 +2132,10 @@ QPushButton:pressed {
              </size>
             </property>
             <property name="verticalScrollBarPolicy">
-             <enum>Qt::ScrollBarAsNeeded</enum>
+             <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
             </property>
             <property name="horizontalScrollBarPolicy">
-             <enum>Qt::ScrollBarAlwaysOff</enum>
+             <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
             </property>
             <property name="widgetResizable">
              <bool>true</bool>
@@ -2594,7 +2603,7 @@ background-color: rgb(23, 23, 23);</string>
               <item>
                <spacer name="verticalSpacer">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2666,7 +2675,7 @@ QPushButton:pressed {
 }</string>
           </property>
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="spacing">
@@ -2792,7 +2801,7 @@ QPushButton:pressed {
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2808,7 +2817,7 @@ QPushButton:pressed {
         <item>
          <widget class="QFrame" name="canv">
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
          </widget>
         </item>
@@ -2824,7 +2833,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1433</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -2916,10 +2925,10 @@ QPushButton:pressed {
     <string>Exit</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+X</string>
+    <string>Ctrl+Alt+X</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="actionpref">
@@ -3014,7 +3023,7 @@ QPushButton:pressed {
     <string>fx</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+F</string>
+    <string>Ctrl+Shift+F</string>
    </property>
   </action>
   <action name="actiontest">
