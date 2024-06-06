@@ -348,7 +348,7 @@ class Graphite(QMainWindow):
         self.tabs = []
 
         #menu functions
-        self.ui.new_work_sheet.triggered.connect(self.show_worksheet)
+        self.ui.new_work_sheet.triggered.connect(self.new_worksheet)
 
         self.ui.open_file.triggered.connect(self.open_file_dialog)
         self.ui.open_folder.triggered.connect(self.open_folder_dialog)
@@ -676,12 +676,18 @@ class Graphite(QMainWindow):
                 tab_index = self.tabs.index(widget)
                 tab = self.tabs[tab_index]
                 data = tab.dataframe.iloc[:, 1].values
-                try:
-                    filtered_data = tab.butterworth_filter(data, cutoff, fs=1, btype='lowpass', order=4)
-                    filtered_dataframe = pd.DataFrame(filtered_data, columns=tab.dataframe.columns[1:], index=tab.dataframe.index)
-                    tab.plot_filtered_data(filtered_dataframe)
-                except ValueError as e:
-                    print(e)
+                for order in range(9, 0, -1):
+                    try:
+                        filtered_data = tab.butterworth_filter(data, cutoff, fs=1, btype='lowpass', order=order)
+                        filtered_dataframe = tab.dataframe.copy()
+                        filtered_dataframe.iloc[:, 1] = filtered_data
+                        tab.plot_filtered_data(filtered_dataframe)
+                        return
+                    except ValueError as e:
+                        print(f"Order {order} failed: {e}")
+
+                           # If no order is sufficient
+                print(f"Error: Input data length ({len(data)}) is too short for the Butterworth filter with any order from 1 to 9.")
 
     def apply_moving_average_filter(self):
         current_index = self.ui.graphTab.currentIndex()
@@ -1042,6 +1048,13 @@ class Graphite(QMainWindow):
             self.worksheet_dialog.ui.tableWidget.setRowCount(0)
             self.worksheet_dialog.ui.tableWidget.setColumnCount(0)
             self.worksheet_dialog.ui.tableWidget.clear()
+        self.worksheet_dialog.show()
+
+
+    def new_worksheet(self):
+        self.worksheet_dialog.ui.tableWidget.setRowCount(0)
+        self.worksheet_dialog.ui.tableWidget.setColumnCount(0)
+        self.worksheet_dialog.ui.tableWidget.clear()
         self.worksheet_dialog.show()
 
         ## customize ##
