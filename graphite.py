@@ -372,11 +372,6 @@ class Graphite(QMainWindow):
         self.ui.treeView.doubleClicked.connect(self.treeFileIndex)
 
 
-
-        self.ui.MathMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(0))
-        self.ui.BchimieMode.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(2))
-        self.ui.actionfilters.triggered.connect(lambda: self.ui.mode_frames.setCurrentIndex(3))
-
         self.ui.Polynome.clicked.connect(self.perform_polynomial_fit)
         self.ui.linear.clicked.connect(self.perform_linear_fit)
         self.ui.quadraple.clicked.connect(self.perform_quadratic_fit)
@@ -1342,6 +1337,16 @@ class Graphite(QMainWindow):
         else:
             QMessageBox.warning(self, 'Warning', 'No folder selected.')
 
+    def move_file(self, file_path, dir_path):
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+        
+        file_name = os.path.basename(file_path)
+        
+        new_path = os.path.join(dir_path, file_name)
+        
+        os.rename(file_path, new_path)
+
     def dragEnterEvent(self, event):
         if event.mimeData().hasUrls():
             event.accept()
@@ -1359,7 +1364,7 @@ class Graphite(QMainWindow):
             event.accept()
             files = [url.toLocalFile() for url in event.mimeData().urls()]
             if len(files) == 1:
-                dropped_index = self.ui.treeView.indexAt(event.pos())
+                dropped_index = self.ui.treeView.indexAt(event.position().toPoint())
                 if dropped_index.isValid() and self.ui.treeView.model().fileInfo(dropped_index).isFile():
                     dropped_file = self.ui.treeView.model().filePath(dropped_index)
                     ext1 = os.path.splitext(dropped_file)[1]
@@ -1374,8 +1379,12 @@ class Graphite(QMainWindow):
                         self.tabs.append(Tab(self.ui.graphTab, df, name, None))
                     else:
                         QMessageBox.warning(self, 'Warning', 'Unsupported file format. Please select a CSV, Excel, or JSON file.')
+                elif dropped_index.isValid():
+                    dropped_file = self.ui.treeView.model().filePath(dropped_index)
+                    self.move_file(files[0], dropped_file)
+                    pass
                 else:
-                    QMessageBox.warning(self, 'Warning', 'Please drop the file onto another file in the tree view.')
+                    QMessageBox.warning(self, 'Warning', 'Please drop the file onto another file or diractory')
             else:
                 QMessageBox.warning(self, 'Warning', 'Please drop exactly one file.')
         else:
