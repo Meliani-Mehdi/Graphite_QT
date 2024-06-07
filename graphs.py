@@ -1056,16 +1056,15 @@ class Tab(QWidget):
 
 
     def saveFile(self, filepath, file_format):
+        filepath, _ = os.path.splitext(filepath)
         try:
             dataframe_to_save = self.fitted_dataframe if self.fitted_dataframe is not None else self.dataframe
-            if file_format == 'csv':
-                dataframe_to_save.to_csv(filepath, index=False)
-            elif file_format == 'xlsx':
-                with pd.ExcelWriter(filepath) as writer:
-                    dataframe_to_save.to_excel(writer, index=False)
-                #self.dataframe.to_excel(filepath, index=False)
-            elif file_format == 'json':
-                 dataframe_to_save.to_json(filepath, orient='record')
+            if "csv" in file_format:
+                dataframe_to_save.to_csv(f"{filepath}.csv", index=False)
+            elif "xlsx" in file_format:
+                dataframe_to_save.to_excel(f"{filepath}.xlsx", index=False)
+            elif "json" in file_format:
+                 dataframe_to_save.to_json(f"{filepath}.json", orient='records')
             else:
                 raise ValueError("Unsupported file format. Please select 'csv', 'excel' or 'json'.")
             self.file = filepath
@@ -1076,10 +1075,7 @@ class Tab(QWidget):
     
     def export(self, filename, format='png', dpi=100, transparent=False, pad_inches=0.1):
         filepath = filename+'.'+format
-        self.figure.savefig(filepath,
-                    dpi=int(dpi),
-                    transparent=transparent,
-                    pad_inches=pad_inches)
+        self.figure.savefig(filepath, dpi=int(dpi), transparent=transparent, pad_inches=pad_inches)
 
     def handle_missing_values(self, df):
         return df.fillna(df.mean())
@@ -1145,12 +1141,28 @@ class Tab(QWidget):
     def package_report(self, file_path, zip_name):
         output_dir = "output"
         self.main_summary(output_dir)
+        self.figure.savefig("Plot.png", dpi=100, transparent=False, pad_inches=0.1)
+        self.dataframe.to_csv("data.csv", index=False)
+        self.dataframe.to_excel("data.xlsx", index=False)
+        self.dataframe.to_json("data.json", orient="records")
+
         zip_name+=".zip"
         zip_file_path = os.path.join(file_path, zip_name)
+
         
         with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             if os.path.exists("report.html"):
-                zipf.write("report.html", os.path.basename("report.html"))
+                zipf.write("report.html")
+            if os.path.exists("Plot.png"):
+                zipf.write("Plot.png")
+            if os.path.exists("data.csv"):
+                zipf.write("data.csv")
+            if os.path.exists("data.xlsx"):
+                zipf.write("data.xlsx")
+            if os.path.exists("data.json"):
+                zipf.write("data.json")
+
+
             
             for root, dirs, files in os.walk(output_dir):
                 for file in files:
@@ -1159,6 +1171,14 @@ class Tab(QWidget):
         
         if os.path.exists("report.html"):
             os.remove("report.html")
+        if os.path.exists("Plot.png"):
+            os.remove("Plot.png")
+        if os.path.exists("data.csv"):
+            os.remove("data.csv")
+        if os.path.exists("data.xlsx"):
+            os.remove("data.xlsx")
+        if os.path.exists("data.json"):
+            os.remove("data.json")
 
         for root, dirs, files in os.walk(output_dir):
             for file in files:

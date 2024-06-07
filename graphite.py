@@ -1462,13 +1462,14 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             file_path = tab.file
-            if not file_path:
+            if file_path:
+                file_format = os.path.splitext(file_path)[-1][1:]
+            else:
                 options = QFileDialog.Options()
-                file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
+                file_path, file_format = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
 
             if file_path:
                 self.update_dataframe_with_fitted_data(tab)
-                file_format = os.path.splitext(file_path)[-1][1:]
                 return tab.saveFile(file_path, file_format)
         else :
             QMessageBox.warning(self, 'Warning', 'No plot selected.')
@@ -1482,11 +1483,10 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             tab = self.tabs[tab_index]
             options = QFileDialog.Options()
-            file_path, _ = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
+            file_path, file_format = QFileDialog.getSaveFileName(self, "Save File", "", "Excel Files (*.xlsx);;CSV Files (*.csv);;JSON Files (*.json)", options=options)
             if file_path:
                 tab.file = file_path
                 self.update_dataframe_with_fitted_data(tab)
-                file_format = os.path.splitext(file_path)[-1][1:]
                 return tab.saveFile(file_path, file_format)
         return False
 
