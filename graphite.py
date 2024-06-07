@@ -17,6 +17,7 @@ from ui_export import Ui_Dialog as export
 from ui_worksheet_dialog import Ui_Dialog2 as worksheet
 from ui_math_function import Ui_Dialog as function
 from ui_interpolation import Ui_Dialog as interpolation
+from ui_getVals import Ui_Dialog as getVals
 from ui_describe import Ui_Dialog as describe
 from line_toggle import MatplotlibLegendToggler as legend_dialog
 from graphs import Tab
@@ -240,6 +241,7 @@ class InterpolationDialog(QDialog):
         self.ui = interpolation()
         self.ui.setupUi(self)
         self.setWindowTitle("graph digitization")
+        self.getvals = Get_Val(self)
         self.name = ''
         self.coordinates = []
         self.points = []
@@ -249,6 +251,7 @@ class InterpolationDialog(QDialog):
         self.last_yline = None
         self.preview_xline = None
         self.preview_yline = None
+        self.x1, self.y1, self.x2, self.y2 = None, None, None, None
 
         self.figure, self.ax = plt.subplots()
         self.ax.set_position([0, 0, 1, 1])
@@ -294,6 +297,7 @@ class InterpolationDialog(QDialog):
             if len(self.points_lim) == 2:
                 x1, y1 = self.points_lim[0]
                 x2, y2 = self.points_lim[1]
+                self.x1, self.y1, self.x2, self.y2 = x1, y1, x2, y2
                 if self.last_xline is not None and self.last_yline is not None:
                     self.last_xline.remove()
                     self.last_yline.remove()
@@ -324,6 +328,16 @@ class InterpolationDialog(QDialog):
             self.points.pop()
             self.coordinates.pop()
 
+    def transform_value(self, start1, end1, start2, end2, val):
+        if start1 == end1 or start2 == end2:
+            return val
+
+        percentage = (val - start1) / (end1 - start1)
+        
+        new_val = start2 + percentage * (end2 - start2)
+        
+        return new_val
+
     def calc_coordinates(self, x_start, x_end, y_start, y_end):
         
         pass
@@ -333,6 +347,19 @@ class InterpolationDialog(QDialog):
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             self.close()
+
+class Get_Val(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = getVals()
+        self.ui.setupUi(self)
+        self.ui.cancel.clicked.connect(self.cancel)
+
+    def cancel(self):
+        reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.reject()
 
 class Graphite(QMainWindow):
     def __init__(self, parent=None):

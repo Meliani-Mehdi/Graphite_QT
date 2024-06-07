@@ -1078,17 +1078,20 @@ class Tab(QWidget):
         self.figure.savefig(filepath, dpi=int(dpi), transparent=transparent, pad_inches=pad_inches)
 
     def handle_missing_values(self, df):
-        return df.fillna(df.mean())
+        numeric_df = df.select_dtypes(include=[np.number])
+        return df.fillna(numeric_df.mean())
 
     def generate_summary_statistics(self, df):
-        summary_stats = df.describe().T
+        numeric_df = df.select_dtypes(include=[np.number])
+        summary_stats = numeric_df.describe().T
         return summary_stats
 
     def visualize_data_distribution(self, df, output_dir):
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-        for column in df.columns:
+        numeric_df = df.select_dtypes(include=[np.number])
+        for column in numeric_df.columns:
             plt.figure(figsize=(12, 5))
 
             plt.subplot(1, 2, 1)
@@ -1104,7 +1107,8 @@ class Tab(QWidget):
             plt.close()
 
     def correlation_analysis(self, df, output_dir):
-        corr_matrix = df.corr()
+        numeric_df = df.select_dtypes(include=[np.number])
+        corr_matrix = numeric_df.corr()
 
         plt.figure(figsize=(10, 8))
         sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
@@ -1146,10 +1150,9 @@ class Tab(QWidget):
         self.dataframe.to_excel("data.xlsx", index=False)
         self.dataframe.to_json("data.json", orient="records")
 
-        zip_name+=".zip"
+        zip_name += ".zip"
         zip_file_path = os.path.join(file_path, zip_name)
 
-        
         with zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
             if os.path.exists("report.html"):
                 zipf.write("report.html")
@@ -1162,13 +1165,11 @@ class Tab(QWidget):
             if os.path.exists("data.json"):
                 zipf.write("data.json")
 
-
-            
             for root, dirs, files in os.walk(output_dir):
                 for file in files:
                     file_path = os.path.join(root, file)
                     zipf.write(file_path, os.path.relpath(file_path, os.path.dirname(output_dir)))
-        
+
         if os.path.exists("report.html"):
             os.remove("report.html")
         if os.path.exists("Plot.png"):

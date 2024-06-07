@@ -9,6 +9,7 @@
         "ladder.ui",
         "graphs.py",
         "interpolation.ui",
-        "describe.ui"
+        "describe.ui",
+        "getVals.ui"
     ]
 }
