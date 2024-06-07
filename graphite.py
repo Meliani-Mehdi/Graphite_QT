@@ -1,6 +1,7 @@
 import sys
 import os
 import platform
+import re
 import numpy as np
 import pandas as pd
 import math
@@ -263,6 +264,8 @@ class InterpolationDialog(QDialog):
         self.figure.canvas.mpl_connect('motion_notify_event', self.onmotion)
         self.delete_shortcut = QShortcut(QKeySequence(Qt.Key_Backspace), self)
         self.delete_shortcut.activated.connect(self.delete_last_point)
+        self.delete_scale_shortcut = QShortcut(QKeySequence(Qt.CTRL | Qt.Key_Backspace), self)
+        self.delete_scale_shortcut.activated.connect(self.delete_scale)
 
         self.ui.cancel.clicked.connect(self.cancel)
 
@@ -319,8 +322,22 @@ class InterpolationDialog(QDialog):
             self.points[-1].remove()
             self.points.pop()
             self.coordinates.pop()
-            print(self.coordinates)
             self.plot_widget.draw()
+
+    def delete_scale(self):
+        self.points_lim = []
+        if self.preview_xline is not None and self.preview_yline is not None:
+            self.preview_xline.remove()
+            self.preview_yline.remove()
+            self.preview_xline = None
+            self.preview_yline = None
+
+        if self.last_xline is not None and self.last_yline is not None:
+            self.last_xline.remove()
+            self.last_yline.remove()
+            self.last_xline = None
+            self.last_yline = None
+        self.figure.canvas.draw()
 
     def delete_all_points(self):
         while self.points:
@@ -328,19 +345,6 @@ class InterpolationDialog(QDialog):
             self.points.pop()
             self.coordinates.pop()
 
-    def transform_value(self, start1, end1, start2, end2, val):
-        if start1 == end1 or start2 == end2:
-            return val
-
-        percentage = (val - start1) / (end1 - start1)
-        
-        new_val = start2 + percentage * (end2 - start2)
-        
-        return new_val
-
-    def calc_coordinates(self, x_start, x_end, y_start, y_end):
-        
-        pass
 
     def cancel(self):
         reply = QMessageBox.question(self, 'Cancel', 'Are you sure you want to cancel?',
@@ -482,7 +486,9 @@ class Graphite(QMainWindow):
         self.ui.worksheet.clicked.connect(self.show_worksheet)
 
         self.interpolation_dialog = InterpolationDialog(self)
-        self.interpolation_dialog.ui.plot.clicked.connect(self.interpolate)
+        self.interpolation_dialog.ui.plot.clicked.connect(self.show_val_dialog)
+        self.interpolation_dialog.getvals.ui.apply.clicked.connect(self.interpolate)
+        self.interpolation_dialog.getvals.ui.skip.clicked.connect(self.interpolate_skiped)
 
         self.function_dialog = FunctionDialog(self)
         self.function_dialog.ui.plot_btn.clicked.connect(self.fx)
@@ -1227,10 +1233,68 @@ class Graphite(QMainWindow):
         self.interpolation_dialog.plot_widget.draw()
         self.interpolation_dialog.show()
 
-    def interpolate(self):
+    def show_val_dialog(self):
+        if self.interpolation_dialog.last_xline is None or self.interpolation_dialog.last_yline is None:
+            self.interpolate_skiped()
+            return
+        self.interpolation_dialog.getvals.show()
+
+    def interpolate_skiped(self):
         df = pd.DataFrame(self.interpolation_dialog.coordinates)
         self.tabs.append(Tab(self.ui.graphTab, df, self.interpolation_dialog.name, None))
+        if not self.interpolation_dialog.getvals.isHidden():
+            self.interpolation_dialog.getvals.hide()
 
+    def isnumerical(self,s):
+        s = s.strip()
+        if not s:  
+            return False
+        if re.match(r'^[-+]?\d+(\.\d+)?$', s):
+            return True
+        return False
+
+    def transform_value(self, start1, end1, start2, end2, val):
+        if start1 == end1 or start2 == end2:
+            return val
+
+        percentage = (val - start1) / (end1 - start1)
+        
+        new_val = start2 + percentage * (end2 - start2)
+        
+        return new_val
+
+    def interpolate(self):
+        xStart = self.interpolation_dialog.getvals.ui.xStart.text()
+        yStart = self.interpolation_dialog.getvals.ui.yStart.text()
+        xEnd = self.interpolation_dialog.getvals.ui.xEnd.text()
+        yEnd = self.interpolation_dialog.getvals.ui.yEnd.text()
+        if self.isnumerical(xStart) and self.isnumerical(yStart) and self.isnumerical(xEnd) and self.isnumerical(yEnd):
+            xStart = float(xStart)
+            yStart = float(yStart)
+            xEnd = float(xEnd)
+            yEnd = float(yEnd)
+        else:
+            QMessageBox.warning(self, 'Warning', 'You have given non numerical values.')
+            return
+        if self.interpolation_dialog.x1 is None or self.interpolation_dialog.x2 is None or self.interpolation_dialog.y1 is None or self.interpolation_dialog.y2 is None:
+            QMessageBox.warning(self, 'Warning', 'Fetal Error.')
+            return
+
+        interpolate = []
+        del_x = self.interpolation_dialog.x1 
+        del_y = self.interpolation_dialog.y1 
+        xlimStart, xlimEnd = 0, self.interpolation_dialog.x2 - del_x
+        ylimStart, ylimEnd = 0, self.interpolation_dialog.y2 - del_y
+        for x, y in self.interpolation_dialog.coordinates:
+            x = x - del_x
+            y = y - del_y
+            xval = self.transform_value(xlimStart, xlimEnd, xStart, xEnd, x)
+            yval = self.transform_value(ylimStart, ylimEnd, yStart, yEnd, y)
+            interpolate.append((xval, yval))
+
+        df = pd.DataFrame(interpolate)
+        self.tabs.append(Tab(self.ui.graphTab, df, self.interpolation_dialog.name, None))
+        self.interpolation_dialog.getvals.hide()
 
         ## function ##
 
