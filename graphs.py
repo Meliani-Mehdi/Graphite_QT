@@ -96,13 +96,14 @@ class Tab(QWidget):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Shift:
             self.shift_pressed = True
-        elif event.key() == Qt.Key_Control:
+        if event.key() == Qt.Key_Control:
             self.ctrl_pressed = True
+
 
     def keyReleaseEvent(self, event):
         if event.key() == Qt.Key_Shift:
             self.shift_pressed = False
-        elif event.key() == Qt.Key_Control:
+        if event.key() == Qt.Key_Control:
             self.ctrl_pressed = False
 
     def on_scroll(self, event):
@@ -813,6 +814,7 @@ class Tab(QWidget):
 
 
     def custom_plot(self):
+        self.fitted_dataframe = None
         if self.last_marker != self.marker:
             self.last_marker = self.marker
             self.last_plot()
@@ -820,7 +822,7 @@ class Tab(QWidget):
         self.ax.set_title(self.name, color=self.rev_colors[self.can_color])
         self.ax.set_xlabel(self.xlabel, color=self.rev_colors[self.can_color])
         self.ax.set_ylabel(self.ylabel, color=self.rev_colors[self.can_color])
-        if self.last_plot not in [self.to_contour_plot, self.to_contourf_plot, self.to_imshow_plot, self.to_pcolormesh_plot]:
+        if self.last_plot not in [self.to_contour_plot, self.to_contourf_plot]:
             self.ax.legend(loc=self.legend_location, fancybox=True, framealpha=0.85, facecolor=self.fig_colors[self.fig_color], edgecolor=self.rev_colors[self.fig_color]).set_visible(self.legend)
             for text in self.ax.get_legend().get_texts():
                 text.set_color(self.rev_colors[self.fig_color])
@@ -1018,49 +1020,6 @@ class Tab(QWidget):
 
         self.custom_plot()
 
-    def to_imshow_plot(self):
-        self.figure.clear()
-        self.artists.clear()
-        self.ax = self.figure.add_subplot()
-
-        try:
-            artist = self.ax.imshow(self.dataframe.iloc[1:, 1:], origin='upper', aspect='auto')
-            print(artist)
-            print(type(artist))
-            self.artists.append(artist)
-        except Exception as e:
-            print(f"Failed to create imshow plot: {e}")
-
-        if self.typeNum != 8:
-            self.typeNum = 8
-            self.last_plot = self.to_imshow_plot
-            xlim = self.ax.get_xlim()
-            ylim = self.ax.get_ylim()
-            self.def_vals = [xlim, ylim]
-
-        self.custom_plot()
-
-    def to_pcolormesh_plot(self):
-        self.figure.clear()
-        self.artists.clear()
-        self.ax = self.figure.add_subplot()
-
-        try:
-            artist = self.ax.pcolormesh(self.dataframe.iloc[1:, 1:], shading='auto')
-            print(artist)
-            print(type(artist))
-            self.artists.append(artist)
-        except Exception as e:
-            print(f"Failed to create pcolormesh plot: {e}")
-
-        if self.typeNum != 9:
-            self.typeNum = 9
-            self.last_plot = self.to_pcolormesh_plot
-            xlim = self.ax.get_xlim()
-            ylim = self.ax.get_ylim()
-            self.def_vals = [xlim, ylim]
-
-        self.custom_plot()
 
     def plot_quadratic_fit(self, x_data, y_data):
         self.figure.clear()
@@ -1099,18 +1058,23 @@ class Tab(QWidget):
 
 
     def saveFile(self, filepath, file_format):
-        filepath, _ = os.path.splitext(filepath)
+        filepath, format_backup = os.path.splitext(filepath)
         try:
             dataframe_to_save = self.fitted_dataframe if self.fitted_dataframe is not None else self.dataframe
+
+            file_format = file_format if file_format is not None else format_backup
             if "csv" in file_format:
                 dataframe_to_save.to_csv(f"{filepath}.csv", index=False)
+                ext = ".csv"
             elif "xlsx" in file_format:
                 dataframe_to_save.to_excel(f"{filepath}.xlsx", index=False)
+                ext = ".xlsx"
             elif "json" in file_format:
-                 dataframe_to_save.to_json(f"{filepath}.json", orient='records')
+                dataframe_to_save.to_json(f"{filepath}.json", orient='records')
+                ext = ".json"
             else:
                 raise ValueError("Unsupported file format. Please select 'csv', 'excel' or 'json'.")
-            self.file = filepath
+            self.file = f"{filepath}{ext}"
             return True
         except Exception as e:
             print(f"Error saving file: {e}")

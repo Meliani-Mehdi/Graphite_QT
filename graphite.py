@@ -5,6 +5,7 @@ import re
 import numpy as np
 import pandas as pd
 import math
+import webbrowser
 import sqlite3
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -389,6 +390,8 @@ class Graphite(QMainWindow):
         self.ui.save_as.triggered.connect(self.saveAs)
         self.ui.exit_app.triggered.connect(self.exit_app)
 
+        self.ui.about.triggered.connect(self.about_site)
+
         #tree functions
         self.ui.treeView.setDragEnabled(True)
         self.ui.treeView.setAcceptDrops(True)
@@ -456,8 +459,6 @@ class Graphite(QMainWindow):
         self.ui.stackplot.clicked.connect(self.toStack)
         self.ui.contour.clicked.connect(self.toContour)
         self.ui.contourf.clicked.connect(self.toContourF)
-        self.ui.imshow.clicked.connect(self.toImShow)
-        self.ui.pcolor.clicked.connect(self.toPcolormesh)
 
         #buttons
 
@@ -473,6 +474,7 @@ class Graphite(QMainWindow):
         self.customize_dialog = CustomizeDialog(self)
         self.customize_dialog.ui.apply_btn.clicked.connect(self.apply_custom)
         self.ui.custom_button.clicked.connect(self.show_customize_dialog)
+        self.ui.custom_2.clicked.connect(self.show_customize_dialog)
 
         self.export_dialog = ExportDialog(self)
         self.export_dialog.ui.expo.clicked.connect(self.export)
@@ -481,11 +483,13 @@ class Graphite(QMainWindow):
         self.describe_dialog = DescribeDialog(self)
         self.describe_dialog.ui.save.clicked.connect(self.output_report)
         self.ui.describe.clicked.connect(self.show_describe_dialog)
+        self.ui.describe_2.clicked.connect(self.show_describe_dialog)
 
         self.worksheet_dialog = Worksheet(self)
         self.worksheet_dialog.ui.plotwork.clicked.connect(self.plotwork)
         self.worksheet_dialog.ui.modify.clicked.connect(self.modify_current_tab)
         self.ui.worksheet.clicked.connect(self.show_worksheet)
+        self.ui.worksheet_2.clicked.connect(self.show_worksheet)
 
         self.interpolation_dialog = InterpolationDialog(self)
         self.interpolation_dialog.ui.plot.clicked.connect(self.show_val_dialog)
@@ -1400,19 +1404,6 @@ class Graphite(QMainWindow):
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].to_contourf_plot()
 
-    def toImShow(self):
-        current_index = self.ui.graphTab.currentIndex()
-        if current_index != -1:
-            widget = self.ui.graphTab.widget(current_index)
-            tab_index = self.tabs.index(widget)
-            self.tabs[tab_index].to_imshow_plot()
-
-    def toPcolormesh(self):
-        current_index = self.ui.graphTab.currentIndex()
-        if current_index != -1:
-            widget = self.ui.graphTab.widget(current_index)
-            tab_index = self.tabs.index(widget)
-            self.tabs[tab_index].to_pcolormesh_plot()
 
     #closing logic
     def close_current_tab(self):
@@ -1705,6 +1696,9 @@ class Graphite(QMainWindow):
             if conn:
                 conn.close()
 
+    def about_site(self):
+        url = "https://master--graphite-doc.netlify.app/"
+        webbrowser.open(url)
 
 
     def exit_app(self):
