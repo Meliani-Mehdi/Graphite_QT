@@ -456,6 +456,8 @@ class Graphite(QMainWindow):
         self.ui.stackplot.clicked.connect(self.toStack)
         self.ui.contour.clicked.connect(self.toContour)
         self.ui.contourf.clicked.connect(self.toContourF)
+        self.ui.imshow.clicked.connect(self.toImShow)
+        self.ui.pcolor.clicked.connect(self.toPcolormesh)
 
         #buttons
 
@@ -1397,6 +1399,20 @@ class Graphite(QMainWindow):
             widget = self.ui.graphTab.widget(current_index)
             tab_index = self.tabs.index(widget)
             self.tabs[tab_index].to_contourf_plot()
+
+    def toImShow(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_imshow_plot()
+
+    def toPcolormesh(self):
+        current_index = self.ui.graphTab.currentIndex()
+        if current_index != -1:
+            widget = self.ui.graphTab.widget(current_index)
+            tab_index = self.tabs.index(widget)
+            self.tabs[tab_index].to_pcolormesh_plot()
 
     #closing logic
     def close_current_tab(self):

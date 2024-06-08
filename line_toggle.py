@@ -67,7 +67,7 @@ class MatplotlibLegendToggler(QDialog):
 
 
     def apply_legend_names(self):
-        if self.tab.last_plot not in [self.tab.to_contour_plot, self.tab.to_contourf_plot]:
+        if self.tab.last_plot not in [self.tab.to_contour_plot, self.tab.to_contourf_plot, self.tab.to_imshow_plot, self.tab.to_pcolormesh_plot]:
             self.plot.legend([widget.text() for widget in self.legend_widgets], loc=self.tab.legend_location, fancybox=True, framealpha=0.85, facecolor=self.tab.fig_colors[self.tab.fig_color], edgecolor=self.tab.rev_colors[self.tab.fig_color]).set_visible(self.tab.legend)
             for text in self.tab.ax.get_legend().get_texts():
                 text.set_color(self.tab.rev_colors[self.tab.fig_color])
