@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.1
+## Created by: Qt User Interface Compiler version 6.6.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -41,7 +41,7 @@ class Ui_Graphite(object):
         self.save_as.setObjectName(u"save_as")
         self.exit_app = QAction(Graphite)
         self.exit_app.setObjectName(u"exit_app")
-        self.exit_app.setMenuRole(QAction.MenuRole.NoRole)
+        self.exit_app.setMenuRole(QAction.NoRole)
         self.actionpref = QAction(Graphite)
         self.actionpref.setObjectName(u"actionpref")
         self.settings = QAction(Graphite)
@@ -97,7 +97,7 @@ class Ui_Graphite(object):
         self.frame1.setMinimumSize(QSize(0, 160))
         self.frame1.setMaximumSize(QSize(16777215, 160))
         self.frame1.setStyleSheet(u"background-color: rgb(30, 30, 30);")
-        self.frame1.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame1.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_3 = QHBoxLayout(self.frame1)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -106,7 +106,7 @@ class Ui_Graphite(object):
         self.frame.setObjectName(u"frame")
         self.frame.setMinimumSize(QSize(250, 0))
         self.frame.setMaximumSize(QSize(300, 16777215))
-        self.frame.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_4 = QHBoxLayout(self.frame)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.frame_2 = QFrame(self.frame)
@@ -114,7 +114,7 @@ class Ui_Graphite(object):
         self.frame_2.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
 "}")
-        self.frame_2.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_2.setFrameShape(QFrame.NoFrame)
         self.verticalLayout_4 = QVBoxLayout(self.frame_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.open_btn = QPushButton(self.frame_2)
@@ -192,8 +192,8 @@ class Ui_Graphite(object):
 
         self.line = QFrame(self.frame)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.VLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.line.setFrameShape(QFrame.VLine)
+        self.line.setFrameShadow(QFrame.Sunken)
 
         self.horizontalLayout_4.addWidget(self.line)
 
@@ -202,7 +202,7 @@ class Ui_Graphite(object):
         self.frame_3.setStyleSheet(u"QFrame { \n"
 "	border: none;\n"
 "}")
-        self.frame_3.setFrameShape(QFrame.Shape.NoFrame)
+        self.frame_3.setFrameShape(QFrame.NoFrame)
         self.verticalLayout_2 = QVBoxLayout(self.frame_3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.describe = QPushButton(self.frame_3)
@@ -312,11 +312,11 @@ class Ui_Graphite(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.scrollArea_2 = QScrollArea(self.mode_framesPage3)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.scrollArea_2.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 2559, 104))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 2358, 114))
         self.horizontalLayout_7 = QHBoxLayout(self.scrollAreaWidgetContents_2)
         self.horizontalLayout_7.setSpacing(3)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
@@ -573,11 +573,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_7.addWidget(self.segmoidal)
 
-        self.horizontalSpacer_5 = QSpacerItem(93, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.horizontalLayout_7.addItem(self.horizontalSpacer_5)
-
-        self.horizontalSpacer_4 = QSpacerItem(105, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.horizontalSpacer_4 = QSpacerItem(105, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_4)
 
@@ -595,12 +591,12 @@ class Ui_Graphite(object):
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.scrollArea = QScrollArea(self.mode_framesPage4)
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1275, 104))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1182, 114))
         self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_6.setSpacing(3)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -749,7 +745,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_6.addWidget(self.exponon)
 
-        self.horizontalSpacer_2 = QSpacerItem(93, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.horizontalSpacer_2 = QSpacerItem(93, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
 
@@ -859,12 +855,12 @@ class Ui_Graphite(object):
         self.graphTypes.setObjectName(u"graphTypes")
         self.graphTypes.setMinimumSize(QSize(130, 0))
         self.graphTypes.setMaximumSize(QSize(130, 16777215))
-        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
-        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.graphTypes.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.graphTypes.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphTypes.setWidgetResizable(True)
         self.typeButtons = QWidget()
         self.typeButtons.setObjectName(u"typeButtons")
-        self.typeButtons.setGeometry(QRect(0, -355, 114, 884))
+        self.typeButtons.setGeometry(QRect(0, 0, 114, 884))
         self.typeButtons.setStyleSheet(u"\n"
 "background-color: rgb(23, 23, 23);")
         self.verticalLayout_3 = QVBoxLayout(self.typeButtons)
@@ -967,7 +963,7 @@ class Ui_Graphite(object):
 
         self.verticalLayout_3.addWidget(self.contourf)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(40, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
@@ -1004,7 +1000,7 @@ class Ui_Graphite(object):
 "QPushButton:pressed {\n"
 "    background-color: rgba(0, 0, 0, 0.5);\n"
 "}")
-        self.can_btns.setFrameShape(QFrame.Shape.NoFrame)
+        self.can_btns.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_5 = QHBoxLayout(self.can_btns)
         self.horizontalLayout_5.setSpacing(6)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -1043,22 +1039,37 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_5.addWidget(self.focus_2)
 
-        self.pushButton = QPushButton(self.can_btns)
-        self.pushButton.setObjectName(u"pushButton")
+        self.worksheet_2 = QPushButton(self.can_btns)
+        self.worksheet_2.setObjectName(u"worksheet_2")
+        self.worksheet_2.setMinimumSize(QSize(40, 40))
+        self.worksheet_2.setMaximumSize(QSize(40, 40))
+        self.worksheet_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.worksheet_2.setIcon(icon6)
+        self.worksheet_2.setIconSize(QSize(42, 42))
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.horizontalLayout_5.addWidget(self.worksheet_2)
 
-        self.pushButton_3 = QPushButton(self.can_btns)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.custom_2 = QPushButton(self.can_btns)
+        self.custom_2.setObjectName(u"custom_2")
+        self.custom_2.setMinimumSize(QSize(40, 40))
+        self.custom_2.setMaximumSize(QSize(40, 40))
+        self.custom_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.custom_2.setIcon(icon5)
+        self.custom_2.setIconSize(QSize(50, 50))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_3)
+        self.horizontalLayout_5.addWidget(self.custom_2)
 
-        self.pushButton_2 = QPushButton(self.can_btns)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.describe_2 = QPushButton(self.can_btns)
+        self.describe_2.setObjectName(u"describe_2")
+        self.describe_2.setMinimumSize(QSize(40, 40))
+        self.describe_2.setMaximumSize(QSize(40, 40))
+        self.describe_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.describe_2.setIcon(icon4)
+        self.describe_2.setIconSize(QSize(40, 40))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addWidget(self.describe_2)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer)
 
@@ -1067,7 +1078,7 @@ class Ui_Graphite(object):
 
         self.canv = QFrame(self.can)
         self.canv.setObjectName(u"canv")
-        self.canv.setFrameShape(QFrame.Shape.NoFrame)
+        self.canv.setFrameShape(QFrame.NoFrame)
 
         self.verticalLayout_5.addWidget(self.canv)
 
@@ -1079,7 +1090,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1433, 31))
+        self.menubar.setGeometry(QRect(0, 0, 1433, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -1164,20 +1175,29 @@ class Ui_Graphite(object):
 #endif // QT_CONFIG(shortcut)
         self.actiontest.setText(QCoreApplication.translate("Graphite", u"test", None))
         self.open_btn.setText(QCoreApplication.translate("Graphite", u"Open", None))
-        self.save_btn.setText(QCoreApplication.translate("Graphite", u" save", None))
-        self.export_btn.setText(QCoreApplication.translate("Graphite", u"export", None))
+        self.save_btn.setText(QCoreApplication.translate("Graphite", u" Save", None))
+        self.export_btn.setText(QCoreApplication.translate("Graphite", u"Export", None))
 #if QT_CONFIG(shortcut)
         self.export_btn.setShortcut("")
 #endif // QT_CONFIG(shortcut)
-        self.describe.setText(QCoreApplication.translate("Graphite", u"describe", None))
+#if QT_CONFIG(tooltip)
+        self.describe.setToolTip(QCoreApplication.translate("Graphite", u"Ctrl+D", None))
+#endif // QT_CONFIG(tooltip)
+        self.describe.setText(QCoreApplication.translate("Graphite", u"Describe", None))
 #if QT_CONFIG(shortcut)
         self.describe.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+D", None))
 #endif // QT_CONFIG(shortcut)
+#if QT_CONFIG(tooltip)
+        self.custom_button.setToolTip(QCoreApplication.translate("Graphite", u"Ctrl+C", None))
+#endif // QT_CONFIG(tooltip)
         self.custom_button.setText(QCoreApplication.translate("Graphite", u"Customize", None))
 #if QT_CONFIG(shortcut)
         self.custom_button.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+C", None))
 #endif // QT_CONFIG(shortcut)
-        self.worksheet.setText(QCoreApplication.translate("Graphite", u"worksheet", None))
+#if QT_CONFIG(tooltip)
+        self.worksheet.setToolTip(QCoreApplication.translate("Graphite", u"Ctrl+W", None))
+#endif // QT_CONFIG(tooltip)
+        self.worksheet.setText(QCoreApplication.translate("Graphite", u"Worksheet", None))
 #if QT_CONFIG(shortcut)
         self.worksheet.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+W", None))
 #endif // QT_CONFIG(shortcut)
@@ -1478,18 +1498,36 @@ class Ui_Graphite(object):
         self.stackplot.setText("")
         self.contour.setText("")
         self.contourf.setText("")
+#if QT_CONFIG(tooltip)
+        self.backM.setToolTip(QCoreApplication.translate("Graphite", u"Exit full-screen", None))
+#endif // QT_CONFIG(tooltip)
         self.backM.setText("")
 #if QT_CONFIG(shortcut)
         self.backM.setShortcut(QCoreApplication.translate("Graphite", u"F5", None))
 #endif // QT_CONFIG(shortcut)
+#if QT_CONFIG(tooltip)
+        self.lagend_select_2.setToolTip(QCoreApplication.translate("Graphite", u"Legend Selector     P", None))
+#endif // QT_CONFIG(tooltip)
         self.lagend_select_2.setText("")
+#if QT_CONFIG(tooltip)
+        self.focus_2.setToolTip(QCoreApplication.translate("Graphite", u"Focus   F", None))
+#endif // QT_CONFIG(tooltip)
         self.focus_2.setText("")
 #if QT_CONFIG(shortcut)
         self.focus_2.setShortcut(QCoreApplication.translate("Graphite", u"F", None))
 #endif // QT_CONFIG(shortcut)
-        self.pushButton.setText(QCoreApplication.translate("Graphite", u"PushButton", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Graphite", u"PushButton", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Graphite", u"PushButton", None))
+#if QT_CONFIG(tooltip)
+        self.worksheet_2.setToolTip(QCoreApplication.translate("Graphite", u"Worksheet    Ctrl+W", None))
+#endif // QT_CONFIG(tooltip)
+        self.worksheet_2.setText("")
+#if QT_CONFIG(tooltip)
+        self.custom_2.setToolTip(QCoreApplication.translate("Graphite", u"Custom    Ctrl+C", None))
+#endif // QT_CONFIG(tooltip)
+        self.custom_2.setText("")
+#if QT_CONFIG(tooltip)
+        self.describe_2.setToolTip(QCoreApplication.translate("Graphite", u"Describe    Ctrl+D", None))
+#endif // QT_CONFIG(tooltip)
+        self.describe_2.setText("")
         self.menuFile.setTitle(QCoreApplication.translate("Graphite", u"File", None))
         self.menuNew.setTitle(QCoreApplication.translate("Graphite", u"New", None))
         self.open_recent_path.setTitle(QCoreApplication.translate("Graphite", u"Open recent", None))
