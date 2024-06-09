@@ -316,7 +316,7 @@ class Ui_Graphite(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 2358, 114))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(-1257, 0, 2463, 112))
         self.horizontalLayout_7 = QHBoxLayout(self.scrollAreaWidgetContents_2)
         self.horizontalLayout_7.setSpacing(3)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
@@ -573,7 +573,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_7.addWidget(self.segmoidal)
 
-        self.horizontalSpacer_4 = QSpacerItem(105, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(105, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_4)
 
@@ -596,7 +596,7 @@ class Ui_Graphite(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1182, 114))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1275, 112))
         self.horizontalLayout_6 = QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_6.setSpacing(3)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -745,7 +745,7 @@ class Ui_Graphite(object):
 
         self.horizontalLayout_6.addWidget(self.exponon)
 
-        self.horizontalSpacer_2 = QSpacerItem(93, 40, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(93, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_2)
 
@@ -1090,7 +1090,7 @@ class Ui_Graphite(object):
         Graphite.setCentralWidget(self.mainLayout)
         self.menubar = QMenuBar(Graphite)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1433, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1433, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuNew = QMenu(self.menuFile)
@@ -1311,7 +1311,7 @@ class Ui_Graphite(object):
 #endif // QT_CONFIG(tooltip)
         self.dexpof.setText("")
 #if QT_CONFIG(shortcut)
-        self.dexpof.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+Alt+D", None))
+        self.dexpof.setShortcut(QCoreApplication.translate("Graphite", u"Ctrl+Shift+Y", None))
 #endif // QT_CONFIG(shortcut)
 #if QT_CONFIG(tooltip)
         self.lorenzian.setToolTip(QCoreApplication.translate("Graphite", u"lorenzian", None))

@@ -511,7 +511,7 @@ QPushButton:pressed {
 </string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="mode_framesPage3">
               <attribute name="title">
@@ -546,8 +546,8 @@ QPushButton:pressed {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>2358</width>
-                    <height>114</height>
+                    <width>2463</width>
+                    <height>112</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -1092,7 +1092,7 @@ QPushButton:pressed {
                       </size>
                      </property>
                      <property name="shortcut">
-                      <string>Ctrl+Alt+D</string>
+                      <string>Ctrl+Shift+Y</string>
                      </property>
                     </widget>
                    </item>
@@ -1333,6 +1333,9 @@ QPushButton:pressed {
                    </item>
                    <item>
                     <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
                      <property name="sizeHint" stdset="0">
                       <size>
                        <width>105</width>
@@ -1384,10 +1387,10 @@ QPushButton:pressed {
                  <widget class="QWidget" name="scrollAreaWidgetContents">
                   <property name="geometry">
                    <rect>
-                    <x>0</x>
+                    <x>-80</x>
                     <y>0</y>
-                    <width>1182</width>
-                    <height>114</height>
+                    <width>1275</width>
+                    <height>112</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -1557,7 +1560,7 @@ QPushButton:pressed {
                       </size>
                      </property>
                      <property name="shortcut">
-                      <string>Alt+Shift+L</string>
+                      <string>Alt+Shift+#</string>
                      </property>
                     </widget>
                    </item>
@@ -1598,7 +1601,7 @@ QPushButton:pressed {
                       </size>
                      </property>
                      <property name="shortcut">
-                      <string>Alt+Shift+B</string>
+                      <string>Alt+Shift+'</string>
                      </property>
                     </widget>
                    </item>
@@ -1750,7 +1753,7 @@ QPushButton:pressed {
                       </size>
                      </property>
                      <property name="shortcut">
-                      <string>Alt+Shift+B</string>
+                      <string>Alt+Shift+1</string>
                      </property>
                     </widget>
                    </item>
@@ -1872,6 +1875,9 @@ QPushButton:pressed {
                     <spacer name="horizontalSpacer_2">
                      <property name="cursor">
                       <cursorShape>ArrowCursor</cursorShape>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
                      </property>
                      <property name="sizeHint" stdset="0">
                       <size>
@@ -2134,7 +2140,7 @@ QPushButton:pressed {
              <property name="geometry">
               <rect>
                <x>0</x>
-               <y>0</y>
+               <y>-346</y>
                <width>114</width>
                <height>884</height>
               </rect>
@@ -2775,7 +2781,7 @@ QPushButton:pressed {
      <x>0</x>
      <y>0</y>
      <width>1433</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
