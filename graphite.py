@@ -501,6 +501,7 @@ class Graphite(QMainWindow):
         self.ui.actionfx.triggered.connect(self.show_function_dialog)
 
         self.ui.lagend_select.clicked.connect(self.show_lagend_dialog)
+        self.ui.lagend_select_2.clicked.connect(self.show_lagend_dialog)
 
 
     def modify_current_tab(self):
