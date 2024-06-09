@@ -1,6 +1,6 @@
 # Graphite
 <p align="center">
-  <img src="/assets/Graphite_tl.png" alt="Graphite Logo">
+  <img src="/assets/Graphite_banner.png" alt="Graphite Logo">
 </p>
 
 ## Description
@@ -43,7 +43,4 @@ This project is licensed under the GPL-3.0 License - see the [LICENSE.txt](./LIC
 
 For more information, please visit our [official website](https://master--graphite-doc.netlify.app/) or check out our [GitHub repository](https://github.com/Meliani-Mehdi).
 
-<p align="center">
-  <img src="/assets/Graphite_banner.png" alt="Graphite Banner">
-</p>
 
