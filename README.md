@@ -1,6 +1,6 @@
 # Graphite
 
-![Graphite Logo](path/to/logo.png) 
+![Graphite Logo](/assets/Graphite_tl.png) 
 
 ## Description
 
